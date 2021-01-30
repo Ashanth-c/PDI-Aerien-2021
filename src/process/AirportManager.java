@@ -14,40 +14,40 @@ public class AirportManager {
 		this.airport = airport;
 	}
 
-	public boolean airportTakeOffAuthorization(Aeronef aeronef) {
+	public boolean airportTakeOffAuthorization(Aeronef goingAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
 		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
 		String airportName = airport.getName();
 		boolean authorization = false;
 
-		if (aeronef.getDeparture().equals(airportName) && AirportAeronefsList.contains(aeronef)) {
-			removeAeronefTerminal(aeronef);
+		if (goingAeronef.getDeparture().equals(airportName) && AirportAeronefsList.contains(goingAeronef)) {
+			removeAeronefTerminal(goingAeronef);
 			authorization = true;
 		}
 		return authorization;
 	}
 
-	public boolean giveAuthorizaton(Aeronef aeronef) {
+	public boolean giveAuthorizaton(Aeronef goingAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
 		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
 		String airportName = airport.getName();
 		boolean authorization = false;
 
-		if (aeronef.getDestination().equals(airportName) && (!AirportAeronefsList.contains(aeronef))) {
-			addAeronefTerminal(aeronef);
+		if (goingAeronef.getDestination().equals(airportName) && (!AirportAeronefsList.contains(goingAeronef))) {
+			addAeronefTerminal(goingAeronef);
 			authorization = true;
 		}
 		return authorization;
 	}
 
-	public boolean airportLandingAuthorization(Aeronef aeronef) {
+	public boolean airportLandingAuthorization(Aeronef commingAeronef) {
 		boolean authorization = false;
 		String airportType = airport.getType();
-		String aeronefType = aeronef.getType();
+		String aeronefType = commingAeronef.getType();
 
 		if (airportType.equals("all") || airportType.equals(aeronefType)) {
 			if (isTerminalFull().equals("Not Full")) {
-				authorization = giveAuthorizaton(aeronef);
+				authorization = giveAuthorizaton(commingAeronef);
 			}
 		}
 
@@ -65,30 +65,29 @@ public class AirportManager {
 		return isfull;
 	}
 
-	public void addAeronefTerminal(Aeronef aeronef) {
+	public void addAeronefTerminal(Aeronef newAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
 		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
 		int newTotaParkAeronefs = airportTerminal.getTotaParkAeronefs() + 1;
 
-		AirportAeronefsList.add(aeronef);
+		AirportAeronefsList.add(newAeronef);
 		airportTerminal.setTotaParkAeronefs(newTotaParkAeronefs);
 	}
 
-	public void removeAeronefTerminal(Aeronef aeronef) {
+	public void removeAeronefTerminal(Aeronef outAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
 		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
 		int newTotaParkAeronefs = airportTerminal.getTotaParkAeronefs() - 1;
 
-		AirportAeronefsList.remove(aeronef);
+		AirportAeronefsList.remove(outAeronef);
 		airportTerminal.setTotaParkAeronefs(newTotaParkAeronefs);
 	}
 
 	public Aeronef nextTakeOffAeronef() {
-		Aeronef takeOffAeronef;
 		Terminal airportTerminal = airport.getTerminal();
 		List<Aeronef> airportAeronefsList = airportTerminal.getAeronefs();
 
-		takeOffAeronef = airportAeronefsList.get(airportAeronefsList.size() - 1);
+		Aeronef takeOffAeronef = airportAeronefsList.get(airportAeronefsList.size() - 1);
 		return takeOffAeronef;
 	}
 
