@@ -5,6 +5,7 @@ import java.util.Date;
 
 public class Airport {
 	private String name;
+	private String type;
 	private Aerodrome aerodrome;
 	private Terminal terminal;
 	private City city;
@@ -12,10 +13,11 @@ public class Airport {
 	private Date constructionDate;
 	private List<Line> linesList;
 
-	public Airport(String name, Aerodrome aerodrome, Terminal terminal, City city, Date openingDate,
+	public Airport(String name, String type, Aerodrome aerodrome, Terminal terminal, City city, Date openingDate,
 			Date constructionDate, List<Line> linesList) {
 		super();
 		this.name = name;
+		this.type = type;
 		this.aerodrome = aerodrome;
 		this.terminal = terminal;
 		this.city = city;
@@ -24,10 +26,11 @@ public class Airport {
 		this.linesList = linesList;
 	}
 
-	public Airport(String name, Aerodrome aerodrome, Terminal terminal, City city, Date openingDate,
+	public Airport(String name, String type, Aerodrome aerodrome, Terminal terminal, City city, Date openingDate,
 			Date constructionDate) {
 		super();
 		this.name = name;
+		this.type = type;
 		this.aerodrome = aerodrome;
 		this.terminal = terminal;
 		this.city = city;
@@ -93,5 +96,13 @@ public class Airport {
 
 	public void setLinesList(List<Line> linesList) {
 		this.linesList = linesList;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
 	}
 }

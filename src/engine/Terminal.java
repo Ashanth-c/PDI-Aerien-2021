@@ -1,11 +1,12 @@
 package engine;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Terminal {
 	private int totalParkingPlace;
 	private int totaParkAeronefs;
-	private List<Aeronef> aeronefs;
+	private ArrayList<Aeronef> aeronefs;
 
 	public Terminal(int totalParkingPlace, int totaParkAeronefs) {
 		super();
@@ -13,7 +14,7 @@ public class Terminal {
 		this.totaParkAeronefs = totaParkAeronefs;
 	}
 
-	public Terminal(int totalParkingPlace, int totaParkAeronefs, List<Aeronef> aeronefs) {
+	public Terminal(int totalParkingPlace, int totaParkAeronefs, ArrayList<Aeronef> aeronefs) {
 		super();
 		this.totalParkingPlace = totalParkingPlace;
 		this.totaParkAeronefs = totaParkAeronefs;
@@ -40,7 +41,7 @@ public class Terminal {
 		return aeronefs;
 	}
 
-	public void setAeronefs(List<Aeronef> aeronefs) {
+	public void setAeronefs(ArrayList<Aeronef> aeronefs) {
 		this.aeronefs = aeronefs;
 	}
 
