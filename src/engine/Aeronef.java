@@ -1,6 +1,6 @@
-package data;
+package engine;
 
-public class Aeronef {
+public class Aeronef extends Block {
 
 	private String type;
 	private String model;
@@ -11,13 +11,13 @@ public class Aeronef {
 	private int altitude;
 	private int speed;
 
-	public Aeronef() {
-		super();
+	public Aeronef(int startPoint, int endPoint) {
+		super(startPoint, endPoint);
 	}
 
-	public Aeronef(String type, String model, String destination, String departure, int totalSeats, int fuel,
-			int altitude, int speed) {
-		super();
+	public Aeronef(int startPoint, int endPoint, String type, String model, String destination, String departure,
+			int totalSeats, int fuel, int altitude, int speed) {
+		super(startPoint, endPoint);
 		this.type = type;
 		this.model = model;
 		this.destination = destination;

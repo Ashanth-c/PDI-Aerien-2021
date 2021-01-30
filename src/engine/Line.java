@@ -1,4 +1,4 @@
-package data;
+package engine;
 
 public class Line {
 	private Airport airport1;

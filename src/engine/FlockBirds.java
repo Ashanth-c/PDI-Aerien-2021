@@ -1,17 +1,23 @@
-package data;
+package engine;
 
 public class FlockBirds extends Obstacle {
 	private int numberOfBirds;
 	private int speed;
 
-	public FlockBirds(String name, int numberOfObstacle, int numberOfBirds, int speed) {
-		super(name, numberOfObstacle);
+	public FlockBirds(int startPoint, int endPoint) {
+		super(startPoint, endPoint);
+	}
+
+	public FlockBirds(int startPoint, int endPoint, int numberOfBirds, int speed) {
+		super(startPoint, endPoint);
 		this.numberOfBirds = numberOfBirds;
 		this.speed = speed;
 	}
 
-	public FlockBirds(String name, int numberOfObstacle) {
-		super(name, numberOfObstacle);
+	public FlockBirds(int startPoint, int endPoint, String name, int numberOfBirds, int speed) {
+		super(startPoint, endPoint, name);
+		this.numberOfBirds = numberOfBirds;
+		this.speed = speed;
 	}
 
 	public int getNumberOfBirds() {
