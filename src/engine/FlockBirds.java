@@ -14,8 +14,8 @@ public class FlockBirds extends Obstacle {
 		this.speed = speed;
 	}
 
-	public FlockBirds(int startPoint, int endPoint, String name, int numberOfBirds, int speed) {
-		super(startPoint, endPoint, name);
+	public FlockBirds(int startPoint, int endPoint, String name, int altitude, int numberOfBirds, int speed) {
+		super(startPoint, endPoint, name, altitude);
 		this.numberOfBirds = numberOfBirds;
 		this.speed = speed;
 	}

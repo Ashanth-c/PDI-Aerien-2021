@@ -7,8 +7,8 @@ public class Moutain extends Obstacle {
 		super(startPoint, endPoint);
 	}
 
-	public Moutain(int startPoint, int endPoint, String name, String country) {
-		super(startPoint, endPoint, name);
+	public Moutain(int startPoint, int endPoint, String name, int altitude, String country) {
+		super(startPoint, endPoint, name, altitude);
 		this.country = country;
 	}
 

@@ -1,6 +1,6 @@
 package engine;
 
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 
 public class Airport {
@@ -10,10 +10,10 @@ public class Airport {
 	private City city;
 	private Date openingDate;
 	private Date constructionDate;
-	private ArrayList<Line> linesList;
+	private List<Line> linesList;
 
 	public Airport(String name, Aerodrome aerodrome, Terminal terminal, City city, Date openingDate,
-			Date constructionDate, ArrayList<Line> linesList) {
+			Date constructionDate, List<Line> linesList) {
 		super();
 		this.name = name;
 		this.aerodrome = aerodrome;
@@ -87,11 +87,11 @@ public class Airport {
 		this.constructionDate = constructionDate;
 	}
 
-	public ArrayList<Line> getLinesList() {
+	public List<Line> getLinesList() {
 		return linesList;
 	}
 
-	public void setLinesList(ArrayList<Line> linesList) {
+	public void setLinesList(List<Line> linesList) {
 		this.linesList = linesList;
 	}
 }
