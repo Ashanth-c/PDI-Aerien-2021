@@ -2,8 +2,8 @@ package process;
 
 import java.util.List;
 
-import engine.Airport;
-import engine.Line;
+import data.Airport;
+import data.Line;
 
 public class LineBuilder {
 	private Line line;

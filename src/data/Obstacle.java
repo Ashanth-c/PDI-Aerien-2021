@@ -1,4 +1,4 @@
-package engine;
+package data;
 
 public class Obstacle extends Block {
 	private String name;

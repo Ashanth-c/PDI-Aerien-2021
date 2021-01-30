@@ -1,4 +1,4 @@
-package engine;
+package data;
 
 public class Moutain extends Obstacle {
 	private String country;

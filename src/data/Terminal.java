@@ -1,4 +1,4 @@
-package engine;
+package data;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,7 +37,7 @@ public class Terminal {
 		this.totaParkAeronefs = totaParkAeronefs;
 	}
 
-	public List<Aeronef> getAeronefs() {
+	public ArrayList<Aeronef> getAeronefs() {
 		return aeronefs;
 	}
 
