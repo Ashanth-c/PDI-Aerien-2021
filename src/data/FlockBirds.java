@@ -36,4 +36,9 @@ public class FlockBirds extends Obstacle {
 		this.speed = speed;
 	}
 
+	@Override
+	public String toString() {
+		return "FlockBirds [numberOfBirds=" + numberOfBirds + ", speed=" + speed + "]";
+	}
+
 }

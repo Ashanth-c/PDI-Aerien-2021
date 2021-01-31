@@ -92,4 +92,11 @@ public class Aeronef extends Block {
 		this.speed = speed;
 	}
 
+	@Override
+	public String toString() {
+		return "Aeronef [type=" + type + ", model=" + model + ", destination=" + destination + ", departure="
+				+ departure + ", totalSeats=" + totalSeats + ", fuel=" + fuel + ", altitude=" + altitude + ", speed="
+				+ speed + "]";
+	}
+
 }

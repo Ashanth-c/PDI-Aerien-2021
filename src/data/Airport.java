@@ -1,7 +1,6 @@
 package data;
 
 import java.util.List;
-import java.util.Date;
 
 public class Airport {
 	private String name;
@@ -9,12 +8,12 @@ public class Airport {
 	private Aerodrome aerodrome;
 	private Terminal terminal;
 	private City city;
-	private Date openingDate;
-	private Date constructionDate;
+	private String openingDate;
+	private String constructionDate;
 	private List<Line> linesList;
 
-	public Airport(String name, String type, Aerodrome aerodrome, Terminal terminal, City city, Date openingDate,
-			Date constructionDate, List<Line> linesList) {
+	public Airport(String name, String type, Aerodrome aerodrome, Terminal terminal, City city, String openingDate,
+			String constructionDate, List<Line> linesList) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -26,8 +25,8 @@ public class Airport {
 		this.linesList = linesList;
 	}
 
-	public Airport(String name, String type, Aerodrome aerodrome, Terminal terminal, City city, Date openingDate,
-			Date constructionDate) {
+	public Airport(String name, String type, Aerodrome aerodrome, Terminal terminal, City city, String openingDate,
+			String constructionDate) {
 		super();
 		this.name = name;
 		this.type = type;
@@ -74,19 +73,19 @@ public class Airport {
 		this.city = city;
 	}
 
-	public Date getOpeningDate() {
+	public String getopeningDate() {
 		return openingDate;
 	}
 
-	public void setOpeningDate(Date openingDate) {
+	public void setopeningDate(String openingDate) {
 		this.openingDate = openingDate;
 	}
 
-	public Date getConstructionDate() {
+	public String getconstructionDate() {
 		return constructionDate;
 	}
 
-	public void setConstructionDate(Date constructionDate) {
+	public void setconstructionDate(String constructionDate) {
 		this.constructionDate = constructionDate;
 	}
 
@@ -105,4 +104,12 @@ public class Airport {
 	public void setType(String type) {
 		this.type = type;
 	}
+
+	@Override
+	public String toString() {
+		return "Airport [name=" + name + ", type=" + type + ", aerodrome=" + aerodrome + ", terminal=" + terminal
+				+ ", city=" + city + ", openingDate=" + openingDate + ", constructionDate=" + constructionDate
+				+ ", linesList=" + linesList + "]";
+	}
+
 }

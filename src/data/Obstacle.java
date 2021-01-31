@@ -30,4 +30,9 @@ public class Obstacle extends Block {
 		this.altitude = altitude;
 	}
 
+	@Override
+	public String toString() {
+		return "Obstacle [name=" + name + ", altitude=" + altitude + "]";
+	}
+
 }

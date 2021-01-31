@@ -25,4 +25,9 @@ public class Moutain extends Obstacle {
 		this.country = country;
 	}
 
+	@Override
+	public String toString() {
+		return "Moutain [country=" + country + "]";
+	}
+
 }

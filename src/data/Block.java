@@ -25,4 +25,9 @@ public class Block {
 	public void setEndPoint(int endPoint) {
 		this.endPoint = endPoint;
 	}
+
+	@Override
+	public String toString() {
+		return "Block [startPoint=" + startPoint + ", endPoint=" + endPoint + "]";
+	}
 }

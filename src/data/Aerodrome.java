@@ -30,4 +30,9 @@ public class Aerodrome {
 		this.runwayLenght = runwayLenght;
 	}
 
+	@Override
+	public String toString() {
+		return "Aerodrome [totalRunway=" + totalRunway + ", runwayLenght=" + runwayLenght + "]";
+	}
+
 }

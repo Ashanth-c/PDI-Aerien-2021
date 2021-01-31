@@ -1,32 +1,37 @@
 package data;
 
 public class Line {
-	private Airport airport1;
-	private Airport airport2;
+	private Airport departure;
+	private Airport destination;
 
-	public Line(Airport airport1, Airport airport2) {
+	public Line(Airport departure, Airport destination) {
 		super();
-		this.airport1 = airport1;
-		this.airport2 = airport2;
+		this.departure = departure;
+		this.destination = destination;
 	}
 
 	public Line() {
 		super();
 	}
 
-	public Airport getAirport1() {
-		return airport1;
+	public Airport getdeparture() {
+		return departure;
 	}
 
-	public void setAirport1(Airport airport1) {
-		this.airport1 = airport1;
+	public void setdeparture(Airport departure) {
+		this.departure = departure;
 	}
 
-	public Airport getAirport2() {
-		return airport2;
+	public Airport getdestination() {
+		return destination;
 	}
 
-	public void setAirport2(Airport airport2) {
-		this.airport2 = airport2;
+	public void setdestination(Airport destination) {
+		this.destination = destination;
+	}
+
+	@Override
+	public String toString() {
+		return "\nDeparture = " + departure.getName() + ", Destination = " + destination.getName() + "\n";
 	}
 }
