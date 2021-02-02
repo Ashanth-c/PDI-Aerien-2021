@@ -2,43 +2,29 @@ package data;
 
 import java.util.List;
 
-public class Airport {
+public class Airport extends Block {
 	private String name;
 	private String type;
 	private Aerodrome aerodrome;
 	private Terminal terminal;
 	private City city;
 	private String openingDate;
-	private String constructionDate;
 	private List<Line> linesList;
 
-	public Airport(String name, String type, Aerodrome aerodrome, Terminal terminal, City city, String openingDate,
-			String constructionDate, List<Line> linesList) {
-		super();
+	public Airport(int startPoint, int endPoint) {
+		super(startPoint, endPoint);
+	}
+
+	public Airport(int startPoint, int endPoint, String name, String type, Aerodrome aerodrome, Terminal terminal,
+			City city, String openingDate, List<Line> linesList) {
+		super(startPoint, endPoint);
 		this.name = name;
 		this.type = type;
 		this.aerodrome = aerodrome;
 		this.terminal = terminal;
 		this.city = city;
 		this.openingDate = openingDate;
-		this.constructionDate = constructionDate;
 		this.linesList = linesList;
-	}
-
-	public Airport(String name, String type, Aerodrome aerodrome, Terminal terminal, City city, String openingDate,
-			String constructionDate) {
-		super();
-		this.name = name;
-		this.type = type;
-		this.aerodrome = aerodrome;
-		this.terminal = terminal;
-		this.city = city;
-		this.openingDate = openingDate;
-		this.constructionDate = constructionDate;
-	}
-
-	public Airport() {
-		super();
 	}
 
 	public String getName() {
@@ -81,14 +67,6 @@ public class Airport {
 		this.openingDate = openingDate;
 	}
 
-	public String getconstructionDate() {
-		return constructionDate;
-	}
-
-	public void setconstructionDate(String constructionDate) {
-		this.constructionDate = constructionDate;
-	}
-
 	public List<Line> getLinesList() {
 		return linesList;
 	}
@@ -108,8 +86,7 @@ public class Airport {
 	@Override
 	public String toString() {
 		return "Airport [name=" + name + ", type=" + type + ", aerodrome=" + aerodrome + ", terminal=" + terminal
-				+ ", city=" + city + ", openingDate=" + openingDate + ", constructionDate=" + constructionDate
-				+ ", linesList=" + linesList + "]";
+				+ ", city=" + city + ", openingDate=" + openingDate + ", linesList=" + linesList + "]";
 	}
 
 }
