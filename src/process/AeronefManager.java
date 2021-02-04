@@ -1,13 +1,17 @@
 package process;
 
 import data.Aeronef;
+import data.Airport;
+import data.Block;
 
 public class AeronefManager {
 	private Aeronef aeronef;
+	private BlockManager manager;
 
 	public AeronefManager(Aeronef aeronef) {
 		super();
 		this.aeronef = aeronef;
+		this.manager =  new BlockManager(aeronef);
 	}
 
 	public void landingAltitute() {
@@ -39,6 +43,16 @@ public class AeronefManager {
 	}
 
 	public void accelerateSpeed() {
+
+	}
+
+	public void approchAirport(Airport airport) {
+		int aeronefEndPoint = aeronef.getEndPoint();
+		int aeronefStartPoint = aeronef.getStartPoint();
+
+		if (true) {
+
+		}
 
 	}
 
