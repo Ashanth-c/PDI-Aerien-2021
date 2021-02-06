@@ -27,6 +27,19 @@ public class Aeronef extends Block {
 		this.altitude = altitude;
 		this.speed = speed;
 	}
+	
+	public Aeronef(int startPoint, int endPoint, String type, String model, String destination, String departure,
+			int totalSeats, int fuel, int altitude, int speed) {
+		super(startPoint, endPoint);
+		this.type = type;
+		this.model = model;
+		this.destination = destination;
+		this.departure = departure;
+		this.totalSeats = totalSeats;
+		this.fuel = fuel;
+		this.altitude = altitude;
+		this.speed = speed;
+	}
 
 	public String getType() {
 		return type;

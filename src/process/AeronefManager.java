@@ -11,9 +11,8 @@ public class AeronefManager {
 	public AeronefManager(Aeronef aeronef) {
 		super();
 		this.aeronef = aeronef;
-		this.manager =  new BlockManager(aeronef);
+		this.manager = new BlockManager(aeronef);
 	}
-	
 
 	public void landingAltitute() {
 		int AeronefAltitude = aeronef.getAltitude();
@@ -36,23 +35,22 @@ public class AeronefManager {
 		}
 
 	}
-	
+
 	public void slowDownSpeed() {
 		int AeronefSpeed = aeronef.getSpeed();
-		aeronef.setSpeed(AeronefSpeed-100) ;
+		aeronef.setSpeed(AeronefSpeed - 100);
 
 	}
-	
-		public void accelerateSpeed() {
+
+	public void accelerateSpeed() {
 		int AeronefSpeed = aeronef.getSpeed();
-		aeronef.setSpeed(AeronefSpeed+100) ;
+		aeronef.setSpeed(AeronefSpeed + 100);
 
 	}
-
 
 	public void landingSpeed() {
 		int AeronefSpeed = aeronef.getSpeed();
-		while(AeronefSpeed ==0){
+		while (AeronefSpeed == 0 ) {
 			accelerateSpeed();
 		}
 
@@ -60,19 +58,18 @@ public class AeronefManager {
 
 	public void takeOffSpeed() {
 		int AeronefSpeed = aeronef.getSpeed();
-		while(AeronefSpeed !=0){
+		while (AeronefSpeed != 0) {
 			slowDownSpeed();
 		}
 	}
 
-
-	
 	public void approchAirport(Airport airport) {
 		int aeronefCurrentPoint = aeronef.getCurrentPoint();
-		int aeroportEndPoint =aeroport.getEndPoint();
+		int aeroportEndPoint = airport.getEndPoint();
 
-		if (aeronefCurrentPoint-aeroportEndPoint<100) {
-			System.out.println("l'aeronef se rapproche de l'aéroport:"+airport+"Et La distance entre eux est:"+(aeronefCurrentPoint-aeroportEndPoint));
+		if (aeronefCurrentPoint - aeroportEndPoint < 100) {
+			System.out.println("l'aeronef se rapproche de l'aéroport:" + airport + "Et La distance entre eux est:"
+					+ (aeronefCurrentPoint - aeroportEndPoint));
 
 		}
 

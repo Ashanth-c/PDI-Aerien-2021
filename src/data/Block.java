@@ -12,6 +12,12 @@ public class Block {
 		this.currentPoint = currentPoint;
 	}
 
+	public Block(int startPoint, int endPoint) {
+		super();
+		this.startPoint = startPoint;
+		this.endPoint = endPoint;
+	}
+
 	public int getStartPoint() {
 		return startPoint;
 	}
@@ -27,17 +33,17 @@ public class Block {
 	public void setEndPoint(int endPoint) {
 		this.endPoint = endPoint;
 	}
-	
+
 	public int getCurrentPoint() {
 		return currentPoint;
 	}
+
 	public void setCurrentPoint(int currentPoint) {
 		this.currentPoint = currentPoint;
 	}
 
-
 	@Override
 	public String toString() {
-		return "Block [startPoint=" + startPoint + ", endPoint=" + endPoint +",currentPoint=" + currentPoint + "]";
+		return "Block [startPoint=" + startPoint + ", endPoint=" + endPoint + ",currentPoint=" + currentPoint + "]";
 	}
 }
