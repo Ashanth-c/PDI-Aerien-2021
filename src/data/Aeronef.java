@@ -11,13 +11,13 @@ public class Aeronef extends Block {
 	private int altitude;
 	private int speed;
 
-	public Aeronef(int startPoint, int endPoint, int currentPoint) {
-		super(startPoint, endPoint, currentPoint);
+	public Aeronef(int abscisse, int ordonnee) {
+		super(abscisse, ordonnee);
 	}
 
-	public Aeronef(int startPoint, int endPoint, int currentPoint, String type, String model, String destination, String departure,
+	public Aeronef(int abscisse, int ordonnee, String type, String model, String destination, String departure,
 			int totalSeats, int fuel, int altitude, int speed) {
-		super(startPoint, endPoint, currentPoint);
+		super(int abscisse, int ordonnee);
 		this.type = type;
 		this.model = model;
 		this.destination = destination;
@@ -28,18 +28,7 @@ public class Aeronef extends Block {
 		this.speed = speed;
 	}
 	
-	public Aeronef(int startPoint, int endPoint, String type, String model, String destination, String departure,
-			int totalSeats, int fuel, int altitude, int speed) {
-		super(startPoint, endPoint);
-		this.type = type;
-		this.model = model;
-		this.destination = destination;
-		this.departure = departure;
-		this.totalSeats = totalSeats;
-		this.fuel = fuel;
-		this.altitude = altitude;
-		this.speed = speed;
-	}
+
 
 	public String getType() {
 		return type;
