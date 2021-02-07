@@ -8,7 +8,8 @@ import javax.swing.JFrame;
 
 public class MainGUI extends JFrame {
 
-	private final static Dimension preferredSize = new Dimension(500, 500);
+	private final static Dimension preferredSize = new Dimension(1500, 830);
+	private DiplayElement dashboard;
 
 	public MainGUI(String title) {
 		super(title);
@@ -16,14 +17,14 @@ public class MainGUI extends JFrame {
 	}
 
 	private void init() {
-
+		setPreferredSize(preferredSize);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
-
+		dashboard = new DiplayElement();
+		contentPane.add(dashboard, BorderLayout.CENTER);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
 		setVisible(true);
-		setPreferredSize(preferredSize);
 		setResizable(false);
 	}
 
