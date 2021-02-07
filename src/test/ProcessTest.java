@@ -21,7 +21,7 @@ public class ProcessTest {
 	public static void testAirportAuthorization() {
 
 		List<Aeronef> cdgAeronefs = new ArrayList<Aeronef>(); //Creation d'une liste d'aeronef pour l'aerogare de CDG
-		Terminal cdgTerminal = new Terminal(50, 0, cdgAeronefs);  // Creation de aerogare de CDG avec le nombre de place max, nob de place occupé et liste d'aeronef
+		Terminal cdgTerminal = new Terminal(50, 0, cdgAeronefs);  // Creation de aerogare de CDG avec le nombre de place max, nob de place occupÃ© et liste d'aeronef
 		Aerodrome cdgAerodrome = new Aerodrome(4, 25); //Creation de l'aerodrome de CDG avec le nb de piste est leur longueur
 		City cdgCity = new City("Paris", "France"); //Creation de la ville ou ce trouve l'aeroport CDG
 		List<Line> cdgLines = new ArrayList<Line>(); //Creation de la liste des lignes de l'aeroport CDG
@@ -42,6 +42,7 @@ public class ProcessTest {
 				250);
 		Aeronef cdgToathA380 = new Aeronef(0, 0, "Civil", "A380", "Athena Airport", "Charle de Gaulle", 200, 100, 500,
 				200);
+		AeronefManager cdgTManager =new AeronefManager(cdgTojafA250); // gestionnaire pour l'aeronef cdgTojafA250
 
 		cdgManager.addAeronefTerminal(cdgToathA380); //Ajout d'un aeronef A380 dans l'aerogare de CDG
 		cdgManager.addAeronefTerminal(cdgTojafA250); //Ajout d'un aeronef A250 dans l'aerogare de CDG
