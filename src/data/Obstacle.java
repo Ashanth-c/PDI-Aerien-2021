@@ -4,12 +4,12 @@ public class Obstacle extends Block {
 	private String name;
 	private int altitude;
 
-	public Obstacle(int startPoint, int endPoint) {
-		super(startPoint, endPoint);
+	public Obstacle(int abscisse, int ordonnee) {
+		super(abscisse, ordonnee);
 	}
 
-	public Obstacle(int startPoint, int endPoint, String name, int altitude) {
-		super(startPoint, endPoint);
+	public Obstacle(int abscisse, int ordonnee, String name, int altitude) {
+		super(abscisse, ordonnee);
 		this.name = name;
 		this.altitude = altitude;
 	}
