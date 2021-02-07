@@ -1,49 +1,38 @@
 package data;
 
 public class Block {
-	private int startPoint;
-	private int endPoint;
-	private int currentPoint;
+	private int abscisse;
+	private int ordonnee;
 
-	public Block(int startPoint, int endPoint, int currentPoint) {
+
+	public Block(int abscisse, int ordonnee) {
 		super();
-		this.startPoint = startPoint;
-		this.endPoint = endPoint;
-		this.currentPoint = currentPoint;
+		this.abscisse = abscisse;
+		this.ordonnee = ordonnee;
+		
 	}
 
-	public Block(int startPoint, int endPoint) {
-		super();
-		this.startPoint = startPoint;
-		this.endPoint = endPoint;
+	public int getAbscisse() {
+		return abscisse;
 	}
 
-	public int getStartPoint() {
-		return startPoint;
+	public void setAbscisse(int abscisse) {
+		this.abscisse = abscisse;
 	}
 
-	public void setStartPoint(int startPoint) {
-		this.startPoint = startPoint;
+	public int getOrdonnee() {
+		return ordonnee;
 	}
 
-	public int getEndPoint() {
-		return endPoint;
+	public void setOrdonnee(int ordonnee) {
+		this.ordonnee = ordonnee;
 	}
 
-	public void setEndPoint(int endPoint) {
-		this.endPoint = endPoint;
-	}
 
-	public int getCurrentPoint() {
-		return currentPoint;
-	}
-
-	public void setCurrentPoint(int currentPoint) {
-		this.currentPoint = currentPoint;
-	}
 
 	@Override
 	public String toString() {
-		return "Block [startPoint=" + startPoint + ", endPoint=" + endPoint + ",currentPoint=" + currentPoint + "]";
+		return "Block [l'abscisse=" + abscisse + ", l'ordonnée=" +ordonnee + "]";
 	}
 }
+
