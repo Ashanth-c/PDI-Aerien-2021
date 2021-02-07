@@ -14,7 +14,7 @@ public class AeronefManager {
 		this.manager =  new BlockManager(aeronef);
 	}
 
-	public void landingAltitute() {
+	public void landingAltitute(Aeronef aeronef) {
 		int AeronefAltitude = aeronef.getAltitude();
 
 		while (AeronefAltitude == 0) {
@@ -25,7 +25,7 @@ public class AeronefManager {
 
 	}
 
-	public void takeOffAtltitute() {
+	public void takeOffAtltitute(Aeronef aeronef) {
 		int AeronefAltitude = aeronef.getAltitude();
 
 		while (AeronefAltitude != 0) {
@@ -36,47 +36,46 @@ public class AeronefManager {
 
 	}
 
-	public void slowDownSpeed() {
+	public void slowDownSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
 		aeronef.setSpeed(AeronefSpeed-100) ;
 
 	}
 
-	public void accelerateSpeed() {
+	public void accelerateSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
 		aeronef.setSpeed(AeronefSpeed+100) ;
 
 	}
 
-	public void landingSpeed() {
+	public void landingSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
 		while(AeronefSpeed ==0){
-			accelerateSpeed();
+			accelerateSpeed(aeronef);
 		}
 
 	}
 
-	public void takeOffSpeed() {
+	public void takeOffSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
 		while(AeronefSpeed !=0){
-			slowDownSpeed();
+			slowDownSpeed(aeronef);
 		}
 	}
 
 	
 
-	public void approchAirport(Airport airport) {
+	public void approchAirport(Aeronef aeronef, Airport airport) {
 		int aeronefAbscisse = aeronef.getAbscisse();
 		int aeronefOrdonnee = aeronef.getOrdonnee();
-		int aeroportAbscisse =aeroport.getAbscisse();
-		int aeroportOrdonnee = aeroport.getOrdonnee();
+		int airportAbscisse = airport.getAbscisse();
+		int airportOrdonnee = airport.getOrdonnee();
 
-		if (java.lang.Math.sqrt(java.lang.Math.pow((aeroportAbscisse-aeronefAbscisse),2)+java.lang.Math.pow((aeroportOrdonnee-aeronefOrdonnee),2))<100) {
-			System.out.println("l'aeronef se rapproche de l'aéroport:"+airport+"Et La distance entre eux est:"+(java.lang.Math.sqrt(java.lang.Math.pow((aeroportAbscisse-aeronefAbscisse),2)+java.lang.Math.pow((aeroportOrdonnee-aeronefOrdonnee),2))));
+		if (java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse-aeronefAbscisse),2)+java.lang.Math.pow((airportOrdonnee-aeronefOrdonnee),2))<100) {
+			System.out.println("l'aeronef se rapproche de l'aéroport:"+airport+"Et La distance entre eux est:"+(java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse-aeronefAbscisse),2)+java.lang.Math.pow((airportOrdonnee-aeronefOrdonnee),2))));
 
 		}	
 
 	}
 
 }
-
