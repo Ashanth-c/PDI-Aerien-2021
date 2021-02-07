@@ -3,17 +3,17 @@ package data;
 public class Moutain extends Obstacle {
 	private String country;
 
-	public Moutain(int startPoint, int endPoint) {
-		super(startPoint, endPoint);
+	public Moutain(int abscisse, int ordonnee) {
+		super(abscisse, ordonnee);
 	}
 
-	public Moutain(int startPoint, int endPoint, String name, int altitude, String country) {
-		super(startPoint, endPoint, name, altitude);
+	public Moutain(int abscisse, int ordonnee, String name, int altitude, String country) {
+		super(abscisse, ordonnee, name, altitude);
 		this.country = country;
 	}
 
-	public Moutain(int startPoint, int endPoint, String country) {
-		super(startPoint, endPoint);
+	public Moutain(int abscisse, int ordonnee, String country) {
+		super(abscisse, ordonnee);
 		this.country = country;
 	}
 
