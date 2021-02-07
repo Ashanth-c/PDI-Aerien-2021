@@ -11,13 +11,13 @@ public class Airport extends Block {
 	private String openingDate;
 	private List<Line> linesList;
 
-	public Airport(int startPoint, int endPoint) {
-		super(startPoint, endPoint);
+	public Airport(int abscisse, int ordonnee) {
+		super(abscisse, ordonnee);
 	}
 
-	public Airport(int startPoint, int endPoint, String name, String type, Aerodrome aerodrome, Terminal terminal,
+	public Airport(int abscisse, int ordonnee, String name, String type, Aerodrome aerodrome, Terminal terminal,
 			City city, String openingDate, List<Line> linesList) {
-		super(startPoint, endPoint);
+		super(abscisse, ordonnee);
 		this.name = name;
 		this.type = type;
 		this.aerodrome = aerodrome;
