@@ -17,7 +17,7 @@ public class Aeronef extends Block {
 
 	public Aeronef(int abscisse, int ordonnee, String type, String model, String destination, String departure,
 			int totalSeats, int fuel, int altitude, int speed) {
-		super(int abscisse, int ordonnee);
+		super(abscisse, ordonnee);
 		this.type = type;
 		this.model = model;
 		this.destination = destination;

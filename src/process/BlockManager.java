@@ -42,8 +42,8 @@ public class BlockManager {
 	public void impactMountain() {
 		for (Aeronef aeronef : aeronefs) {
 			for (Moutain moutain : mountains) {
-				if ((moutain.getEndPoint() == aeronef.getEndPoint())
-						&& moutain.getStartPoint() == aeronef.getStartPoint()) {
+				if ((moutain.getAbscisse() == aeronef.getAbscisse())
+						&& moutain.getOrdonnee() == aeronef.getOrdonnee()) {
 					if (moutain.getAltitude() >= aeronef.getAltitude()) {
 						
 					}
