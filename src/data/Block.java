@@ -1,30 +1,30 @@
 package data;
 
 public class Block {
-	private int abscisse;
-	private int ordonnee;
+	private float abscisse;
+	private float ordonnee;
 
 
-	public Block(int abscisse, int ordonnee) {
+	public Block(float abscisse, float ordonnee) {
 		super();
 		this.abscisse = abscisse;
 		this.ordonnee = ordonnee;
 		
 	}
 
-	public int getAbscisse() {
+	public float getAbscisse() {
 		return abscisse;
 	}
 
-	public void setAbscisse(int abscisse) {
+	public void setAbscisse(float abscisse) {
 		this.abscisse = abscisse;
 	}
 
-	public int getOrdonnee() {
+	public float getOrdonnee() {
 		return ordonnee;
 	}
 
-	public void setOrdonnee(int ordonnee) {
+	public void setOrdonnee(float ordonnee) {
 		this.ordonnee = ordonnee;
 	}
 

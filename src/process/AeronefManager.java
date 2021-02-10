@@ -66,10 +66,10 @@ public class AeronefManager {
 	
 
 	public void approchAirport(Aeronef aeronef, Airport airport) {
-		int aeronefAbscisse = aeronef.getAbscisse();
-		int aeronefOrdonnee = aeronef.getOrdonnee();
-		int airportAbscisse = airport.getAbscisse();
-		int airportOrdonnee = airport.getOrdonnee();
+		float aeronefAbscisse = aeronef.getAbscisse();
+		float aeronefOrdonnee = aeronef.getOrdonnee();
+		float airportAbscisse = airport.getAbscisse();
+		float airportOrdonnee = airport.getOrdonnee();
 
 		if (java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse-aeronefAbscisse),2)+java.lang.Math.pow((airportOrdonnee-aeronefOrdonnee),2))<100) {
 			System.out.println("l'aeronef se rapproche de l'aéroport:"+airport+"Et La distance entre eux est:"+(java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse-aeronefAbscisse),2)+java.lang.Math.pow((airportOrdonnee-aeronefOrdonnee),2))));
