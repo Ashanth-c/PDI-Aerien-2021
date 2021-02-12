@@ -29,6 +29,22 @@ public class Line {
 	public void setdestination(Airport destination) {
 		this.destination = destination;
 	}
+	
+	//$$d
+	public Line(int totalLenght) {
+		this.totalLength = totalLenght;
+	}
+	
+	public int getTotalLength() {
+		return totalLength;
+	}
+	//$$d
+	//$$d
+	public boolean lineFilled() {
+		return usedLength == totalLength;
+	}
+	
+	
 
 	@Override
 	public String toString() {
