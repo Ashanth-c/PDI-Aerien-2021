@@ -11,7 +11,7 @@ import data.Aeronef;
 import data.Airport;
 import gui.SimulPara;
 
-public class SimulationUtility {
+public class Utility {
 	
 	/**
 	 * Reads a image from an image file.
