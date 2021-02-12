@@ -24,7 +24,7 @@ public class GlobalViewPanel extends JPanel {
 		printAirport(g2);
 
 	}
-
+//il y a encore des erreurs c'est juste pour essayer
 	
 	private void printLine(Graphics2D g2) {
 		g2.setColor(Color.BLUE);
