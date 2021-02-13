@@ -27,10 +27,10 @@ public class GlobalViewPanel extends JPanel {
 //il y a encore des erreurs c'est juste pour essayer
 	
 	private void printLine(Graphics2D g2) {
-		g2.setColor(Color.BLUE);
+		g2.setColor(Color.WHITE);
 		g2.setStroke(new BasicStroke(8));
 		g2.drawLine(START_X, START_Y, START_X + simulation.getLine().getTotalLength(), START_Y);
-		g2.drawImage(SimulationUtility.readImage("src/images/military_airplane.png.png"));
+		g2.drawImage(SimulationUtility.readImage("src/images/military_airplane.png"));
 		
 	}
 	
