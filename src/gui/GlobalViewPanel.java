@@ -12,8 +12,7 @@ import process.AeronefManager;
 
 public class GlobalViewPanel extends JPanel {
 	
-	private static final int START_X = 100;
-	private static final int START_Y = 200;
+	
 	private Simulation simulation;
 
 	public void paintComponent(Graphics g) {
@@ -29,8 +28,8 @@ public class GlobalViewPanel extends JPanel {
 	private void printLine(Graphics2D g2) {
 		g2.setColor(Color.WHITE);
 		g2.setStroke(new BasicStroke(8));
-		g2.drawLine(START_X, START_Y, START_X + simulation.getLine().getTotalLength(), START_Y);
-		g2.drawImage(SimulationUtility.readImage("src/images/military_airplane.png"));
+		
+		g2.drawImage(Utility.readImage("src/images/military_airplane.png"));
 		
 	}
 	
@@ -43,7 +42,7 @@ public class GlobalViewPanel extends JPanel {
 		g2.setStroke(new BasicStroke(6));
 		
 		
-		g2.drawImage(SimulationUtility.readImage("src/images/airport.png"));
+		g2.drawImage(Utility.readImage("src/images/airport.png"));
 	
 
 	}
