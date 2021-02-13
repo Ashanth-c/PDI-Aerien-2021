@@ -10,26 +10,79 @@ public class ProcessTest {
 
 	public static void main(String[] args) {
 
-		testAirportAuthorization();
-
-		Moutain moutain = new Moutain(45, 2, "Mount Everest", 8848, "China");
-
+//		authorizationTest();
+//		travelTest();
+		avoidObstacleTest();
 	}
 
 	/* Methode pour tester les autorisation de vols */
-	public static void testAirportAuthorization() {
+	public static void travelTest() {
 
-		List<Aeronef> cdgAeronefs = new ArrayList<Aeronef>(); // Creation d'une liste d'aeronef pour l'aerogare de CDG
-		Terminal cdgTerminal = new Terminal(50, 0, cdgAeronefs); // Creation de aerogare de CDG avec le nombre de place
-																	// max, nob de place occupé et liste d'aeronef
-		Aerodrome cdgAerodrome = new Aerodrome(4, 25); // Creation de l'aerodrome de CDG avec le nb de piste est leur
-														// longueur
-		City cdgCity = new City("Paris", "France"); // Creation de la ville ou ce trouve l'aeroport CDG
-		List<Line> cdgLines = new ArrayList<Line>(); // Creation de la liste des lignes de l'aeroport CDG
+		/* Create CDG airport with all elements */
+		List<Aeronef> cdgAeronefs = new ArrayList<Aeronef>();
+		Terminal cdgTerminal = new Terminal(50, 0, cdgAeronefs);
+		Aerodrome cdgAerodrome = new Aerodrome(4, 25);
+		City cdgCity = new City("Paris", "France");
+		List<Line> cdgLines = new ArrayList<Line>();
 		Airport cdg = new Airport(15, 5, "Charle de Gaulle", "Civil", cdgAerodrome, cdgTerminal, cdgCity, "1975",
-				cdgLines); // Creation de CDG
-		AirportManager cdgManager = new AirportManager(cdg); // Creation d'un gestionnaire pour l'aeroport CDG
+				cdgLines);
+		AirportManager cdgManager = new AirportManager(cdg);
 
+		// Create Jaffna airport with all elements
+		List<Aeronef> jafAeronefs = new ArrayList<Aeronef>();
+		Terminal jafTerminal = new Terminal(20, 0, jafAeronefs);
+		Aerodrome jafAerodrome = new Aerodrome(2, 25);
+		City jafCity = new City("Jaffna", "Tamil Eelam");
+		List<Line> jafLines = new ArrayList<Line>();
+		Airport jaf = new Airport(300, 260, "Jaffna Airport", "All", jafAerodrome, jafTerminal, jafCity, "1943",
+				jafLines);
+		AirportManager jafManager = new AirportManager(jaf);
+
+		// Create a Line between CDG and Jaffna
+		LineBuilder lineBuilder = new LineBuilder();
+		lineBuilder.addLines(cdg, jaf);
+
+		// Create a Aeronef From CDG to Jaffna aiport
+		Aeronef cdgTojafA250 = new Aeronef(0, 0, "Civil", "A250", "Jaffna Airport", "Charle de Gaulle", 50, 100, 5000,
+				250);
+		AeronefManager cdgTManager = new AeronefManager(cdgTojafA250);
+
+		cdgManager.addAeronefTerminal(cdgTojafA250);
+
+		/************** test travel ************/
+		int abscisse = (int) cdgTojafA250.getAbscisse();
+		int ordonnee = (int) cdgTojafA250.getOrdonnee();
+		System.out.println("Coordonnee de cdgTojafA250 avant decollage: " + abscisse + " , " + ordonnee);
+		BlockManager blockManager = new BlockManager();
+		float abscisseVariationValue = blockManager.abscisseVariationValue(cdgTojafA250, jaf, 100);
+		float ordoneeVariationValue = blockManager.ordoneeVariationValue(cdgTojafA250, jaf, 100);
+
+		while (((int) cdgTojafA250.getAbscisse() != jaf.getAbscisse())
+				&& ((int) cdgTojafA250.getOrdonnee() != jaf.getOrdonnee())) {
+			blockManager.MoveAeronefAbcsisse(cdgTojafA250, abscisseVariationValue);
+			blockManager.MoveAeronefOrdonnee(cdgTojafA250, ordoneeVariationValue);
+			abscisse = (int) cdgTojafA250.getAbscisse();
+			ordonnee = (int) cdgTojafA250.getOrdonnee();
+			System.out.println("Coordonnee de cdgTojafA250 : " + cdgTojafA250.getAbscisse() + " , "
+					+ (int) cdgTojafA250.getOrdonnee());
+		}
+
+		System.out.println("Coordonnee de cdgTojafA250 apres decollage: " + abscisse + " , " + ordonnee);
+
+	}
+
+	public static void authorizationTest() {
+		/* Create CDG airport with all elements */
+		List<Aeronef> cdgAeronefs = new ArrayList<Aeronef>();
+		Terminal cdgTerminal = new Terminal(50, 0, cdgAeronefs);
+		Aerodrome cdgAerodrome = new Aerodrome(4, 25);
+		City cdgCity = new City("Paris", "France");
+		List<Line> cdgLines = new ArrayList<Line>();
+		Airport cdg = new Airport(15, 5, "Charle de Gaulle", "Civil", cdgAerodrome, cdgTerminal, cdgCity, "1975",
+				cdgLines);
+		AirportManager cdgManager = new AirportManager(cdg);
+
+		// Create Jaffna airport with all elements
 		List<Aeronef> jafAeronefs = new ArrayList<Aeronef>();
 		Terminal jafTerminal = new Terminal(20, 0, jafAeronefs);
 		Aerodrome jafAerodrome = new Aerodrome(2, 25);
@@ -39,44 +92,74 @@ public class ProcessTest {
 				jafLines);
 		AirportManager jafManager = new AirportManager(jaf);
 
-		Aeronef cdgTojafA250 = new Aeronef(0, 0, "Civil", "A250", "Jaffna Airport", "Charle de Gaulle", 50, 100, 0,
+		// Create a Line between CDG and Jaffna
+		LineBuilder lineBuilder = new LineBuilder();
+		lineBuilder.addLines(cdg, jaf);
+
+		// Create a Aeronef From CDG to Jaffna aiport
+		Aeronef cdgTojafA250 = new Aeronef(0, 0, "Civil", "A250", "Jaffna Airport", "Charle de Gaulle", 50, 100, 5000,
 				250);
+		AeronefManager cdgTManager = new AeronefManager(cdgTojafA250);
+		// Create a Aeronef From CDG to Athena airport (who don't exist)
 		Aeronef cdgToathA380 = new Aeronef(0, 0, "Civil", "A380", "Athena Airport", "Charle de Gaulle", 200, 100, 500,
 				200);
-		AeronefManager cdgTManager = new AeronefManager(cdgTojafA250); // gestionnaire pour l'aeronef cdgTojafA250
 
-		cdgManager.addAeronefTerminal(cdgToathA380); // Ajout d'un aeronef A380 dans l'aerogare de CDG
-		cdgManager.addAeronefTerminal(cdgTojafA250); // Ajout d'un aeronef A250 dans l'aerogare de CDG
+		// Add Aeronef to CDG's terminal
+		cdgManager.addAeronefTerminal(cdgToathA380);
+		cdgManager.addAeronefTerminal(cdgTojafA250);
 
-		LineBuilder lineBuilder = new LineBuilder(); // Creation de constructeur de ligne
-		lineBuilder.addLines(cdg, jaf); // Creation d'une ligne de vol entre JafFna Airport et CDG
+		boolean airportTakeOffAuthorization = cdgManager.airportTakeOffAuthorization(cdgTojafA250);
+		boolean airportLandingAuthorization = cdgManager.airportLandingAuthorization(cdgToathA380);
+		System.out
+				.println("The Aeronef cdgTojafA250 has the authorization to take off: " + airportTakeOffAuthorization);
+		System.out.println("The Aeronef cdgTojafA380 has the authorization to land: " + airportLandingAuthorization);
 
+	}
 
-		// System.out.println("Coordonnee de cdgTojafA250 apres decollage: "
-		// +cdgTojafA250.getAbscisse() + " , " + cdgTojafA250.getOrdonnee() );
+	public static void avoidObstacleTest() {
+		/* Create CDG airport with all elements */
+		List<Aeronef> cdgAeronefs = new ArrayList<Aeronef>();
+		Terminal cdgTerminal = new Terminal(50, 0, cdgAeronefs);
+		Aerodrome cdgAerodrome = new Aerodrome(4, 25);
+		City cdgCity = new City("Paris", "France");
+		List<Line> cdgLines = new ArrayList<Line>();
+		Airport cdg = new Airport(15, 5, "Charle de Gaulle", "Civil", cdgAerodrome, cdgTerminal, cdgCity, "1975",
+				cdgLines);
+		AirportManager cdgManager = new AirportManager(cdg);
 
-		System.out.println("The Aeronef cdgTojafA250 has the authorization : "
-				+ cdgManager.airportTakeOffAuthorization(cdgTojafA250)); // Affiche le resultat d'autorisation de
-																			// decollage d'un vol de CDG
-	
-	
-		/************** test decollage ************/
-		System.out.println("Coordonnee de cdgTojafA250 avant decollage: " + cdgTojafA250.getAbscisse() + " , "
-				+ cdgTojafA250.getOrdonnee());
-		BlockManager blockManager = new BlockManager();
-		float abscisseVariationValue = blockManager.abscisseVariationValue(cdgTojafA250, jaf, 20);
-		float ordoneeVariationValue = blockManager.ordoneeVariationValue(cdgTojafA250, jaf, 20);
+		// Create Jaffna airport with all elements
+		List<Aeronef> jafAeronefs = new ArrayList<Aeronef>();
+		Terminal jafTerminal = new Terminal(20, 0, jafAeronefs);
+		Aerodrome jafAerodrome = new Aerodrome(2, 25);
+		City jafCity = new City("Jaffna", "Tamil Eelam");
+		List<Line> jafLines = new ArrayList<Line>();
+		Airport jaf = new Airport(300, 260, "Jaffna Airport", "All", jafAerodrome, jafTerminal, jafCity, "1943",
+				jafLines);
+		AirportManager jafManager = new AirportManager(jaf);
 
-		while ((cdgTojafA250.getAbscisse() != jaf.getAbscisse()) || (cdgTojafA250.getOrdonnee() != jaf.getOrdonnee())) {
+		// Create a Line between CDG and Jaffna
+		LineBuilder lineBuilder = new LineBuilder();
+		lineBuilder.addLines(cdg, jaf);
 
+		// Create a Aeronef From CDG to Jaffna aiport
+		Aeronef cdgTojafA250 = new Aeronef(0, 0, "Civil", "A250", "Jaffna Airport", "Charle de Gaulle", 50, 100, 5000,
+				250);
+		AeronefManager cdgTManager = new AeronefManager(cdgTojafA250);
+
+		Moutain moutain = new Moutain(10, 20, "Mount Everest", 8848, "China");
+		BlockManager blockManager = new BlockManager(moutain);
+
+		System.out.println("L'altitude de l'aeronef cdgTojafA250 :" +cdgTojafA250.getAltitude()+"m");
+		float abscisseVariationValue = blockManager.abscisseVariationValue(cdgTojafA250, jaf, 100);
+		float ordoneeVariationValue = blockManager.ordoneeVariationValue(cdgTojafA250, jaf, 100);
+		while (((int) cdgTojafA250.getAbscisse() != jaf.getAbscisse())
+				&& ((int) cdgTojafA250.getOrdonnee() != jaf.getOrdonnee())) {
 			blockManager.MoveAeronefAbcsisse(cdgTojafA250, abscisseVariationValue);
 			blockManager.MoveAeronefOrdonnee(cdgTojafA250, ordoneeVariationValue);
-			System.out.println(
-					"Coordonnee de cdgTojafA250 : " + cdgTojafA250.getAbscisse() + " , " + cdgTojafA250.getOrdonnee());
+			blockManager.avoidMountain(moutain, cdgTojafA250);
 
 		}
-	
-	
+		System.out.println("L'altitude de l'aeronef cdgTojafA250 :" +cdgTojafA250.getAltitude()+"m");
 	}
 
 }

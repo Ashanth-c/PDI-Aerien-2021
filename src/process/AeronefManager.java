@@ -11,7 +11,7 @@ public class AeronefManager {
 	public AeronefManager(Aeronef aeronef) {
 		super();
 		this.aeronef = aeronef;
-		this.manager =  new BlockManager(aeronef);
+		this.manager = new BlockManager(aeronef);
 	}
 
 	public void landingAltitute(Aeronef aeronef) {
@@ -38,19 +38,19 @@ public class AeronefManager {
 
 	public void slowDownSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
-		aeronef.setSpeed(AeronefSpeed-100) ;
+		aeronef.setSpeed(AeronefSpeed - 100);
 
 	}
 
 	public void accelerateSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
-		aeronef.setSpeed(AeronefSpeed+100) ;
+		aeronef.setSpeed(AeronefSpeed + 100);
 
 	}
 
 	public void landingSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
-		while(AeronefSpeed ==0){
+		while (AeronefSpeed == 0) {
 			accelerateSpeed(aeronef);
 		}
 
@@ -58,12 +58,10 @@ public class AeronefManager {
 
 	public void takeOffSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
-		while(AeronefSpeed !=0){
+		while (AeronefSpeed != 0) {
 			slowDownSpeed(aeronef);
 		}
 	}
-
-	
 
 	public void approchAirport(Aeronef aeronef, Airport airport) {
 		float aeronefAbscisse = aeronef.getAbscisse();
@@ -71,10 +69,13 @@ public class AeronefManager {
 		float airportAbscisse = airport.getAbscisse();
 		float airportOrdonnee = airport.getOrdonnee();
 
-		if (java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse-aeronefAbscisse),2)+java.lang.Math.pow((airportOrdonnee-aeronefOrdonnee),2))<100) {
-			System.out.println("l'aeronef se rapproche de l'aéroport:"+airport+"Et La distance entre eux est:"+(java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse-aeronefAbscisse),2)+java.lang.Math.pow((airportOrdonnee-aeronefOrdonnee),2))));
+		if (java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse - aeronefAbscisse), 2)
+				+ java.lang.Math.pow((airportOrdonnee - aeronefOrdonnee), 2)) < 100) {
+			System.out.println("l'aeronef se rapproche de l'aéroport:" + airport + "Et La distance entre eux est:"
+					+ (java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse - aeronefAbscisse), 2)
+							+ java.lang.Math.pow((airportOrdonnee - aeronefOrdonnee), 2))));
 
-		}	
+		}
 
 	}
 

@@ -54,6 +54,22 @@ public class BlockManager {
 		}
 	}
 
+	public void avoidMountain(Moutain moutain, Aeronef aeronef) {
+		float mountainAbscisse = moutain.getAbscisse();
+		float mountainOrdonnee = moutain.getOrdonnee();
+		float aeronefsAbscisse = aeronef.getAbscisse();
+		float aeronefsOrdonnee = aeronef.getOrdonnee();
+		int mountainaltitude = moutain.getAltitude();
+		
+		if (((aeronefsAbscisse + 10) >= mountainAbscisse) && ((aeronefsOrdonnee + 10) >= mountainOrdonnee)) {
+			if (aeronef.getAltitude() <= mountainaltitude) {
+				mountainaltitude+=150;
+				aeronef.setAltitude(mountainaltitude);
+				System.out.println("Detection de Montagne proche");
+			}
+		}
+	}
+
 	public float abscisseVariationValue(Aeronef aeronef, Airport destinationAirport, Integer time) {
 		float aeronefAbscisse = aeronef.getAbscisse();
 		float airportAbscisse = destinationAirport.getAbscisse();
