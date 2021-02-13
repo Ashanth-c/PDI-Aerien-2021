@@ -30,7 +30,7 @@ public class Line {
 		this.destination = destination;
 	}
 	
-	//$$d
+/*	//$$d
 	public Line(int totalLenght) {
 		this.totalLength = totalLenght;
 	}
@@ -45,7 +45,7 @@ public class Line {
 	}
 	
 	
-
+*/
 	@Override
 	public String toString() {
 		return "\nDeparture = " + departure.getName() + ", Destination = " + destination.getName() + "\n";

@@ -7,6 +7,7 @@ import java.awt.Graphics2D;
 import javax.swing.JPanel;
 
 import process.Simulation;
+import process.Utility;
 import process.BlockManager;
 import process.AeronefManager;
 
@@ -29,7 +30,7 @@ public class GlobalViewPanel extends JPanel {
 		g2.setColor(Color.WHITE);
 		g2.setStroke(new BasicStroke(8));
 		
-		g2.drawImage(Utility.readImage("src/images/military_airplane.png"));
+	//	g2.drawImage(Utility.readImage("src/images/military_airplane.png"));
 		
 	}
 	
@@ -42,7 +43,8 @@ public class GlobalViewPanel extends JPanel {
 		g2.setStroke(new BasicStroke(6));
 		
 		
-		g2.drawImage(Utility.readImage("src/images/airport.png"));
+	//	g2.drawImage(Utility.readImage("src/images/airport.png"));
 	
 
 	}
+}

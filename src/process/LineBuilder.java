@@ -20,11 +20,11 @@ public class LineBuilder {
 		airport2.setLinesList(newAirport2LinesList); //change la liste ce ligne par la nouvelle liste dans l'aeroport 2 
 	}
 
-}
+
 
 
 //$$
-	public void buildLine(int totalLength, int blockLength) {
+	/*public void buildLine(int totalLength, int blockLength) {
 		line = new Line(totalLength);
 		
 		// Build the blocks.
@@ -34,7 +34,7 @@ public class LineBuilder {
 			id++;
 		}
 	}
-	
+	*/
 	public Line getBuiltLine() {
 		return line;
 	}
