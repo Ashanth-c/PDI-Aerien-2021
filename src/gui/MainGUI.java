@@ -21,6 +21,7 @@ public class MainGUI extends JFrame {
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		dashboard = new DiplayElement();
+		dashboard.repaint();
 		contentPane.add(dashboard, BorderLayout.CENTER);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
