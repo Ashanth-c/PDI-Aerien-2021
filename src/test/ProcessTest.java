@@ -219,7 +219,7 @@ public class ProcessTest {
 
 		for (double i = 0; i <= 2 * (Math.PI); i++) {
 			blockManager2.avoidFlockBirds(flockbirds, cdgTojafA250);
-//			blockManager2.moveFlockBirds(flockbirds, 100, i);
+			blockManager2.moveFlockBirds(flockbirds, 100, i);
 
 			System.out.println("Coordonnees des " + flockbirds.getName() + " : " + (float) flockbirds.getAbscisse()
 					+ " , " + (float) flockbirds.getOrdonnee());

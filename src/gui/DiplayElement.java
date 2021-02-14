@@ -19,9 +19,10 @@ public class DiplayElement extends JPanel {
 
 	public DiplayElement() {
 		super();
+		setPreferredSize(getPreferredSize());
 		this.setLayout(new BorderLayout());
-		this.add(informationPanel,BorderLayout.WEST);
-		this.add(globalView,BorderLayout.CENTER);
+		this.add(informationPanel, BorderLayout.WEST);
+		this.add(globalView, BorderLayout.CENTER);
 	}
 
 }

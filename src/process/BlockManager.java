@@ -41,6 +41,18 @@ public class BlockManager {
 
 	}
 
+	public void moveFlockBirds(FlockBirds flockbirds, int rayon, double teta) {
+        double flockbirdsOrdonnee=flockbirds.getOrdonnee();
+        double flockbirdsAbscisse=flockbirds.getAbscisse();
+
+
+        flockbirdsAbscisse+=rayon*(Math.cos(teta));
+        flockbirdsOrdonnee+=rayon*(Math.sin(teta));
+
+        flockbirds.setAbscisse((float) flockbirdsAbscisse);
+        flockbirds.setOrdonnee((float) flockbirdsOrdonnee);
+    }
+	
 	public void impactMountain() {
 		for (Aeronef aeronef : aeronefs) {
 			for (Moutain moutain : mountains) {
