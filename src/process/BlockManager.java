@@ -53,6 +53,24 @@ public class BlockManager {
 			}
 		}
 	}
+	
+	public void avoidFlockBirds(FlockBirds flockbirds, Aeronef aeronef) {
+        float flockbirdsAbscisse = flockbirds.getAbscisse();
+        float flockbirdsOrdonnee = flockbirds.getOrdonnee();
+        float aeronefsAbscisse = aeronef.getAbscisse();
+        float aeronefsOrdonnee = aeronef.getOrdonnee();
+        int flockbirdsaltitude = flockbirds.getAltitude();
+        int aeronefaltitude= aeronef.getAltitude();
+
+        if (((aeronefsAbscisse +10)>= flockbirdsAbscisse) && (aeronefsOrdonnee + 10)>= flockbirdsOrdonnee) {
+            if (aeronefaltitude==flockbirdsaltitude) {
+                System.out.println("Detection d'un groupe d'oiseau proche");
+                aeronefaltitude+=150;
+                aeronef.setAltitude(aeronefaltitude);
+                System.out.println("Obstacle évité");
+            }
+        }
+    }
 
 	public void avoidMountain(Moutain moutain, Aeronef aeronef) {
 		float mountainAbscisse = moutain.getAbscisse();

@@ -20,10 +20,8 @@ public class DiplayElement extends JPanel {
 	public DiplayElement() {
 		super();
 		this.setLayout(new BorderLayout());
-		this.add(globalView,BorderLayout.CENTER);
 		this.add(informationPanel,BorderLayout.WEST);
-		//setPreferredSize(Toolkit.getDefaultToolkit().getScreenSize());
-		setBackground(Color.WHITE);
+		this.add(globalView,BorderLayout.CENTER);
 	}
 
 }

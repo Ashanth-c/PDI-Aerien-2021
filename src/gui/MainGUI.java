@@ -17,11 +17,11 @@ public class MainGUI extends JFrame {
 	}
 
 	private void init() {
-		setPreferredSize(preferredSize);
+		setExtendedState(MAXIMIZED_BOTH);
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
 		dashboard = new DiplayElement();
-		dashboard.repaint();
+		
 		contentPane.add(dashboard, BorderLayout.CENTER);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		pack();
