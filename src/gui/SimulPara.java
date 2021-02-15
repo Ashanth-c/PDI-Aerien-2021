@@ -2,7 +2,7 @@
 
 package gui;
 
-//Khadija(pas trop sûr des valeurs)
+//valeurs À vérifiées
 public class SimulPara {
 	
 	
