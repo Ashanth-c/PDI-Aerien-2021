@@ -26,7 +26,7 @@ public class GlobalViewPanel extends JPanel {
 		super.paintComponent(g);
 		// We used Graphic2D for more draw options.
 		Graphics2D g2 = (Graphics2D) g;
-		printLine(g2);
+		initLine(g2);
 		initAirport(g2);
 	}
 
@@ -41,19 +41,21 @@ public class GlobalViewPanel extends JPanel {
 		printAirport(g2, 760, 150);
 
 	}
-//il y a encore des erreurs c'est juste pour essayer
+	
+	
+	public void initLine(Graphics2D g2) {
+		printLine(g2,260+15,300+40,500+15,500+40);
+	}
 
-	private void printLine(Graphics2D g2) {
-		g2.setColor(Color.WHITE);
-		g2.setStroke(new BasicStroke(8));
-
-		// g2.drawImage(Utility.readImage("src/images/military_airplane.png"));
-
+	private void printLine(Graphics2D g2, int x1, int y1, int x2, int y2) {
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(2));
+		g2.drawLine(x1, y1, x2, y2);
 	}
 
 	public void printAirport(Graphics2D g2, int abscisse, int ordonate) {
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(6));
-		g2.drawImage(Utility.readImage("src/images/airport.png"), abscisse, ordonate, 30, 40, this);		
+		g2.drawImage(Utility.readImage("src/images/airport.png"), abscisse, ordonate, 30, 40, this);
 	}
 }

@@ -140,5 +140,39 @@ public class BlockManager {
 		aeronef.setOrdonnee(aeronefOrdonnee);
 
 	}
+	
+	public void checkAirportsAround(Aeronef aeronef, Airport airport) {
+		
+		aeronef.setUrgent(true);
+		float aeronefOrdonnee=aeronef.getOrdonnee();
+		float aeronefAbscisse=aeronef.getAbscisse();
+		
+				if (((aeronefAbscisse + 10) >= airport.getAbscisse()) && ((aeronefOrdonnee + 10) >= airport.getOrdonnee())) {
+					emergencyLanding(aeronef, airport);
+
+					System.out.println("Atterissage en urgence réussi");
+					aeronef.setUrgent(false);
+			
+		}
+	}		
+	
+	
+	public void emergencyLanding(Aeronef aeronef, Airport airport) {
+
+		float aeronefOrdonnee=aeronef.getOrdonnee();
+		float aeronefAbscisse=aeronef.getAbscisse();
+		
+		float abscisseVariationValue = abscisseVariationValue(aeronef, airport, 20);
+		float ordoneeVariationValue = ordoneeVariationValue(aeronef, airport, 20);
+		
+		while (((int) aeronef.getAbscisse() != airport.getAbscisse())
+							&& ((int) aeronef.getOrdonnee() != airport.getOrdonnee())) {
+	
+			MoveAeronefAbcsisse(aeronef, abscisseVariationValue);
+			MoveAeronefOrdonnee(aeronef, ordoneeVariationValue);
+			System.out.println("Coordonnees de l'aeronef en urgence : " + aeronef.getAbscisse()+ " , "
+								+ aeronef.getOrdonnee());
+		}
+	}
 
 }

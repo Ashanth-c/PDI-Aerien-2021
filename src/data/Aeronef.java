@@ -10,13 +10,14 @@ public class Aeronef extends Block {
 	private int fuel;
 	private int altitude;
 	private int speed;
-
+	private boolean urgent;
+	
 	public Aeronef(int abscisse, int ordonnee) {
 		super(abscisse, ordonnee);
 	}
 
 	public Aeronef(int abscisse, int ordonnee, String type, String model, String destination, String departure,
-			int totalSeats, int fuel, int altitude, int speed) {
+			int totalSeats, int fuel, int altitude, int speed, boolean urgent) {
 		super(abscisse, ordonnee);
 		this.type = type;
 		this.model = model;
@@ -26,6 +27,7 @@ public class Aeronef extends Block {
 		this.fuel = fuel;
 		this.altitude = altitude;
 		this.speed = speed;
+		this.urgent=urgent;
 	}
 	
 
@@ -94,6 +96,14 @@ public class Aeronef extends Block {
 		this.speed = speed;
 	}
 
+	public boolean getUrgent() {
+		return urgent;
+	}
+	
+	public void setUrgent(boolean urgent) {
+		this.urgent=urgent;
+	}
+	
 	@Override
 	public String toString() {
 		return "Aeronef [type=" + type + ", model=" + model + ", destination=" + destination + ", departure="
