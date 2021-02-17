@@ -3,7 +3,11 @@ package process;
 import data.Aeronef;
 import data.Airport;
 import data.Block;
-
+/**
+ * Class for the managmenent of an Aeronef
+ * @author Khadija
+ *
+ */
 public class AeronefManager {
 	private Aeronef aeronef;
 	private BlockManager manager;

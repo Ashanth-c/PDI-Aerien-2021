@@ -5,38 +5,25 @@ import java.util.List;
 import data.Airport;
 import data.Line;
 
+/**
+ *Class who create a line between two Airports 
+ * @author Ashanth
+ *
+ */
 public class LineBuilder {
 	private Line line;
 
 	public void addLines(Airport airport1, Airport airport2) {
-		line = new Line(airport1, airport2); //Ligne creer a partir des deux aeroport
-		List<Line> newAirport1LinesList = airport1.getLinesList(); //List des ligne de l'aeroport 1
-		List<Line> newAirport2LinesList = airport2.getLinesList(); //Liste des lignes de l'aeroport 2
+		line = new Line(airport1, airport2);
+		List<Line> newAirport1LinesList = airport1.getLinesList();
+		List<Line> newAirport2LinesList = airport2.getLinesList();
 
-		newAirport1LinesList.add(line); //Ajoute la nouvelle ligne dans la liste des lignes de l'aeroport 1
-		newAirport2LinesList.add(line); //Ajoute la nouvelle ligne dans la liste des lignes de l'aeroport 2
+		newAirport1LinesList.add(line); 
+		newAirport2LinesList.add(line); 
 
-		airport1.setLinesList(newAirport1LinesList); //change la liste de ligne par la nouvelle liste dans l'aeroport 1
-		airport2.setLinesList(newAirport2LinesList); //change la liste ce ligne par la nouvelle liste dans l'aeroport 2 
+		airport1.setLinesList(newAirport1LinesList); 
+		airport2.setLinesList(newAirport2LinesList);
 	}
 
-
-
-
-//$$
-	/*public void buildLine(int totalLength, int blockLength) {
-		line = new Line(totalLength);
-		
-		// Build the blocks.
-		int id = 1;
-		while (!line.lineFilled()) {
-			line.addBlock(id, blockLength);
-			id++;
-		}
-	}
-	*/
-	public Line getBuiltLine() {
-		return line;
-	}
 }
 	

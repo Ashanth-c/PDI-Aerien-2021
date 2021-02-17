@@ -7,6 +7,12 @@ import data.Airport;
 import data.Line;
 import data.Terminal;
 
+/**
+ * Class for the managmenent of an Airport
+ * 
+ * @author Ashanth
+ *
+ */
 public class AirportManager {
 	private Airport airport;
 
@@ -15,9 +21,11 @@ public class AirportManager {
 		this.airport = airport;
 	}
 
-	/*
-	 * Methde qui retourne "Full" si l'aerogare est complet sinon il retourne
-	 * "Not Full"
+	/**
+	 * 
+	 * Method who tell if the Terminal is full or not
+	 * 
+	 * @return isFull
 	 */
 	public String isTerminalFull() {
 		String isfull = "Full"; // Resultat de la verification Initialisé a Full
@@ -32,7 +40,11 @@ public class AirportManager {
 		return isfull;
 	}
 
-	/* Methode qui ajoute un Aeronef dans un aerogare */
+	/**
+	 * Method who add an Aeronef in the Terminal
+	 * 
+	 * @param newAeronef
+	 */
 	public void addAeronefTerminal(Aeronef newAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
 		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
@@ -42,8 +54,13 @@ public class AirportManager {
 		airportTerminal.setTotaParkAeronefs(newTotaParkAeronefs);
 	}
 
-	/* Methode qui verifie la destination d'un aeronef */
-	public boolean departureVerification(Aeronef aeronef) {
+	/**
+	 * Verification if the destination of the Aeronef is the same as the Airport
+	 * 
+	 * @param aeronef
+	 * @return true if the destination is the Airport, or false if it's not
+	 */
+	public boolean destinationVerification(Aeronef aeronef) {
 		boolean verification = false; // Resultat de la verification
 		String airportName = airport.getName(); // Nom de l'aeroport
 		List<Line> aiportLines = airport.getLinesList(); // Liste des Lignes de vols de l'aeroport
@@ -64,10 +81,13 @@ public class AirportManager {
 
 	}
 
-	/*Methode qui verifie le lieu de depart d'un aeronef
-	 * Pareil que la methode d'avant mais avec invertion entre destination et departure
-	 * */
-	public boolean destinationVerification(Aeronef aeronef) {
+	/**
+	 *  Verification if the departure of the Aeronef is the same as the Airport
+	 * 
+	 * @param aeronef
+	 * @return true if the departure is the Airport, or false if it's not
+	 */
+	public boolean departureVerification(Aeronef aeronef) {
 		boolean verification = false;
 		String airportName = airport.getName();
 		List<Line> aiportLines = airport.getLinesList();
@@ -87,7 +107,10 @@ public class AirportManager {
 
 	}
 
-	/*Methode qui enleve un aeronef de l'aerogare*/
+	/**
+	 * Remove an Aeronef from the Terminal
+	 * @param outAeronef
+	 */
 	public void removeAeronefTerminal(Aeronef outAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
 		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
@@ -97,51 +120,73 @@ public class AirportManager {
 		airportTerminal.setTotaParkAeronefs(newTotaParkAeronefs);
 	}
 
-	/*Methode qui donne l'autorisation a un avion de decoller*/
+	/**
+	 * Give to an Aeronef the autorization to Takeoff
+	 * @param goingAeronef
+	 * @return true if he has the authorisation, else false
+	 */
 	public boolean airportTakeOffAuthorization(Aeronef goingAeronef) {
-		Terminal airportTerminal = airport.getTerminal(); //Aerogare de l'aeroport
-		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs(); //Liste des avions de l'aerogare
-		boolean authorization = false; //autorisattion de decoller
-
-		if (departureVerification(goingAeronef) && AirportAeronefsList.contains(goingAeronef)) { //Si le lieu de depart est bon et que l'aeronef est dans l'aerogare
-			removeAeronefTerminal(goingAeronef); //enleve l'aeronef de la gare
-			authorization = true; //Mets l'autorisation a vrai
-		}
-		return authorization;
-	}
-
-	/*Methode qui donne l'autorisation d'atterisagge (Peut etre nom a changer)*/
-	public boolean giveAuthorizaton(Aeronef comingAeronef) {
-		Terminal airportTerminal = airport.getTerminal(); 
+		Terminal airportTerminal = airport.getTerminal();
 		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
 		boolean authorization = false;
 
-		if (destinationVerification(comingAeronef) && (!AirportAeronefsList.contains(comingAeronef))) { //Si le lieu d'arriver est bon et que l'aeronef est dans l'aerogare
-			addAeronefTerminal(comingAeronef); //ajoute l'aeronef dans l'aerogare
+		if (destinationVerification(goingAeronef) && AirportAeronefsList.contains(goingAeronef)) {
+			removeAeronefTerminal(goingAeronef); 
 			authorization = true;
 		}
 		return authorization;
 	}
 
-	/*Methode qui donne l'autorisation final d'atterissage (Peut etre changé de nom) */
-	public boolean airportLandingAuthorization(Aeronef commingAeronef) {
-		boolean authorization = false; //autorisation initialisé a faux
-		String airportType = airport.getType(); //Type d'acceuil de l'aeroport
-		String aeronefType = commingAeronef.getType(); //type de l'avion qui arrive
 
-		if (airportType.equals("All") || airportType.equals(aeronefType)) { //si l'aeroport est de type all ou qu'il est le meme que celle de l'avion
-			if (isTerminalFull().equals("Not Full")) { //si l'aerogare n'est pas complet
-				authorization = giveAuthorizaton(commingAeronef); //donner l'autorisation pour atterir
+	/**
+	 * Tell if the Aeronef is plan to land in the aeroport
+	 * @param comingAeronef
+	 * @return 
+	 */
+	public boolean isLandingAeronef(Aeronef comingAeronef) {
+		Terminal airportTerminal = airport.getTerminal();
+		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
+		boolean authorization = false;
+
+		if (departureVerification(comingAeronef) && (!AirportAeronefsList.contains(comingAeronef))) { 
+			// Si le lieu d'arriver est bon et que l'aeronef est dans l'aerogare
+			addAeronefTerminal(comingAeronef);
+			authorization = true;
+		}
+		return authorization;
+	}
+
+
+	/**
+	 * Give to an Aeronef the autorization to Land
+	 * @param goingAeronef
+	 * @return true if he has the authorisation, else false
+	 */
+	public boolean airportLandingAuthorization(Aeronef commingAeronef) {
+		boolean authorization = false; // autorisation initialisé a faux
+		String airportType = airport.getType(); // Type d'acceuil de l'aeroport
+		String aeronefType = commingAeronef.getType(); // type de l'avion qui arrive
+
+		if (airportType.equals("All") || airportType.equals(aeronefType)) { 
+			// si l'aeroport est de type all ou qu'il est le meme que celle de l'avion
+			if (isTerminalFull().equals("Not Full")) {
+				authorization = isLandingAeronef(commingAeronef);
 			}
 		}
 		return authorization;
 	}
- /*Methode pour avoir le prochain avions a decoller*/
-	public Aeronef nextTakeOffAeronef() {
-		Terminal airportTerminal = airport.getTerminal(); //aerogare de l'aerogare
-		List<Aeronef> airportAeronefsList = airportTerminal.getAeronefs(); //Liste des avions de la gare
 
-		Aeronef takeOffAeronef = airportAeronefsList.get(airportAeronefsList.size() - 1); //Avion qui va decoller est le dernier de la liste des avions de la gare
+
+	/**
+	 * Get the next Aeronef to takeOff
+	 * @return Aeronef to takeoff
+	 */
+	public Aeronef nextTakeOffAeronef() {
+		Terminal airportTerminal = airport.getTerminal(); // aerogare de l'aerogare
+		List<Aeronef> airportAeronefsList = airportTerminal.getAeronefs(); // Liste des avions de la gare
+
+		Aeronef takeOffAeronef = airportAeronefsList.get(airportAeronefsList.size() - 1); 
+		// Avion qui va decoller est le dernier de la liste des avions de la gare
 		return takeOffAeronef;
 
 	}

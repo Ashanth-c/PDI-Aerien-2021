@@ -10,6 +10,11 @@ import data.FlockBirds;
 import data.Line;
 import data.Moutain;
 
+/**
+ * 
+ * @author Ashanth
+ *
+ */
 public class BlockManager {
 
 	private Block block;

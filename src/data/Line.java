@@ -30,7 +30,7 @@ public class Line {
 		this.destination = destination;
 	}
 	
-/*	//$$d
+	/*
 	public Line(int totalLenght) {
 		this.totalLength = totalLenght;
 	}
@@ -43,8 +43,6 @@ public class Line {
 	public boolean lineFilled() {
 		return usedLength == totalLength;
 	}
-	
-	
 */
 	@Override
 	public String toString() {

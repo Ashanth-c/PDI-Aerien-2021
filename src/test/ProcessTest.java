@@ -203,11 +203,11 @@ public class ProcessTest {
 		int abscisse = (int) cdgTojafA250.getAbscisse();
 		int ordonnee = (int) cdgTojafA250.getOrdonnee();
 
-//        /Génération de flock birds/
+		//Génération de flock birds
 		FlockBirds flockbirds = new FlockBirds(0, 0, "pigeons", 5000, 25, 15);
 		BlockManager blockManager2 = new BlockManager(flockbirds);
 
-//        /Génération des threads/
+		//Génération des threads
 		Thread mountainThread = new Thread();
 		mountainThread.start();
 		Thread flockbirdThread = new Thread();
@@ -240,12 +240,8 @@ public class ProcessTest {
 			blockManager2.MoveAeronefOrdonnee(cdgTojafA250, ordoneeVariationValue);
 			abscisse = (int) cdgTojafA250.getAbscisse();
 			ordonnee = (int) cdgTojafA250.getOrdonnee();
-			System.out.println("Coordonnee de cdgTojafA250 : " + cdgTojafA250.getAbscisse() + " , "
-					+ (int) cdgTojafA250.getOrdonnee());
 
 		}
-
-		System.out.println("Coordonnees de cdgTojafA250 apres decollage: " + abscisse + " , " + ordonnee);
 
 	}
 

@@ -20,7 +20,7 @@ public class Simulation {
 	public Simulation() {
 		LineBuilder lineBuilder = new LineBuilder();
 		//lineBuilder.buildLine(SimulPara.LINE_TOTAL_LENGTH, SimulPara.BLOCK_LENGTH);
-		line = lineBuilder.getBuiltLine();
+//		line = lineBuilder.getBuiltLine();
   }
 
 
