@@ -23,20 +23,4 @@ public class LineBuilder {
 
 
 
-//$$
-	/*public void buildLine(int totalLength, int blockLength) {
-		line = new Line(totalLength);
-		
-		// Build the blocks.
-		int id = 1;
-		while (!line.lineFilled()) {
-			line.addBlock(id, blockLength);
-			id++;
-		}
-	}
-	*/
-	public Line getBuiltLine() {
-		return line;
-	}
-}
 	
