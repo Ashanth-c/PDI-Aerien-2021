@@ -10,15 +10,15 @@ public class ProcessTest {
 
 	public static void main(String[] args) {
 
-//		authorizationTest();
+		authorizationTest();
 //		travelTest();
 //		avoidObstacleTest();
-		try {
-			avoidFlockBirdsTest();
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try {
+//			avoidFlockBirdsTest();
+//		} catch (InterruptedException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 	/* Methode pour tester les autorisation de vols */

@@ -137,7 +137,6 @@ public class AirportManager {
 		return authorization;
 	}
 
-
 	/**
 	 * Tell if the Aeronef is plan to land in the aeroport
 	 * @param comingAeronef
@@ -155,7 +154,6 @@ public class AirportManager {
 		}
 		return authorization;
 	}
-
 
 	/**
 	 * Give to an Aeronef the autorization to Land
@@ -175,7 +173,6 @@ public class AirportManager {
 		}
 		return authorization;
 	}
-
 
 	/**
 	 * Get the next Aeronef to takeOff

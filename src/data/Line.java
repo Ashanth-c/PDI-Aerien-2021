@@ -30,20 +30,6 @@ public class Line {
 		this.destination = destination;
 	}
 	
-	/*
-	public Line(int totalLenght) {
-		this.totalLength = totalLenght;
-	}
-	
-	public int getTotalLength() {
-		return totalLength;
-	}
-	//$$d
-	//$$d
-	public boolean lineFilled() {
-		return usedLength == totalLength;
-	}
-*/
 	@Override
 	public String toString() {
 		return "\nDeparture = " + departure.getName() + ", Destination = " + destination.getName() + "\n";

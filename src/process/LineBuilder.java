@@ -6,7 +6,8 @@ import data.Airport;
 import data.Line;
 
 /**
- *Class who create a line between two Airports 
+ * Class who create a line between two Airports
+ * 
  * @author Ashanth
  *
  */
@@ -18,12 +19,11 @@ public class LineBuilder {
 		List<Line> newAirport1LinesList = airport1.getLinesList();
 		List<Line> newAirport2LinesList = airport2.getLinesList();
 
-		newAirport1LinesList.add(line); 
-		newAirport2LinesList.add(line); 
+		newAirport1LinesList.add(line);
+		newAirport2LinesList.add(line);
 
-		airport1.setLinesList(newAirport1LinesList); 
+		airport1.setLinesList(newAirport1LinesList);
 		airport2.setLinesList(newAirport2LinesList);
 	}
 
 }
-	
