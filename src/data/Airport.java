@@ -2,7 +2,7 @@ package data;
 
 import java.util.List;
 
-public class Airport extends Block {
+public class Airport extends Position {
 	private String name;
 	private String type;
 	private Aerodrome aerodrome;

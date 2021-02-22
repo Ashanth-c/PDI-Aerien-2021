@@ -1,6 +1,6 @@
 package data;
 
-public class Aeronef extends Block {
+public class Aeronef extends Position {
 
 	private String type;
 	private String model;

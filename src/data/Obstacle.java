@@ -1,6 +1,6 @@
 package data;
 
-public class Obstacle extends Block {
+public class Obstacle extends Position {
 	private String name;
 	private int altitude;
 

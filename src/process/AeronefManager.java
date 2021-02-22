@@ -2,7 +2,7 @@ package process;
 
 import data.Aeronef;
 import data.Airport;
-import data.Block;
+import data.Position;
 /**
  * Class for the managmenent of an Aeronef
  * @author Khadija
@@ -10,12 +10,12 @@ import data.Block;
  */
 public class AeronefManager {
 	private Aeronef aeronef;
-	private BlockManager manager;
+	private ObstacleManager manager;
 
 	public AeronefManager(Aeronef aeronef) {
 		super();
 		this.aeronef = aeronef;
-		this.manager = new BlockManager(aeronef);
+		this.manager = new ObstacleManager(aeronef);
 	}
 
 	public void landingAltitute(Aeronef aeronef) {

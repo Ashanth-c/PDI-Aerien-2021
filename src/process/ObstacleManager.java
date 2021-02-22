@@ -5,29 +5,30 @@ import java.util.List;
 
 import data.Aeronef;
 import data.Airport;
-import data.Block;
+import data.Position;
 import data.FlockBirds;
 import data.Line;
 import data.Moutain;
+import data.Obstacle;
 
 /**
  * 
  * @author Ashanth
  *
  */
-public class BlockManager {
+public class ObstacleManager {
 
-	private Block block;
+	private Obstacle obstacle;
 	private List<Aeronef> aeronefs = new ArrayList<Aeronef>();
 	private List<FlockBirds> birds = new ArrayList<FlockBirds>();
 	private List<Moutain> mountains = new ArrayList<Moutain>();
 
-	public BlockManager(Block block) {
+	public ObstacleManager(Obstacle obstacle) {
 		super();
-		this.block = block;
+		this.obstacle = obstacle;
 	}
 
-	public BlockManager() {
+	public ObstacleManager() {
 		super();
 	}
 
@@ -47,17 +48,16 @@ public class BlockManager {
 	}
 
 	public void moveFlockBirds(FlockBirds flockbirds, int rayon, double teta) {
-        double flockbirdsOrdonnee=flockbirds.getOrdonnee();
-        double flockbirdsAbscisse=flockbirds.getAbscisse();
+		double flockbirdsOrdonnee = flockbirds.getOrdonnee();
+		double flockbirdsAbscisse = flockbirds.getAbscisse();
 
+		flockbirdsAbscisse += rayon * (Math.cos(teta));
+		flockbirdsOrdonnee += rayon * (Math.sin(teta));
 
-        flockbirdsAbscisse+=rayon*(Math.cos(teta));
-        flockbirdsOrdonnee+=rayon*(Math.sin(teta));
+		flockbirds.setAbscisse((float) flockbirdsAbscisse);
+		flockbirds.setOrdonnee((float) flockbirdsOrdonnee);
+	}
 
-        flockbirds.setAbscisse((float) flockbirdsAbscisse);
-        flockbirds.setOrdonnee((float) flockbirdsOrdonnee);
-    }
-	
 	public void impactMountain() {
 		for (Aeronef aeronef : aeronefs) {
 			for (Moutain moutain : mountains) {
@@ -70,24 +70,24 @@ public class BlockManager {
 			}
 		}
 	}
-	
-	public void avoidFlockBirds(FlockBirds flockbirds, Aeronef aeronef) {
-        float flockbirdsAbscisse = flockbirds.getAbscisse();
-        float flockbirdsOrdonnee = flockbirds.getOrdonnee();
-        float aeronefsAbscisse = aeronef.getAbscisse();
-        float aeronefsOrdonnee = aeronef.getOrdonnee();
-        int flockbirdsaltitude = flockbirds.getAltitude();
-        int aeronefaltitude= aeronef.getAltitude();
 
-        if (((aeronefsAbscisse +10)>= flockbirdsAbscisse) && (aeronefsOrdonnee + 10)>= flockbirdsOrdonnee) {
-            if (aeronefaltitude==flockbirdsaltitude) {
-                System.out.println("Detection d'un groupe d'oiseau proche");
-                aeronefaltitude+=150;
-                aeronef.setAltitude(aeronefaltitude);
-                System.out.println("Obstacle évité");
-            }
-        }
-    }
+	public void avoidFlockBirds(FlockBirds flockbirds, Aeronef aeronef) {
+		float flockbirdsAbscisse = flockbirds.getAbscisse();
+		float flockbirdsOrdonnee = flockbirds.getOrdonnee();
+		float aeronefsAbscisse = aeronef.getAbscisse();
+		float aeronefsOrdonnee = aeronef.getOrdonnee();
+		int flockbirdsaltitude = flockbirds.getAltitude();
+		int aeronefaltitude = aeronef.getAltitude();
+
+		if (((aeronefsAbscisse + 10) >= flockbirdsAbscisse) && (aeronefsOrdonnee + 10) >= flockbirdsOrdonnee) {
+			if (aeronefaltitude == flockbirdsaltitude) {
+				System.out.println("Detection d'un groupe d'oiseau proche");
+				aeronefaltitude += 150;
+				aeronef.setAltitude(aeronefaltitude);
+				System.out.println("Obstacle évité");
+			}
+		}
+	}
 
 	public void avoidMountain(Moutain moutain, Aeronef aeronef) {
 		float mountainAbscisse = moutain.getAbscisse();
@@ -95,10 +95,10 @@ public class BlockManager {
 		float aeronefsAbscisse = aeronef.getAbscisse();
 		float aeronefsOrdonnee = aeronef.getOrdonnee();
 		int mountainaltitude = moutain.getAltitude();
-		
+
 		if (((aeronefsAbscisse + 10) >= mountainAbscisse) && ((aeronefsOrdonnee + 10) >= mountainOrdonnee)) {
 			if (aeronef.getAltitude() <= mountainaltitude) {
-				mountainaltitude+=150;
+				mountainaltitude += 150;
 				aeronef.setAltitude(mountainaltitude);
 				System.out.println("Detection de Montagne proche");
 			}
@@ -140,38 +140,37 @@ public class BlockManager {
 		aeronef.setOrdonnee(aeronefOrdonnee);
 
 	}
-	
-	public void checkAirportsAround(Aeronef aeronef, Airport airport) {
-		
-		aeronef.setUrgent(true);
-		float aeronefOrdonnee=aeronef.getOrdonnee();
-		float aeronefAbscisse=aeronef.getAbscisse();
-		
-				if (((aeronefAbscisse + 10) >= airport.getAbscisse()) && ((aeronefOrdonnee + 10) >= airport.getOrdonnee())) {
-					emergencyLanding(aeronef, airport);
 
-					System.out.println("Atterissage en urgence réussi");
-					aeronef.setUrgent(false);
-			
+	public void checkAirportsAround(Aeronef aeronef, Airport airport) {
+
+		aeronef.setUrgent(true);
+		float aeronefOrdonnee = aeronef.getOrdonnee();
+		float aeronefAbscisse = aeronef.getAbscisse();
+
+		if (((aeronefAbscisse + 10) >= airport.getAbscisse()) && ((aeronefOrdonnee + 10) >= airport.getOrdonnee())) {
+			emergencyLanding(aeronef, airport);
+
+			System.out.println("Atterissage en urgence réussi");
+			aeronef.setUrgent(false);
+
 		}
-	}		
-	
-	
+	}
+
 	public void emergencyLanding(Aeronef aeronef, Airport airport) {
 
-		float aeronefOrdonnee=aeronef.getOrdonnee();
-		float aeronefAbscisse=aeronef.getAbscisse();
-		
+		float aeronefOrdonnee = aeronef.getOrdonnee();
+		float aeronefAbscisse = aeronef.getAbscisse();
+
 		float abscisseVariationValue = abscisseVariationValue(aeronef, airport, 20);
 		float ordoneeVariationValue = ordoneeVariationValue(aeronef, airport, 20);
-		
+
 		while (((int) aeronef.getAbscisse() != airport.getAbscisse())
-							&& ((int) aeronef.getOrdonnee() != airport.getOrdonnee())) {
-	
+				&& ((int) aeronef.getOrdonnee() != airport.getOrdonnee())) {
+
 			MoveAeronefAbcsisse(aeronef, abscisseVariationValue);
 			MoveAeronefOrdonnee(aeronef, ordoneeVariationValue);
-			System.out.println("Coordonnees de l'aeronef en urgence : " + aeronef.getAbscisse()+ " , "
-								+ aeronef.getOrdonnee());
+			System.out.println(
+					"Coordonnees de l'aeronef en urgence : " + aeronef.getAbscisse() + " , " + aeronef.getOrdonnee());
 		}
 	}
 

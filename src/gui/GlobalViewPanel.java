@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 
 import process.Simulation;
 import process.Utility;
-import process.BlockManager;
+import process.ObstacleManager;
 import process.AeronefManager;
 
 public class GlobalViewPanel extends JPanel {

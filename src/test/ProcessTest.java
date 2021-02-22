@@ -13,14 +13,14 @@ public class ProcessTest {
 //		authorizationTest();
 //		travelTest();
 //		avoidObstacleTest();
-//		try {
-//			avoidFlockBirdsTest();
-//		} catch (InterruptedException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		try {
+			avoidFlockBirdsTest();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
-		emergencyLandingTest();
+//		emergencyLandingTest();
 	}
 
 	/* Methode pour tester les autorisation de vols */
@@ -61,7 +61,7 @@ public class ProcessTest {
 		int abscisse = (int) cdgTojafA250.getAbscisse();
 		int ordonnee = (int) cdgTojafA250.getOrdonnee();
 		System.out.println("Coordonnee de cdgTojafA250 avant decollage: " + abscisse + " , " + ordonnee);
-		BlockManager blockManager = new BlockManager();
+		ObstacleManager blockManager = new ObstacleManager();
 		float abscisseVariationValue = blockManager.abscisseVariationValue(cdgTojafA250, jaf, 100);
 		float ordoneeVariationValue = blockManager.ordoneeVariationValue(cdgTojafA250, jaf, 100);
 
@@ -155,7 +155,7 @@ public class ProcessTest {
 		AeronefManager cdgTManager = new AeronefManager(cdgTojafA250);
 
 		Moutain moutain = new Moutain(10, 20, "Mount Everest", 8848, "China");
-		BlockManager blockManager = new BlockManager(moutain);
+		ObstacleManager blockManager = new ObstacleManager(moutain);
 
 		System.out.println("L'altitude de l'aeronef cdgTojafA250 :" + cdgTojafA250.getAltitude() + "m");
 		float abscisseVariationValue = blockManager.abscisseVariationValue(cdgTojafA250, jaf, 100);
@@ -207,7 +207,7 @@ public class ProcessTest {
 
 		//Génération de flock birds
 		FlockBirds flockbirds = new FlockBirds(0, 0, "pigeons", 5000, 25, 15);
-		BlockManager blockManager2 = new BlockManager(flockbirds);
+		ObstacleManager blockManager2 = new ObstacleManager(flockbirds);
 
 		System.out.println(
 				"Coordonnees des oiseaux au départ: " + flockbirds.getAbscisse() + " , " + flockbirds.getOrdonnee());
@@ -280,7 +280,7 @@ public class ProcessTest {
 				250, false);
 		AeronefManager cdgTManager = new AeronefManager(cdgTojafA250);
 		
-		BlockManager blockManager = new BlockManager();
+		ObstacleManager blockManager = new ObstacleManager();
 		List<Airport> airports = new ArrayList<Airport>();
 		
 		airports.add(ath);
