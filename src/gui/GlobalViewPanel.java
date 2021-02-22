@@ -32,20 +32,34 @@ public class GlobalViewPanel extends JPanel {
 	}
 
 	public void initAirport(Graphics2D g2) {
-		printAirport(g2, 260, 300);
-		printAirport(g2, 500, 500);
-		printAirport(g2, 1300, 650);
-		printAirport(g2, 90, 100);
-		printAirport(g2, 1200, 50);
-		printAirport(g2, 700, 450);
-		printAirport(g2, 902, 421);
-		printAirport(g2, 645, 240);
+		printAirport(g2, 300, 200);  // Aéroport de colombie britannique ,Canada
+		printAirport(g2, 1020, 330); // Aéroport de Hong Kong
+		printAirport(g2, 1100, 550); //Aéroport de Brisbane, Australie
+		printAirport(g2, 500, 530);  // Aéroport Rio de janeiro, Brésil
+		printAirport(g2, 615, 320);  //Aéroport de Casablanca, Maroc
+		printAirport(g2, 300, 340);  // Aéroport de Mexico, Amérique
+		printAirport(g2, 645, 240);  //Aéroport de charle de gaulle,France
+		printAirport(g2, 900, 200);  // Aéroport de Moscow
 
 	}
 	
 	
 	public void initLine(Graphics2D g2) {
-		printLine(g2,645+15,240+40,902+15,421+40);
+		printLine(g2,615+15,320+40,645+15,240+40);
+		printLine(g2,615+15,320+40,500+15,530+40);
+		printLine(g2,615+15,320+40,300+15,340+40);
+		printLine(g2,300+15,340+40,300+15,200+40);
+		printLine(g2,300+15,200+40,645+15,240+40);
+		printLine(g2,645+15,240+40,1020+15,330+40);
+		printLine(g2,1020+15,330+40,1100+15,550+40);
+		printLine(g2,500+15,530+40,300+15,340+40);
+		printLine(g2,1100+15,550+40,615+15,320+40);
+		printLine(g2,1100+15,550+40,500+15,530+40);
+		printLine(g2,900+15,200+40,1020+15,330+40);
+		printLine(g2,900+15,200+40,645+15,240+40);
+		printLine(g2,900+15,200+40,615+15,320+40);
+		printLine(g2,900+15,200+40,300+15,200+40);
+		printLine(g2,900+15,200+40,500+15,530+40);
 	}
 
 	private void printLine(Graphics2D g2, int x1, int y1, int x2, int y2) {
