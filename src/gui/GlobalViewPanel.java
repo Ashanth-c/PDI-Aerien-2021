@@ -62,9 +62,11 @@ public class GlobalViewPanel extends JPanel {
 		printLine(g2,900+15,200+40,500+15,530+40);
 	}
 
+	
 	private void printLine(Graphics2D g2, int x1, int y1, int x2, int y2) {
 		g2.setColor(Color.BLACK);
-		g2.setStroke(new BasicStroke(2));
+		float[] dashPattern = {2, 2};
+		g2.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 2, dashPattern, 0));
 		g2.drawLine(x1, y1, x2, y2);
 	}
 
