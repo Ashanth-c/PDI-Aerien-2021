@@ -38,7 +38,7 @@ public class FlockBirds extends Obstacle {
 
 	@Override
 	public String toString() {
-		return "FlockBirds [numberOfBirds=" + numberOfBirds + ", speed=" + speed + "]";
+		return "FlockBirds " + getName();
 	}
 
 }
