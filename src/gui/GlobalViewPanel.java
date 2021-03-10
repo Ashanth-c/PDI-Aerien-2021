@@ -17,6 +17,7 @@ public class GlobalViewPanel extends JPanel {
 	private Simulation simulation;
 	private PaintStrategy paintStrategy = new PaintStrategy();
 
+
 	public GlobalViewPanel() {
 		setBackground(Color.white);
 		setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -32,43 +33,97 @@ public class GlobalViewPanel extends JPanel {
 	}
 
 	public void initAirport(Graphics2D g2) {
-		printAirport(g2, 300, 200);  // Aéroport de colombie britannique ,Canada
-		printAirport(g2, 1020, 330); // Aéroport de Hong Kong
-		printAirport(g2, 1100, 550); //Aéroport de Brisbane, Australie
-		printAirport(g2, 500, 530);  // Aéroport Rio de janeiro, Brésil
-		printAirport(g2, 615, 320);  //Aéroport de Casablanca, Maroc
-		printAirport(g2, 300, 340);  // Aéroport de Mexico, Amérique
-		printAirport(g2, 645, 240);  //Aéroport de charle de gaulle,France
-		printAirport(g2, 900, 200);  // Aéroport de Moscow
+		printAirport(g2, 300, 200);  // Aéroport de colombie britannique ,Canada 	 (civil)
+		printAirport(g2, 1020, 330); // Aéroport de Hong Kong 				 (military)
+		printAirport(g2, 1100, 550); //Aéroport de Brisbane, Australie 			 (cargo)
+		printAirport(g2, 500, 530);  // Aéroport Rio de janeiro, Brésil 		 (military)
+		printAirport(g2, 615, 320);  //Aéroport de Casablanca, Maroc			 (civil)
+		printAirport(g2, 300, 340);  // Aéroport de Mexico, Amérique			 (military)
+		printAirport(g2, 645, 240);  //Aéroport de charle de gaulle,France		 (civil)
+		printAirport(g2, 900, 200);  // Aéroport de Moscou 				 (cargo)
 
 	}
 	
 	
 	public void initLine(Graphics2D g2) {
-		printLine(g2,615+15,320+40,645+15,240+40);
-		printLine(g2,615+15,320+40,500+15,530+40);
-		printLine(g2,615+15,320+40,300+15,340+40);
-		printLine(g2,300+15,340+40,300+15,200+40);
-		printLine(g2,300+15,200+40,645+15,240+40);
-		printLine(g2,645+15,240+40,1020+15,330+40);
-		printLine(g2,1020+15,330+40,1100+15,550+40);
-		printLine(g2,500+15,530+40,300+15,340+40);
-		printLine(g2,1100+15,550+40,615+15,320+40);
-		printLine(g2,1100+15,550+40,500+15,530+40);
-		printLine(g2,900+15,200+40,1020+15,330+40);
-		printLine(g2,900+15,200+40,645+15,240+40);
-		printLine(g2,900+15,200+40,615+15,320+40);
-		printLine(g2,900+15,200+40,300+15,200+40);
-		printLine(g2,900+15,200+40,500+15,530+40);
+		float[] dashPattern = {4, 4};
+		g2.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 2, dashPattern, 0));
+		
+		/* civil & civil = blue
+		 * cargo & civil =red
+		 * military & military = green
+		 * cargo & military= cyan
+		 * civil & military = orange
+		 */
+		
+		
+		
+		
+		g2.setColor(Color.BLUE);
+		g2.drawLine(615+15,320+40,645+15,240+40);
+		
+		g2.setColor(Color.BLUE);
+		g2.drawLine(615+15,320+40,300+15,200+40);
+		
+		g2.setColor(Color.ORANGE);
+		g2.drawLine(615+15,320+40,500+15,530+40);
+		
+		g2.setColor(Color.ORANGE);
+		g2.drawLine(300+15,200+40,500+15,530+40);
+		
+		g2.setColor(Color.ORANGE);
+		g2.drawLine(615+15,320+40,300+15,340+40);
+		
+		g2.setColor(Color.CYAN);
+		g2.drawLine(300+15,340+40,300+15,200+40);
+		
+		g2.setColor(Color.BLUE);
+		g2.drawLine(300+15,200+40,645+15,240+40);
+		
+		g2.setColor(Color.ORANGE);
+		g2.drawLine(645+15,240+40,1020+15,330+40);
+		
+		g2.setColor(Color.ORANGE);
+		g2.drawLine(645+15,240+40,300+15,340+40);
+		
+		g2.setColor(Color.CYAN);
+		g2.drawLine(1020+15,330+40,1100+15,550+40);
+		
+		g2.setColor(Color.GREEN);
+		g2.drawLine(500+15,530+40,300+15,340+40);
+		
+		g2.setColor(Color.GREEN);
+		g2.drawLine(500+15,530+40,1020+15,330+40);
+		
+		g2.setColor(Color.GREEN);
+		g2.drawLine(300+15,340+40,1020+15,330+40);
+		
+		g2.setColor(Color.RED);
+		g2.drawLine(1100+15,550+40,615+15,320+40);
+		
+		g2.setColor(Color.CYAN);
+		g2.drawLine(1100+15,550+40,500+15,530+40);
+		
+		g2.setColor(Color.CYAN);
+		g2.drawLine(900+15,200+40,1020+15,330+40);
+		
+		g2.setColor(Color.RED);
+		g2.drawLine(900+15,200+40,645+15,240+40);
+		
+		g2.setColor(Color.RED);
+		g2.drawLine(900+15,200+40,615+15,320+40);
+		
+		g2.setColor(Color.RED);
+		g2.drawLine(900+15,200+40,300+15,200+40);
+		
+		g2.setColor(Color.CYAN);
+		g2.drawLine(900+15,200+40,500+15,530+40);
+		
+		
 	}
 
 	
-	private void printLine(Graphics2D g2, int x1, int y1, int x2, int y2) {
-		g2.setColor(Color.BLACK);
-		float[] dashPattern = {2, 2};//
-		g2.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 2, dashPattern, 0));
-		g2.drawLine(x1, y1, x2, y2);
-	}
+
 
 	public void printAirport(Graphics2D g2, int abscisse, int ordonate) {
 		g2.setColor(Color.BLACK);
