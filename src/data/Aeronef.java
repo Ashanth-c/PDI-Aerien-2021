@@ -6,6 +6,7 @@ public class Aeronef extends Position {
 	private String model;
 	private String destination;
 	private String departure;
+	private String name;
 	private int totalSeats;
 	private int fuel;
 	private int altitude;
@@ -16,9 +17,10 @@ public class Aeronef extends Position {
 		super(abscisse, ordonnee);
 	}
 
-	public Aeronef(int abscisse, int ordonnee, String type, String model, String destination, String departure,
+	public Aeronef(int abscisse, int ordonnee, String name, String type, String model, String destination, String departure,
 			int totalSeats, int fuel, int altitude, int speed, boolean urgent) {
 		super(abscisse, ordonnee);
+		this.name=name;
 		this.type = type;
 		this.model = model;
 		this.destination = destination;
@@ -106,9 +108,17 @@ public class Aeronef extends Position {
 	
 	@Override
 	public String toString() {
-		return "Aeronef [type=" + type + ", model=" + model + ", destination=" + destination + ", departure="
+		return "Aeronef [name="+ name + ", type=" + type + ", model=" + model + ", destination=" + destination + ", departure="
 				+ departure + ", totalSeats=" + totalSeats + ", fuel=" + fuel + ", altitude=" + altitude + ", speed="
 				+ speed + "]";
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 }

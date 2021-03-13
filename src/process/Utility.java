@@ -59,9 +59,9 @@ public class Utility {
 		return airport;
 	}
 	
-	public static Aeronef createAeronef(int abscisse, int ordonnee, String type, String model, String destination, String departure,int totalSeats, int fuel, int altitude, int speed, boolean urgent) {
+	public static Aeronef createAeronef(int abscisse, int ordonnee, String name, String type, String model, String destination, String departure,int totalSeats, int fuel, int altitude, int speed, boolean urgent) {
 		
-		Aeronef aeronef = new Aeronef(abscisse, ordonnee, type, model, destination, departure, totalSeats, fuel, altitude, speed, urgent);
+		Aeronef aeronef = new Aeronef(abscisse, ordonnee, name, type, model, destination, departure, totalSeats, fuel, altitude, speed, urgent);
 		Airport departureAirport = ElementManager.getAiportFromName(departure);
 		AirportManager airportManager =new AirportManager(departureAirport);
 		airportManager.addAeronefTerminal(aeronef);
@@ -71,12 +71,16 @@ public class Utility {
 	public static Mountain createMountain(int abscisse, int ordonnee, String name, int altitude, String country) {
 		Mountain mountain = new Mountain(abscisse, ordonnee, name, altitude, country);
 		ElementManager.addObstacle(mountain);
+		ElementManager.addMountain(mountain);
 		return mountain;
 	}
 
-	public static FlockBirds createFlockBirds(int abscisse, int ordonnee, String name, int altitude, int numberOfBirds, int speed) {
-		FlockBirds flockBirds = new FlockBirds(abscisse, ordonnee, name, altitude, numberOfBirds, speed);	
+	public static FlockBirds createFlockBirds(int abscisse, int ordonnee, String name, int altitude, int numberOfBirds, int speed, int absCenter, int ordCenter) {
+		FlockBirds flockBirds = new FlockBirds(abscisse, ordonnee, name, altitude, numberOfBirds, speed);
+		double radius = getRadiusFlockBirds(flockBirds, absCenter, ordCenter);
+		flockBirds.setRadius(radius);
 		ElementManager.addObstacle(flockBirds);
+		ElementManager.addFlockBirds(flockBirds);
 		return flockBirds;
 	}
 
@@ -102,7 +106,15 @@ public class Utility {
 
 	}
 
-	private static int getRandom(int min, int max) {
+	public static int getRandom(int min, int max) {
 		return (int) (Math.random() * (max + 1 - min)) + min;
+	}
+	
+	private static double getRadiusFlockBirds(FlockBirds flockBirds, int abCenter, int odrCenter) {
+		float flockBirdsAbscisse = flockBirds.getAbscisse();
+		float flockBirdsOrdonnee = flockBirds.getOrdonnee();
+		double radius = Math.sqrt(Math.pow((abCenter-flockBirdsAbscisse), 2)+(Math.pow((odrCenter-flockBirdsOrdonnee), 2)));
+		
+		return radius;
 	}
 }

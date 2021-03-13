@@ -14,13 +14,16 @@ public class AeronefManager extends Thread {
 	private Aeronef aeronef;
 	private float abscisseVariationValue;
 	private float ordoneeVariationValue;
+	private Airport destinationAirport;
 	private boolean running = true;
+	private String isInUrgence="SearchEmergencyAirport";
 
 	public AeronefManager(Aeronef aeronef) {
 		super();
 		this.aeronef = aeronef;
-		this.abscisseVariationValue = ElementManager.abscisseVariationValue(aeronef, ElementManager.getAiportFromName(aeronef.getDestination()), SimulPara.SIMUlATION_TIME);
-		this.ordoneeVariationValue = ElementManager.ordoneeVariationValue(aeronef, ElementManager.getAiportFromName(aeronef.getDestination()), SimulPara.SIMUlATION_TIME);
+		this.destinationAirport = ElementManager.getAiportFromName(aeronef.getDestination());
+		this.abscisseVariationValue = ElementManager.abscisseVariationValue(aeronef, destinationAirport, SimulPara.SIMULATION_SPEED);
+		this.ordoneeVariationValue = ElementManager.ordoneeVariationValue(aeronef, destinationAirport, SimulPara.SIMULATION_SPEED);
 
 	}
 	
@@ -29,23 +32,24 @@ public class AeronefManager extends Thread {
 	public void run() {
 		while(running) {
 			Utility.unitTime();
-			ElementManager.avoidObstacle(aeronef);
-			Airport airport = ElementManager.getAiportFromName(aeronef.getDestination());
-			AirportManager airportManager = new AirportManager(airport);
-			if (!aeronef.getUrgent()) {
-				if (((int) aeronef.getAbscisse() != airport.getAbscisse()) && ((int) aeronef.getOrdonnee() != airport.getOrdonnee())) {
-					moveAeronefAbcsisse(abscisseVariationValue);
-					moveAeronefOrdonnee(ordoneeVariationValue);
-					System.out.println("Coordonnee de l'aeronef : " + aeronef.getAbscisse() + " , " + (int) aeronef.getOrdonnee());
-			}
+			if (aeronef.getUrgent()) {
 				
-				else {
-					running = (!airportManager.airportLandingAuthorization(aeronef));
+				if(isInUrgence.equals("SearchEmergencyAirport")) {
+					isInUrgence=ElementManager.checkAirportsAround(aeronef);
+					
+					if(!isInUrgence.equals("SearchEmergencyAirport")) {					
+						destinationAirport = ElementManager.getAiportFromName(isInUrgence);	
+						aeronef.setDestination(destinationAirport.getName());
+						aeronef.setType("Emergency");
+						abscisseVariationValue = ElementManager.abscisseVariationValue(aeronef, destinationAirport, SimulPara.SIMULATION_SPEED);
+						ordoneeVariationValue = ElementManager.ordoneeVariationValue(aeronef, destinationAirport, SimulPara.SIMULATION_SPEED); 
+						System.out.println("Changement de Destination, Aterrisage d'urgence à " + destinationAirport.getName());
+					}
 				}
 			}
-			else {
-			}
+			travelAeronef();
 		}
+		System.out.println("Atterisage de l'aeronef " + aeronef.getModel()+ " reussi");
 	}
 
 	public void landingAltitute(Aeronef aeronef) {
@@ -112,6 +116,19 @@ public class AeronefManager extends Thread {
 
 		}
 
+	}
+	
+	public void travelAeronef() {
+		ElementManager.avoidObstacle(aeronef);
+		if (((int) aeronef.getAbscisse() != destinationAirport.getAbscisse()) && ((int) aeronef.getOrdonnee() != destinationAirport.getOrdonnee())) {
+			moveAeronefAbcsisse(abscisseVariationValue);
+			moveAeronefOrdonnee(ordoneeVariationValue);
+			System.out.println("Coordonnee de l'aeronef : " + aeronef.getAbscisse() + " , " + (int) aeronef.getOrdonnee());
+		}		
+		else {
+			AirportManager airportManager = new AirportManager(destinationAirport);
+			running = (!airportManager.airportLandingAuthorization(aeronef));
+		}
 	}
 
 	public void moveAeronefAbcsisse(float abscisseVariation) {

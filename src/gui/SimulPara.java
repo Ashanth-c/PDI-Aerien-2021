@@ -29,7 +29,7 @@ public class SimulPara {
 
 	public static final int SIMUlATION_TIME = 1000;
 
-	public static final long SIMULATION_SPEED = 1000;
+	public static final int SIMULATION_SPEED = 1000;
 	
 }
 	

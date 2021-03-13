@@ -18,7 +18,8 @@ import data.Obstacle;
  */
 public class ObstacleManager {
 
-	Obstacle obstacle;
+	private Obstacle obstacle;
+	private double teta=0;
 
 	public ObstacleManager() {
 		super();
@@ -28,16 +29,20 @@ public class ObstacleManager {
 		super();
 		this.obstacle = obstacle;
 	}
+	
+	
+	public void moveFlockBirds(double rayon) {
+		double flockbirdsOrdonnee = obstacle.getOrdonnee();
+		double flockbirdsAbscisse = obstacle.getAbscisse();
+		if (teta>2 * (Math.PI)) {
+			teta=0;
+		}			
+			flockbirdsAbscisse = rayon * (Math.cos(teta));
+			flockbirdsOrdonnee = rayon * (Math.sin(teta));
+			teta+=1/Math.PI;
+		obstacle.setAbscisse((float) flockbirdsAbscisse);
+		obstacle.setOrdonnee((float) flockbirdsOrdonnee);
 
-	public void moveFlockBirds(FlockBirds flockbirds, int rayon, double teta) {
-		double flockbirdsOrdonnee = flockbirds.getOrdonnee();
-		double flockbirdsAbscisse = flockbirds.getAbscisse();
-
-		flockbirdsAbscisse += rayon * (Math.cos(teta));
-		flockbirdsOrdonnee += rayon * (Math.sin(teta));
-
-		flockbirds.setAbscisse((float) flockbirdsAbscisse);
-		flockbirds.setOrdonnee((float) flockbirdsOrdonnee);
 
 	}
 

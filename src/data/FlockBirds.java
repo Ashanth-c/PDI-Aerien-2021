@@ -3,7 +3,9 @@ package data;
 public class FlockBirds extends Obstacle {
 	private int numberOfBirds;
 	private int speed;
-
+	private double radius;
+	private double teta=0;
+	
 	public FlockBirds(int abscisse, int ordonnee) {
 		super(abscisse, ordonnee);
 	}
@@ -39,6 +41,22 @@ public class FlockBirds extends Obstacle {
 	@Override
 	public String toString() {
 		return "FlockBirds " + getName();
+	}
+
+	public double getRadius() {
+		return radius;
+	}
+
+	public void setRadius(double radius) {
+		this.radius = radius;
+	}
+
+	public double getTeta() {
+		return teta;
+	}
+
+	public void setTeta(double teta) {
+		this.teta = teta;
 	}
 
 }

@@ -155,22 +155,6 @@ public class AirportManager extends Thread{
 	}
 
 	/**
-	 * Tell if the Aeronef is plan to land in the aeroport
-	 * @param comingAeronef
-	 * @return 
-	 */
-	private boolean isLandingAeronef(Aeronef comingAeronef) {
-		boolean authorization = false;
-
-		if (departureVerification(comingAeronef)) { 
-			// Si le lieu d'arriver est bon
-			addAeronefTerminal(comingAeronef);
-			authorization = true;
-		}
-		return authorization;
-	}
-
-	/**
 	 * Give to an Aeronef the autorization to Land
 	 * @param goingAeronef
 	 * @return true if he has the authorisation, else false
@@ -180,7 +164,7 @@ public class AirportManager extends Thread{
 		String airportType = airport.getType(); // Type d'acceuil de l'aeroport
 		String aeronefType = commingAeronef.getType(); // type de l'avion qui arrive
 
-		if (airportType.equals("All") || airportType.equals(aeronefType)) { 
+		if (airportType.equals("All") || airportType.equals(aeronefType) || airportType.equals("Emergency")) { 
 			// si l'aeroport est de type all ou qu'il est le meme que celle de l'avion
 			if (isTerminalFull().equals("Not Full")) {
 				if (departureVerification(commingAeronef)) { 
@@ -214,6 +198,14 @@ public class AirportManager extends Thread{
 		// Avion qui va decoller est le dernier de la liste des avions de la gare
 		return takeOffAeronef;
 
+	}
+
+	public Airport getAirport() {
+		return airport;
+	}
+
+	public void setAirport(Airport airport) {
+		this.airport = airport;
 	}
 
 }
