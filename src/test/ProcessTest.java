@@ -86,7 +86,7 @@ public class ProcessTest {
 		brisbaneManager.start();
 		System.out.println(brisbane.getTerminal().getTotaParkAeronefs());
 		
-			//****ligne entre Hong kong et france
+		//ligne entre Hong kong et france
 		Utility.createLine(hoko, cdg);
 		Aeronef hokoTocdg = Utility.createAeronef(0, 0, "Military", "A255", "cdg Airport", "hoko Airport", 100, 100, 0, 0, false);
 				
