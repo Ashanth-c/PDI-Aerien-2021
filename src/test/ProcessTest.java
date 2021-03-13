@@ -86,6 +86,35 @@ public class ProcessTest {
 		brisbaneManager.start();
 		System.out.println(brisbane.getTerminal().getTotaParkAeronefs());
 		
+			//****ligne entre Hong kong et france
+		Utility.createLine(hoko, cdg);
+		Aeronef hokoTocdg = Utility.createAeronef(0, 0, "Military", "A255", "cdg Airport", "hoko Airport", 100, 100, 0, 0, false);
+				
+		hokoManager.start();
+		System.out.println(hoko.getTerminal().getTotaParkAeronefs());
+		
+		
+		//ligne entre Brisbane et Maroc
+		Utility.createLine(brisbane, casa);
+		Aeronef brisbaneTocasa = Utility.createAeronef(0, 0, "civil", "A256", "casa Airport", "brisbane Airport", 100, 100, 0, 0, false);
+						
+		brisbaneManager.start();
+		System.out.println(brisbane.getTerminal().getTotaParkAeronefs());
+		
+
+		//ligne entre Mexico et hong kong
+		Utility.createLine(mexico, hoko);
+		Aeronef mexicoTohoko = Utility.createAeronef(0, 0, "military", "A257", "hoko Airport", "mexico Airport", 100, 100, 0, 0, false);
+						
+		mexicoManager.start();
+		System.out.println(mexico.getTerminal().getTotaParkAeronefs());
+		
+		//ligne entre canada et moskou
+		Utility.createLine(colombie, moskou);
+		Aeronef colombieTomoskou = Utility.createAeronef(0, 0, "military", "A258", "moskou Airport", "colombie Airport", 100, 100, 0, 0, false);
+								
+		colombieManager.start();
+		System.out.println(colombie.getTerminal().getTotaParkAeronefs());
 		
 //		authorizationTest();
 //		travelTest();
