@@ -16,13 +16,17 @@ public class DiplayElement extends JPanel {
 	private GlobalViewPanel globalView = new GlobalViewPanel();
 	private AirportPanel airportPanel = new AirportPanel();
 	private InformationPanel informationPanel = new InformationPanel();
+	private ZoomedViewPanel zoomedView= new ZoomedViewPanel();
 
 	public DiplayElement() {
 		super();
 		setPreferredSize(getPreferredSize());
 		this.setLayout(new BorderLayout());
 		this.add(informationPanel, BorderLayout.WEST);
-		this.add(globalView, BorderLayout.CENTER);
+
+	//	this.add(globalView, BorderLayout.CENTER);
+		this.add(zoomedView,BorderLayout.CENTER);
+		
 	}
 
 }
