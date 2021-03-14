@@ -11,11 +11,13 @@ import javax.swing.JPanel;
 public class InformationPanel extends JPanel {
 
 	/**
-	 * 
+	 *  @author Khadija
+	 *	
 	 */
 	private static final long serialVersionUID = 1L;
 	private PaintStrategy paintStrategy = new PaintStrategy();
-	private JButton panelChangeButton;
+	private JButton urgentLandingButton;
+	private JButton generateMountainButton;
 
 	public InformationPanel() {
 		setLayout(new FlowLayout(FlowLayout.CENTER));
@@ -24,9 +26,11 @@ public class InformationPanel extends JPanel {
 
 	public void init() {
 
-		panelChangeButton = new JButton("View AIport");
-		add(panelChangeButton);
-
+		add(DiplayElement.getPanelchangebutton());
+		/*
+		urgentLandingButton=new JButton("Urgent Landing Button");
+		add(urgentLandingButton);
+		
+		generateMountainButton=new JButton("Generate random mountain");
+*/
 	}
-
-}
