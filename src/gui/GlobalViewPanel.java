@@ -12,6 +12,12 @@ import process.Utility;
 import process.ObstacleManager;
 import process.AeronefManager;
 
+/**
+ * @author Khadija
+ * @author Maeva
+ * @author Ashanth
+ */
+
 public class GlobalViewPanel extends JPanel {
 
 	private Simulation simulation;
@@ -30,9 +36,15 @@ public class GlobalViewPanel extends JPanel {
 		initLine(g2);
 		initAirport(g2);
 		printWorldMap(g2);
+		initMountain(g2);
 	}
 
 	public void initAirport(Graphics2D g2) {
+		
+		//for (int i=0;i<=15;i++) {
+			
+		//printAirport(g2, SimulPara.POSITIONS[i], SimulPara.POSITIONS[i+1]);
+		
 		printAirport(g2, 300, 200);  // Aéroport de colombie britannique ,Canada 	 (civil)
 		printAirport(g2, 1020, 330); // Aéroport de Hong Kong 				 (military)
 		printAirport(g2, 1100, 550); //Aéroport de Brisbane, Australie 			 (cargo)
@@ -41,8 +53,18 @@ public class GlobalViewPanel extends JPanel {
 		printAirport(g2, 300, 340);  // Aéroport de Mexico, Amérique			 (military)
 		printAirport(g2, 645, 240);  //Aéroport de charle de gaulle,France		 (civil)
 		printAirport(g2, 900, 200);  // Aéroport de Moscou 				 (cargo)
-
+		
+		
+		//}
+		
 	}
+	
+	public void initMountain(Graphics2D g2) {
+		for (int i=0;i<4;i++) {
+			printMountain(g2,SimulPara.MOUNTAINS_X[i],SimulPara.MOUNTAINS_Y[i],SimulPara.MOUNTAINS[i],SimulPara.ALTITUDE[3],"random");
+		}
+	}
+	
 	
 	
 	public void initLine(Graphics2D g2) {
@@ -135,4 +157,13 @@ public class GlobalViewPanel extends JPanel {
 //		System.out.println(this.getWidth());
 		g2.drawImage(Utility.readImage("src/images/world_map.png"), 100, 50, 1175, 699, this);
 	}
+	
+	
+	public void printMountain(Graphics2D g2, int abscisse, int ordonate, String name, int altitude, String country) {
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(3));
+		Utility.createMountain(abscisse, ordonate, name, altitude, country);
+		g2.drawImage(Utility.readImage("src/images/mountain.png"), abscisse, ordonate, 30, 40, this);
+	}
+	
 }
