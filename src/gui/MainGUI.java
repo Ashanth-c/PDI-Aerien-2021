@@ -3,26 +3,38 @@ package gui;
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
 
 import javax.swing.JFrame;
+import javax.swing.SwingUtilities;
 
-public class MainGUI extends JFrame implements Runnable {
+import data.Airport;
+import data.City;
+import process.AirportManager;
+import process.LineBuilder;
+import process.Simulation;
+import process.Utility;
+
+public class MainGUI extends JFrame{
 
 	private final static Dimension preferredSize = new Dimension(1500, 830);
-	private boolean running;
-	private DiplayElement dashboard;
+	private DisplayElement dashboard;
+	private Simulation simulation;
 
 	public MainGUI(String title) {
 		super(title);
 		init();
+		
 	}
 
 	private void init() {
 		setExtendedState(MAXIMIZED_BOTH);
-		running = true;
+		simulation = new Simulation();
 		Container contentPane = getContentPane();
 		contentPane.setLayout(new BorderLayout());
-		dashboard = new DiplayElement();
+		dashboard = new DisplayElement(simulation);
 
 		contentPane.add(dashboard, BorderLayout.CENTER);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -30,13 +42,5 @@ public class MainGUI extends JFrame implements Runnable {
 		setVisible(true);
 		setResizable(false);
 	}
-
-	@Override
-	public void run() {
-		// TODO Auto-generated method stub
-		while (running) {
-			dashboard.repaint();
-		}
-	}
-
+	
 }

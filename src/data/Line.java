@@ -32,6 +32,6 @@ public class Line {
 	
 	@Override
 	public String toString() {
-		return "\nDeparture = " + departure.getName() + ", Destination = " + destination.getName() + "\n";
+		return "Departure = " + departure.getName() + ", Destination = " + destination.getName() + "\n";
 	}
 }

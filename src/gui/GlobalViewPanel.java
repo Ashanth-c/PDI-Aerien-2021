@@ -4,27 +4,32 @@ import java.awt.BasicStroke;
 import java.awt.Graphics;
 import java.awt.Color;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 import javax.swing.JPanel;
 
+import data.Aeronef;
+import data.Airport;
+import data.Line;
 import process.Simulation;
 import process.Utility;
 import process.ObstacleManager;
 import process.AeronefManager;
-
-/**
- * @author Maeva
- * @author Khadija
- * @author Ashanth
- */
+import process.AirportManager;
 
 public class GlobalViewPanel extends JPanel {
 
 	private Simulation simulation;
 	private PaintStrategy paintStrategy = new PaintStrategy();
 
-
-	public GlobalViewPanel() {
+	public GlobalViewPanel(Simulation simulation) {
+		this.simulation = simulation;
 		setBackground(Color.white);
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 	}
@@ -34,30 +39,90 @@ public class GlobalViewPanel extends JPanel {
 		// We used Graphic2D for more draw options.
 		Graphics2D g2 = (Graphics2D) g;
 		initLine(g2);
-		initAirport(g2);
+		printGuiAirport(g2);
 		printWorldMap(g2);
+		printAeronef(g2);
 		initMountain(g2);
 	}
 
-	public void initAirport(Graphics2D g2) {
-		
-		//for (int i=0;i<=15;i++) {
-			
-		//printAirport(g2, SimulPara.POSITIONS[i], SimulPara.POSITIONS[i+1]);
-		
-		printAirport(g2, 300, 200);  // Aéroport de colombie britannique ,Canada 	 (civil)
-		printAirport(g2, 1020, 330); // Aéroport de Hong Kong 				 (military)
-		printAirport(g2, 1100, 550); //Aéroport de Brisbane, Australie 			 (cargo)
-		printAirport(g2, 500, 530);  // Aéroport Rio de janeiro, Brésil 		 (military)
-		printAirport(g2, 615, 320);  //Aéroport de Casablanca, Maroc			 (civil)
-		printAirport(g2, 300, 340);  // Aéroport de Mexico, Amérique			 (military)
-		printAirport(g2, 645, 240);  //Aéroport de charle de gaulle,France		 (civil)
-		printAirport(g2, 900, 200);  // Aéroport de Moscou 				 (cargo)
-		
-		
-		//}
-		
+	public void printGuiAirport(Graphics2D g2) {
+
+		Map<String, AirportManager> airportManagersMap = simulation.getAirportManagersMap();
+		for (Entry<String, AirportManager> airportManager : airportManagersMap.entrySet()) {
+			Airport airport = airportManager.getValue().getAirport();
+			int abscisse = (int) airport.getAbscisse();
+			int ordonnee = (int) airport.getOrdonnee();
+			printAirport(g2, abscisse, ordonnee);
+
+		}
 	}
+
+	public void printAeronef(Graphics2D g2) {
+		g2.setColor(Color.RED);
+		g2.setFont(new Font("default", Font.BOLD, 10));
+		List<AeronefManager> aeronefManagersMap = simulation.getAeronefManagers();
+		List<Airport> airportsList = simulation.getAirportsList();
+		for (AeronefManager aeronefManager : aeronefManagersMap) {
+			Aeronef aeronef = aeronefManager.getAeronef();
+			int abscisse = (int) aeronef.getAbscisse() + 7;
+			int ordonate = (int) aeronef.getOrdonnee() + 20;
+			String direction = aeronefManager.getDirection();
+			String altitute = "altitude " + String.valueOf(aeronef.getAltitude());
+			g2.setColor(Color.BLUE);
+			g2.setStroke(new BasicStroke(6));
+					if (direction.equals("Est-West")) {
+						g2.drawImage(Utility.readImage("src/images/turboprop_airplane.png"), abscisse, ordonate, 20, 26, this);
+						g2.drawString(altitute, abscisse, ordonate);
+
+					} else if (direction.equals("West-Est")) {
+						g2.drawImage(Utility.readImage("src/images/turboprop_airplane.png"), abscisse, ordonate, 20, 26, this);
+						g2.drawString(altitute, abscisse, ordonate);
+
+				}
+		}
+	}
+
+	public void initLine(Graphics2D g2) {
+		float[] dashPattern = { 4, 4 };
+		g2.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 2, dashPattern, 0));
+
+		List<Airport> airportsList = simulation.getAirportsList();
+		for (Airport airport : airportsList) {
+			List<Line> linesList = airport.getLinesList();
+			for (Line line : linesList) {
+				Line inverseline = new Line(line.getdestination(), line.getdeparture());
+				int departureAbscisse = (int) line.getdeparture().getAbscisse() + 10;
+				int departureOrdonate = (int) line.getdeparture().getOrdonnee() + 32;
+				String deparrtureType = line.getdeparture().getType();
+				int destinationAbscisse = (int) line.getdestination().getAbscisse() + 10;
+				int destinationOrdonate = (int) line.getdestination().getOrdonnee() + 32;
+				String destinationType = line.getdestination().getType();
+
+				if (!line.toString().contains("Departure = "+airport.getName())) {
+					g2.setColor(setLineColor(airport.getName()));
+					g2.drawLine(departureAbscisse, departureOrdonate, destinationAbscisse, destinationOrdonate);
+				}
+			}
+		}
+	}
+
+	public void printAirport(Graphics2D g2, int abscisse, int ordonate) {
+		g2.setStroke(new BasicStroke(6));
+		g2.drawImage(Utility.readImage("src/images/airport.png"), abscisse, ordonate, 25, 30, this);
+	}
+
+	public void printWorldMap(Graphics2D g2) {
+
+		g2.drawImage(Utility.readImage("src/images/world_map.png"), 100, 50, 1175, 699, this);
+	}
+
+	public void printMountain(Graphics2D g2, int abscisse, int ordonate, String name, int altitude, String country) {
+		g2.setColor(Color.BLACK);
+		g2.setStroke(new BasicStroke(3));
+		Utility.createMountain(abscisse, ordonate, name, altitude, country);
+		g2.drawImage(Utility.readImage("src/images/mountain.png"), abscisse, ordonate, 30, 40, this);
+	}
+
 	
 	public void initMountain(Graphics2D g2) {
 		for (int i=0;i<4;i++) {
@@ -65,105 +130,36 @@ public class GlobalViewPanel extends JPanel {
 		}
 	}
 	
+	public Color setLineColor(String name) {
+		switch (name) {
+		case "Melbourne Airport": {
+			
+			return new Color(128, 190, 32);
+		}
+		case "Yakutia Airlines": {
+			
+			return new Color(188, 0, 0);
+		}
+		case "Charles de Gaulle Airport": {
 	
+			return new Color(255, 126, 0);
+		}
+		case "Ouagadougou Airport": {
 	
-	public void initLine(Graphics2D g2) {
-		float[] dashPattern = {4, 4};
-		g2.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 2, dashPattern, 0));
-		
-		/* civil & civil = blue
-		 * cargo & civil =red
-		 * military & military = green
-		 * cargo & military= cyan
-		 * civil & military = orange
-		 */
-		
-		
-		
-		
-		g2.setColor(Color.BLUE);
-		g2.drawLine(615+15,320+40,645+15,240+40);
-		
-		g2.setColor(Color.BLUE);
-		g2.drawLine(615+15,320+40,300+15,200+40);
-		
-		g2.setColor(Color.ORANGE);
-		g2.drawLine(615+15,320+40,500+15,530+40);
-		
-		g2.setColor(Color.ORANGE);
-		g2.drawLine(300+15,200+40,500+15,530+40);
-		
-		g2.setColor(Color.ORANGE);
-		g2.drawLine(615+15,320+40,300+15,340+40);
-		
-		g2.setColor(Color.CYAN);
-		g2.drawLine(300+15,340+40,300+15,200+40);
-		
-		g2.setColor(Color.BLUE);
-		g2.drawLine(300+15,200+40,645+15,240+40);
-		
-		g2.setColor(Color.ORANGE);
-		g2.drawLine(645+15,240+40,1020+15,330+40);
-		
-		g2.setColor(Color.ORANGE);
-		g2.drawLine(645+15,240+40,300+15,340+40);
-		
-		g2.setColor(Color.CYAN);
-		g2.drawLine(1020+15,330+40,1100+15,550+40);
-		
-		g2.setColor(Color.GREEN);
-		g2.drawLine(500+15,530+40,300+15,340+40);
-		
-		g2.setColor(Color.GREEN);
-		g2.drawLine(500+15,530+40,1020+15,330+40);
-		
-		g2.setColor(Color.GREEN);
-		g2.drawLine(300+15,340+40,1020+15,330+40);
-		
-		g2.setColor(Color.RED);
-		g2.drawLine(1100+15,550+40,615+15,320+40);
-		
-		g2.setColor(Color.CYAN);
-		g2.drawLine(1100+15,550+40,500+15,530+40);
-		
-		g2.setColor(Color.CYAN);
-		g2.drawLine(900+15,200+40,1020+15,330+40);
-		
-		g2.setColor(Color.RED);
-		g2.drawLine(900+15,200+40,645+15,240+40);
-		
-		g2.setColor(Color.RED);
-		g2.drawLine(900+15,200+40,615+15,320+40);
-		
-		g2.setColor(Color.RED);
-		g2.drawLine(900+15,200+40,300+15,200+40);
-		
-		g2.setColor(Color.CYAN);
-		g2.drawLine(900+15,200+40,500+15,530+40);
-		
-		
-	}
+			return new Color(69, 41, 154);
+		}
+		case "Governor Francisco Gabrielli International Airport": {
+	
+			return new Color(217, 220, 24);
+		}
+		case "Yellowknife Airport": {
+	
+			return new Color(162, 19, 96);
+		}
+		default:
 
-	
-
-
-	public void printAirport(Graphics2D g2, int abscisse, int ordonate) {
-		g2.setColor(Color.BLACK);
-		g2.setStroke(new BasicStroke(6));
-		g2.drawImage(Utility.readImage("src/images/airport.png"), abscisse, ordonate, 30, 40, this);
+			return Color.BLACK;
+		}
+		
 	}
-	
-	public void printWorldMap(Graphics2D g2) {
-//		System.out.println(this.getWidth());
-		g2.drawImage(Utility.readImage("src/images/world_map.png"), 100, 50, 1175, 699, this);
-	}
-	
-	
-	public void printMountain(Graphics2D g2, int abscisse, int ordonate, String name, int altitude, String country) {
-		g2.setColor(Color.BLACK);
-		g2.setStroke(new BasicStroke(3));
-		Utility.createMountain(abscisse, ordonate, name, altitude, country);
-		g2.drawImage(Utility.readImage("src/images/mountain.png"), abscisse, ordonate, 30, 40, this);
-	}
-	
 }

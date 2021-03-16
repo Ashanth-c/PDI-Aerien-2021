@@ -14,8 +14,11 @@ import gui.SimulPara;
  * @author Ashanth
  *
  */
-public class AirportManager extends Thread{
+public class AirportManager extends Thread {
 	private Airport airport;
+	private boolean running = true;
+	private boolean nextTakeOff = true;
+	private int flyAeronef = 0;
 
 	public AirportManager(Airport airport) {
 		super();
@@ -24,19 +27,25 @@ public class AirportManager extends Thread{
 
 	@Override
 	public void run() {
-		int time = 0;
-		while (time <= SimulPara.SIMUlATION_TIME) {
-			if(isNextAeronef()) {
+		while (running) {
+			enter();
+			System.out.println(isNextAeronef());
+			if (isNextAeronef()) {
+
 				Aeronef aeronef = nextTakeOffAeronef();
 				AeronefManager aeronefManager = new AeronefManager(aeronef);
-				if(airportTakeOffAuthorization(aeronef)) {
+				aeronefManager.setDepartureManager(this);
+				if (airportTakeOffAuthorization(aeronef)) {
+					removeAeronefTerminal(aeronef);
 					aeronefManager.start();
-				}			
+					flyAeronef++;
+				}
 			}
-			time++;
+			System.out.println("airport " + airport.getName() +" "+ isNextAeronef() + " " +  flyAeronef);
+			running = isNextAeronef() ;
 		}
 	}
-	
+
 	/**
 	 * 
 	 * Method who tell if the Terminal is full or not
@@ -46,10 +55,9 @@ public class AirportManager extends Thread{
 	private String isTerminalFull() {
 		String isfull = "Full"; // Resultat de la verification Initialisé a Full
 		Terminal airportTerminal = airport.getTerminal(); // Aerogare d'un Aeroport
-		List<Aeronef> airportAeronefsList = airportTerminal.getAeronefs(); // Liste des Avions qui ce trouve dans
+		List<Aeronef> airportAeronefsList = airportTerminal.getTakeOffAeronefsList(); // Liste des Avions qui ce trouve dans
 																			// l'aerogare
-
-		if (airportAeronefsList.size() < airportTerminal.getTotalParkingPlace()) { // Si La taille de la Liste est plus
+		if (airportAeronefsList.size() <= airportTerminal.getTotalParkingPlace()) { // Si La taille de la Liste est plus
 																					// petit que le nombre de place max
 			isfull = "Not Full"; // Le resultat est Not Full
 		}
@@ -63,7 +71,7 @@ public class AirportManager extends Thread{
 	 */
 	public void addAeronefTerminal(Aeronef newAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
-		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
+		List<Aeronef> AirportAeronefsList = airportTerminal.getLandingAeronefsList();
 		int newTotaParkAeronefs = airportTerminal.getTotaParkAeronefs() + 1;
 
 		AirportAeronefsList.add(newAeronef);
@@ -98,7 +106,7 @@ public class AirportManager extends Thread{
 	}
 
 	/**
-	 *  Verification if the departure of the Aeronef is the same as the Airport
+	 * Verification if the departure of the Aeronef is the same as the Airport
 	 * 
 	 * @param aeronef
 	 * @return true if the departure is the Airport, or false if it's not
@@ -125,11 +133,12 @@ public class AirportManager extends Thread{
 
 	/**
 	 * Remove an Aeronef from the Terminal
+	 * 
 	 * @param outAeronef
 	 */
 	private void removeAeronefTerminal(Aeronef outAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
-		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
+		List<Aeronef> AirportAeronefsList = airportTerminal.getTakeOffAeronefsList();
 		int newTotaParkAeronefs = airportTerminal.getTotaParkAeronefs() - 1;
 
 		AirportAeronefsList.remove(outAeronef);
@@ -138,24 +147,25 @@ public class AirportManager extends Thread{
 
 	/**
 	 * Give to an Aeronef the autorization to Takeoff
+	 * 
 	 * @param goingAeronef
 	 * @return true if he has the authorisation, else false
 	 */
 	public boolean airportTakeOffAuthorization(Aeronef goingAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
-		List<Aeronef> AirportAeronefsList = airportTerminal.getAeronefs();
+		List<Aeronef> AirportAeronefsList = airportTerminal.getTakeOffAeronefsList();
 		boolean authorization = false;
-
-		if (destinationVerification(goingAeronef) && AirportAeronefsList.contains(goingAeronef)) {
-			removeAeronefTerminal(goingAeronef); 
-			authorization = true;
-			System.out.println("Autorisation de décollage oui");
+		if (goingAeronef.getDeparture().equals(airport.getName())) {
+			if (destinationVerification(goingAeronef) && AirportAeronefsList.contains(goingAeronef)) {
+				authorization = true;
+			}
 		}
 		return authorization;
 	}
 
 	/**
 	 * Give to an Aeronef the autorization to Land
+	 * 
 	 * @param goingAeronef
 	 * @return true if he has the authorisation, else false
 	 */
@@ -164,40 +174,58 @@ public class AirportManager extends Thread{
 		String airportType = airport.getType(); // Type d'acceuil de l'aeroport
 		String aeronefType = commingAeronef.getType(); // type de l'avion qui arrive
 
-		if (airportType.equals("All") || airportType.equals(aeronefType) || airportType.equals("Emergency")) { 
-			// si l'aeroport est de type all ou qu'il est le meme que celle de l'avion
+//		if (airportType.equals("Civil/Cargo") || airportType.equals(aeronefType) || airportType.equals("Emergency")) {
+		// si l'aeroport est de type all ou qu'il est le meme que celle de l'avion
+		System.out.println(isTerminalFull());
 			if (isTerminalFull().equals("Not Full")) {
-				if (departureVerification(commingAeronef)) { 
-					// Si le lieu d'arriver est bon
-					addAeronefTerminal(commingAeronef);
-					authorization = true;
-					System.out.println("Authorisation d'atterir");
-				}			
-			}
+		if (departureVerification(commingAeronef)) {
+			// Si le lieu d'arriver est bon
+			addAeronefTerminal(commingAeronef);
+			authorization = true;
+				}
 		}
+		// }
 		return authorization;
 	}
 
 	private boolean isNextAeronef() {
+		boolean isNext = false;
 		Terminal airportTerminal = airport.getTerminal(); // aerogare de l'aerogare
-		List<Aeronef> airportAeronefsList = airportTerminal.getAeronefs(); // Liste des avions de la gare
-		return (!airportAeronefsList.isEmpty());
-		
+		List<Aeronef> airportAeronefsList = airportTerminal.getTakeOffAeronefsList(); // Liste des avions de la gare
+		if (!airportAeronefsList.isEmpty()) {
+			for (Aeronef aeronef : airportAeronefsList) {
+				if (aeronef.getDeparture().equals(airport.getName())) {
+					isNext = true;
+				}
+			}
+		}
+		return isNext;
 	}
-	
-	
+
 	/**
 	 * Get the next Aeronef to takeOff
+	 * 
 	 * @return Aeronef to takeoff
 	 */
 	public Aeronef nextTakeOffAeronef() {
 		Terminal airportTerminal = airport.getTerminal(); // aerogare de l'aerogare
-		List<Aeronef> airportAeronefsList = airportTerminal.getAeronefs(); // Liste des avions de la gare
-
-		Aeronef takeOffAeronef = airportAeronefsList.get(airportAeronefsList.size() - 1); 
+		List<Aeronef> airportAeronefsList = airportTerminal.getTakeOffAeronefsList(); // Liste des avions de la gare
+		
+		Aeronef takeOffAeronef = airportAeronefsList.get(airportAeronefsList.size() - 1);
 		// Avion qui va decoller est le dernier de la liste des avions de la gare
 		return takeOffAeronef;
 
+	}
+
+	public synchronized void enter() {
+		if (flyAeronef == 3 ) {
+			try {
+				wait();
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 	public Airport getAirport() {
@@ -206,6 +234,22 @@ public class AirportManager extends Thread{
 
 	public void setAirport(Airport airport) {
 		this.airport = airport;
+	}
+
+	public boolean isNextTakeOff() {
+		return nextTakeOff;
+	}
+
+	public void setNextTakeOff(boolean nextTakeOff) {
+		this.nextTakeOff = nextTakeOff;
+	}
+
+	public int getFlyAeronef() {
+		return flyAeronef;
+	}
+
+	public void setFlyAeronef(int flyAeronef) {
+		this.flyAeronef = flyAeronef;
 	}
 
 }

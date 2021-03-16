@@ -17,6 +17,8 @@ public class AeronefManager extends Thread {
 	private Airport destinationAirport;
 	private boolean running = true;
 	private String isInUrgence="SearchEmergencyAirport";
+	private String direction;
+	private AirportManager departureManager;
 
 	public AeronefManager(Aeronef aeronef) {
 		super();
@@ -49,7 +51,6 @@ public class AeronefManager extends Thread {
 			}
 			travelAeronef();
 		}
-		System.out.println("Atterisage de l'aeronef " + aeronef.getModel()+ " reussi");
 	}
 
 	public void landingAltitute(Aeronef aeronef) {
@@ -120,14 +121,16 @@ public class AeronefManager extends Thread {
 	
 	public void travelAeronef() {
 		ElementManager.avoidObstacle(aeronef);
-		if (((int) aeronef.getAbscisse() != destinationAirport.getAbscisse()) && ((int) aeronef.getOrdonnee() != destinationAirport.getOrdonnee())) {
+		if (( aeronef.getAbscisse() != destinationAirport.getAbscisse()) && ( aeronef.getOrdonnee() != destinationAirport.getOrdonnee())) {
 			moveAeronefAbcsisse(abscisseVariationValue);
 			moveAeronefOrdonnee(ordoneeVariationValue);
-			System.out.println("Coordonnee de l'aeronef : " + aeronef.getAbscisse() + " , " + (int) aeronef.getOrdonnee());
+			System.out.println("Coordonnee de l'aeronef " + aeronef.getName() + " : " + aeronef.getAbscisse() + " , " + (int) aeronef.getOrdonnee());
 		}		
 		else {
 			AirportManager airportManager = new AirportManager(destinationAirport);
-			running = (!airportManager.airportLandingAuthorization(aeronef));
+			running = !(airportManager.airportLandingAuthorization(aeronef));
+			exit();
+			System.out.println("Atterisage de l'aeronef " + aeronef.getName() + " " + aeronef.getModel()+ " reussi"+ running);
 		}
 	}
 
@@ -162,7 +165,13 @@ public class AeronefManager extends Thread {
 		}
 	}
 
-
+	public synchronized void exit() {
+		synchronized (departureManager) {
+			departureManager.setFlyAeronef(0);
+			departureManager.notify();
+			}
+	
+	}
 
 	public Aeronef getAeronef() {
 		return aeronef;
@@ -196,6 +205,31 @@ public class AeronefManager extends Thread {
 
 	public void setOrdoneeVariationValue(int ordoneeVariationValue) {
 		this.ordoneeVariationValue = ordoneeVariationValue;
+	}
+
+
+	public String getDirection() {
+		if(abscisseVariationValue<0) {
+			direction = "Est-West";
+		}
+		if(abscisseVariationValue>=0) {
+			direction = "West-Est";
+		}
+		return direction;
+	}
+	
+	public void setDirection(String direction) {
+		this.direction = direction;
+	}
+
+
+	public AirportManager getDepartureManager() {
+		return departureManager;
+	}
+
+
+	public void setDepartureManager(AirportManager departureManager) {
+		this.departureManager = departureManager;
 	}
 
 }

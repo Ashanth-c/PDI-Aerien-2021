@@ -72,3 +72,4 @@ public class ZoomedViewPanel extends JPanel {
 		g2.setStroke(oldStroke);
 	}
 }
+

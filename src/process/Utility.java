@@ -39,7 +39,7 @@ public class Utility {
 
 	public static void unitTime() {
 		try {
-			Thread.sleep(SimulPara.SIMULATION_SPEED);
+			Thread.sleep(SimulPara.SIMULATION_SLEEP);
 		} catch (InterruptedException e) {
 			System.err.println(e.getMessage());
 		}
@@ -62,9 +62,6 @@ public class Utility {
 	public static Aeronef createAeronef(int abscisse, int ordonnee, String name, String type, String model, String destination, String departure,int totalSeats, int fuel, int altitude, int speed, boolean urgent) {
 		
 		Aeronef aeronef = new Aeronef(abscisse, ordonnee, name, type, model, destination, departure, totalSeats, fuel, altitude, speed, urgent);
-		Airport departureAirport = ElementManager.getAiportFromName(departure);
-		AirportManager airportManager =new AirportManager(departureAirport);
-		airportManager.addAeronefTerminal(aeronef);
 		return aeronef;
 	}
 	
@@ -92,9 +89,11 @@ public class Utility {
 	
 	private static Terminal createTerminal() {
 		List<Aeronef> terminalList = new ArrayList<Aeronef>();
+		List<Aeronef> terminalLandList = new ArrayList<Aeronef>();		
+
 		int totalParkingPlace = getRandom(SimulPara.TERMINAL_MIN_PLACE, SimulPara.TERMINAL_MAX_PLACE);
 
-		return new Terminal(totalParkingPlace, 0, terminalList);
+		return new Terminal(totalParkingPlace, 0, terminalList ,terminalLandList);
 
 	}
 	

@@ -21,6 +21,7 @@ public class Simulation {
 	private List<AeronefManager> aeronefManagers = new ArrayList<AeronefManager>();
 	private List<FlockBirds> birds = new ArrayList<FlockBirds>();
 	private List<Mountain> mountains = new ArrayList<Mountain>();
+	private List<Airport> airportsList =  new ArrayList<Airport>();
 	private Map<String, AirportManager> airportManagersMap = new HashMap<String, AirportManager>();
 
 	public Simulation() {
@@ -39,7 +40,7 @@ public class Simulation {
 
 	public void initSimulation() {
 
-		List<Airport> airportsList = initAiport();
+		airportsList = initAiport();
 		CreateLine(airportsList);
 		initAeronefs(airportsList);
 		for (Airport airport : airportsList) {
@@ -52,36 +53,27 @@ public class Simulation {
 	public List<Airport> initAiport() {
 
 		List<Airport> aiportList = new ArrayList<Airport>();
-		City sanFrancisco = new City("San Francisco", "United States");
-		City hongKong = new City("Hong Kong", "China");
-		City brisbane = new City("Brisbane", "Australia");
-		City casablanca = new City("Casablanca", "Morocco");
-		City rio = new City("Rio de Janeiro", "Brazil");
-		City mexico = new City("Mexico City", "Mexico");
+		
+		City yellowknife = new City("Yellowknife", "Canada");
+		City melbourne = new City("Melbourne", "Australia");
+		City ouagadougou = new City("Ouagadougou", "Burkina Faso");
+		City mendoza = new City("Mendoza", "Argentina");
 		City paris = new City("Paris", "France");
-		City moscow = new City("Moscow", "Russia");
+		City yakutsk = new City("Yakutsk", "Russia");
 
-		Airport sfAirport = Utility.createAirport(245, 270, "San Francisco International Airport", "Civil/Cargo",
-				sanFrancisco, "1927");
-		Airport hgkgAirport = Utility.createAirport(1020, 330, "Shek Kong Airfield", "Military", hongKong, "1950");
-		Airport brisbaneAirport = Utility.createAirport(1100, 550, "Brisbane Airport", "Cargo", brisbane, "1988");
-		Airport rioAirport = Utility.createAirport(500, 530, "Galeão Air Force Base", "Military", rio, "1941");
-		Airport casablancaAirport = Utility.createAirport(615, 320, "Mohammed V International Airport", "Civil",
-				casablanca, "1963");
-		Airport MexicoAirport = Utility.createAirport(300, 340, "Mexico City International Airport", "Civil", mexico,
-				"1931");
-		Airport cdgAirport = Utility.createAirport(645, 240, "Charles de Gaulle Airport", "Civil", paris, "1974");
-		Airport moscowAirport = Utility.createAirport(900, 200, "Sheremetyevo International Airport", "Cargo", moscow,
-				"1959");
+		Airport yellowknifeAirport = Utility.createAirport(285, 165, "Yellowknife Airport", "Civil/Cargo", yellowknife, "2007");
+		Airport brisbaneAirport = Utility.createAirport(1115, 618, "Melbourne Airport", "Cargo", melbourne, "1988");
+		Airport mendozaAirport = Utility.createAirport(415, 630, "Governor Francisco Gabrielli International Airport", "Civil", mendoza, "1941");
+		Airport ouagadougouAirport = Utility.createAirport(615, 405, "Ouagadougou Airport", "Civil/Cargo/Military", ouagadougou, "1960");
+		Airport cdgAirport = Utility.createAirport(645, 240, "Charles de Gaulle Airport", "Civil/Cargo", paris, "1974");
+		Airport yakutskAirport = Utility.createAirport(1050, 180, "Yakutia Airlines", "Military", yakutsk, "2002");
 
-		aiportList.add(MexicoAirport);
 		aiportList.add(brisbaneAirport);
-		aiportList.add(moscowAirport);
+		aiportList.add(yakutskAirport);
 		aiportList.add(cdgAirport);
-		aiportList.add(casablancaAirport);
-		aiportList.add(rioAirport);
-		aiportList.add(hgkgAirport);
-		aiportList.add(sfAirport);
+		aiportList.add(ouagadougouAirport);
+		aiportList.add(mendozaAirport);
+		aiportList.add(yellowknifeAirport);
 
 		return aiportList;
 	}
@@ -100,13 +92,15 @@ public class Simulation {
 
 	public void initAeronefs(List<Airport> airportsList) {
 		for (Airport airport : airportsList) {
-			int numAeronefs = Utility.getRandom(1, airport.getTerminal().getTotalParkingPlace());
+			int numAeronefs = Utility.getRandom(5, SimulPara.TERMINAL_MIN_PLACE);
 			for (int indexAeronefs = 0; indexAeronefs < numAeronefs; indexAeronefs++) {
+				
 				List<Line> linesList = airport.getLinesList();
 				int indexDestination = Utility.getRandom(0, linesList.size() - 1);
 				while ((airport.getName().equals(linesList.get(indexDestination).getdestination().getName()))) {
 					indexDestination = Utility.getRandom(0, linesList.size() - 1);
 				}
+				
 				Airport destinationAirport = linesList.get(indexDestination).getdestination();
 				String destinationName = destinationAirport.getName();
 				String destinationCity = destinationAirport.getCity().getName();
@@ -114,7 +108,12 @@ public class Simulation {
 				String aeronefName = getAeronefName(airport.getCity().getName(), destinationCity) + indexAeronefs;
 				int aeronefAbscisse = (int) airport.getAbscisse();
 				int aeronefOrdonnee = (int) airport.getOrdonnee();
+				int totaParkAeronefs = airport.getTerminal().getTotaParkAeronefs()+1;
+
+				
 				Aeronef aeronef = Utility.createAeronef(aeronefAbscisse, aeronefOrdonnee, aeronefName, airport.getType(), modelAeronefs, destinationName, airport.getName(), 300, 100, 0, 1000, false);
+				airport.getTerminal().getTakeOffAeronefsList().add(aeronef);
+				airport.getTerminal().setTotaParkAeronefs(totaParkAeronefs);
 				AeronefManager aeronefManager = new AeronefManager(aeronef);
 				aeronefManagers.add(aeronefManager);
 			}
@@ -172,9 +171,18 @@ public class Simulation {
 	}
 
 	public String getAeronefName(String departure, String destination) {
-		String nameDeparture = departure.substring(0, 5);
-		String nameDestination = destination.substring(0, 5);
+		
+		String nameDeparture = departure.trim().substring(0, 5);
+		String nameDestination = destination.trim().substring(0, 5);
 		return nameDeparture + "To" + nameDestination;
+	}
+
+	public List<Airport> getAirportsList() {
+		return airportsList;
+	}
+
+	public void setAirportsList(List<Airport> airportsList) {
+		this.airportsList = airportsList;
 	}
 
 }

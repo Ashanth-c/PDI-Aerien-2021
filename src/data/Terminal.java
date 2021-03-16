@@ -5,7 +5,8 @@ import java.util.List;
 public class Terminal {
 	private int totalParkingPlace;
 	private int totaParkAeronefs;
-	private List<Aeronef> aeronefs;
+	private List<Aeronef> takeOffAeronefsList;
+	private List<Aeronef> landingAeronefsList;
 
 	public Terminal(int totalParkingPlace, int totaParkAeronefs) {
 		super();
@@ -13,11 +14,12 @@ public class Terminal {
 		this.totaParkAeronefs = totaParkAeronefs;
 	}
 
-	public Terminal(int totalParkingPlace, int totaParkAeronefs, List<Aeronef> aeronefs) {
+	public Terminal(int totalParkingPlace, int totaParkAeronefs, List<Aeronef> takeOffAeronefs, List<Aeronef> landingAeronefs) {
 		super();
 		this.totalParkingPlace = totalParkingPlace;
 		this.totaParkAeronefs = totaParkAeronefs;
-		this.aeronefs = aeronefs;
+		this.takeOffAeronefsList = takeOffAeronefs;
+		this.landingAeronefsList = landingAeronefs;
 	}
 
 	public int getTotalParkingPlace() {
@@ -36,18 +38,26 @@ public class Terminal {
 		this.totaParkAeronefs = totaParkAeronefs;
 	}
 
-	public List<Aeronef> getAeronefs() {
-		return aeronefs;
-	}
-
-	public void setAeronefs(List<Aeronef> aeronefs) {
-		this.aeronefs = aeronefs;
-	}
-
 	@Override
 	public String toString() {
 		return "Terminal [totalParkingPlace=" + totalParkingPlace + ", totaParkAeronefs=" + totaParkAeronefs
-				+ ", aeronefs=" + aeronefs + "]";
+				+ ", aeronefs=" + takeOffAeronefsList + "]";
+	}
+
+	public List<Aeronef> getTakeOffAeronefsList() {
+		return takeOffAeronefsList;
+	}
+
+	public void setTakeOffAeronefsList(List<Aeronef> takeOffAeronefsList) {
+		this.takeOffAeronefsList = takeOffAeronefsList;
+	}
+
+	public List<Aeronef> getLandingAeronefsList() {
+		return landingAeronefsList;
+	}
+
+	public void setLandingAeronefsList(List<Aeronef> landingAeronefsList) {
+		this.landingAeronefsList = landingAeronefsList;
 	}
 
 }
