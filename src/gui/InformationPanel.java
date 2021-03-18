@@ -4,13 +4,24 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
+import data.Aeronef;
+import data.Airport;
+import data.Position;
+import process.AeronefManager;
+import process.Simulation;
 
 public class InformationPanel extends JPanel {
 
@@ -18,20 +29,33 @@ public class InformationPanel extends JPanel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	private PaintStrategy paintStrategy = new PaintStrategy();
 	private JButton panelChangeButton;
 	private JButton launchSimulationButton;
 	private JButton urgenceLandingButton;
 	private DisplayElement instance;
-	
+	private Simulation simulation;
+	private Position position;
 
-	public InformationPanel(DisplayElement instance) {
+	public InformationPanel(DisplayElement instance,Simulation simulation) {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-//		setLayout(new FlowLayout(FlowLayout.LEFT));
 		this.instance = instance;
+		this.simulation = simulation;
 		init();
 	}
 
+	
+	public void paintComponent(Graphics g) {
+		Graphics2D g2 = (Graphics2D) g;
+		g2.setColor(new Color(225, 223, 225));
+		   g2.fillRect(0, 0, this.getWidth(), this.getHeight());
+	
+		   if (position!=null) {
+			   g2.setColor(Color.black);
+			   g2.setFont(new Font("default", Font.BOLD, 12));
+			drawString(g2, position.toString(), 12, 110);
+		}
+	}
+	
 	public void init() {
 
 		panelChangeButton = new JButton("View Airport");
@@ -47,6 +71,9 @@ public class InformationPanel extends JPanel {
 		add(panelChangeButton);
 		add(Box.createVerticalStrut(5));
 		add(urgenceLandingButton);
+
+		
+		
 		
 		panelChangeButton.addActionListener(new ActionListener() {
 			
@@ -64,16 +91,65 @@ public class InformationPanel extends JPanel {
 			}
 		});
 		
-		launchSimulationButton.addActionListener(new ActionListener() {
-			
+			launchSimulationButton.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
+				
 				Thread simulationThread = new Thread(instance);
 				simulationThread.start();
+				
 			}
 		});
-
+	}
+	
+	public void printAeronefDetail(int x, int y) {
+		List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
+		for (AeronefManager aeronefManager : aeronefManagers) {
+			Aeronef aeronef = aeronefManager.getAeronef();
+			if (aeronef.getAbscisse()+30>=x && aeronef.getOrdonnee()+30>=y && aeronef.getAbscisse()-30<=x && aeronef.getOrdonnee()-30<=y) {
+				position=aeronef;
+			}
+		}
+	}
+	
+	public void printElementDetail(int x, int y) {
+		List<Airport> airportsList = simulation.getAirportsList();
+		List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
+		for (AeronefManager aeronefManager : aeronefManagers) {
+			Aeronef aeronef = aeronefManager.getAeronef();
+			for (Airport airport : airportsList) {
+				if (airport.getAbscisse()+30>=x && airport.getOrdonnee()+30>=y && airport.getAbscisse()-30<=x && airport.getOrdonnee()-30<=y) {
+					position=airport;
+				}
+				else {
+					if (aeronef.getAbscisse()+30>=x && aeronef.getOrdonnee()+30>=y && aeronef.getAbscisse()-30<=x && aeronef.getOrdonnee()-30<=y) {
+						position=aeronef;
+					}
+				}
+		}
+		
+		}
+		
+		
 	}
 
+	public void printAirportInfo(Airport airport,Graphics2D g2) {
+		g2.drawString(airport.getName(), 50, 70);
+	}
+	
+	void drawString(Graphics2D g2, String text, int x, int y) {
+	    for (String line : text.split("\n"))
+	        g2.drawString(line, x, y += g2.getFontMetrics().getHeight());
+	}
+
+
+	public Simulation getSimulation() {
+		return simulation;
+	}
+
+
+	public void setSimulation(Simulation simulation) {
+		this.simulation = simulation;
+	}
 }

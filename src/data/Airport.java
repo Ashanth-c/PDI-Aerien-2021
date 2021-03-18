@@ -85,8 +85,8 @@ public class Airport extends Position {
 
 	@Override
 	public String toString() {
-		return "Airport [name=" + name + ", type=" + type + ", aerodrome=" + aerodrome + ", terminal=" + terminal
-				+ ", city=" + city + ", openingDate=" + openingDate + ", linesList=" + linesList + "]";
+		return "AIRPORT :\nName: " + name + "\nType: " + type + aerodrome + terminal
+				+ "\nCity: " + city + "\nOpening Date: " + openingDate;
 	}
 
 }

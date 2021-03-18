@@ -40,8 +40,7 @@ public class Terminal {
 
 	@Override
 	public String toString() {
-		return "Terminal [totalParkingPlace=" + totalParkingPlace + ", totaParkAeronefs=" + totaParkAeronefs
-				+ ", aeronefs=" + takeOffAeronefsList + "]";
+		return "\nTota park aeronefs: " + totaParkAeronefs+"/"+totalParkingPlace;
 	}
 
 	public List<Aeronef> getTakeOffAeronefsList() {

@@ -6,6 +6,12 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +49,7 @@ public class GlobalViewPanel extends JPanel {
 		printWorldMap(g2);
 		printAeronef(g2);
 		initMountain(g2);
+		
 	}
 
 	public void printGuiAirport(Graphics2D g2) {
@@ -70,13 +77,14 @@ public class GlobalViewPanel extends JPanel {
 			String altitute = "altitude " + String.valueOf(aeronef.getAltitude());
 			g2.setColor(Color.BLUE);
 			g2.setStroke(new BasicStroke(6));
-					if (direction.equals("Est-West")) {
+			for (Airport airport : airportsList) {
+				
+			}
+			if (direction.equals("Est-West")) {
 						g2.drawImage(Utility.readImage("src/images/turboprop_airplane.png"), abscisse, ordonate, 20, 26, this);
-						g2.drawString(altitute, abscisse, ordonate);
 
 					} else if (direction.equals("West-Est")) {
 						g2.drawImage(Utility.readImage("src/images/turboprop_airplane.png"), abscisse, ordonate, 20, 26, this);
-						g2.drawString(altitute, abscisse, ordonate);
 
 				}
 		}
@@ -90,13 +98,10 @@ public class GlobalViewPanel extends JPanel {
 		for (Airport airport : airportsList) {
 			List<Line> linesList = airport.getLinesList();
 			for (Line line : linesList) {
-				Line inverseline = new Line(line.getdestination(), line.getdeparture());
 				int departureAbscisse = (int) line.getdeparture().getAbscisse() + 10;
 				int departureOrdonate = (int) line.getdeparture().getOrdonnee() + 32;
-				String deparrtureType = line.getdeparture().getType();
 				int destinationAbscisse = (int) line.getdestination().getAbscisse() + 10;
 				int destinationOrdonate = (int) line.getdestination().getOrdonnee() + 32;
-				String destinationType = line.getdestination().getType();
 
 				if (!line.toString().contains("Departure = "+airport.getName())) {
 					g2.setColor(setLineColor(airport.getName()));
@@ -161,5 +166,13 @@ public class GlobalViewPanel extends JPanel {
 			return Color.BLACK;
 		}
 		
+	}
+
+	public Simulation getSimulation() {
+		return simulation;
+	}
+
+	public void setSimulation(Simulation simulation) {
+		this.simulation = simulation;
 	}
 }

@@ -108,9 +108,9 @@ public class Aeronef extends Position {
 	
 	@Override
 	public String toString() {
-		return "Aeronef [name="+ name + ", type=" + type + ", model=" + model + ", destination=" + destination + ", departure="
-				+ departure + ", totalSeats=" + totalSeats + ", fuel=" + fuel + ", altitude=" + altitude + ", speed="
-				+ speed + "]";
+		return "AERONEF\nNname: "+ name + "\nType: " + type + "\nModel: " + model + "\nDestination:\n" + destination + "\nDeparture:\n"
+				+ departure + "\nTotal Seats: " + totalSeats + "\nFuel: " + fuel + "\nAltitude: " + altitude + "\nSpeed: "
+				+ speed;
 	}
 
 	public String getName() {

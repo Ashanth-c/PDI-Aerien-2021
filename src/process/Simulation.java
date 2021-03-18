@@ -17,7 +17,6 @@ import gui.SimulPara;
 
 public class Simulation {
 	private Line line;
-	private List<ObstacleManager> obstacleManagers = new ArrayList<ObstacleManager>();
 	private List<AeronefManager> aeronefManagers = new ArrayList<AeronefManager>();
 	private List<FlockBirds> birds = new ArrayList<FlockBirds>();
 	private List<Mountain> mountains = new ArrayList<Mountain>();
@@ -92,7 +91,7 @@ public class Simulation {
 
 	public void initAeronefs(List<Airport> airportsList) {
 		for (Airport airport : airportsList) {
-			int numAeronefs = Utility.getRandom(5, SimulPara.TERMINAL_MIN_PLACE);
+			int numAeronefs = Utility.getRandom(5, 10);
 			for (int indexAeronefs = 0; indexAeronefs < numAeronefs; indexAeronefs++) {
 				
 				List<Line> linesList = airport.getLinesList();

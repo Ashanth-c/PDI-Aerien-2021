@@ -32,7 +32,7 @@ public class Aerodrome {
 
 	@Override
 	public String toString() {
-		return "Aerodrome [totalRunway=" + totalRunway + ", runwayLenght=" + runwayLenght + "]";
+		return "\nTotal runway: " + totalRunway + "\nRunway lenght: " + runwayLenght;
 	}
 
 }
