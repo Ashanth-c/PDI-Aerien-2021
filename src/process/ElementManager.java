@@ -51,10 +51,8 @@ public class ElementManager {
 		
 		for(Entry<String, Airport> airportM : airportMap.entrySet()) {
 			Airport airport = airportM.getValue();
-			if (((aeronefAbscisse + 10) >= airport.getAbscisse()) && ((aeronefOrdonnee + 10) >= airport.getOrdonnee())) {
-//				emergencyLanding(aeronef, airport);
+			if (aeronefAbscisse+100>=airport.getAbscisse() && aeronefOrdonnee+100>=airport.getOrdonnee() && aeronefAbscisse-100<=airport.getAbscisse() && aeronefOrdonnee-100<=airport.getOrdonnee()) {
 				System.out.println("Atterissage en urgence réussi");
-				aeronef.setUrgent(false);
 				airportName = airport.getName();
 			}
 		}

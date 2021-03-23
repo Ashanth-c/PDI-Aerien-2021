@@ -79,6 +79,7 @@ public class DisplayElement extends JPanel implements Runnable {
 		@Override
 		protected Integer doInBackground() throws Exception {
 			// TODO Auto-generated method stub
+			createNewSimulation();
 			boolean launchAirportManager = true;
 			if(launchAirportManager) {
 			List<Airport> airportsList = simulation.getAirportsList();

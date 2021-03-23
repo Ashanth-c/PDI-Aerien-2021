@@ -10,7 +10,6 @@ import gui.SimulPara;
 
 /**
  * Class for the managmenent of an Airport
- * 
  * @author Ashanth
  *
  */

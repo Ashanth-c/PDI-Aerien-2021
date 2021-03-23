@@ -19,11 +19,22 @@ public class LineBuilder {
 		List<Line> newAirport1LinesList = airport1.getLinesList();
 		List<Line> newAirport2LinesList = airport2.getLinesList();
 
-		newAirport1LinesList.add(line);
-		newAirport2LinesList.add(line);
+		if (airport1.getType().contains("Military") && airport2.getType().contains("Military")) {
+			newAirport1LinesList.add(line);
+			newAirport2LinesList.add(line);
 
-		airport1.setLinesList(newAirport1LinesList);
-		airport2.setLinesList(newAirport2LinesList);
+			airport1.setLinesList(newAirport1LinesList);
+			airport2.setLinesList(newAirport2LinesList);
+
+		} 
+		else if (!(airport1.getType().equals("Military") || airport2.getType().equals("Military"))) {
+
+			newAirport1LinesList.add(line);
+			newAirport2LinesList.add(line);
+
+			airport1.setLinesList(newAirport1LinesList);
+			airport2.setLinesList(newAirport2LinesList);
+		}
+
 	}
-
 }

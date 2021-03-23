@@ -6,6 +6,7 @@ package gui;
 public class SimulPara {
 	
 	/**
+	 * 
 	 * @author Ashanth
 	 * @author Khadija aeronef manager
 	 * @author Maeva mountain manager
@@ -33,6 +34,8 @@ public class SimulPara {
 
 	public static final int SIMULATION_SPEED = 2000;
 	
+	public static final int SIMULATION_URGENCE_SPEED = 800;
+	
 	public static final int SIMULATION_SLEEP = 1000;
 
 	public static final String[] MOUNTAINS= new String[] {"montagne 1","montagne 2", "montagne 3", "montagne4"};
@@ -45,6 +48,3 @@ public class SimulPara {
 	
 	
 }
-	
-
-	

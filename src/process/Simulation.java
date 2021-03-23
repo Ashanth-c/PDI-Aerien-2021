@@ -82,7 +82,7 @@ public class Simulation {
 
 		for (Airport airport1 : airports) {
 			for (Airport airport2 : airports) {
-				if (!(airport1.getName().equals(airport2.getName()))) {
+			if (!(airport1.getName().equals(airport2.getName()))) {
 					lineBuilder.addLines(airport1, airport2);
 				}
 			}

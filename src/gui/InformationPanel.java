@@ -22,6 +22,7 @@ import data.Airport;
 import data.Position;
 import process.AeronefManager;
 import process.Simulation;
+import process.Utility;
 
 public class InformationPanel extends JPanel {
 
@@ -73,7 +74,19 @@ public class InformationPanel extends JPanel {
 		add(urgenceLandingButton);
 
 		
-		
+		urgenceLandingButton.addActionListener( new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				Aeronef aeronef = null;
+				List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
+				int random = Utility.getRandom(0, aeronefManagers.size()-1);
+				aeronef = urgentAeronef(random);
+				System.out.println("aaaaaaaaaaaa"+aeronef.getName());
+				aeronef.setUrgent(true);
+			}
+		});
 		
 		panelChangeButton.addActionListener(new ActionListener() {
 			
@@ -141,6 +154,19 @@ public class InformationPanel extends JPanel {
 	void drawString(Graphics2D g2, String text, int x, int y) {
 	    for (String line : text.split("\n"))
 	        g2.drawString(line, x, y += g2.getFontMetrics().getHeight());
+	}
+	
+	public Aeronef urgentAeronef(int key) {
+		List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
+		List<Airport> airportsList = simulation.getAirportsList();
+		Aeronef aeronef = aeronefManagers.get(key).getAeronef();
+		for (Airport airport : airportsList) {
+			if (airport.getAbscisse()==aeronef.getAbscisse() && airport.getOrdonnee()==aeronef.getOrdonnee()) {
+				int random = Utility.getRandom(0, aeronefManagers.size()-1);
+				return aeronef = urgentAeronef(random);
+			}
+		}
+		return aeronef;
 	}
 
 

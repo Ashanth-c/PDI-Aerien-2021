@@ -18,13 +18,16 @@ public class ProcessTest {
 		List<Aeronef> aeronefs = airport.getTerminal().getTakeOffAeronefsList();
 		Aeronef aeronef = aeronefs.get(0);
 		AeronefManager aeronefManager = new AeronefManager(aeronef);
-		AirportManager airportManager1 = new AirportManager(airport);
+ 		AirportManager airportManager1 = new AirportManager(airport);
 		System.out.println(aeronefs.size());
 		System.out.println(airport.getTerminal().getTotaParkAeronefs());
-//		airportManager1.start();
+		int random = Utility.getRandom(0, aeronefs.size()-1);
+		Aeronef aeronef2 = aeronefs.get(random);
+		aeronef2.setUrgent(true);
+		airportManager1.start();
 		
 //		aeronefManager.start();
-		//		
+		
 //		while(true) {
 //			aeronefManager.travelAeronef();
 			

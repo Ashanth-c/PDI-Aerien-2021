@@ -6,18 +6,20 @@ import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics2D;
-import java.awt.Image;
+import java.awt.MouseInfo;
+import java.awt.Point;
+import java.awt.PointerInfo;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.geom.AffineTransform;
 import java.awt.image.AffineTransformOp;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 import data.Aeronef;
@@ -32,11 +34,10 @@ import process.AirportManager;
 public class GlobalViewPanel extends JPanel {
 
 	private Simulation simulation;
-	private PaintStrategy paintStrategy = new PaintStrategy();
 
 	public GlobalViewPanel(Simulation simulation) {
 		this.simulation = simulation;
-		setBackground(Color.white);
+		setBackground(new Color(12,56,10));
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 	}
 
@@ -49,6 +50,7 @@ public class GlobalViewPanel extends JPanel {
 		printWorldMap(g2);
 		printAeronef(g2);
 		initMountain(g2);
+		
 	}
 
 	public void printGuiAirport(Graphics2D g2) {
@@ -63,15 +65,6 @@ public class GlobalViewPanel extends JPanel {
 		}
 	}
 
-	
-    public AffineTransform rotateClockwise180(BufferedImage source) {
-        AffineTransform transform = new AffineTransform();
-        transform.rotate(Math.PI, source.getWidth()/2, source.getHeight()/2);
-        double offset = (source.getWidth()-source.getHeight())/2;
-        transform.translate(offset,offset);
-        return transform;
-    }
-	
 	public void printAeronef(Graphics2D g2) {
 		g2.setColor(Color.RED);
 		g2.setFont(new Font("default", Font.BOLD, 10));
@@ -85,83 +78,57 @@ public class GlobalViewPanel extends JPanel {
 			String altitute = "altitude " + String.valueOf(aeronef.getAltitude());
 			g2.setColor(Color.BLUE);
 			g2.setStroke(new BasicStroke(6));
-					if (direction.equals("Est-West")) {
-						
-						//Image load
-						Image image=Utility.readImage("src/images/turboprop_airplane.png");
-						
-						//Cast
-						BufferedImage buffImage= (BufferedImage) image;
-						
-						//Creates an output image for the filter later
-						BufferedImage output = new BufferedImage(buffImage.getHeight(), buffImage.getWidth(), buffImage.getType());
-						
-						//Call of the rotateClockWise180 method
-						AffineTransform affine= rotateClockwise180(buffImage);
-						
-						//uses an affine transform to perform a linear mapping from 2D coordinates
-				        AffineTransformOp op = new AffineTransformOp(affine, AffineTransformOp.TYPE_BILINEAR);
-				        op.filter(buffImage, output);
-				        
-				        try {
-				        	//Creates a file that's turned
-							ImageIO.write(output, "png", new File("src/images/turboprop_airplane2.png"));
-							
-							//Draws the newest file on the map
-							g2.drawImage(Utility.readImage("src/images/turboprop_airplane2.png"), abscisse, ordonate, 20, 26, this);
-		
-							g2.drawString(altitute, abscisse, ordonate);
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						 
-				 
+			if(aeronef.getUrgent()) {
+				g2.drawImage(Utility.readImage("src/images/urgent_turbojet.png"), abscisse, ordonate, 20, 26, this);				
+			}
+			else {
+			if (direction.equals("Est-West")) {
+				BufferedImage image = (BufferedImage) Utility.readImage("src/images/turboprop_airplane1.png");
+				double rotationRequired = Math.toRadians (180);
+				double locationX = image.getWidth() / 2;
+				double locationY = image.getHeight() / 2;
+				AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+				AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+				g2.drawImage(op.filter(image, null), abscisse,ordonate,20,26, null);
+//				g2.drawImage(Utility.readImage("src/images/turboprop_airplane1.png"), abscisse, ordonate, 20, 26, this);
 
-					} else if (direction.equals("West-Est")) {
-						g2.drawImage(Utility.readImage("src/images/turboprop_airplane.png"), abscisse, ordonate, 20, 26, this);
-						g2.drawString(altitute, abscisse, ordonate);
+			} else if (direction.equals("West-Est")) {
+				g2.drawImage(Utility.readImage("src/images/turboprop_airplane1.png"), abscisse, ordonate, 20, 26, this);
 
 				}
+			}
 		}
 	}
 
 	public void initLine(Graphics2D g2) {
-		float[] dashPattern = { 4, 4 };
+		float[] dashPattern = { 9, 9 };
 		g2.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 2, dashPattern, 0));
 
 		List<Airport> airportsList = simulation.getAirportsList();
 		for (Airport airport : airportsList) {
 			List<Line> linesList = airport.getLinesList();
 			for (Line line : linesList) {
-				Line inverseline = new Line(line.getdestination(), line.getdeparture());
 				int departureAbscisse = (int) line.getdeparture().getAbscisse() + 10;
 				int departureOrdonate = (int) line.getdeparture().getOrdonnee() + 32;
-				String deparrtureType = line.getdeparture().getType();
 				int destinationAbscisse = (int) line.getdestination().getAbscisse() + 10;
 				int destinationOrdonate = (int) line.getdestination().getOrdonnee() + 32;
-				String destinationType = line.getdestination().getType();
 
-				if (!line.toString().contains("Departure = "+airport.getName())) {
-					g2.setColor(setLineColor(airport.getName()));
+				if (!line.toString().contains("Departure = " + airport.getName())) {
+					g2.setColor(new Color(147,209,138));
 					g2.drawLine(departureAbscisse, departureOrdonate, destinationAbscisse, destinationOrdonate);
 				}
 			}
 		}
 	}
 
-	
-	
-	
-	
 	public void printAirport(Graphics2D g2, int abscisse, int ordonate) {
 		g2.setStroke(new BasicStroke(6));
-		g2.drawImage(Utility.readImage("src/images/airport.png"), abscisse, ordonate, 25, 30, this);
+		g2.drawImage(Utility.readImage("src/images/airport1.png"), abscisse, ordonate, 25, 30, this);
 	}
 
 	public void printWorldMap(Graphics2D g2) {
 
-		g2.drawImage(Utility.readImage("src/images/world_map.png"), 100, 50, 1175, 699, this);
+		g2.drawImage(Utility.readImage("src/images/world_map1.png"), 100, 50, 1175, 699, this);
 	}
 
 	public void printMountain(Graphics2D g2, int abscisse, int ordonate, String name, int altitude, String country) {
@@ -209,5 +176,13 @@ public class GlobalViewPanel extends JPanel {
 			return Color.BLACK;
 		}
 		
+	}
+
+	public Simulation getSimulation() {
+		return simulation;
+	}
+
+	public void setSimulation(Simulation simulation) {
+		this.simulation = simulation;
 	}
 }

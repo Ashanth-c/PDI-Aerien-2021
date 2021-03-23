@@ -34,7 +34,7 @@ public class AeronefManager extends Thread {
 	public void run() {
 		while(running) {
 			Utility.unitTime();
-			if (aeronef.getUrgent()) {
+			if (aeronef.getUrgent() && (!isInUrgence.contentEquals("FindAirport"))) {
 				
 				if(isInUrgence.equals("SearchEmergencyAirport")) {
 					isInUrgence=ElementManager.checkAirportsAround(aeronef);
@@ -43,9 +43,10 @@ public class AeronefManager extends Thread {
 						destinationAirport = ElementManager.getAiportFromName(isInUrgence);	
 						aeronef.setDestination(destinationAirport.getName());
 						aeronef.setType("Emergency");
-						abscisseVariationValue = ElementManager.abscisseVariationValue(aeronef, destinationAirport, SimulPara.SIMULATION_SPEED);
-						ordoneeVariationValue = ElementManager.ordoneeVariationValue(aeronef, destinationAirport, SimulPara.SIMULATION_SPEED); 
-						System.out.println("Changement de Destination, Aterrisage d'urgence à " + destinationAirport.getName());
+						abscisseVariationValue = ElementManager.abscisseVariationValue(aeronef, destinationAirport, SimulPara.SIMULATION_URGENCE_SPEED);
+						ordoneeVariationValue = ElementManager.ordoneeVariationValue(aeronef, destinationAirport, SimulPara.SIMULATION_URGENCE_SPEED);
+						isInUrgence="FindAirport";
+						System.out.println("Changement de Destination de l'aeronef "+ aeronef.getName()+", Aterrisage d'urgence à " + destinationAirport.getName());
 					}
 				}
 			}
@@ -130,7 +131,7 @@ public class AeronefManager extends Thread {
 			AirportManager airportManager = new AirportManager(destinationAirport);
 			running = !(airportManager.airportLandingAuthorization(aeronef));
 			exit();
-			System.out.println("Atterisage de l'aeronef " + aeronef.getName() + " " + aeronef.getModel()+ " reussi"+ running);
+			System.out.println("Atterisage de l'aeronef " + aeronef.getName() + " " + aeronef.getModel()+ " reussi");
 		}
 	}
 
