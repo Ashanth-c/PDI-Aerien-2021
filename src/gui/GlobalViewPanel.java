@@ -78,27 +78,27 @@ public class GlobalViewPanel extends JPanel {
 			String altitute = "altitude " + String.valueOf(aeronef.getAltitude());
 			g2.setColor(Color.BLUE);
 			g2.setStroke(new BasicStroke(6));
+			
+			BufferedImage image=null;
 			if(aeronef.getUrgent()) {
-				g2.drawImage(Utility.readImage("src/images/urgent_turbojet.png"), abscisse, ordonate, 20, 26, this);				
+				image = (BufferedImage) Utility.readImage("src/images/urgent_turbojet.png");
 			}
 			else {
+				image = (BufferedImage) Utility.readImage("src/images/turboprop_airplane1.png");
+			}
 			if (direction.equals("Est-West")) {
-				BufferedImage image = (BufferedImage) Utility.readImage("src/images/turboprop_airplane1.png");
 				double rotationRequired = Math.toRadians (180);
 				double locationX = image.getWidth() / 2;
 				double locationY = image.getHeight() / 2;
 				AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
 				AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 				g2.drawImage(op.filter(image, null), abscisse,ordonate,20,26, null);
-//				g2.drawImage(Utility.readImage("src/images/turboprop_airplane1.png"), abscisse, ordonate, 20, 26, this);
-
 			} else if (direction.equals("West-Est")) {
-				g2.drawImage(Utility.readImage("src/images/turboprop_airplane1.png"), abscisse, ordonate, 20, 26, this);
+				g2.drawImage(image, abscisse, ordonate, 20, 26, this);
 
 				}
 			}
 		}
-	}
 
 	public void initLine(Graphics2D g2) {
 		float[] dashPattern = { 9, 9 };
