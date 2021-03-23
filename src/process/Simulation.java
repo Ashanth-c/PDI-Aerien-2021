@@ -110,7 +110,7 @@ public class Simulation {
 				int totaParkAeronefs = airport.getTerminal().getTotaParkAeronefs()+1;
 
 				
-				Aeronef aeronef = Utility.createAeronef(aeronefAbscisse, aeronefOrdonnee, aeronefName, airport.getType(), modelAeronefs, destinationName, airport.getName(), 300, 100, 0, 1000, false);
+				Aeronef aeronef = Utility.createAeronef(aeronefAbscisse, aeronefOrdonnee, aeronefName, airport.getType(), modelAeronefs, destinationName, airport.getName(), 300, 100, 0, 1000);
 				airport.getTerminal().getTakeOffAeronefsList().add(aeronef);
 				airport.getTerminal().setTotaParkAeronefs(totaParkAeronefs);
 				AeronefManager aeronefManager = new AeronefManager(aeronef);

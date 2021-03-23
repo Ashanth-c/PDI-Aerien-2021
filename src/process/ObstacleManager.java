@@ -80,6 +80,7 @@ public class ObstacleManager {
 
 		if (((aeronefsAbscisse + 10) >= mountainAbscisse) && ((aeronefsOrdonnee + 10) >= mountainOrdonnee)) {
 			if (aeronef.getAltitude() <= mountainaltitude) {
+				aeronef.setDetectObstacle(true);
 				mountainaltitude += 150;
 				aeronef.setAltitude(mountainaltitude);
 				System.out.println("Detection de Montagne proche");

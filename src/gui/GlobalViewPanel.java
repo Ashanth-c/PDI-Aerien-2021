@@ -69,34 +69,8 @@ public class GlobalViewPanel extends JPanel {
 		g2.setColor(Color.RED);
 		g2.setFont(new Font("default", Font.BOLD, 10));
 		List<AeronefManager> aeronefManagersMap = simulation.getAeronefManagers();
-		List<Airport> airportsList = simulation.getAirportsList();
 		for (AeronefManager aeronefManager : aeronefManagersMap) {
-			Aeronef aeronef = aeronefManager.getAeronef();
-			int abscisse = (int) aeronef.getAbscisse() + 7;
-			int ordonate = (int) aeronef.getOrdonnee() + 20;
-			String direction = aeronefManager.getDirection();
-			String altitute = "altitude " + String.valueOf(aeronef.getAltitude());
-			g2.setColor(Color.BLUE);
-			g2.setStroke(new BasicStroke(6));
-			
-			BufferedImage image=null;
-			if(aeronef.getUrgent()) {
-				image = (BufferedImage) Utility.readImage("src/images/urgent_turbojet.png");
-			}
-			else {
-				image = (BufferedImage) Utility.readImage("src/images/turboprop_airplane1.png");
-			}
-			if (direction.equals("Est-West")) {
-				double rotationRequired = Math.toRadians (180);
-				double locationX = image.getWidth() / 2;
-				double locationY = image.getHeight() / 2;
-				AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
-				AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-				g2.drawImage(op.filter(image, null), abscisse,ordonate,20,26, null);
-			} else if (direction.equals("West-Est")) {
-				g2.drawImage(image, abscisse, ordonate, 20, 26, this);
-
-				}
+			drawAeronef(aeronefManager, g2);
 			}
 		}
 
@@ -144,40 +118,33 @@ public class GlobalViewPanel extends JPanel {
 			printMountain(g2,SimulPara.MOUNTAINS_X[i],SimulPara.MOUNTAINS_Y[i],SimulPara.MOUNTAINS[i],SimulPara.ALTITUDE[3],"random");
 		}
 	}
-	
-	public Color setLineColor(String name) {
-		switch (name) {
-		case "Melbourne Airport": {
-			
-			return new Color(128, 190, 32);
-		}
-		case "Yakutia Airlines": {
-			
-			return new Color(188, 0, 0);
-		}
-		case "Charles de Gaulle Airport": {
-	
-			return new Color(255, 126, 0);
-		}
-		case "Ouagadougou Airport": {
-	
-			return new Color(69, 41, 154);
-		}
-		case "Governor Francisco Gabrielli International Airport": {
-	
-			return new Color(217, 220, 24);
-		}
-		case "Yellowknife Airport": {
-	
-			return new Color(162, 19, 96);
-		}
-		default:
 
-			return Color.BLACK;
+	public void drawAeronef(AeronefManager aeronefManager, Graphics2D g2) {
+		Aeronef aeronef = aeronefManager.getAeronef();
+		int abscisse = (int) aeronef.getAbscisse() + 7;
+		int ordonate = (int) aeronef.getOrdonnee() + 20;
+		String direction = aeronefManager.getDirection();
+		BufferedImage image=null;
+		if(aeronef.getUrgent()) {
+			image = (BufferedImage) Utility.readImage("src/images/urgent_turbojet.png");
 		}
+		else {
+			image = (BufferedImage) Utility.readImage("src/images/turboprop_airplane1.png");
+		}
+		if (direction.equals("Est-West")) {
+			double rotationRequired = Math.toRadians (180);
+			double locationX = image.getWidth() / 2;
+			double locationY = image.getHeight() / 2;
+			AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
+			AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
+			g2.drawImage(op.filter(image, null), abscisse,ordonate,20,26, null);
+		} else if (direction.equals("West-Est")) {
+			g2.drawImage(image, abscisse, ordonate, 20, 26, this);
+
+			}
 		
 	}
-
+	
 	public Simulation getSimulation() {
 		return simulation;
 	}

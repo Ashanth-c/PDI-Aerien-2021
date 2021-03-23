@@ -12,13 +12,14 @@ public class Aeronef extends Position {
 	private int altitude;
 	private int speed;
 	private boolean urgent;
+	private boolean detectObstacle;
 	
 	public Aeronef(int abscisse, int ordonnee) {
 		super(abscisse, ordonnee);
 	}
 
 	public Aeronef(int abscisse, int ordonnee, String name, String type, String model, String destination, String departure,
-			int totalSeats, int fuel, int altitude, int speed, boolean urgent) {
+			int totalSeats, int fuel, int altitude, int speed, boolean urgent,boolean detectObstacle) {
 		super(abscisse, ordonnee);
 		this.name=name;
 		this.type = type;
@@ -30,6 +31,7 @@ public class Aeronef extends Position {
 		this.altitude = altitude;
 		this.speed = speed;
 		this.urgent=urgent;
+		this.detectObstacle = detectObstacle;
 	}
 	
 
@@ -119,6 +121,14 @@ public class Aeronef extends Position {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public boolean isDetectObstacle() {
+		return detectObstacle;
+	}
+
+	public void setDetectObstacle(boolean detectObstacle) {
+		this.detectObstacle = detectObstacle;
 	}
 
 }
