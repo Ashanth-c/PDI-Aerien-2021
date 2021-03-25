@@ -9,9 +9,14 @@ import data.Terminal;
 import gui.SimulPara;
 
 /**
- * Class for the managmenent of an Airport
+ * 
  * @author Ashanth
+ * 
+ * Classe gérant les aéroports.
+ * Classe constitutée des attributs ci contre :
+ * aeroport (Airport), running (boolean), nextTakeOff (boolean), et flyAeronef (int)
  *
+ * Cette classe est une classe fille de la classe Thread.
  */
 public class AirportManager extends Thread {
 	private Airport airport;
@@ -64,7 +69,7 @@ public class AirportManager extends Thread {
 	}
 
 	/**
-	 * Method who add an Aeronef in the Terminal
+	 * Method which adds an Aeronef in the Terminal
 	 * 
 	 * @param newAeronef
 	 */
@@ -131,7 +136,7 @@ public class AirportManager extends Thread {
 	}
 
 	/**
-	 * Remove an Aeronef from the Terminal
+	 * Removes an Aeronef from the Terminal
 	 * 
 	 * @param outAeronef
 	 */
@@ -187,6 +192,12 @@ public class AirportManager extends Thread {
 		return authorization;
 	}
 
+	/**
+	 * Sets the isNext value true for an Aeronef
+	 * if an Aeronef is next in the TakeOffAeronefList
+	 * 
+	 * @return isNext
+	 */
 	private boolean isNextAeronef() {
 		boolean isNext = false;
 		Terminal airportTerminal = airport.getTerminal(); // aerogare de l'aerogare
@@ -226,27 +237,78 @@ public class AirportManager extends Thread {
 			}
 		}
 	}
-
+	
+	/**
+	 * getter getAirport
+	 * @return airport
+	 */
+	/*
+	 * getter getAirport
+	 * return airport, Airport
+	 */
 	public Airport getAirport() {
 		return airport;
 	}
 
+	/**
+	 * setter setAirport
+	 * @param airport
+	 */
+	/*
+	 * setter setAirport
+	 * param:
+	 * 		airport:Airport
+	 */
 	public void setAirport(Airport airport) {
 		this.airport = airport;
 	}
 
+	/**
+	 * getter isNextTakeOff
+	 * @return nextTakeOff
+	 */
+	/*
+	 * getter isNextTakeOff
+	 * returns nextTakeOff, boolean
+	 */
 	public boolean isNextTakeOff() {
 		return nextTakeOff;
 	}
 
+	/**
+	 * setter setNextTakeOff 
+	 * @param nextTakeOff
+	 */
+	/*
+	 * setter setNextTakeOff
+	 * param:
+	 * 		nextTakeOff : boolean
+	 */
 	public void setNextTakeOff(boolean nextTakeOff) {
 		this.nextTakeOff = nextTakeOff;
 	}
 
+	/**
+	 * getter getFlyAeronef
+	 * @return flyAeronef
+	 */
+	/*
+	 * getter getFlyAeronef
+	 * return flyAeronef, int
+	 */
 	public int getFlyAeronef() {
 		return flyAeronef;
 	}
 
+	/**
+	 * setter setFlyAeronef
+	 * @param flyAeronef
+	 */
+	/*
+	 * setter setFlyAeronef
+	 * param:
+	 * 		flyAeronef : int
+	 */
 	public void setFlyAeronef(int flyAeronef) {
 		this.flyAeronef = flyAeronef;
 	}
