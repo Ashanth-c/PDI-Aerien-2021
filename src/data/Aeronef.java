@@ -23,6 +23,7 @@ public class Aeronef extends Position {
 	private int speed;
 	private boolean urgent;
 	private boolean detectObstacle;
+	private boolean isFlying;
 /**
  * Constructror Aeronef	
  * 
@@ -66,7 +67,7 @@ public class Aeronef extends Position {
 	 * 		urgent, detectObstacle : boolean
 	 */
 	public Aeronef(int abscisse, int ordonnee, String name, String type, String model, String destination, String departure,
-			int totalSeats, int fuel, int altitude, int speed, boolean urgent,boolean detectObstacle) {
+			int totalSeats, int fuel, int altitude, int speed, boolean urgent,boolean detectObstacle, boolean isfly) {
 		super(abscisse, ordonnee);
 		this.name=name;
 		this.type = type;
@@ -79,6 +80,7 @@ public class Aeronef extends Position {
 		this.speed = speed;
 		this.urgent=urgent;
 		this.detectObstacle = detectObstacle;
+		this.isFlying = isfly;
 	}
 /**
  * 	getter getType
@@ -362,5 +364,11 @@ public class Aeronef extends Position {
 	public void setDetectObstacle(boolean detectObstacle) {
 		this.detectObstacle = detectObstacle;
 	}
+public boolean isFlying() {
+	return isFlying;
+}
+public void setFlying(boolean isFlying) {
+	this.isFlying = isFlying;
+}
 
 }

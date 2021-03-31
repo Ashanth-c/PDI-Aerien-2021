@@ -46,13 +46,13 @@ public class GlobalViewPanel extends JPanel {
 		// We used Graphic2D for more draw options.
 		Graphics2D g2 = (Graphics2D) g;
 		initLine(g2);
-		printGuiAirport(g2);
 		printWorldMap(g2);
 		printAeronef(g2);
+		printGuiAirport(g2);
 		initMountain(g2);
 		
 	}
-
+	
 	public void printGuiAirport(Graphics2D g2) {
 
 		Map<String, AirportManager> airportManagersMap = simulation.getAirportManagersMap();
@@ -70,9 +70,11 @@ public class GlobalViewPanel extends JPanel {
 		g2.setFont(new Font("default", Font.BOLD, 10));
 		List<AeronefManager> aeronefManagersMap = simulation.getAeronefManagers();
 		for (AeronefManager aeronefManager : aeronefManagersMap) {
-			drawAeronef(aeronefManager, g2);
+			if(aeronefManager.getAeronef().isFlying()) {
+				drawAeronef(aeronefManager, g2);
 			}
 		}
+	}
 
 	public void initLine(Graphics2D g2) {
 		float[] dashPattern = { 9, 9 };
@@ -124,6 +126,8 @@ public class GlobalViewPanel extends JPanel {
 		int abscisse = (int) aeronef.getAbscisse() + 7;
 		int ordonate = (int) aeronef.getOrdonnee() + 20;
 		String direction = aeronefManager.getDirection();
+		int aeronefHeight = getAeronefHeight(aeronef.isDetectObstacle());
+		int aeronefWidth = getAeronefWidth(aeronef.isDetectObstacle());
 		BufferedImage image=null;
 		if(aeronef.getUrgent()) {
 			image = (BufferedImage) Utility.readImage("src/images/urgent_turbojet.png");
@@ -137,13 +141,31 @@ public class GlobalViewPanel extends JPanel {
 			double locationY = image.getHeight() / 2;
 			AffineTransform tx = AffineTransform.getRotateInstance(rotationRequired, locationX, locationY);
 			AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
-			g2.drawImage(op.filter(image, null), abscisse,ordonate,20,26, null);
+			g2.drawImage(op.filter(image, null), abscisse,ordonate,aeronefHeight,aeronefWidth, null);
 		} else if (direction.equals("West-Est")) {
 			g2.drawImage(image, abscisse, ordonate, 20, 26, this);
 
 			}
-		
 	}
+	
+	public int getAeronefHeight(boolean obstacle) {
+		if(obstacle) {
+			return 30;
+		}
+		else {
+			return 20;
+		}
+	}
+	
+	public int getAeronefWidth(boolean obstacle) {
+		if(obstacle) {
+			return 36;
+		}
+		else {
+			return 26;
+		}
+	}
+	
 	
 	public Simulation getSimulation() {
 		return simulation;

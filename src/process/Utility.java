@@ -106,7 +106,8 @@ public class Utility {
  */
 	public static Aeronef createAeronef(int abscisse, int ordonnee, String name, String type, String model, String destination, String departure,int totalSeats, int fuel, int altitude, int speed) {
 		
-		Aeronef aeronef = new Aeronef(abscisse, ordonnee, name, type, model, destination, departure, totalSeats, fuel, altitude, speed, false,false);
+		Aeronef aeronef = new Aeronef(abscisse, ordonnee, name, type, model, destination, departure, totalSeats, fuel, altitude, speed, false,false,false);
+		ElementManager.addAeronef(aeronef);
 		return aeronef;
 	}
 /**

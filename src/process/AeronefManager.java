@@ -56,6 +56,7 @@ public class AeronefManager extends Thread {
 
 	@Override
 	public void run() {
+		aeronef.setFlying(true);
 		while(running) {
 			Utility.unitTime();
 			
@@ -94,6 +95,8 @@ public class AeronefManager extends Thread {
 			//else moves an Aeronef normally
 			travelAeronef();
 		}
+		aeronef.setFlying(false);
+
 	}
 
 /**
@@ -243,7 +246,7 @@ public class AeronefManager extends Thread {
  */
 	public void travelAeronef() {
 		//Aeronef dodges obstacle
-		ElementManager.avoidObstacle(aeronef);
+		ElementManager.avoidObstacle(this);
 		
 		//if Aeronef's position is yet to be its destination's, Aeronef moves
 		if (( aeronef.getAbscisse() != destinationAirport.getAbscisse()) && ( aeronef.getOrdonnee() != destinationAirport.getOrdonnee())) {
@@ -310,6 +313,10 @@ public class AeronefManager extends Thread {
 					"Coordonnees de l'aeronef en urgence : " + aeronef.getAbscisse() + " , " + aeronef.getOrdonnee());
 		}
 	}
+	
+	
+	
+	
 /**
  * 
  */
@@ -420,6 +427,26 @@ public class AeronefManager extends Thread {
 		}
 		return direction;
 	}
+
+	public void avoidOtherAeronef(Aeronef obstacleAeronef) {
+		float aeronefAbscisse = aeronef.getAbscisse();
+		float aeronefOrdonnee = aeronef.getOrdonnee();
+		float obstacleAeronefsAbscisse = obstacleAeronef.getAbscisse();
+		float obstacleAeronefsOrdonnee = obstacleAeronef.getOrdonnee();
+		int aeronefaltitude = aeronef.getAltitude();
+		
+		if ((aeronefAbscisse+abscisseVariationValue >= obstacleAeronefsAbscisse && aeronefOrdonnee + ordoneeVariationValue >= obstacleAeronefsOrdonnee ) && !(aeronefAbscisse - abscisseVariationValue < obstacleAeronefsAbscisse && aeronefOrdonnee - ordoneeVariationValue < obstacleAeronefsOrdonnee)) {
+//			if (obstacleAeronef.getAltitude() <= aeronefaltitude) {
+				obstacleAeronef.setDetectObstacle(true);
+				aeronefaltitude += 150;
+				obstacleAeronef.setAltitude(aeronefaltitude);
+//				}
+		}
+		else {
+			aeronef.setDetectObstacle(false);
+		}
+	}
+	
 /**
  * setter setDirection	
  * @param direction

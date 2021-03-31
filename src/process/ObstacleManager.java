@@ -100,19 +100,22 @@ public class ObstacleManager {
  * Makes an aeronef dodge a mountain if it's close enough by changing its altitude 
  */
 	public void avoidMountain(Aeronef aeronef) {
-		float mountainAbscisse = obstacle.getAbscisse();
+		 float mountainAbscisse = obstacle.getAbscisse();
 		float mountainOrdonnee = obstacle.getOrdonnee();
 		float aeronefsAbscisse = aeronef.getAbscisse();
 		float aeronefsOrdonnee = aeronef.getOrdonnee();
 		int mountainaltitude = obstacle.getAltitude();
-
-		if (((aeronefsAbscisse + 10) >= mountainAbscisse) && ((aeronefsOrdonnee + 10) >= mountainOrdonnee)) {
-			if (aeronef.getAltitude() <= mountainaltitude) {
-				aeronef.setDetectObstacle(true);
-				mountainaltitude += 150;
-				aeronef.setAltitude(mountainaltitude);
-				System.out.println("Detection de Montagne proche");
-			}
+		
+		if (aeronefsAbscisse+10 >= mountainAbscisse && aeronefsOrdonnee + 10 >= mountainOrdonnee && aeronefsAbscisse - 30 <= mountainAbscisse && aeronefsOrdonnee - 30 <= mountainOrdonnee) {
+				if (aeronef.getAltitude() <= mountainaltitude) {
+					aeronef.setDetectObstacle(true);
+					mountainaltitude += 150;
+					aeronef.setAltitude(mountainaltitude);
+					System.out.println("Detection de Montagne proche" + aeronef.isDetectObstacle());
+				}
+		}
+		else {
+			aeronef.setDetectObstacle(false);
 		}
 	}
 }

@@ -180,8 +180,7 @@ public class AirportManager extends Thread {
 
 //		if (airportType.equals("Civil/Cargo") || airportType.equals(aeronefType) || airportType.equals("Emergency")) {
 		// si l'aeroport est de type all ou qu'il est le meme que celle de l'avion
-		System.out.println(isTerminalFull());
-			if (isTerminalFull().equals("Not Full")) {
+		if (isTerminalFull().equals("Not Full")) {
 		if (departureVerification(commingAeronef)) {
 			// Si le lieu d'arriver est bon
 			addAeronefTerminal(commingAeronef);

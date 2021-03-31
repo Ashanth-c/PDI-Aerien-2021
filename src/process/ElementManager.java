@@ -186,15 +186,23 @@ public class ElementManager {
  * 
  * Makes an aeronef avoid any given obstacle, be it mountain or flockbirds
  */
-	public static void avoidObstacle(Aeronef aeronef) {
+	public static void avoidObstacle(AeronefManager aeronefM) {
+		Aeronef aeronef = aeronefM.getAeronef();
 		for (Obstacle obstacle:obstaclesList) {
 			if (obstacle.toString().contains("Mount")) {
 				ObstacleManager mountainManager = new ObstacleManager(obstacle);
-				mountainManager.avoidMountain(aeronef);
+//				mountainManager.avoidMountain(aeronef);
 			}
 			else if (obstacle.toString().contains("Birds")) {
 				ObstacleManager birdsManager = new ObstacleManager(obstacle);
 				birdsManager.avoidFlockBirds(aeronef);
+			}
+		}
+		for (Aeronef obstacleAeronef : aeronefsList) {
+			if(obstacleAeronef.isFlying()) {
+				if(obstacleAeronef.getDestination().equals(aeronef.getDeparture())) {
+					aeronefM.avoidOtherAeronef(obstacleAeronef);
+				}
 			}
 		}
 	}	
