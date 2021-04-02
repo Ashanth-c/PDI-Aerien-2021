@@ -1,14 +1,12 @@
 package data;
+
 /**
- * 
- * @author Maeva
- *	Décrit un aéronef
- *	
- *	Défini par un type, un model, une destination, un départ, un nom, un nombre de sièges
- *	du fuel, l'altitude, la vitesse, s'il est en mode urgent ou non et s'il détecte ou pas
- *	un obstacle
- *
- *	Classe fille de Position
+ * @file Aeronef.java
+ * @brief Un aéronef represente un element volant d'un aeroport à un autre
+ * Aeronef est heritiere de la classe Position
+ * @author Ashanth
+ * @version 1.0
+ * @date 06/04/2021
  */
 public class Aeronef extends Position {
 
@@ -24,47 +22,32 @@ public class Aeronef extends Position {
 	private boolean urgent;
 	private boolean detectObstacle;
 	private boolean isFlying;
-/**
- * Constructror Aeronef	
- * 
- * @param abscisse
- * @param ordonnee
- */
-	/*
-	 * Constructor Aeronef
-	 * Param :
-	 * 		abscisse : int
-	 * 		ordonnee :int
+
+	/**
+	 * @brief Creer un Aeronef au position (abscisse,ordonnee) donnne en parametre 
+	 * @param abscissa Le coordonnee X de l'aeronef 
+	 * @param ordinate Le coodonee Y de l'aeronef
 	 */
-	public Aeronef(int abscisse, int ordonnee) {
-		super(abscisse, ordonnee);
+	public Aeronef(int abscissa, int ordinate) {
+		super(abscissa, ordinate);
 	}
-/**
- * 
- * Constructor Aeronef
- * 
- * @param abscisse
- * @param ordonnee
- * @param name
- * @param type
- * @param model
- * @param destination
- * @param departure
- * @param totalSeats
- * @param fuel
- * @param altitude
- * @param speed
- * @param urgent
- * @param detectObstacle
- */
-	/*
-	 * Constructor Aeronef
-	 * Param:
-	 * 		abscisse, ordonnee : int
-	 * 		name, type, model : String
-	 * 		destination, departure : String
-	 * 		totalSeats, fuel, altitude, speed : int
-	 * 		urgent, detectObstacle : boolean
+	
+	/**
+	 * @brief Creer un Aeronef au position (abscisse,ordonnee) donnne en parametre avec toute les informations qui definise l'aeronef
+	 * @param abscissa Le coordonnee X de l'aeronef 
+	 * @param ordinate Le coodonee Y de l'aeronef
+	 * @param name Nom de l'aeronef composé des initiale des aeroports de depart et d'arrive ainsi que d'un numero qui incremente
+	 * @param type Type de l'aeronef parmis 3 type (Military,Civil/Cargo, Cargo)
+	 * @param model Modele de l'aeronef 
+	 * @param destination Nom de l'aeroport de destination de l'aeronef
+	 * @param departure Nom de l'aeroport de depart de l'aeronef
+	 * @param totalSeats Nombre de place total dans l'aeronef
+	 * @param fuel Valeur indiquant le niveau d'essence de l'aeronef
+	 * @param altitude Valeur indiquant l'altitude de l'aeronef
+	 * @param speed Vitesse de l'aeronef en kilimetre/heure
+	 * @param urgent Booleen qui indique si l'aeronef doit atterir en urgence
+	 * @param detectObstacle Boobleen qui indique si l'aeronef a detecté un obstacle proche
+	 * @param isfly Booleen qui indique si un aeronef est en vol
 	 */
 	public Aeronef(int abscisse, int ordonnee, String name, String type, String model, String destination, String departure,
 			int totalSeats, int fuel, int altitude, int speed, boolean urgent,boolean detectObstacle, boolean isfly) {
@@ -82,232 +65,202 @@ public class Aeronef extends Position {
 		this.detectObstacle = detectObstacle;
 		this.isFlying = isfly;
 	}
-/**
- * 	getter getType
- * @return type
- */
-	/*
-	 * Getter getType
-	 * 
-	 * return type, String
-	 */
 
+	/**
+	 * @brief Retourne le type de l'aeronef, Cette methode permet de determiner dans quelle type d'aeroport l'aeronef peut atterir
+	 * @return type, le type de l'aeronef
+	 */
 	public String getType() {
 		return type;
 	}
-/**
- * setter setType
- * @param type
- */
-	/*
-	 * Setter setType
+
+	/**
+	 * @brief Change le type de l'aeronef
+	 * @param type Nouveau type de l'aeronef 
 	 */
 	public void setType(String type) {
 		this.type = type;
 	}
-/**
- * getter getModel
- * @return model
- */
-	/*
-	 * Getter getModel
-	 * 
-	 * return type, String
+
+	/**
+	 * @brief Retourne le modele de l'aeronef
+	 * @return model, le nom du model de l'aeronef
 	 */
 	public String getModel() {
 		return model;
 	}
-/**
- * setter setModel
- * @param model
- */
-	/*
-	 * Setter setModel
-	 * param :
-	 * 		model : String 
-	 * 
+
+	/**
+	 * @brief Change le modele de l'aeronef par un autre
+	 * @param model Nouveau modele de l'aeronef
 	 */
 	public void setModel(String model) {
 		this.model = model;
 	}
-/**
- * getter getDestination
- * @return
- */
-	/*
-	 * getter getDestination
-	 * 
-	 * return destination, String
+
+	/**
+	 * @brief Retourne le nom de l'aeroport de destination, cette methode permet de connaitre la destination de l'aeronef
+	 * @return destination, le nom de l'aeroport de destination
 	 */
 	public String getDestination() {
 		return destination;
 	}
-/**
- * setter setDestination
- * @param destination
- */
-	/*
-	 * setter setDestination
-	 *Param :
-	 *		destination : String 
-	 * 
+
+	/**
+	 * @brief Change la valeur du nom de l'aeroport de destination
+	 * @param destination Nom du nouvel aeroport de destination
 	 */
 	public void setDestination(String destination) {
 		this.destination = destination;
 	}
-/**
- * getter getDeparture
- * @return departure
- */
-	/*
-	 * getter getDeparture()
-	 * 
-	 * return departure, string
+	
+	/**
+	 * @brief
+	 * @return
 	 */
 	public String getDeparture() {
 		return departure;
 	}
-/**
- * setter setDeparture
- * @param departure
- */
-	/*
-	 * setter setDeparture
-	 * Param :
-	 *		departure, String
+
+	/**
+	 * 
+	 * @param departure
 	 */
 	public void setDeparture(String departure) {
 		this.departure = departure;
 	}
-/**
- * getter getTotalSeats
- * @return totalSeats
- */
-	/*
-	 * getter getTotalSeats
+
+	/**
 	 * 
-	 * return totalSeats, int
+	 * @return
 	 */
 	public int getTotalSeats() {
 		return totalSeats;
 	}
-/**
- * setter setTotalSeats
- * @param totalSeats
- */
-	/*
-	 * setter setTotalSeats
-	 * Param :
-	 * 		totalSeats, int
+
+	/**
+	 * 
+	 * @param totalSeats
 	 */
 	public void setTotalSeats(int totalSeats) {
 		this.totalSeats = totalSeats;
 	}
-/**
- * getter getFuel
- * @return fuel
- */
-	/*
-	 * getter getFuel
+	
+
+	/**
 	 * 
-	 * return fuel
+	 * @return
 	 */
 	public int getFuel() {
 		return fuel;
 	}
-/**
- * setter setFuel
- * @param fuel
- */
-	/*
-	 * setter setFuel
-	 * param:
-	 * 		fuel : int
+
+	/**
+	 * 
+	 * @param fuel
 	 */
 	public void setFuel(int fuel) {
 		this.fuel = fuel;
 	}
-/**
- * getter getAltitude
- * @return altitude
- */
-	/*
-	 * getter getAltitude
+
+	/**
 	 * 
-	 * return altitude, int
+	 * @return
 	 */
 	public int getAltitude() {
 		return altitude;
 	}
-/**
- * setter setAltitude
- * @param altitude
- */
-	/*
-	 * setter setAltitude
-	 * param:
-	 * 		altitude : int
+
+	/**
+	 * 
+	 * @param altitude
 	 */
 	public void setAltitude(int altitude) {
 		this.altitude = altitude;
 	}
-/**
- * getter getSpeed
- * @return speed
- */
-	/*
-	 * getter getSpeed
+
+	/**
 	 * 
-	 * return speed, int
+	 * @return
 	 */
 	public int getSpeed() {
 		return speed;
 	}
-/**
- * setter setSpeed
- * @param speed
- */
-	/*
-	 * setter setSpeed
-	 * param:	
-	 * 		speed : int
+
+	/**
 	 * 
+	 * @param speed
 	 */
 	public void setSpeed(int speed) {
 		this.speed = speed;
 	}
 
-/**
- * getter getUrgent
- * @return urgent
- */
-	/*
-	 * getter getUrgent
+	/**
 	 * 
-	 * return urgent, boolean
+	 * @return
 	 */
 	public boolean getUrgent() {
 		return urgent;
 	}
-/**
- * setter setUrgent
- * @param urgent
- */
-	/*
-	 * setter setUrgent
-	 * param :
-	 * 		urgent : boolean
+
+	/**
+	 * 
+	 * @param urgent
 	 */
 	public void setUrgent(boolean urgent) {
 		this.urgent=urgent;
 	}
-/**
- * to String Method
- */
-	/*
-	 * toString Method
+
+	/**
 	 * 
-	 * return String
+	 * @return
+	 */
+	public String getName() {
+		return name;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 */
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isDetectObstacle() {
+		return detectObstacle;
+	}
+
+	/**
+	 * 
+	 * @param detectObstacle
+	 */
+	public void setDetectObstacle(boolean detectObstacle) {
+		this.detectObstacle = detectObstacle;
+	}
+	
+	/**
+	 * 
+	 * @return
+	 */
+	public boolean isFlying() {
+		return isFlying;
+	}
+	
+	/**
+	 * 
+	 * @param isFlying
+	 */
+	public void setFlying(boolean isFlying) {
+		this.isFlying = isFlying;
+	}
+	
+	/**
+	 * 
 	 */
 	@Override
 	public String toString() {
@@ -315,60 +268,5 @@ public class Aeronef extends Position {
 				+ departure + "\nTotal Seats: " + totalSeats + "\nFuel: " + fuel + "\nAltitude: " + altitude + "\nSpeed: "
 				+ speed;
 	}
-/**
- * getter getName
- * @return name
- */
-	/*
-	 * getter getName
-	 * 
-	 * return name, String
-	 */
-	public String getName() {
-		return name;
-	}
-/**
- * setter setName
- * @param name
- */
-	/*
-	 * setter setName
-	 * param :
-	 * 		name : String
-	 * 
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-/**
- * getter isDetectObstacle
- * @return detectObstacle
- */
-	/*
-	 * getter isDetectObstacle
-	 * 
-	 * return detectObstacle, boolean
-	 */
-	public boolean isDetectObstacle() {
-		return detectObstacle;
-	}
-/**
- * setter setDetectObstacle
- * @param detectObstacle
- */
-	/*
-	 * setter setDetectObstacle
-	 * param:
-	 * 		detectObstacle : boolean
-	 */
-	public void setDetectObstacle(boolean detectObstacle) {
-		this.detectObstacle = detectObstacle;
-	}
-public boolean isFlying() {
-	return isFlying;
-}
-public void setFlying(boolean isFlying) {
-	this.isFlying = isFlying;
-}
 
 }

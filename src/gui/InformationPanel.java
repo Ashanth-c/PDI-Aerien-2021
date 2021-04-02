@@ -155,20 +155,19 @@ public class InformationPanel extends JPanel {
 	    for (String line : text.split("\n"))
 	        g2.drawString(line, x, y += g2.getFontMetrics().getHeight());
 	}
-	
+
 	public Aeronef urgentAeronef(int key) {
 		List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
 		List<Airport> airportsList = simulation.getAirportsList();
 		Aeronef aeronef = aeronefManagers.get(key).getAeronef();
 		for (Airport airport : airportsList) {
-			if (airport.getAbscisse()==aeronef.getAbscisse() && airport.getOrdonnee()==aeronef.getOrdonnee()) {
+			if (airport.getAbscisse()==aeronef.getAbscisse() && airport.getOrdonnee()==aeronef.getOrdonnee() && !(aeronef.isFlying())) {
 				int random = Utility.getRandom(0, aeronefManagers.size()-1);
 				return aeronef = urgentAeronef(random);
 			}
 		}
 		return aeronef;
 	}
-
 
 	public Simulation getSimulation() {
 		return simulation;

@@ -199,9 +199,9 @@ public class ElementManager {
 			}
 		}
 		for (Aeronef obstacleAeronef : aeronefsList) {
-			if(obstacleAeronef.isFlying()) {
 				if(obstacleAeronef.getDestination().equals(aeronef.getDeparture())) {
-					aeronefM.avoidOtherAeronef(obstacleAeronef);
+					if(obstacleAeronef.isFlying()) {
+						aeronefM.avoidOtherAeronef(obstacleAeronef);
 				}
 			}
 		}

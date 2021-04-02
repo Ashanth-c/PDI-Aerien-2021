@@ -114,8 +114,6 @@ public class ObstacleManager {
 					System.out.println("Detection de Montagne proche" + aeronef.isDetectObstacle());
 				}
 		}
-		else {
-			aeronef.setDetectObstacle(false);
-		}
+
 	}
 }

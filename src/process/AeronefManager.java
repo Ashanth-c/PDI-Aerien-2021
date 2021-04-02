@@ -86,8 +86,6 @@ public class AeronefManager extends Thread {
 						//isInUrgence is set back to "FindAirport"
 						isInUrgence="FindAirport";
 						
-						
-						System.out.println("Changement de Destination de l'aeronef "+ aeronef.getName()+", Aterrisage d'urgence à " + destinationAirport.getName());
 					}
 				}
 			}
@@ -238,12 +236,13 @@ public class AeronefManager extends Thread {
 		}
 
 	}
-/**
- * 	travelAeronef method
- * 
- * Makes an Aeronef move till it's reached its destination
- * Sets the running boolean depending on whether the Aeronef is allowed to land
- */
+
+	/**
+	 * 	travelAeronef method
+	 * 
+	 * Makes an Aeronef move till it's reached its destination
+	 * Sets the running boolean depending on whether the Aeronef is allowed to land
+	 */
 	public void travelAeronef() {
 		//Aeronef dodges obstacle
 		ElementManager.avoidObstacle(this);
@@ -252,7 +251,6 @@ public class AeronefManager extends Thread {
 		if (( aeronef.getAbscisse() != destinationAirport.getAbscisse()) && ( aeronef.getOrdonnee() != destinationAirport.getOrdonnee())) {
 			moveAeronefAbcsisse(abscisseVariationValue);
 			moveAeronefOrdonnee(ordoneeVariationValue);
-			System.out.println("Coordonnee de l'aeronef " + aeronef.getName() + " : " + aeronef.getAbscisse() + " , " + (int) aeronef.getOrdonnee());
 		}		
 		/*if Aeronef's position is its destination
 		 * we add the destination airport in an airportmanager 
@@ -263,9 +261,9 @@ public class AeronefManager extends Thread {
 			AirportManager airportManager = new AirportManager(destinationAirport);
 			running = !(airportManager.airportLandingAuthorization(aeronef));
 			exit();
-			System.out.println("Atterisage de l'aeronef " + aeronef.getName() + " " + aeronef.getModel()+ " reussi");
 		}
 	}
+	
 /**
  * moveAeronefAbscisse method
  * @param abscisseVariation
@@ -292,6 +290,7 @@ public class AeronefManager extends Thread {
 		aeronef.setOrdonnee(aeronefOrdonnee);
 
 	}
+	
 /**
  * emergencyLanding() method
  * @param airport
@@ -309,8 +308,6 @@ public class AeronefManager extends Thread {
 
 			moveAeronefAbcsisse(abscisseVariationValue);
 			moveAeronefOrdonnee(ordoneeVariationValue);
-			System.out.println(
-					"Coordonnees de l'aeronef en urgence : " + aeronef.getAbscisse() + " , " + aeronef.getOrdonnee());
 		}
 	}
 	
@@ -426,7 +423,7 @@ public class AeronefManager extends Thread {
 			direction = "West-Est";
 		}
 		return direction;
-	}
+	  }
 
 	public void avoidOtherAeronef(Aeronef obstacleAeronef) {
 		float aeronefAbscisse = aeronef.getAbscisse();
@@ -434,23 +431,22 @@ public class AeronefManager extends Thread {
 		float obstacleAeronefsAbscisse = obstacleAeronef.getAbscisse();
 		float obstacleAeronefsOrdonnee = obstacleAeronef.getOrdonnee();
 		int aeronefaltitude = aeronef.getAltitude();
-		
-		if ((aeronefAbscisse+abscisseVariationValue >= obstacleAeronefsAbscisse && aeronefOrdonnee + ordoneeVariationValue >= obstacleAeronefsOrdonnee ) && !(aeronefAbscisse - abscisseVariationValue < obstacleAeronefsAbscisse && aeronefOrdonnee - ordoneeVariationValue < obstacleAeronefsOrdonnee)) {
+		if ((aeronefAbscisse + 100 >= obstacleAeronefsAbscisse && aeronefOrdonnee + 100 >= obstacleAeronefsOrdonnee ) && (aeronefAbscisse - 90 <= obstacleAeronefsAbscisse && aeronefOrdonnee - 90 <= obstacleAeronefsOrdonnee)) {
 //			if (obstacleAeronef.getAltitude() <= aeronefaltitude) {
 				obstacleAeronef.setDetectObstacle(true);
-				aeronefaltitude += 150;
+				aeronefaltitude += 250;
 				obstacleAeronef.setAltitude(aeronefaltitude);
-//				}
+//			}
 		}
 		else {
-			aeronef.setDetectObstacle(false);
+			obstacleAeronef.setDetectObstacle(false);
 		}
 	}
 	
-/**
- * setter setDirection	
- * @param direction
- */
+	/**
+	 * setter setDirection	
+	 * @param direction
+	 */
 	/*
 	 * setter setDirection
 	 * param:
@@ -460,10 +456,10 @@ public class AeronefManager extends Thread {
 		this.direction = direction;
 	}
 
-/**
- * getter getDepartureManager
- * @return departureManager
- */
+	/**
+	 * getter getDepartureManager
+	 * @return departureManager
+	 */
 	/*
 	 * getter getDepartureManager
 	 * returns departureManager, AirportManager

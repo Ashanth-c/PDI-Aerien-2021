@@ -33,7 +33,6 @@ public class AirportManager extends Thread {
 	public void run() {
 		while (running) {
 			enter();
-			System.out.println(isNextAeronef());
 			if (isNextAeronef()) {
 
 				Aeronef aeronef = nextTakeOffAeronef();
@@ -45,7 +44,6 @@ public class AirportManager extends Thread {
 					flyAeronef++;
 				}
 			}
-			System.out.println("airport " + airport.getName() +" "+ isNextAeronef() + " " +  flyAeronef);
 			running = isNextAeronef() ;
 		}
 	}

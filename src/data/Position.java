@@ -7,7 +7,7 @@ package data;
  * Classe définie par l'abscisse et l'ordonnée de ce point
  */
 public class Position {
-	private float abscisse;
+	private float abscissa;
 	private float ordinate;
 /**
  * Constructeur Position
@@ -22,7 +22,7 @@ public class Position {
 	 */
 	public Position(float abscisse, float ordinate) {
 		super();
-		this.abscisse = abscisse;
+		this.abscissa = abscisse;
 		this.ordinate = ordinate;
 
 	}
@@ -35,7 +35,7 @@ public class Position {
 	 * return abscisse, float 
 	 */
 	public float getAbscisse() {
-		return abscisse;
+		return abscissa;
 	}
 /**
  * setter setAbscisse
@@ -47,7 +47,7 @@ public class Position {
 	 * 		abscisse : float
 	 */
 	public void setAbscisse(float abscisse) {
-		this.abscisse = abscisse;
+		this.abscissa = abscisse;
 	}
 /**
  * getter getOrdonnee
@@ -81,6 +81,6 @@ public class Position {
 	 */
 	@Override
 	public String toString() {
-		return "Position [abscisse=" + abscisse + ", ordinate=" + ordinate + "]";
+		return "Position [abscisse=" + abscissa + ", ordinate=" + ordinate + "]";
 	}
 }
