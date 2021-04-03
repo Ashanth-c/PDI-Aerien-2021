@@ -5,6 +5,8 @@ package data;
  * @brief Un aéronef represente un element volant d'un aeroport à un autre
  * Aeronef est heritiere de la classe Position
  * @author Ashanth
+ * @author Khadija
+ * @author Maeva
  * @version 1.0
  * @date 06/04/2021
  */
