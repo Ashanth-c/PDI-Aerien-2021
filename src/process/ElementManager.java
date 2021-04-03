@@ -11,81 +11,84 @@ import data.Airport;
 import data.FlockBirds;
 import data.Mountain;
 import data.Obstacle;
-/**
- * 
- * @author 
- *
- *	Classe gérant des éléments.
- *	Classe constituée est attributs ci-contre:
- *	airportMap (Map<String,Airport>), aeronefsList (List<Aeronef>), obstaclesList (List<Obstacle>)
- *	flockBirdsList (List<FlockBirds>), mountainsList (List<Mountain>)
+
+/*!
+ * @file ElementManager.java
+ * @brief gÃ©rant des Ã©lÃ©ments.
+ * @author Ashanth
+ * @author Maeva
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
  */
+
 public class ElementManager {
 	private static Map<String, Airport> airportMap = new HashMap<String, Airport>();
 	private static List<Aeronef> aeronefsList = new ArrayList<Aeronef>();
 	private static List<Obstacle> obstaclesList = new ArrayList<Obstacle>();
 	private static List<FlockBirds> flockBirdsList = new ArrayList<FlockBirds>();
 	private static List<Mountain> mountainsList = new ArrayList<Mountain>();
-/**
- * ElementManager Constructor
+/*!
+ * ElementManager()
+ * @brief gerer l'elelement
  */
 	public ElementManager() {
 		// TODO Auto-generated constructor stub
 		super();
 	}
-/**
- * addAeronef method	
+/*!
+ * addAeronef()	
  * @param aeronef
  * 
- * Adds an aeronef in aeronefsList
+ * @brief Adds an aeronef in aeronefsList
  */
 	public static void addAeronef(Aeronef aeronef) {
 		aeronefsList.add(aeronef);
 	}
-/**
- * addAirport method	
+/*!
+ * addAirport()
  * @param key
  * @param value
  * 
- * Adds an Airport and a key in airportMap
+ * @brief Adds an Airport and a key in airportMap
  */
 	public static void addAirport(String key, Airport value) {
 		airportMap.put(key, value);
 	}
-/**
- * addObstacle method
+/*!
+ * addObstacle()
  * @param obstacle
  * 
- * Adds an obstacle in obstaclesList
+ * @brief Adds an obstacle in obstaclesList
  */
 	public static void addObstacle(Obstacle obstacle) {
 		obstaclesList.add(obstacle);
 	}
-/**
- * addFlockBirds	
+/*!
+ * addFlockBirds()	
  * @param flockbirds
  * 
- * Adds flockbirds in flockBirdsList
+ * @brief Adds flockbirds in flockBirdsList
  */
 	public static void addFlockBirds(FlockBirds flockbirds) {
 		flockBirdsList.add(flockbirds);
 	}
-/**
- * addMountain
+/*!
+ * addMountain()
  * @param mountain
  * 
- * Add a mountain in mountainsList
+ * @brief Add a mountain in mountainsList
  */
 	public static void addMountain(Mountain mountain) {
 		mountainsList.add(mountain);
 	}
 
-/**
- * checkAirportsAround method
+/*!
+ * checkAirportsAround()
  * @param aeronef
  * @return airportName
  * 
- * Checks airports around an aeronef, returns the airportName that's closest to an aeronef
+ * @brief Checks airports around an aeronef, returns the airportName that's closest to an aeronef
  */
 	public static String checkAirportsAround(Aeronef aeronef) {
 		//setting important variables
@@ -99,21 +102,21 @@ public class ElementManager {
 			
 			//we check if there is an aeronef near the airport, if yes its name will be returned
 			if (aeronefAbscisse+100>=airport.getAbscisse() && aeronefOrdonnee+100>=airport.getOrdonnee() && aeronefAbscisse-100<=airport.getAbscisse() && aeronefOrdonnee-100<=airport.getOrdonnee()) {
-				System.out.println("Atterissage en urgence réussi");
+				System.out.println("Atterissage en urgence rÃ©ussi");
 				airportName = airport.getName();
 			}
 		}
 		return airportName;
 	}
-/**
- * abscisseVariationValue method
+/*!
+ * abscisseVariationValue()
  * 
  * @param aeronef
- * @param destinationAirport
+ * @param destinationAirport l'aeroport de destination
  * @param time
  * @return abscisseVariation
  * 
- * returns ( airport's abscisse - aeronef's abscisse) / 100
+ * @brief returns ( airport's abscisse - aeronef's abscisse) / 100
  */
 	public static float abscisseVariationValue(Aeronef aeronef, Airport destinationAirport, int time) {
 		float aeronefAbscisse = aeronef.getAbscisse();
@@ -125,15 +128,15 @@ public class ElementManager {
 		return abscisseVariation;
 
 	}
-/**
- * ordonneeVariationValue method
+/*!
+ * ordonneeVariationValue()
  * 
  * @param aeronef
  * @param destinationAirport
  * @param time
  * @return ordonneeVariation
  * 
- * returns (airport's ordinate - aeronef's abscisse) /100
+ * @brief returns (airport's ordinate - aeronef's abscisse) /100
  */
 	public static float ordoneeVariationValue(Aeronef aeronef, Airport destinationAirport, int time) {
 		float aeronefOrdonnee = aeronef.getOrdonnee();
@@ -145,20 +148,20 @@ public class ElementManager {
 		return ordonneeVariation;
 
 	}
-/**
- * getAirportFromname method
+/*!
+ * getAirportFromname()
  * @param airportName
  * @return airportName
  * 
- * Uses an Airport's name to return said Airport from airportMap
+ * @brief Uses an Airport's name to return said Airport from airportMap
  */
 	public static Airport getAiportFromName(String airportName) {
 			return airportMap.get(airportName);
 	}
-/**
- * ObstacleMouvement method
+/*!
+ * ObstacleMouvement()
  * 
- * 	Makes flockBirds move 
+ * @brief Makes flockBirds move 
  */
 	public static void ObstacleMouvement() {
 		
@@ -180,11 +183,11 @@ public class ElementManager {
 		}
 		
 	}
-/**
- * avoidObstacle method	
+/*!
+ * avoidObstacle()
  * @param aeronef
  * 
- * Makes an aeronef avoid any given obstacle, be it mountain or flockbirds
+ * @brief Makes an aeronef avoid any given obstacle, be it mountain or flockbirds
  */
 	public static void avoidObstacle(AeronefManager aeronefM) {
 		Aeronef aeronef = aeronefM.getAeronef();
