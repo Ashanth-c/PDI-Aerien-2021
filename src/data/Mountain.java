@@ -13,8 +13,8 @@ public class Mountain extends Obstacle {
 	private String country;
 /*!
  * Mountain()
- * @param abscisse Le coordonnee X de l'aeronef 
- * @param ordinate Le coodonee Y de l'aeronef
+ * @param abscisse Le coordonnee X de la montagne 
+ * @param ordinate Le coodonee Y de la montagne 
  */
 
 	public Mountain(int abscisse, int ordonnee) {
@@ -23,8 +23,8 @@ public class Mountain extends Obstacle {
 /*!
  * 
  * Mountain()
- * @param abscisse Le coordonnee X de l'aeronef 
- * @param ordinate Le coodonee Y de l'aeronef
+ * @param abscisse Le coordonnee X de la montagne 
+ * @param ordinate Le coodonee Y de la montagne 
  * @param name le nom de la montagne
  * @param altitude l'altitude de la montagne
  * @param country le pays de la montagne
