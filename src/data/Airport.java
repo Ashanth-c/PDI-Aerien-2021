@@ -24,8 +24,8 @@ public class Airport extends Position {
 	/*!
 	 * @brief Creer un Aeroport au position (abscisse,ordonnee) donnne en parametre 
 	 * Airport()
-	 * @param abscisse
-	 * @param ordonnee
+	 * @param abscisse Le coordonnee X de l'aeronef 
+	 * @param ordinate Le coodonee Y de l'aeronef
 	 */
 	
 	public Airport(int abscisse, int ordonnee) {
@@ -35,15 +35,15 @@ public class Airport extends Position {
 	/*!
 	 * Airport()
 	 * 
-	 * @param abscisse
-	 * @param ordonnee
-	 * @param name
-	 * @param type
-	 * @param aerodrome
-	 * @param terminal
-	 * @param city
-	 * @param openingDate
-	 * @param linesList
+	 * @param abscisse Le coordonnee X de l'aeronef 
+	 * @param ordinate Le coodonee Y de l'aeronef
+	 * @param name le nom de l'aeroport
+	 * @param type le typ d'aeroport
+	 * @param aerodrome l'aerodrome de l'aeroport
+	 * @param terminal le terminal de l'aeroport
+	 * @param city la ville de l'aeroport
+	 * @param openingDate la date d'ouverture de l'aeroport
+	 * @param linesList la listes des lignes de l'aerport
 	 */
 	
 	public Airport(int abscisse, int ordonnee, String name, String type, Aerodrome aerodrome, Terminal terminal,
@@ -59,25 +59,27 @@ public class Airport extends Position {
 	}
 
 	/*!
-	 * @brief Retourne le nom de l'aeroport 
- 	 * getName()
- 	 * @return name
- 	 */
+	 * getName()
+	 * @brief il retourne le nom de l'aeroport
+	 * @return name Nom de l'aeroport 
+	 */
 	public String getName() {
 		return name;
 	}
 
 	/*!
 	 * setName()
-	 * @param name
-	 */	
+	 * @brief changement de nom de l'aeroport
+	 * @param name Nom de l'aeroport 
+	 */
 	public void setName(String name) {
 		this.name = name;
 	}
 
 	/*!
  	 * getAerodrome()
- 	 * @return aerodome
+	 * @brief il retourne l'aerodrome
+ 	 * @return aerodome l'aerodrome de l'aeroprt
  	 */
 	public Aerodrome getAerodrome() {
 		return aerodrome;
@@ -85,7 +87,8 @@ public class Airport extends Position {
 
 	/*!
  	 * setAerodrome()
- 	 * @param aerodrome
+	 * @brief changement d'aerodrome de l'aeroport
+ 	 * @param aerodrome l'aerodrome de l'aeroprt
  	 */
 	public void setAerodrome(Aerodrome aerodrome) {
 		this.aerodrome = aerodrome;
@@ -93,7 +96,8 @@ public class Airport extends Position {
 
 	/*!
 	 * getTerminal()
- 	 * @return terminal
+	 * @brief il retourne le terminal d'aeroport
+ 	 * @return terminal le terminal d'aeroport
  	 */
 	public Terminal getTerminal() {
 		return terminal;
@@ -101,7 +105,8 @@ public class Airport extends Position {
 
 	/*!
 	 * setTerminal()
-	 * @param terminal
+	 * @brief changement de type de l'aeroport
+	 * @param terminal le terminal d'aeroport
 	 */
 	public void setTerminal(Terminal terminal) {
 		this.terminal = terminal;
@@ -110,7 +115,7 @@ public class Airport extends Position {
 	/*!
 	 * getCity()
 	 * @brief Retourne la ville de l'aeroport 
-	 * @return city
+	 * @return city la ville de l'aeroport
 	 */
 	public City getCity() {
 		return city;
@@ -118,7 +123,8 @@ public class Airport extends Position {
 
 	/*!
  	 * setCity()
- 	 * @param city
+	 * @brief changement de ville de l'aeroport 
+ 	 * @param city la ville de l'aeroport
  	 */
 	public void setCity(City city) {
 		this.city = city;
@@ -127,7 +133,7 @@ public class Airport extends Position {
 	/*!
 	 * getopeningDate()
 	 * @brief Retourne la date d'ouverture de l'aeroport 
-	 * @return openingDate
+	 * @return openingDate la date d'ouverture de l'aeroport
 	 */
 	public String getopeningDate() {
 		return openingDate;
@@ -135,7 +141,8 @@ public class Airport extends Position {
 
 	/*!
 	 * setopeningDate()
-	 * @param openingDate
+	  * @brief changer la date d'ouverture de l'aeroport 
+	 * @param openingDate la date d'ouverture de l'aeroprt
 	 */
 	public void setopeningDate(String openingDate) {
 		this.openingDate = openingDate;
@@ -144,7 +151,7 @@ public class Airport extends Position {
 	/*!
 	 * getLinesList()
 	 * @brief Retourne la liste des lignes
-	 * @return linesList
+	 * @return linesList la liste des lignes passées par un aeroport
 	 */
 	public List<Line> getLinesList() {
 		return linesList;
@@ -152,7 +159,8 @@ public class Airport extends Position {
 
 	/*!
 	 * setLinesList()
-	 * @param linesList
+	  * @brief changer la liste des lignes d'un aeroport
+	 * @param linesList la liste des lignes passées par un aeroport
 	 */
 	public void setLinesList(List<Line> linesList) {
 		this.linesList = linesList;
@@ -161,7 +169,7 @@ public class Airport extends Position {
 	/*!
 	 * getType()
 	 * @brief Retourne le type de l'aeroport 
-	 * @return type
+	 * @return type le type d'aeroport
 	 */
 	public String getType() {
 		return type;
@@ -169,7 +177,8 @@ public class Airport extends Position {
 
 	/*!
 	 * setType()
-	 * @param type
+	 * @brief changer le type de l'aeroport 
+	 * @param type le type de l'aeroport
  	 */
 	public void setType(String type) {
 		this.type = type;
