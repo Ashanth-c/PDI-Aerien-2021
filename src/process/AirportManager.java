@@ -7,17 +7,16 @@ import data.Airport;
 import data.Line;
 import data.Terminal;
 import gui.SimulPara;
-
-/**
- * 
+/*!
+ * @file AirportManager.java
+ * @brief Classe gÃ©rant les aÃ©roports, Cette classe est une classe fille de la classe Thread.
  * @author Ashanth
- * 
- * Classe gérant les aéroports.
- * Classe constitutée des attributs ci contre :
- * aeroport (Airport), running (boolean), nextTakeOff (boolean), et flyAeronef (int)
- *
- * Cette classe est une classe fille de la classe Thread.
+ * @author Maeva
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
  */
+
 public class AirportManager extends Thread {
 	private Airport airport;
 	private boolean running = true;
@@ -48,14 +47,14 @@ public class AirportManager extends Thread {
 		}
 	}
 
-	/**
+	/*!
+	 * isTerminalFull()
+	 * @brief Method who tell if the Terminal is full or not
 	 * 
-	 * Method who tell if the Terminal is full or not
-	 * 
-	 * @return isFull
+	 * @return isFull  booleen qui ditermine si le terminal est plein
 	 */
 	private String isTerminalFull() {
-		String isfull = "Full"; // Resultat de la verification Initialisé a Full
+		String isfull = "Full"; // Resultat de la verification InitialisÃ© a Full
 		Terminal airportTerminal = airport.getTerminal(); // Aerogare d'un Aeroport
 		List<Aeronef> airportAeronefsList = airportTerminal.getTakeOffAeronefsList(); // Liste des Avions qui ce trouve dans
 																			// l'aerogare
@@ -66,10 +65,11 @@ public class AirportManager extends Thread {
 		return isfull;
 	}
 
-	/**
-	 * Method which adds an Aeronef in the Terminal
+	/*!
+	 * addAeronefTerminal()
+	 * @brief Method which adds an Aeronef in the Terminal
 	 * 
-	 * @param newAeronef
+	 * @param newAeronef avion
 	 */
 	public void addAeronefTerminal(Aeronef newAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
@@ -80,11 +80,12 @@ public class AirportManager extends Thread {
 		airportTerminal.setTotaParkAeronefs(newTotaParkAeronefs);
 	}
 
-	/**
-	 * Verification if the destination of the Aeronef is the same as the Airport
+
+	/*!
+	 * destinationVerification()
+	 * @brief Verification if the destination of the Aeronef is the same as the Airport
 	 * 
-	 * @param aeronef
-	 * @return true if the destination is the Airport, or false if it's not
+	 * @param aeronef avion
 	 */
 	private boolean destinationVerification(Aeronef aeronef) {
 		boolean verification = false; // Resultat de la verification
@@ -107,10 +108,10 @@ public class AirportManager extends Thread {
 
 	}
 
-	/**
-	 * Verification if the departure of the Aeronef is the same as the Airport
-	 * 
-	 * @param aeronef
+	/*!
+	 * @brief Verification if the departure of the Aeronef is the same as the Airport
+	 * departureVerification()
+	 * @param aeronef avion
 	 * @return true if the departure is the Airport, or false if it's not
 	 */
 	private boolean departureVerification(Aeronef aeronef) {
@@ -133,8 +134,9 @@ public class AirportManager extends Thread {
 
 	}
 
-	/**
-	 * Removes an Aeronef from the Terminal
+	/*!
+	 * removeAeronefTerminal()
+	 * @brief Removes an Aeronef from the Terminal
 	 * 
 	 * @param outAeronef
 	 */
@@ -147,8 +149,9 @@ public class AirportManager extends Thread {
 		airportTerminal.setTotaParkAeronefs(newTotaParkAeronefs);
 	}
 
-	/**
-	 * Give to an Aeronef the autorization to Takeoff
+	/*!
+	 * airportTakeOffAuthorization()
+	 * @brief Give to an Aeronef the autorization to Takeoff
 	 * 
 	 * @param goingAeronef
 	 * @return true if he has the authorisation, else false
@@ -165,14 +168,14 @@ public class AirportManager extends Thread {
 		return authorization;
 	}
 
-	/**
-	 * Give to an Aeronef the autorization to Land
-	 * 
+	/*!
+	 * airportLandingAuthorization()
+	 * @brief Give to an Aeronef the autorization to Land
 	 * @param goingAeronef
 	 * @return true if he has the authorisation, else false
 	 */
 	public boolean airportLandingAuthorization(Aeronef commingAeronef) {
-		boolean authorization = false; // autorisation initialisé a faux
+		boolean authorization = false; // autorisation initialisÃ© a faux
 		String airportType = airport.getType(); // Type d'acceuil de l'aeroport
 		String aeronefType = commingAeronef.getType(); // type de l'avion qui arrive
 
@@ -189,10 +192,10 @@ public class AirportManager extends Thread {
 		return authorization;
 	}
 
-	/**
-	 * Sets the isNext value true for an Aeronef
-	 * if an Aeronef is next in the TakeOffAeronefList
-	 * 
+	/*!
+	 *  isNextAeronef()
+	 * @brief Sets the isNext value true for an Aeronef
+	 * @brief if an Aeronef is next in the TakeOffAeronefList
 	 * @return isNext
 	 */
 	private boolean isNextAeronef() {
@@ -209,9 +212,9 @@ public class AirportManager extends Thread {
 		return isNext;
 	}
 
-	/**
-	 * Get the next Aeronef to takeOff
-	 * 
+	/*!
+	 * nextTakeOffAeronef()
+	 * @brief Get the next Aeronef to takeOff
 	 * @return Aeronef to takeoff
 	 */
 	public Aeronef nextTakeOffAeronef() {
@@ -235,77 +238,58 @@ public class AirportManager extends Thread {
 		}
 	}
 	
-	/**
-	 * getter getAirport
+	/*!
+	 * getter getAirport()
 	 * @return airport
+	 * @brief retourne l'aeroport
 	 */
-	/*
-	 * getter getAirport
-	 * return airport, Airport
-	 */
+	
 	public Airport getAirport() {
 		return airport;
 	}
 
-	/**
-	 * setter setAirport
+	/*!
+	 * setter setAirport()
 	 * @param airport
+	 * @brief change l'aeroport
 	 */
-	/*
-	 * setter setAirport
-	 * param:
-	 * 		airport:Airport
-	 */
+
 	public void setAirport(Airport airport) {
 		this.airport = airport;
 	}
 
-	/**
-	 * getter isNextTakeOff
+	/*!
+	 * getter isNextTakeOff()
 	 * @return nextTakeOff
 	 */
-	/*
-	 * getter isNextTakeOff
-	 * returns nextTakeOff, boolean
-	 */
+
 	public boolean isNextTakeOff() {
 		return nextTakeOff;
 	}
 
-	/**
-	 * setter setNextTakeOff 
+	/*!
+	 * setter setNextTakeOff ()
 	 * @param nextTakeOff
 	 */
-	/*
-	 * setter setNextTakeOff
-	 * param:
-	 * 		nextTakeOff : boolean
-	 */
+
 	public void setNextTakeOff(boolean nextTakeOff) {
 		this.nextTakeOff = nextTakeOff;
 	}
 
-	/**
-	 * getter getFlyAeronef
-	 * @return flyAeronef
+	/*!
+	 * getter getFlyAeronef()
+	 * @return flyAeronef l'aeronef en vol
 	 */
-	/*
-	 * getter getFlyAeronef
-	 * return flyAeronef, int
-	 */
+
 	public int getFlyAeronef() {
 		return flyAeronef;
 	}
 
-	/**
-	 * setter setFlyAeronef
-	 * @param flyAeronef
+	/*!
+	 * setter setFlyAeronef()
+	 * @param flyAeronef l'aeronef en vol
 	 */
-	/*
-	 * setter setFlyAeronef
-	 * param:
-	 * 		flyAeronef : int
-	 */
+
 	public void setFlyAeronef(int flyAeronef) {
 		this.flyAeronef = flyAeronef;
 	}
