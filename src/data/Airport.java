@@ -22,6 +22,7 @@ public class Airport extends Position {
 	private List<Line> linesList;
 
 	/*!
+	 * @brief Creer un Aeroport au position (abscisse,ordonnee) donnne en parametre 
 	 * Airport()
 	 * @param abscisse
 	 * @param ordonnee
@@ -171,7 +172,7 @@ public class Airport extends Position {
 
 	/*!
 	 * toString() 
-	 * 
+	 * @return une chaine de caractère représente l'aeroport et ses informations
 	 */
 	@Override
 	public String toString() {
