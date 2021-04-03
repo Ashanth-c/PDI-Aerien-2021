@@ -154,6 +154,7 @@ public class Simulation {
 				String destinationCity = destinationAirport.getCity().getName();
 				String modelAeronefs = getModelAeronefs(airport.getType());
 				String aeronefName = getAeronefName(airport.getCity().getName(), destinationCity) + indexAeronefs;
+				String aeronefType = getAeronefType(airport.getType(), destinationAirport.getType());
 				
 				//for each aeronef, set their base position as their airport's coordinates
 				int aeronefAbscisse = (int) airport.getAbscisse();
@@ -163,7 +164,7 @@ public class Simulation {
 				int totaParkAeronefs = airport.getTerminal().getTotaParkAeronefs()+1;
 
 				//each aeronef is created
-				Aeronef aeronef = Utility.createAeronef(aeronefAbscisse, aeronefOrdonnee, aeronefName, airport.getType(), modelAeronefs, destinationName, airport.getName(), 300, 100, 0, 1000);
+				Aeronef aeronef = Utility.createAeronef(aeronefAbscisse, aeronefOrdonnee, aeronefName, aeronefType , modelAeronefs, destinationName, airport.getName(), 300, 100, 0, 1000);
 				
 				//each aeronef is added to the list of "taking off aeronefs" for each airport's terminal 
 				airport.getTerminal().getTakeOffAeronefsList().add(aeronef);
@@ -246,6 +247,25 @@ public class Simulation {
 		}
 
 	}
+	
+	public String getAeronefType(String departureAirportType, String destinationAirportType) {
+		String type = null;
+		if(departureAirportType.contains("Military")&&!departureAirportType.contains("Civil")) {
+			if(destinationAirportType.contains("Military")) {
+				type = "Military";
+			}
+		}
+		else if(destinationAirportType.contains("Military")&&!destinationAirportType.contains("Civil")) {
+			if(departureAirportType.contains("Military")) {
+				type =  "Military";
+			}
+		}
+		else {
+			type = departureAirportType;
+		}
+		return type;
+	}
+	
 /**
  * getAeronefName method
  * 

@@ -60,7 +60,8 @@ public class GlobalViewPanel extends JPanel {
 			Airport airport = airportManager.getValue().getAirport();
 			int abscisse = (int) airport.getAbscisse();
 			int ordonnee = (int) airport.getOrdonnee();
-			printAirport(g2, abscisse, ordonnee);
+			String airportType = printAirportType(airport.getType());
+			printAirport(g2, abscisse, ordonnee,airportType);
 
 		}
 	}
@@ -97,9 +98,17 @@ public class GlobalViewPanel extends JPanel {
 		}
 	}
 
-	public void printAirport(Graphics2D g2, int abscisse, int ordonate) {
+	public void printAirport(Graphics2D g2, int abscisse, int ordonate,String type) {
 		g2.setStroke(new BasicStroke(6));
-		g2.drawImage(Utility.readImage("src/images/airport1.png"), abscisse, ordonate, 25, 30, this);
+		if(type.equals("CM")) {
+			g2.drawImage(Utility.readImage("src/images/airportMilitaryCivil.png"), abscisse, ordonate, 30, 35, this);
+		}
+		else if(type.equals("M")) {
+			g2.drawImage(Utility.readImage("src/images/airportMilitary.png"), abscisse, ordonate, 25, 30, this);
+		}
+		else {
+			g2.drawImage(Utility.readImage("src/images/airport1.png"), abscisse, ordonate, 25, 30, this);
+		}
 	}
 
 	public void printWorldMap(Graphics2D g2) {
@@ -133,7 +142,12 @@ public class GlobalViewPanel extends JPanel {
 			image = (BufferedImage) Utility.readImage("src/images/urgent_turbojet.png");
 		}
 		else {
+			if(aeronef.getType().contains("Military")&&!(aeronef.getType().contains("Civil"))) {
+				image = (BufferedImage) Utility.readImage("src/images/military_airplane.png");
+			}
+			else {
 			image = (BufferedImage) Utility.readImage("src/images/turboprop_airplane1.png");
+			}
 		}
 		if (direction.equals("Est-West")) {
 			double rotationRequired = Math.toRadians (180);
@@ -146,6 +160,19 @@ public class GlobalViewPanel extends JPanel {
 			g2.drawImage(image, abscisse, ordonate, 20, 26, this);
 
 			}
+	}
+	
+	public String printAirportType(String type) {
+		if(type.contains("Military")) {
+			if(type.contains("Civil")) {
+				return "CM";
+			}else {
+				return "M";
+			}
+		}
+		else {
+			return "C";
+		}
 	}
 	
 	public int getAeronefHeight(boolean obstacle) {
