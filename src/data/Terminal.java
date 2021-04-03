@@ -1,22 +1,24 @@
 package data;
 
 import java.util.List;
-/**
- * 
+
+/*!
+ * @file Terminal.java
+ * @brief Classe qui d√©crit un terminal.d√©finie par un nombre de places de parking total,le nombre d'a√©ronefs ayant att√©ri, la liste des aeronefs en d√©collage
+ * @brief et le nombre d'aeronef d'aeronefs en train d'att√©rir.
+ * @author Ashanth
  * @author Maeva
- *
- *Classe qui dÈcrit un terminal.
- *Classe dÈfinie par un nombre de places de parking total, 
- *le nombre d'aÈronefs ayant attÈri, la liste des aeronefs en dÈcollage
- *et le nombre d'aeronef d'aeronefs en train d'attÈrir.
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
  */
 public class Terminal {
 	private int totalParkingPlace;
 	private int totaParkAeronefs;
 	private List<Aeronef> takeOffAeronefsList;
 	private List<Aeronef> landingAeronefsList;
-/**
- * Constructeur Terminal
+/*!
+ * Terminal()
  * 
  * @param totalParkingPlace
  * @param totaParkAeronefs
@@ -26,8 +28,8 @@ public class Terminal {
 		this.totalParkingPlace = totalParkingPlace;
 		this.totaParkAeronefs = totaParkAeronefs;
 	}
-/**
- * Constructeur Terminal
+/*!
+ * Terminal()
  * 
  * @param totalParkingPlace
  * @param totaParkAeronefs
@@ -41,67 +43,66 @@ public class Terminal {
 		this.takeOffAeronefsList = takeOffAeronefs;
 		this.landingAeronefsList = landingAeronefs;
 	}
-/**
- * getter getTotalParkingPlace
+/*!
+ * getTotalParkingPlace()
  * @return totalParkingPlace
  */
 	public int getTotalParkingPlace() {
 		return totalParkingPlace;
 	}
-/**
- * setter setTotalParkingPlace
+/*!
+ * setTotalParkingPlace()
  * @param totalParkingPlace
  */
 	public void setTotalParkingPlace(int totalParkingPlace) {
 		this.totalParkingPlace = totalParkingPlace;
 	}
-/**
- * getter getTotaParkAeronefs
+/*!
+ * getTotaParkAeronefs()
  * @return totaParkAeronefs
  */
 	public int getTotaParkAeronefs() {
 		return totaParkAeronefs;
 	}
-/**
- * setter setTotaParkAeronefs
+/*!
+ * setTotaParkAeronefs()
  * @param totaParkAeronefs
  */
 	public void setTotaParkAeronefs(int totaParkAeronefs) {
 		this.totaParkAeronefs = totaParkAeronefs;
 	}
-/**
- * toString method
+/*!
+ * toString()
+ * @return une chaine de caract√®re qui affiche le terminal et ses informations
  */
-	/*
-	 * toString method
-	 */
+
 	@Override
 	public String toString() {
 		return "\nTota park aeronefs: " + totaParkAeronefs+"/"+totalParkingPlace;
 	}
-/**
- * getter getTakeOffAeronef
+/*!
+ * getTakeOffAeronef()
  * @return takeOffAeronefList
  */
 	public List<Aeronef> getTakeOffAeronefsList() {
 		return takeOffAeronefsList;
 	}
-/**
- * setter setTakeOffAeronefsList
+/*!
+ * setTakeOffAeronefsList()
  * @param takeOffAeronefsList
  */
 	public void setTakeOffAeronefsList(List<Aeronef> takeOffAeronefsList) {
 		this.takeOffAeronefsList = takeOffAeronefsList;
 	}
-/**
- * getter getLandingAeronefsList 
+/*!
+ * getLandingAeronefsList()
  * @return landingAeronefsList
  */
 	public List<Aeronef> getLandingAeronefsList() {
 		return landingAeronefsList;
 	}
-/**
- * setter setLandingAeronefsList
+/*!
+ * setLandingAeronefsList()
  * @param landingAeronefsList
  */
 	public void setLandingAeronefsList(List<Aeronef> landingAeronefsList) {
