@@ -68,7 +68,8 @@ public class Aeronef extends Position {
 		this.isFlying = isfly;
 	}
 
-	/*!
+	/*! 
+	 * getType()
 	 * @brief Retourne le type de l'aeronef, Cette methode permet de determiner dans quelle type d'aeroport l'aeronef peut atterir
 	 * @return type, le type de l'aeronef
 	 */
@@ -77,6 +78,7 @@ public class Aeronef extends Position {
 	}
 
 	/*!
+	 * setType()
 	 * @brief Change le type de l'aeronef
 	 * @param type Nouveau type de l'aeronef 
 	 */
@@ -84,7 +86,8 @@ public class Aeronef extends Position {
 		this.type = type;
 	}
 
-	/*!
+	/*! 
+	 * getModel()
 	 * @brief Retourne le modele de l'aeronef
 	 * @return model, le nom du model de l'aeronef
 	 */
@@ -93,6 +96,7 @@ public class Aeronef extends Position {
 	}
 
 	/*!
+	 * setModel()
 	 * @brief Change le modele de l'aeronef par un autre
 	 * @param model Nouveau modele de l'aeronef
 	 */
@@ -101,6 +105,7 @@ public class Aeronef extends Position {
 	}
 
 	/*!
+	 * getDestination()
 	 * @brief Retourne le nom de l'aeroport de destination, cette methode permet de connaitre la destination de l'aeronef
 	 * @return destination, le nom de l'aeroport de destination
 	 */
@@ -109,6 +114,7 @@ public class Aeronef extends Position {
 	}
 
 	/*!
+	 * setDestination()
 	 * @brief Change la valeur du nom de l'aeroport de destination
 	 * @param destination Nom du nouvel aeroport de destination
 	 */
@@ -117,8 +123,9 @@ public class Aeronef extends Position {
 	}
 	
 	/*!
-	 * @brief
-	 * @return
+	 * getDeparture()
+	 * @brief il retourne le deparature de l'aeronef
+	 * @return departure
 	 */
 	public String getDeparture() {
 		return departure;
@@ -167,6 +174,7 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getAltitude()
+	 * @brief il retourne l'altitude de l'aeronef
 	 * @return altitude
 	 */
 	public int getAltitude() {
@@ -183,6 +191,7 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getSpeed()
+	 * @brief il retourne la vitesse de l'aeronef
 	 * @return speed
 	 */
 	public int getSpeed() {
@@ -215,6 +224,7 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getName()
+	 * @brief il retourne le nom de l'aeronef
 	 * @return name
 	 */
 	public String getName() {
@@ -231,6 +241,7 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * isDetectObstacle()
+	 * @brief il rdetecte s'il y en a des obstacles
 	 * @return detectObstacle
 	 */
 	public boolean isDetectObstacle() {
@@ -247,6 +258,7 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * isFlying()
+	 * @brief il vérifie s'il l'aeronef est en vol
 	 * @return isFlying
 	 */
 	public boolean isFlying() {
@@ -262,6 +274,7 @@ public class Aeronef extends Position {
 	}
 	
 	/*!
+	 * toString()
 	 * @brief Retourne une chaine de caractere representant l'aeronef  avec ses informations 
 	 * @return Une chaine de caractere qui represente l'aeronef 
 	 */
