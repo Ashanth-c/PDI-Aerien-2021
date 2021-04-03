@@ -1,97 +1,76 @@
 package data;
-/**
- * 
+
+/*!
+ * @file City.java
+ * @brief Classe representant la ville, dÃ©finie par le nom d'une ville et oÃ¹ elle se trouve
+ * @author Khadija
+ * @author Ashanth
  * @author Maeva
- *
- * Classe qui définie une ville
- * Classe définie par le nom d'une ville et où elle se trouve
+ * @version 1.0
+ * @date 06/04/2021
  */
 public class City {
 	private String name;
 	private String country;
-/**
- * Constructor City
+/*!
+ * City()
  * @param name
  * @param country
  */
-	
-/* City Constructor
- * param:
- * 		name : String
- * 		country : String
- */
-	public City(String name, String country) {
-		super();
-		this.name = name;
-		this.country = country;
-	}
+public City(String name, String country) {
+	super();
+	this.name = name;
+	this.country = country;
+}
 	
 
-/**
- * Constructor City
+/*!
+ * City()
  */
-	/*
-	 * City Constructor
-	 * 
-	 */
-	public City() {
-		super();
-	}
 	
-/**
- * getter getName
+public City() {
+	super();
+}
+	
+/*!
+ * getName()
+ * @brief retourne le nom de la ville
  * @return name
  */
-	/*
-	 * getter getName
-	 * 
-	 * return name
-	 */
-	public String getName() {
-		return name;
-	}
-/**
- * setter setName
+	
+public String getName() {
+	return name;
+}
+/*!
+ * setName()
  * @param name
  */
-	/*
-	 * setter setName
-	 * param:
-	 * 		name : String
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-/**
- * getter getCountry
+public void setName(String name) {
+	this.name = name;
+}
+/*!
+ * getCountry()
+ * @brief retourne le pays
  * @return country
  */
-	/*
-	 * getter getCountry
-	 * 
-	 * return country, String
-	 */
-	public String getCountry() {
-		return country;
-	}
-/**
- * setter setCountr
+	
+public String getCountry() {
+	return country;
+}
+/*!
+ * setCountry()
  * @param country
  */
-	/*
-	 * setter setCountry
-	 * param:
-	 * 		country : String
-	 */
-	public void setCountry(String country) {
-		this.country = country;
-	}
-/**
- * toString method 
- * 
+
+public void setCountry(String country) {
+	this.country = country;
+}
+/*!
+ * toString()
+ * @return une chaine de caractere de la ville et son pays
  */
-	@Override
-	public String toString() {
-		return name +", "+ country;
-	}
+@Override
+public String toString() {
+	return name +", "+ country;
+    }
 }
