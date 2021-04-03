@@ -1,12 +1,19 @@
 
 
 package gui;
+/*!
+ * @file SimulPara.java
+ * @author Khadija
+ * @author Ashanth
+ * @author Maeva
+ * @version 1.0
+ * @date 06/04/2021
+ */
 
-//valeurs À vérifiées
 public class SimulPara {
 	
-	/**
-	 * 
+	/*!
+	 * @brief This class contains necessary simulation parameters
 	 * @author Ashanth
 	 * @author Khadija aeronef manager
 	 * @author Maeva mountain manager
