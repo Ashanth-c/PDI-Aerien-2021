@@ -19,21 +19,25 @@ import data.Mountain;
 import data.Obstacle;
 import data.Terminal;
 import gui.SimulPara;
-/**
- * 
- * @author
- *	
- *	Classe contenant les méthodes utilitaires
+
+/*!
+ * @file Utility.java
+ * @brief Classe contenant les mÃ©thodes utilitaires
+ * @author Ashanth
+ * @author Maeva
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
  */
 public class Utility {
 
-	/**
-	 * readImage method
+	/*
+	 * readImage()
 	 * 
 	 * @param filePath the path (from "src") of the image file
 	 * @return the read file
 	 * 
-	 * Reads a image from an image file.
+	 * @brief Reads a image from an image file.
 	 */
 	public static Image readImage(String filePath) {
 		try {
@@ -43,9 +47,9 @@ public class Utility {
 			return null;
 		}
 	}
-/**
- *  unitTime method 
- *  causes the currently executing thread to sleep for 1000 milliseconds, 
+/*!
+ *  unitTime()
+ *  @brief causes the currently executing thread to sleep for 1000 milliseconds, 
  */
 	public static void unitTime() {
 		try {
@@ -54,30 +58,30 @@ public class Utility {
 			System.err.println(e.getMessage());
 		}
 	}
-/**
- * 	createCity method
- * @param cityName
- * @param countryName
- * @return city
+/*!
+ * createCity()
+ * @param cityName le nom de la ville
+ * @param countryName le nom de la pays
+ * @return city la ville
  * 
- * Creates a new city with a given city name and an country name
+ * @brief Creates a new city with a given city name and an country name
  * 
  */
 	public static City createCity(String cityName, String countryName) {
 
 		return new City(cityName, countryName);
 	}
-/**
- *  createAirport	
- * @param abscisse
- * @param ordonnee
- * @param name
- * @param type
- * @param city
- * @param openingDate
+/*!
+ *  createAirport()	
+ * @param abscisse le cordonnee x de l'aeroport
+ * @param ordonnee le cordonnee y de l'aeroport
+ * @param name le nom de l'aeroport
+ * @param type le type de l'aeroport
+ * @param city la ville de l'aeroport
+ * @param openingDate la date d'ouverture de l'aeroport
  * @return airport
  * 
- * Creates an airport
+ * @brief Creates an airport
  */
 	public static Airport createAirport(int abscisse, int ordonnee, String name, String type, City city, String openingDate) {
 		Aerodrome aerodrome = createAerodrome();
@@ -87,22 +91,22 @@ public class Utility {
 		ElementManager.addAirport(name, airport);
 		return airport;
 	}
-/**
- * 	createAeronef method
- * @param abscisse
- * @param ordonnee
- * @param name
- * @param type
- * @param model
- * @param destination
- * @param departure
+/*!
+ * createAeronef()
+ * @param abscisse le cordonnee x de l'aeroport
+ * @param ordonnee le cordonnee y de l'aeroport
+ * @param name le nom de l'aeronef
+ * @param type le type de l'aeronef
+ * @param model le model de l'aeronef
+ * @param destination l'aeroport de destination
+ * @param departure l'aeroport de depart
  * @param totalSeats
  * @param fuel
- * @param altitude
- * @param speed
+ * @param altitude l'altitude de l'aeronef
+ * @param speed la vitesse de l'aeronef
  * @return aeronef
  * 
- * Creates an aeronef
+ * @brief Creates an aeronef
  */
 	public static Aeronef createAeronef(int abscisse, int ordonnee, String name, String type, String model, String destination, String departure,int totalSeats, int fuel, int altitude, int speed) {
 		
@@ -110,13 +114,13 @@ public class Utility {
 		ElementManager.addAeronef(aeronef);
 		return aeronef;
 	}
-/**
+/*!
  * createMountain	
- * @param abscisse
- * @param ordonnee
- * @param name
- * @param altitude
- * @param country
+ * @param abscisse le cordonnee x de la montagne
+ * @param ordonnee le cordonnee y de la montagne
+ * @param name le nom de l'aeronef
+ * @param altitude l'altitude de la montagne
+ * @param country le pays de la montagne
  * @return mountain
  * 
  * Creates a mountain
@@ -127,20 +131,20 @@ public class Utility {
 		ElementManager.addMountain(mountain);
 		return mountain;
 	}
-/**
+/*!
  * createFlockBirds
  * 
- * @param abscisse
- * @param ordonnee
- * @param name
- * @param altitude
- * @param numberOfBirds
- * @param speed
- * @param absCenter
- * @param ordCenter
- * @return flockBirds
+ * @param abscisse le cordonnee x des oiseaux
+ * @param ordonnee le cordonnee y des oiseaux
+ * @param name le nom des oiseaux
+ * @param altitude l'altitude des oiseaux
+ * @param numberOfBirds le nombre des groupes des oiseaux
+ * @param speed la vitesse des oiseaux
+ * @param absCenter l'abscisse du centre
+ * @param ordCenter l'ordonne du centre
+ * @return flockBirds le groupe des oiseaux
  * 
- *	Creates flockBirds
+ * @brief Creates flockBirds
  */
 	public static FlockBirds createFlockBirds(int abscisse, int ordonnee, String name, int altitude, int numberOfBirds, int speed, int absCenter, int ordCenter) {
 		FlockBirds flockBirds = new FlockBirds(abscisse, ordonnee, name, altitude, numberOfBirds, speed);
@@ -151,22 +155,22 @@ public class Utility {
 		return flockBirds;
 	}
 
-/**
- * createLine method
+/*!
+ * createLine()
  * @param airport1
  * @param airport2
  * 
- * Creates lines between two airports
+ * @brief Creates lines between two airports
  */
 	public static void createLine(Airport airport1, Airport airport2) {
 		LineBuilder builder = new LineBuilder();
 		builder.addLines(airport1, airport2);
 	}
-/**
- * 	createTerminal method
+/*!
+ * createTerminal()
  * @return terminal
  * 
- * Creates a terminal that has between 15 and 70 total parking places
+ * @brief Creates a terminal that has between 15 and 70 total parking places
  */
 	private static Terminal createTerminal() {
 		List<Aeronef> terminalList = new ArrayList<Aeronef>();
@@ -177,13 +181,11 @@ public class Utility {
 		return new Terminal(totalParkingPlace, 0, terminalList ,terminalLandList);
 
 	}
-/**
- * createAerodrom method	
+/*!
+ * createAerodrom()	
  * @return aerodrome
  * 
- * Creates an Aerodrome with 
- * 		runway length between 300 and 700 feet
- * 		totalrunway between 1 and 4
+ * @brief Creates an Aerodrome with runway length between 300 and 700 feet totalrunway between 1 and 4
  * 
  */
 	private static Aerodrome createAerodrome() {
@@ -193,25 +195,25 @@ public class Utility {
 		return new Aerodrome(totalRunway, runwayLenght);
 
 	}
-/**
- * getRandom method
+/*!
+ * getRandom()
  * @param min
  * @param max
  * @return random number
  * 
- * Returns a random number between the chosen values set as entries
+ * @brief Returns a random number between the chosen values set as entries
  */
 	public static int getRandom(int min, int max) {
 		return (int) (Math.random() * (max + 1 - min)) + min;
 	}
-/**
- * getRadiusFlockBirds methods
+/*!
+ * getRadiusFlockBirds()
  * @param flockBirds
  * @param abCenter
  * @param odrCenter
  * @return radius
  * 
- * Returns the radius of a flockbirds group
+ * @brief Returns the radius of a flockbirds group
  */
 	private static double getRadiusFlockBirds(FlockBirds flockBirds, int abCenter, int odrCenter) {
 		float flockBirdsAbscisse = flockBirds.getAbscisse();
