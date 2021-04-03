@@ -1,14 +1,17 @@
 package data;
 
 import java.util.List;
-/**
- * 
- * @author Maeva
- *
- *	Classe qui décrit un aéroport
- *	Classe définie par un nom, un type, un aerodrome, un terminal, une ville, une date d'entrée et une liste de lignes
- *
- */
+
+	/*!
+ 	 * @file Airport.java
+ 	 * @brief Classe qui dÃ©crit un aÃ©roport
+ 	 * @author Ashanth
+ 	 * @author Khadija
+ 	 * @author Maeva
+ 	 * @version 1.0
+ 	 * @date 06/04/2021
+ 	 */
+
 public class Airport extends Position {
 	private String name;
 	private String type;
@@ -18,24 +21,18 @@ public class Airport extends Position {
 	private String openingDate;
 	private List<Line> linesList;
 
-	/**
-	 * 
+	/*!
+	 * Airport()
 	 * @param abscisse
 	 * @param ordonnee
 	 */
-	/*
-	 * Constructor Airport
-	 * param :
-	 * 		abscisse : int
-	 * 		ordonnee : int
-	 * 
-	 */
+	
 	public Airport(int abscisse, int ordonnee) {
 		super(abscisse, ordonnee);
 	}
 	
-	/**
-	 * Airport Constructor
+	/*!
+	 * Airport()
 	 * 
 	 * @param abscisse
 	 * @param ordonnee
@@ -48,17 +45,6 @@ public class Airport extends Position {
 	 * @param linesList
 	 */
 	
-	/*
-	 * Constructor Airport
-	 * param :
-	 * 		abscisse, ordonnée : int
-	 * 		type, openingDate : String
-	 * 		city : City
-	 * 		terminal : Terminal
-	 * 		lineslist : List<Line>
-	 * 		aerodrome : Aerodrome
-	 *	
-	 */
 	public Airport(int abscisse, int ordonnee, String name, String type, Aerodrome aerodrome, Terminal terminal,
 			City city, String openingDate, List<Line> linesList) {
 		super(abscisse, ordonnee);
@@ -70,180 +56,122 @@ public class Airport extends Position {
 		this.openingDate = openingDate;
 		this.linesList = linesList;
 	}
-/**
- *  getter getName
- * @return name
- */
-	/*
-	 * getter getName
-	 * 
-	 * return name, String
-	 */
+
+	/*!
+ 	 * getName()
+ 	 * @return name
+ 	 */
 	public String getName() {
 		return name;
 	}
-/**
- * setter setName
- * @param name
- */
-	/*
-	 *  setter setName
-	 *  param :
-	 *  	name : String
-	 */
+
+	/*!
+	 * setName()
+	 * @param name
+	 */	
 	public void setName(String name) {
 		this.name = name;
 	}
-/**
- * getter getAerodrome
- * @return aerodome
- */
-	/*
-	 * getter getAerodrome
-	 * 
-	 * return aerodrome, Aerodrome
-	 */
+
+	/*!
+ 	 * getAerodrome()
+ 	 * @return aerodome
+ 	 */
 	public Aerodrome getAerodrome() {
 		return aerodrome;
 	}
-/**
- * setter setAerodrome
- * @param aerodrome
- */
-	/*
-	 * setter setAerodrome
-	 * param:
-	 * 		aerodrome : Aerodrome
-	 */
+
+	/*!
+ 	 * setAerodrome()
+ 	 * @param aerodrome
+ 	 */
 	public void setAerodrome(Aerodrome aerodrome) {
 		this.aerodrome = aerodrome;
 	}
-/**
- * getter getTerminal
- * @return terminal
- */
-	/*
-	 * getter getTerminal
-	 * 
-	 * return terminal
-	 */
+
+	/*!
+	 * getTerminal()
+ 	 * @return terminal
+ 	 */
 	public Terminal getTerminal() {
 		return terminal;
 	}
-/**
- * setter setTerminal
- * @param terminal
- */
-	/*
-	 * setter setTerminal
-	 * param:
-	 * 		terminal :Terminal
+
+	/*!
+	 * setTerminal()
+	 * @param terminal
 	 */
 	public void setTerminal(Terminal terminal) {
 		this.terminal = terminal;
 	}
-/**
- * getter getCity
- * @return city
- */
-	/*
-	 * getter getCity
-	 * 
-	 * return city, City
+	
+	/*!
+	 * getCity()
+	 * @return city
 	 */
 	public City getCity() {
 		return city;
 	}
-/**
- * setter setCity
- * @param city
- */
-	/*
-	 * setter setCity
-	 * param:
-	 * 		city : City
-	 */
+
+	/*!
+ 	 * setCity()
+ 	 * @param city
+ 	 */
 	public void setCity(City city) {
 		this.city = city;
 	}
-/**
- * getter getopeningDate
- * @return openingDate
- */
-	/*
-	 * getter getopeningDate
-	 * 
-	 * return openingDate, String
+
+	/*!
+	 * getopeningDate()
+	 * @return openingDate
 	 */
 	public String getopeningDate() {
 		return openingDate;
 	}
-/**
- * setter setopeningDate
- * @param openingDate
- */
-	/*
-	 * setter setopeningDate
-	 * param:
-	 * 		openingDate : String
+
+	/*!
+	 * setopeningDate()
+	 * @param openingDate
 	 */
 	public void setopeningDate(String openingDate) {
 		this.openingDate = openingDate;
 	}
-/**
- * getter getLinesList
- * @return linesList
- */
-	/*
-	 * getter getLinesList
-	 * 
-	 * return linesList, List<Line>
+
+	/*!
+	 * getLinesList()
+	 * @return linesList
 	 */
 	public List<Line> getLinesList() {
 		return linesList;
 	}
-/**
- * setter setLinesList
- * @param linesList
- */
-	/*
-	 * setter setLinesList
-	 * param :
-	 * 		linesList : List<Line>
+
+	/*!
+	 * setLinesList()
+	 * @param linesList
 	 */
 	public void setLinesList(List<Line> linesList) {
 		this.linesList = linesList;
 	}
-/**
- * getter getType
- * @return type
- */
-	/*
-	 * getter getType
-	 * 
-	 * return type, String
+
+	/*!
+	 * getType()
+	 * @return type
 	 */
 	public String getType() {
 		return type;
 	}
-/**
- * setter setType
- * @param type
- */
-	/*
-	 * setter setType
-	 * param :
-	 * 		type : String
-	 */
+
+	/*!
+	 * setType()
+	 * @param type
+ 	 */
 	public void setType(String type) {
 		this.type = type;
 	}
-/**
- * toString method
- * 
- */
-	/*
-	 * toString method
+
+	/*!
+	 * toString() 
+	 * 
 	 */
 	@Override
 	public String toString() {
