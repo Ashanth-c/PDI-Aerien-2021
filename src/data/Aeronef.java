@@ -262,7 +262,8 @@ public class Aeronef extends Position {
 	}
 	
 	/*!
-	 * 
+	 * @brief Retourne une chaine de caractere representant l'aeronef  avec ses informations 
+	 * @return Une chaine de caractere qui represente l'aeronef 
 	 */
 	@Override
 	public String toString() {
