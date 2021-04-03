@@ -1,84 +1,67 @@
 package data;
-/**
- * 
+
+/*!
+ * @file Position.java
+ * @brief Classe qui d√©crit la position d'un point, d√©finie par l'abscisse et l'ordonn√©e de ce point
+ * @author Ashanth
  * @author Maeva
- *
- * Classe qui dÈcrit la position d'un point
- * Classe dÈfinie par l'abscisse et l'ordonnÈe de ce point
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
  */
 public class Position {
 	private float abscissa;
 	private float ordinate;
-/**
- * Constructeur Position
+/*!
+ * Position()
  * 
  * @param abscisse
  * @param ordinate
  */
-	/*
-	 * Constructeur Position
-	 * param:
-	 * 		abscisse, ordinate : float
-	 */
 	public Position(float abscisse, float ordinate) {
 		super();
 		this.abscissa = abscisse;
 		this.ordinate = ordinate;
 
 	}
-/**
- * getter getAbscisse
+/*!
+ * getAbscisse()
+ * @brief retourne l'abscisse de la posision
  * @return abscisse
  */
-	/*
-	 * getter getAbscisse
-	 * return abscisse, float 
-	 */
+
 	public float getAbscisse() {
 		return abscissa;
 	}
-/**
- * setter setAbscisse
+/*!
+ * setAbscisse()
  * @param abscisse
  */
-	/*
-	 * setter setAbscisse
-	 * param:
-	 * 		abscisse : float
-	 */
+
 	public void setAbscisse(float abscisse) {
 		this.abscissa = abscisse;
 	}
-/**
- * getter getOrdonnee
+/*!
+ * getOrdonnee()
+ * @brief retourne l'ordonnee de la position
  * @return ordinate
  */
-	/*
-	 * getter getOrdonnee
-	 * 
-	 * return ordinate, float
-	 */
+
 	public float getOrdonnee() {
 		return ordinate;
 	}
-/**
- * setter setOrdonnee
+/*!
+ * setOrdonnee()
  * @param ordinate
  */
-	/*
-	 * setter setOrdonnee
-	 * param:
-	 * 		ordinate : float
-	 */
+
 	public void setOrdonnee(float ordinate) {
 		this.ordinate = ordinate;
 	}
-/**
- * toString method
+/*!
+ * toString()
+ * @return une chaine de caract√®re qui affiche la position avec l'abscisse et l'ordonn√©e
  */
-	/*
-	 * to String method
-	 */
 	@Override
 	public String toString() {
 		return "Position [abscisse=" + abscissa + ", ordinate=" + ordinate + "]";
