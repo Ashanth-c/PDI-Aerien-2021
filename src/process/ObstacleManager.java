@@ -11,26 +11,29 @@ import data.Line;
 import data.Mountain;
 import data.Obstacle;
 
-/**
- * 
- * @author Ashanth, Maeva
- *
- *	Classe qui gËre les obstacles
- *	ConstituÈe par les attributs :
- *	obstacle (Obstacle), teta (double)
+
+/*!
+ * @file ObstacleManager.java
+ * @brief Classe qui g√®re les obstacles, Constitu√©e par les attributs :obstacle (Obstacle), teta (double)
+ * @author Ashanth
+ * @author Maeva
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
  */
 public class ObstacleManager {
 
 	private Obstacle obstacle;
 	private double teta=0;
-/**
- * Constructor ObsctacleManager
+/*!
+ * ObsctacleManager()
+ * @brief  g√®re les obstacles
  */
 	public ObstacleManager() {
 		super();
 	}
-/**
- * Constructor ObstacleManager
+/*!
+ * ObstacleManager()
  * @param obstacle
  */
 	public ObstacleManager(Obstacle obstacle) {
@@ -38,11 +41,11 @@ public class ObstacleManager {
 		this.obstacle = obstacle;
 	}
 	
-/**
- * 	moveFlockBirds method
+/*!
+ * moveFlockBirds()
  * @param rayon
  * 
- * Makes birds move in a circular trajectory
+ * @brief Makes birds move in a circular trajectory
  */
 	public void moveFlockBirds(double rayon) {
 		double flockbirdsOrdonnee = obstacle.getOrdonnee();
@@ -58,11 +61,11 @@ public class ObstacleManager {
 
 
 	}
-/**
- * impactMountain method
+/*!
+ * impactMountain()
  * @param aeronef
  * 
- * Checks if an aeronef's coordinates match with an obstacle's
+ * @brief Checks if an aeronef's coordinates match with an obstacle's
  */
 	public void impactMountain(Aeronef aeronef) {
 		if ((obstacle.getAbscisse() == aeronef.getAbscisse()) && obstacle.getOrdonnee() == aeronef.getOrdonnee()) {
@@ -70,11 +73,11 @@ public class ObstacleManager {
 			}
 		}
 	}
-/**
- * avoidFlockBirds method
+/*!
+ * avoidFlockBirds()
  * @param aeronef
  * 
- * Makes an aeronef dodge flockBirds if it's close enough by changing the aeronef's altitude
+ * @brief Makes an aeronef dodge flockBirds if it's close enough by changing the aeronef's altitude
  */
 	public void avoidFlockBirds(Aeronef aeronef) {
 		float flockbirdsAbscisse = obstacle.getAbscisse();
@@ -89,15 +92,15 @@ public class ObstacleManager {
 				System.out.println("Detection d'un groupe d'oiseau proche");
 				aeronefaltitude += 150;
 				aeronef.setAltitude(aeronefaltitude);
-				System.out.println("Obstacle ÈvitÈ");
+				System.out.println("Obstacle √©vit√©");
 			}
 		}
 	}
-/**
- * avoidMountain method
+/*!
+ * avoidMountain()
  * @param aeronef
  * 
- * Makes an aeronef dodge a mountain if it's close enough by changing its altitude 
+ * @brief Makes an aeronef dodge a mountain if it's close enough by changing its altitude 
  */
 	public void avoidMountain(Aeronef aeronef) {
 		 float mountainAbscisse = obstacle.getAbscisse();
