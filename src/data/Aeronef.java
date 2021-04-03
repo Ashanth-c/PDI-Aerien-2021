@@ -22,7 +22,7 @@ public class Aeronef extends Position {
 	private int altitude;
 	private int speed;
 	private boolean urgent;
-	private boolean detectObstacle;
+	private String detectObstacle;
 	private boolean isFlying;
 
 	/*!
@@ -52,7 +52,7 @@ public class Aeronef extends Position {
 	 * @param isfly Booleen qui indique si un aeronef est en vol
 	 */
 	public Aeronef(int abscisse, int ordonnee, String name, String type, String model, String destination, String departure,
-			int totalSeats, int fuel, int altitude, int speed, boolean urgent,boolean detectObstacle, boolean isfly) {
+			int totalSeats, int fuel, int altitude, int speed, boolean urgent, String detectObstacle, boolean isfly) {
 		super(abscisse, ordonnee);
 		this.name=name;
 		this.type = type;
@@ -244,7 +244,7 @@ public class Aeronef extends Position {
 	 * @brief il rdetecte s'il y en a des obstacles
 	 * @return detectObstacle
 	 */
-	public boolean isDetectObstacle() {
+	public String getDetectObstacle() {
 		return  detectObstacle;
 	}
 
@@ -252,7 +252,7 @@ public class Aeronef extends Position {
 	 * setDetectObstacle()
 	 * @param detectObstacle
 	 */
-	public void setDetectObstacle(boolean detectObstacle) {
+	public void setDetectObstacle(String detectObstacle) {
 		this.detectObstacle = detectObstacle;
 	}
 	

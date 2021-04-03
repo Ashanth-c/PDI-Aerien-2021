@@ -57,6 +57,7 @@ public class AeronefManager extends Thread {
 	@Override
 	public void run() {
 		aeronef.setFlying(true);
+		initAeronefAltitute(aeronef.getType());
 		while(running) {
 			Utility.unitTime();
 			
@@ -94,6 +95,7 @@ public class AeronefManager extends Thread {
 			travelAeronef();
 		}
 		aeronef.setFlying(false);
+		aeronef.setAltitude(0);
 
 	}
 
@@ -431,15 +433,29 @@ public class AeronefManager extends Thread {
 		float obstacleAeronefsAbscisse = obstacleAeronef.getAbscisse();
 		float obstacleAeronefsOrdonnee = obstacleAeronef.getOrdonnee();
 		int aeronefaltitude = aeronef.getAltitude();
-		if ((aeronefAbscisse + 100 >= obstacleAeronefsAbscisse && aeronefOrdonnee + 100 >= obstacleAeronefsOrdonnee ) && (aeronefAbscisse - 90 <= obstacleAeronefsAbscisse && aeronefOrdonnee - 90 <= obstacleAeronefsOrdonnee)) {
-//			if (obstacleAeronef.getAltitude() <= aeronefaltitude) {
-				obstacleAeronef.setDetectObstacle(true);
-				aeronefaltitude += 250;
-				obstacleAeronef.setAltitude(aeronefaltitude);
-//			}
+		if(!aeronef.getDetectObstacle().equals("Obstacle")) {
+			if (obstacleAeronef.getAltitude() <= aeronefaltitude) {
+				float dx = (aeronefAbscisse) - obstacleAeronefsAbscisse+abscisseVariationValue;
+				float dy = (aeronefOrdonnee) - obstacleAeronefsOrdonnee+ordoneeVariationValue;
+				double distance = Math.sqrt(dx * dx + dy * dy);
+				if (distance < 70) {
+					aeronef.setDetectObstacle("Aeronef");
+					aeronef.setAltitude(4300);
+				}
+			}
+			else {
+				obstacleAeronef.setDetectObstacle("No");
+				aeronef.setAltitude(6100);
+			}
+		}
+	}
+	
+	public void initAeronefAltitute(String type) {
+		if (type.equals("Military")) {
+			aeronef.setAltitude(11200);
 		}
 		else {
-			obstacleAeronef.setDetectObstacle(false);
+			aeronef.setAltitude(6100);
 		}
 	}
 	

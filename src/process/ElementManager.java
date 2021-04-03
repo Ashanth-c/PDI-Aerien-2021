@@ -191,7 +191,7 @@ public class ElementManager {
 		for (Obstacle obstacle:obstaclesList) {
 			if (obstacle.toString().contains("Mount")) {
 				ObstacleManager mountainManager = new ObstacleManager(obstacle);
-//				mountainManager.avoidMountain(aeronef);
+				mountainManager.avoidMountain(aeronef);
 			}
 			else if (obstacle.toString().contains("Birds")) {
 				ObstacleManager birdsManager = new ObstacleManager(obstacle);
@@ -201,7 +201,7 @@ public class ElementManager {
 		for (Aeronef obstacleAeronef : aeronefsList) {
 				if(obstacleAeronef.getDestination().equals(aeronef.getDeparture())) {
 					if(obstacleAeronef.isFlying()) {
-						aeronefM.avoidOtherAeronef(obstacleAeronef);
+//						aeronefM.avoidOtherAeronef(obstacleAeronef);
 				}
 			}
 		}

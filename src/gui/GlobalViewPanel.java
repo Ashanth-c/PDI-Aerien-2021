@@ -101,10 +101,10 @@ public class GlobalViewPanel extends JPanel {
 	public void printAirport(Graphics2D g2, int abscisse, int ordonate,String type) {
 		g2.setStroke(new BasicStroke(6));
 		if(type.equals("CM")) {
-			g2.drawImage(Utility.readImage("src/images/airportMilitaryCivil.png"), abscisse, ordonate, 30, 35, this);
+			g2.drawImage(Utility.readImage("src/images/airportMilitaryCivil.png"), abscisse, ordonate, 30, 37, this);
 		}
 		else if(type.equals("M")) {
-			g2.drawImage(Utility.readImage("src/images/airportMilitary.png"), abscisse, ordonate, 25, 30, this);
+			g2.drawImage(Utility.readImage("src/images/airportMilitary.png"), abscisse, ordonate, 25, 32, this);
 		}
 		else {
 			g2.drawImage(Utility.readImage("src/images/airport1.png"), abscisse, ordonate, 25, 30, this);
@@ -135,8 +135,8 @@ public class GlobalViewPanel extends JPanel {
 		int abscisse = (int) aeronef.getAbscisse() + 7;
 		int ordonate = (int) aeronef.getOrdonnee() + 20;
 		String direction = aeronefManager.getDirection();
-		int aeronefHeight = getAeronefHeight(aeronef.isDetectObstacle());
-		int aeronefWidth = getAeronefWidth(aeronef.isDetectObstacle());
+		int aeronefHeight = getAeronefHeight(aeronef.getDetectObstacle());
+		int aeronefWidth = getAeronefWidth(aeronef.getDetectObstacle());
 		BufferedImage image=null;
 		if(aeronef.getUrgent()) {
 			image = (BufferedImage) Utility.readImage("src/images/urgent_turbojet.png");
@@ -149,6 +149,7 @@ public class GlobalViewPanel extends JPanel {
 			image = (BufferedImage) Utility.readImage("src/images/turboprop_airplane1.png");
 			}
 		}
+		
 		if (direction.equals("Est-West")) {
 			double rotationRequired = Math.toRadians (180);
 			double locationX = image.getWidth() / 2;
@@ -175,24 +176,52 @@ public class GlobalViewPanel extends JPanel {
 		}
 	}
 	
-	public int getAeronefHeight(boolean obstacle) {
-		if(obstacle) {
-			return 30;
+	public int getAeronefHeight(String obstacle) {
+		int height=0;
+		switch (obstacle) {
+			case "No": {
+				height = 20;
+				break;
+			}
+			case "Aeronef":{
+				height = 15;
+				break;
+			}
+			case "Obstacle":{
+				height = 30;
+				break;
+			}
+			default:{
+				height = 20;
+				break;
+			}
 		}
-		else {
-			return 20;
-		}
+		return height;
 	}
 	
-	public int getAeronefWidth(boolean obstacle) {
-		if(obstacle) {
-			return 36;
+	public int getAeronefWidth(String obstacle) {
+		
+		int width=0;
+		switch (obstacle) {
+			case "No": {
+				width = 26;
+				break;
+			}
+			case "Aeronef":{
+				width = 21;
+				break;
+			}
+			case "Obstacle":{
+				width = 36;
+				break;
+			}
+			default:{
+				width = 26;
+				break;
+			}
 		}
-		else {
-			return 26;
-		}
+		return width;
 	}
-	
 	
 	public Simulation getSimulation() {
 		return simulation;

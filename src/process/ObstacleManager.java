@@ -106,13 +106,22 @@ public class ObstacleManager {
 		float aeronefsOrdonnee = aeronef.getOrdonnee();
 		int mountainaltitude = obstacle.getAltitude();
 		
-		if (aeronefsAbscisse+10 >= mountainAbscisse && aeronefsOrdonnee + 10 >= mountainOrdonnee && aeronefsAbscisse - 30 <= mountainAbscisse && aeronefsOrdonnee - 30 <= mountainOrdonnee) {
+//		if (aeronefsAbscisse+10 >= mountainAbscisse && aeronefsOrdonnee + 10 >= mountainOrdonnee && aeronefsAbscisse - 30 <= mountainAbscisse && aeronefsOrdonnee - 30 <= mountainOrdonnee) {
+		float dx = (aeronefsAbscisse+20) - mountainAbscisse;
+		float dy = (aeronefsOrdonnee+20) - mountainOrdonnee;
+		double distance = Math.sqrt(dx * dx + dy * dy);
+		if (distance < 40) {
 				if (aeronef.getAltitude() <= mountainaltitude) {
-					aeronef.setDetectObstacle(true);
+					aeronef.setDetectObstacle("Obstacle");
 					mountainaltitude += 150;
 					aeronef.setAltitude(mountainaltitude);
-					System.out.println("Detection de Montagne proche" + aeronef.isDetectObstacle());
+					System.out.println("Detection de Montagne proche" + aeronef.getDetectObstacle());
 				}
+		}
+		else {
+			aeronef.setDetectObstacle("No");
+			mountainaltitude -= 150;
+			aeronef.setAltitude(mountainaltitude);
 		}
 
 	}
