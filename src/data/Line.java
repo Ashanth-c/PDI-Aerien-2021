@@ -15,8 +15,8 @@ public class Line {
 	
 	/*!
  	 * Line()
- 	 * @param departure
- 	 * @param destination
+ 	 * @param departure l'aeroport de depart: debut de ligne
+ 	 * @param destination l'aeroport de destination: fin de ligne
  	 */
 	public Line(Airport departure, Airport destination) {
 		super();
@@ -33,15 +33,16 @@ public class Line {
 
 	/*!
  	 * getdeparture()
-	 * @brief retourne la deparature de la ligne
- 	 * @param departure
+	 * @brief retourne la deparature de la ligne l'aeroport de depart
+ 	 * @param departure l'aeroport de depart: debut de ligne
  	 */
 	public Airport getdeparture() {
 		return departure;
 	}
 	/*!
  	 * setdeparture()
- 	 * @param departure
+	 * @brief changer la deparature de la ligne l'aeroport de depart
+ 	 * @param departure l'aeroport de depart: debut de ligne
  	 */
 
 	public void setdeparture(Airport departure) {
@@ -51,14 +52,15 @@ public class Line {
 	/*!
  	 * getdestination()
 	 * @brief retourne la distination de la ligne
-   	 * @return destination
+   	 * @return destination l'aeroport de destination: fin de ligne
  	 */
 	public Airport getdestination() {
 		return destination;
 	}
 	/*!
  	 * setdestination()
- 	 * @param destination
+	 * @brief changer la fin de la ligne l'aeroport de destination
+ 	 * @param destination l'aeroport de destination: fin de ligne
  	 */
 	public void setdestination(Airport destination) {
 		this.destination = destination;
