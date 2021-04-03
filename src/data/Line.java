@@ -1,94 +1,73 @@
 package data;
-/**
- * 
+
+/*!
+ * @file Line.java
+ * @brief Classe dÃ©finie la ligne entre un aÃ©roport de dÃ©part et un aÃ©roport de destination
+ * @author Ashanth
+ * @author Khadija
  * @author Maeva
- * 
- * Classe définie par un aéroport de départ et un aéroport de destination
- *
+ * @version 1.0
+ * @date 06/04/2021
  */
 public class Line {
 	private Airport departure;
 	private Airport destination;
-/**
- * Constructeur Line
- * @param departure
- * @param destination
- */
-	/*
-	 * Constructeur Line
-	 * param :
-	 * 		departure : Airport
-	 * 		destination : Airport
-	 */
+	
+	/*!
+ 	 * Line()
+ 	 * @param departure
+ 	 * @param destination
+ 	 */
 	public Line(Airport departure, Airport destination) {
 		super();
 		this.departure = departure;
 		this.destination = destination;
 	}
-/**
- * Constructeur Line
- */
-	/*
-	 * Constructeur Line
-	 */
+	/*!
+         * Line()
+ 	 */
 	public Line() {
 		super();
 	}
-/**
- * getter getdeparture
- * @return departure
- * 
- */
-	/*
-	 * getter getdeparture
-	 * return departure, Airport
-	 */
+
+
+	/*!
+ 	 * getdeparture()
+	 * @brief retourne la deparature de la ligne
+ 	 * @param departure
+ 	 */
 	public Airport getdeparture() {
 		return departure;
 	}
-/**
- * setter setdeparture
- * @param departure
- */
-	/*
-	 * setter setdeparture
-	 * param:
-	 * 		departure : Airport
-	 */
+	/*!
+ 	 * setdeparture()
+ 	 * @param departure
+ 	 */
+
 	public void setdeparture(Airport departure) {
 		this.departure = departure;
 	}
-/**
- * getter getdestination
- * @return destination
- */
-	/*
-	 * getter getdestination
-	 * 
-	 * return destination, Airport
-	 */
+	
+	/*!
+ 	 * getdestination()
+	 * @brief retourne la distination de la ligne
+   	 * @return destination
+ 	 */
 	public Airport getdestination() {
 		return destination;
 	}
-/**
- * setter setdestination
- * @param destination
- */
-	/*
-	 * setter setdestination
-	 * param:
-	 * 		destination : Airport
-	 */
+	/*!
+ 	 * setdestination()
+ 	 * @param destination
+ 	 */
 	public void setdestination(Airport destination) {
 		this.destination = destination;
 	}
-/**
- * 	toString method
- * 
- */
-	/*
-	 * toString method
+	/*!
+ 	 * toString()
+	 * @return une chaine de caractere affiche les informations de la ligne
 	 */
+
 	@Override
 	public String toString() {
 		return "Departure = " + departure.getName() + ", Destination = " + destination.getName() + "\n";
