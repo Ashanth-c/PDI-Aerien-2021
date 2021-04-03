@@ -15,8 +15,8 @@ public class Position {
 /*!
  * Position()
  * 
- * @param abscisse
- * @param ordinate
+ * @param abscissa Le coordonnee X de l'objet
+ * @param ordinate Le coodonee Y de l'objet
  */
 	public Position(float abscisse, float ordinate) {
 		super();
@@ -27,7 +27,7 @@ public class Position {
 /*!
  * getAbscisse()
  * @brief retourne l'abscisse de la posision
- * @return abscisse
+ * @return abscisse Le coordonnee X de ll'objet
  */
 
 	public float getAbscisse() {
@@ -35,7 +35,8 @@ public class Position {
 	}
 /*!
  * setAbscisse()
- * @param abscisse
+ * @brief changer l'abscisse de la posision
+ * @param abscisse Le coordonnee X de ll'objet
  */
 
 	public void setAbscisse(float abscisse) {
@@ -44,7 +45,7 @@ public class Position {
 /*!
  * getOrdonnee()
  * @brief retourne l'ordonnee de la position
- * @return ordinate
+ * @return ordinate Le coodonee Y de l'objet
  */
 
 	public float getOrdonnee() {
@@ -52,7 +53,8 @@ public class Position {
 	}
 /*!
  * setOrdonnee()
- * @param ordinate
+ * @brief changer l'ordonnee de la position
+ * @param ordinate Le coodonee Y de l'objet
  */
 
 	public void setOrdonnee(float ordinate) {
