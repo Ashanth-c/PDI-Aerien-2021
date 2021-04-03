@@ -31,16 +31,36 @@ import process.ObstacleManager;
 import process.AeronefManager;
 import process.AirportManager;
 
+
+/*!
+ * @file GlobalViewPanel.java
+ * @brief Classe trace les différents composants des panneaux
+ * @author Ashanth
+ * @author Maeva
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
+ */
 public class GlobalViewPanel extends JPanel {
 
 	private Simulation simulation;
-
+ 
+	/*!
+	 * GlobalViewPanel()
+	 * @brief lancer la simulation da la vue globale 
+	 * @param simulation l'action des différent objet sur la fenetre
+	 */
 	public GlobalViewPanel(Simulation simulation) {
 		this.simulation = simulation;
 		setBackground(new Color(12,56,10));
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 	}
 
+	/*!
+	 * paintComponent ()
+	 * @param g le graghigs
+	 * @brief tracer les différentes objet de la simulation sur la vue globale
+	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		// We used Graphic2D for more draw options.
@@ -52,7 +72,11 @@ public class GlobalViewPanel extends JPanel {
 		initMountain(g2);
 		
 	}
-	
+	/*!
+	 * printGuiAirport()
+	 * @param g2 le graghigs
+	 * @brief tracer le gui de l'aeroport
+	 */
 	public void printGuiAirport(Graphics2D g2) {
 
 		Map<String, AirportManager> airportManagersMap = simulation.getAirportManagersMap();
@@ -65,7 +89,11 @@ public class GlobalViewPanel extends JPanel {
 
 		}
 	}
-
+	/*!
+	 * printAeronef()
+	 * @param g2 le graghigs
+	 * @brief tracer l'aeronef sur la vue globale
+	 */
 	public void printAeronef(Graphics2D g2) {
 		g2.setColor(Color.RED);
 		g2.setFont(new Font("default", Font.BOLD, 10));
@@ -76,7 +104,11 @@ public class GlobalViewPanel extends JPanel {
 			}
 		}
 	}
-
+	/*!
+	 * initLine()
+	 * @param g2 le graghigs
+	 * @brief tracer les lignes entre les aeroports sur la vue globale
+	 */
 	public void initLine(Graphics2D g2) {
 		float[] dashPattern = { 9, 9 };
 		g2.setStroke(new BasicStroke(2, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 2, dashPattern, 0));
@@ -97,7 +129,14 @@ public class GlobalViewPanel extends JPanel {
 			}
 		}
 	}
-
+	/*!
+	 * printAirport()
+	 * @param g2 le graghigs
+	 * @param abscisse Le coordonnee x de l'aeroport
+	 * @param ordonate Le coordonnee y de l'aeroport
+	 * @param type le type de l'aeroport
+	 * @brief tracer les aeroports sur la vue globale
+	 */
 	public void printAirport(Graphics2D g2, int abscisse, int ordonate,String type) {
 		g2.setStroke(new BasicStroke(6));
 		if(type.equals("CM")) {
@@ -110,12 +149,20 @@ public class GlobalViewPanel extends JPanel {
 			g2.drawImage(Utility.readImage("src/images/airport1.png"), abscisse, ordonate, 25, 30, this);
 		}
 	}
-
+	/*!
+	 * printWorldMap()
+	 * @param g2 le graghigs
+	 * @brief tracer la carte du monde sur la vue globale
+	 */
 	public void printWorldMap(Graphics2D g2) {
 
 		g2.drawImage(Utility.readImage("src/images/world_map1.png"), 100, 50, 1175, 699, this);
 	}
-
+	/*!
+	 * printMountain()
+	 * @param g2 le graghigs
+	 * @brief tracer les montagnes sur la vue globale
+	 */
 	public void printMountain(Graphics2D g2, int abscisse, int ordonate, String name, int altitude, String country) {
 		g2.setColor(Color.BLACK);
 		g2.setStroke(new BasicStroke(3));
@@ -123,13 +170,23 @@ public class GlobalViewPanel extends JPanel {
 		g2.drawImage(Utility.readImage("src/images/mountain.png"), abscisse, ordonate, 30, 40, this);
 	}
 
-	
+	/*!
+	 * initMountain()
+	 * @param g2 le graghigs
+	 * @brief initialise les montagnes
+	 */
 	public void initMountain(Graphics2D g2) {
 		for (int i=0;i<4;i++) {
 			printMountain(g2,SimulPara.MOUNTAINS_X[i],SimulPara.MOUNTAINS_Y[i],SimulPara.MOUNTAINS[i],SimulPara.ALTITUDE[3],"random");
 		}
 	}
 
+	/*!
+	 * drawAeronef()
+	 * @param g2 le graghigs
+	 * @param aeronefManager gère les fonctions de l'aeronef
+	 * @brief tracer les aeronefs sur la vue globale
+	 */
 	public void drawAeronef(AeronefManager aeronefManager, Graphics2D g2) {
 		Aeronef aeronef = aeronefManager.getAeronef();
 		int abscisse = (int) aeronef.getAbscisse() + 7;
@@ -162,7 +219,12 @@ public class GlobalViewPanel extends JPanel {
 
 			}
 	}
-	
+	/*!
+	 * printAirportType()
+	 * @param type le type de l'aeroport
+	 * @brief tracer les aeronefs sur la vue globale
+	 * @return un string qui indique le type de l'aeroport
+	 */
 	public String printAirportType(String type) {
 		if(type.contains("Military")) {
 			if(type.contains("Civil")) {
@@ -175,7 +237,12 @@ public class GlobalViewPanel extends JPanel {
 			return "C";
 		}
 	}
-	
+	/*!
+	 * getAeronefHeight()
+	 * @param obstacle l'obstacle trouvé sur la ligne de vol
+	 * @brief  changer l'altitude de l'avion ça depend de l'obstacle
+	 * @return height l'altitude de lavion 
+	 */
 	public int getAeronefHeight(String obstacle) {
 		int height=0;
 		switch (obstacle) {
@@ -198,7 +265,12 @@ public class GlobalViewPanel extends JPanel {
 		}
 		return height;
 	}
-	
+	/*!
+	 * getAeronefWidth()
+	 * @param obstacle l'obstacle trouvé sur la ligne de vol
+	 * @brief  retourne le largeur de l'avion
+	 * @return width largeur de lavion 
+	 */
 	public int getAeronefWidth(String obstacle) {
 		
 		int width=0;
@@ -222,11 +294,18 @@ public class GlobalViewPanel extends JPanel {
 		}
 		return width;
 	}
-	
+	/*!
+	 * getSimulation()
+	 * @brief  lancer la simulation principale
+	 * @return Simulation l'action sur la page
+	 */
 	public Simulation getSimulation() {
 		return simulation;
 	}
-
+	/*!
+	 * setSimulation()
+	 * @brief  changer le lancement de la simulation principale
+	 */
 	public void setSimulation(Simulation simulation) {
 		this.simulation = simulation;
 	}
