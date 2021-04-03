@@ -16,8 +16,8 @@ public class Obstacle extends Position {
 /*!
  * Obstacle()
  * 
- * @param abscisse Le coordonnee X de l'aeronef 
- * @param ordinate Le coodonee Y de l'aeronef
+ * @param abscisse Le coordonnee X de l'obstacle 
+ * @param ordinate Le coodonee Y de l'obstacle
  */
 	public Obstacle(int abscisse, int ordonnee) {
 		super(abscisse, ordonnee);
@@ -25,8 +25,8 @@ public class Obstacle extends Position {
 /*!
  * Obstacle()
  * 
- * @param abscissa Le coordonnee X de l'aeronef 
- * @param ordinate Le coodonee Y de l'aeronef
+ * @param abscissa Le coordonnee X de l'obstacle
+ * @param ordinate Le coodonee Y de l'obstacle
  * @param name le nom de l'obstacle
  * @param altitude l'altitude de l'obstacle
  */
