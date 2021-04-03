@@ -14,10 +14,14 @@ import data.Aeronef;
 import data.Airport;
 import data.City;
 import gui.SimulPara;
-/**
- * 
+/*!
+ * @file Simulation.java
+ * @brief Classe lance la simulation sur la vue principale
  * @author Ashanth
- *
+ * @author Maeva
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
  */
 public class Simulation {
 	private Line line;
@@ -26,21 +30,21 @@ public class Simulation {
 	private List<Mountain> mountains = new ArrayList<Mountain>();
 	private List<Airport> airportsList =  new ArrayList<Airport>();
 	private Map<String, AirportManager> airportManagersMap = new HashMap<String, AirportManager>();
-/**
+/*!
  * Constructor Simulation 
  */
 	public Simulation() {
 		initSimulation();
 	}
-/**
- * getter getLine
- * @return line
+/*!
+ * getter getLine()
+ * @return line la ligne entre deux aeroports
  */
 	public Line getLine() {
 		return line;
 	}
-/**
- * addAeronef method
+/*!
+ * addAeronef()
  * @param aeronef
  */
 	public void addAeronef(Aeronef aeronef) {
@@ -48,10 +52,10 @@ public class Simulation {
 		aeronefManagers.add(newAeronefManager);
 
 	}
-/**
- * initSimulation method
+/*!
+ * initSimulation()
  * 
- * Launches the simulation
+ * @brief Launches the simulation
  */
 	public void initSimulation() {
 
@@ -69,11 +73,11 @@ public class Simulation {
 		}
 
 	}
-/**
- * initAirport method
+/*!
+ * initAirport()
  * @return airportList
  * 
- * Creates six airports and adds them in an Airport list
+ * @brief Creates six airports and adds them in an Airport list
  */
 	public List<Airport> initAiport() {
 
@@ -102,11 +106,11 @@ public class Simulation {
 
 		return airportList;
 	}
-/**
- * CreateLine method
+/*!
+ * CreateLine()
  * @param airports
  * 
- * Creates a line between every airports of a given list of airports
+ * @brief Creates a line between every airports of a given list of airports
  */
 	public void CreateLine(List<Airport> airports) {
 		LineBuilder lineBuilder = new LineBuilder();
@@ -120,11 +124,11 @@ public class Simulation {
 			}
 		}
 	}
-/**
- * initAeronefs method
+/*!
+ * initAeronefs()
  * @param airportsList
  * 
- * Sets aeronefs at their start up position depending on the aeronefs in the airportsList
+ * @brief Sets aeronefs at their start up position depending on the aeronefs in the airportsList
  */
 	public void initAeronefs(List<Airport> airportsList) {
 		for (Airport airport : airportsList) {
@@ -178,41 +182,41 @@ public class Simulation {
 			}
 		}
 	}
-/**
- * getter getAeronefManagers
- * @return aeronefManagers
+/*!
+ * getter getAeronefManagers()
+ * @return aeronefManagers le manager des aeronefs
  */
 	public List<AeronefManager> getAeronefManagers() {
 		return aeronefManagers;
 	}
-/**
- * setter setAeronefManagers
+/*!
+ * setter setAeronefManagers()
  * @param aeronefManagers
  */
 	public void setAeronefManagers(List<AeronefManager> aeronefManagers) {
 		this.aeronefManagers = aeronefManagers;
 	}
-/**
+/*!
  * getter getAirportManagersMap
  * @return airportManagersMap
  */
 	public Map<String, AirportManager> getAirportManagersMap() {
 		return airportManagersMap;
 	}
-/**
- * setter setAiportManagersMap
+/*!
+ * setter setAiportManagersMap()
  * @param airportManagersMap
  */
 	public void setAirportManagersMap(Map<String, AirportManager> airportManagersMap) {
 		this.airportManagersMap = airportManagersMap;
 	}
 
-/**
- * getter getModelAeronefs
- * @param type
+/*!
+ * getter getModelAeronefs()
+ * @param type le type de l'aeronef
  * @return a String
  * 
- * Given an index and type of an aeronef returns its model
+ * @brief Given an index and type of an aeronef returns its model
  */
 	public String getModelAeronefs(String type) {
 		int aeronefName = Utility.getRandom(0, 3);
@@ -248,6 +252,14 @@ public class Simulation {
 
 	}
 	
+/*!
+ * getter getAeronefType()
+ * @param  departureAirportType le type de l'aroport de depart
+ * @param destinationAirportType le type de l'aroport de destination
+ * @return a String 
+ * 
+ * @brief retourne le type de l'aeronef
+ */
 	public String getAeronefType(String departureAirportType, String destinationAirportType) {
 		String type = null;
 		if(departureAirportType.contains("Military")&&!departureAirportType.contains("Civil")) {
@@ -266,14 +278,14 @@ public class Simulation {
 		return type;
 	}
 	
-/**
- * getAeronefName method
+/*!
+ * getAeronefName()
  * 
- * @param departure
+ * @param departure 
  * @param destination
  * @return a string
  * 
- * This sets an aeronef's name depending on what's its startpoint and what's its destination
+ * @brief This sets an aeronef's name depending on what's its startpoint and what's its destination
  */
 	public String getAeronefName(String departure, String destination) {
 		
@@ -282,16 +294,16 @@ public class Simulation {
 		String nameDestination = destination.trim().substring(0, 5);
 		return nameDeparture + "To" + nameDestination;
 	}
-/**
- * getter getAirportsList
- * @return aiportsList
+/*!
+ * getter getAirportsList()
+ * @return aiportsList la liste des aeroports
  */
 	public List<Airport> getAirportsList() {
 		return airportsList;
 	}
-/**
- * setter setAirportsList
- * @param airportsList
+/*!
+ * setter setAirportsList()
+ * @param airportsList la liste des aeroports 
  */
 	public void setAirportsList(List<Airport> airportsList) {
 		this.airportsList = airportsList;
