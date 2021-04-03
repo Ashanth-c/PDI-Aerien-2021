@@ -1,9 +1,13 @@
 package gui;
 
-/**
- * Zoom on an airport
- * 
+/*!
+ * @file ZoomedViewPanel.java
+ * @brief Classe qui Zoom sur l'aeroport
+ * @author Ashanth
+ * @author Khadija
  * @author Maeva
+ * @version 1.0
+ * @date 06/04/2021
  */
 
 import java.awt.BasicStroke;
@@ -20,13 +24,20 @@ import process.Simulation;
 
 public class ZoomedViewPanel extends JPanel {
 	private Simulation simulation;
-
+		/*!
+     		 * ZoomedViewPanel() 
+	     	 * @brief zoomer sur l'aeroport
+	 	 */
 	public ZoomedViewPanel() {
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 		
 	}
-	
+		/*!
+     		 * paintComponent()
+	 	 * @param g le grapghcs
+	     	 * @brief paint different Component of zoom view
+	 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		Graphics2D g2= (Graphics2D) g;
@@ -35,7 +46,11 @@ public class ZoomedViewPanel extends JPanel {
 		initAirstrip(g2);
 		
 	}
-	
+		/*!
+     		 * initAirstrip()
+	 	 * @param g2 le grapghcs
+	     	 * @brief le chemin de l'aeronef dans la vue zoomée est sous forme rectangle
+	 	 */
 	public void initAirstrip(Graphics2D g2) {
 
 		makeRectangle(g2,400, 25+200, 450, 60);
@@ -45,7 +60,12 @@ public class ZoomedViewPanel extends JPanel {
 		makeRectangle(g2,15+400, 255+200, 435, 60);
 
 	}
-
+	/*!
+     	 * initTerminal()
+	 * @param g2 e graphics
+	 * 
+	 * @brief initialize le terminal sur la vue zoomee
+	 */
 	public void initTerminal(Graphics2D g2) {
 		
 		g2.setColor(Color.BLACK);
@@ -56,7 +76,16 @@ public class ZoomedViewPanel extends JPanel {
 
 	}
 	
-	
+	/*!
+     	 * makeRectangle()
+	 * @param g2 le graphics
+	 * @param x le premier cordonnee pour tracer le rectangle
+	 * @param y le deuxieme cordonnee pour tracer le rectangle
+	 * @param z le troisieme cordonnee pour tracer le rectangle
+	 * @param t le quatrieme cordonnee pour tracer le rectangle
+	 * 
+	 * @brief initialise le terminal sur la vue zoomee
+	 */
 	public void makeRectangle(Graphics2D g2, int x, int y, int z, int t) {
 		
 		BasicStroke oldStroke=(BasicStroke) g2.getStroke();
