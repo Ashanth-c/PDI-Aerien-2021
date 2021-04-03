@@ -59,6 +59,7 @@ public class Airport extends Position {
 	}
 
 	/*!
+	 * @brief Retourne le nom de l'aeroport 
  	 * getName()
  	 * @return name
  	 */
@@ -108,6 +109,7 @@ public class Airport extends Position {
 	
 	/*!
 	 * getCity()
+	 * @brief Retourne la ville de l'aeroport 
 	 * @return city
 	 */
 	public City getCity() {
@@ -124,6 +126,7 @@ public class Airport extends Position {
 
 	/*!
 	 * getopeningDate()
+	 * @brief Retourne la date d'ouverture de l'aeroport 
 	 * @return openingDate
 	 */
 	public String getopeningDate() {
@@ -140,6 +143,7 @@ public class Airport extends Position {
 
 	/*!
 	 * getLinesList()
+	 * @brief Retourne la liste des lignes
 	 * @return linesList
 	 */
 	public List<Line> getLinesList() {
@@ -156,6 +160,7 @@ public class Airport extends Position {
 
 	/*!
 	 * getType()
+	 * @brief Retourne le type de l'aeroport 
 	 * @return type
 	 */
 	public String getType() {
