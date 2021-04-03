@@ -17,8 +17,8 @@ public class FlockBirds extends Obstacle {
 	private double teta=0;
 /*!
  * FlockBirds()	
- * @param abscisse
- * @param ordonnee
+ * @param abscissa Le coordonnee X des oiseaux
+ * @param ordinate Le coodonee Y des oiseaux
  */
 	
 	public FlockBirds(int abscisse, int ordonnee) {
@@ -26,10 +26,10 @@ public class FlockBirds extends Obstacle {
 	}
 /**
  * FlockBirds()
- * @param abscisse
- * @param ordonnee
- * @param numberOfBirds
- * @param speed
+ * @param abscissa Le coordonnee X des oiseaux
+ * @param ordinate Le coodonee Y des oiseaux
+ * @param numberOfBirds nombre des groupes des oiseaux
+ * @param speed l'altitude des oiseaux
  */
 	
 	public FlockBirds(int abscisse, int ordonnee, int numberOfBirds, int speed) {
@@ -39,12 +39,12 @@ public class FlockBirds extends Obstacle {
 	}
 /*!
  * FlockBirds()
- * @param abscisse
- * @param ordonnee
- * @param name
- * @param altitude
- * @param numberOfBirds
- * @param speed
+ * @param abscissa Le coordonnee X des oiseaux
+ * @param ordinate Le coodonee Y des oiseaux
+ * @param name le nom de groupe des oiseaux
+ * @param altitude l'altitude des oiseaux
+ * @param numberOfBirds nombre des groupes des oiseaux
+ * @param speed la vitesse des oiseaux
  */
 	public FlockBirds(int abscisse, int ordonnee, String name, int altitude, int numberOfBirds, int speed) {
 		super(abscisse, ordonnee, name, altitude);
@@ -54,13 +54,14 @@ public class FlockBirds extends Obstacle {
 /*!
  * getNumberofBirds()
  * @brief retourne le nombre de groupe des oiseaux
- * @return numberOfBirds
+ * @return numberOfBirds nombre des groupes des oiseaux
  */
 	public int getNumberOfBirds() {
 		return numberOfBirds;
 	}
 /*!
  * setNumberofBirds()
+ * @brief changer le nombre de groupe des oiseaux
  * @param numberOfBirds
  */
 	public void setNumberOfBirds(int numberOfBirds) {
@@ -69,14 +70,15 @@ public class FlockBirds extends Obstacle {
 /*!
  * getSpeed()
  * @brief retourne la vitesse des oiseaux
- * @return speed
+ * @return speed la vitesse des oiseaux
  */
 	public int getSpeed() {
 		return speed;
 	}
 /*!
  * setSpeed()
- * @param speed
+ * @brief changer la vitesse des oiseaux
+ * @param speed la vitesse des oiseaux
  */
 	public void setSpeed(int speed) {
 		this.speed = speed;
@@ -91,14 +93,14 @@ public class FlockBirds extends Obstacle {
 	}
 /*!
  * getRadius()
- * @return radius
+ * @return radius l'angle de changement de position des oiseaux
  */
 	public double getRadius() {
 		return radius;
 	}
 /*!
  * setRadius()
- * @param radius
+ * @param radius l'angle de changement de position des oiseaux
  */
 	public void setRadius(double radius) {
 		this.radius = radius;
@@ -106,14 +108,15 @@ public class FlockBirds extends Obstacle {
 /*!
  * getTeta()
  * @brief retourne l'angle teta
- * @return teta
+ * @return teta l'angle
  */
 	public double getTeta() {
 		return teta;
 	}
 /*!
  * setTeta()
- * @param teta
+ * @brief changer l'angle teta
+ * @param teta l'angle
  */
 	public void setTeta(double teta) {
 		this.teta = teta;
