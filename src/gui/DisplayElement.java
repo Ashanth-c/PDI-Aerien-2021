@@ -18,6 +18,15 @@ import data.Airport;
 import process.AirportManager;
 import process.Simulation;
 import process.Utility;
+/*!
+ * @file DisplayElement.java
+ * @brief change the global view and switch to the information panel either for airplanes or airports and switch to zoomed view for airports
+ * @author Ashanth
+ * @author Maeva
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
+ */
 
 public class DisplayElement extends JPanel implements Runnable {
 
@@ -32,6 +41,12 @@ public class DisplayElement extends JPanel implements Runnable {
 	private Timer timer = new Timer(1000,new ActionTimer());
 	private boolean displayerGlobal = true;
 
+	
+	/*!
+	 * @brief changer la vue globale et passer au panneau d'informations pour les avions ou les aéroports, passer en vue agrandie pour les aéroports
+	 * @param simulation l'action des objet sur la vue
+	
+	 */
 	public DisplayElement(Simulation simulation) {
 		super();
 //		timer = new Timer(delay, taskPerformer);
@@ -47,7 +62,11 @@ public class DisplayElement extends JPanel implements Runnable {
 //		this.add(zoomedView,BorderLayout.CENTER);
 
 	}
-
+	/*! 
+	 * run()
+	 * @brief lancer la simulation
+	 * 
+	 */
 	@Override
 	public void run() {
 		// TODO Auto-generated method stub
@@ -58,6 +77,11 @@ public class DisplayElement extends JPanel implements Runnable {
 		worker.execute();
 	}
 	
+	/*! 
+	 * printDashbord()
+	 * @brief afficher les composants sur la fenetre
+	 * 
+	 */
 	public void printDashbord() {
 		if(displayerGlobal) {
 			this.remove(zoomedView);
@@ -74,6 +98,10 @@ public class DisplayElement extends JPanel implements Runnable {
 		}	
 	}
 	
+	/*! 
+	 * Worker()
+	 * 
+	 */
 	private class Worker extends SwingWorker<Integer, String>{
 
 		@Override
@@ -95,7 +123,11 @@ public class DisplayElement extends JPanel implements Runnable {
 		}
 		
 	}
-	
+	/*! 
+	 * createNewSimulation()
+	 * @brief lancer une nouvelle simulation
+	 * 
+	 */
 	public void createNewSimulation() {
 		simulation=new Simulation();
 		globalView.setSimulation(simulation);
@@ -149,10 +181,20 @@ private class ViewMouseListener implements MouseListener {
 	}
 	
 }
+	/*! 
+	 * isDisplayerGlobal()
+	 * @brief renvoyer un booleen si le changement est vers la page globale
+	 * return displayerGlobal la page globale
+	 */
 	public boolean isDisplayerGlobal() {
 		return displayerGlobal;
 	}
-
+	/*! 
+	 * setDisplayerGlobal()
+	 * @param displayerGlobal
+	 * @brief changer la page globale
+	 * return displayerGlobal la page globale
+	 */
 	public void setDisplayerGlobal(boolean displayerGlobal) {
 		this.displayerGlobal = displayerGlobal;
 	}
