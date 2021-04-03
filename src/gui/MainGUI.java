@@ -16,19 +16,34 @@ import process.AirportManager;
 import process.LineBuilder;
 import process.Simulation;
 import process.Utility;
-
+/*!
+ * @file MainGUI.java
+ * @brief The aeronef simulation main GUI
+ * @author Ashanth
+ * @author Maeva
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
+ */
 public class MainGUI extends JFrame{
 
 	private final static Dimension preferredSize = new Dimension(1500, 830);
 	private DisplayElement dashboard;
 	private Simulation simulation;
-
+	/*!
+	 *  MainGUI()
+	 * @param title le titre du gui 
+	 * @brief initialise the  gui
+	 */
 	public MainGUI(String title) {
 		super(title);
 		init();
 		
 	}
-
+	/*!
+	 * init()
+	 * @brief initialise the  gui
+	 */
 	private void init() {
 		setExtendedState(MAXIMIZED_BOTH);
 		simulation = new Simulation();
