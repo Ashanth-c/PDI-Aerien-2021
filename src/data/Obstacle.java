@@ -1,17 +1,20 @@
 package data;
-/**
- * 
- * @author Maeva
- * Classe qui dÈcrit un Obstacle
- * Classe dÈfinie par un nom et l'altitude de l'obstacle
- * 
+
+/*!
+ * @file Obstacle.java
+ * @brief Classe qui d√©crit un Obstacle, d√©finie par un nom et l'altitude de l'obstacle
  * Cette classe est une classe fille de la classe Posititon
+ * @author Maeva
+ * @author Ashanth
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
  */
 public class Obstacle extends Position {
 	private String name;
 	private int altitude;
-/**
- * Constructeur Obstacle
+/*!
+ * Obstacle()
  * 
  * @param abscisse
  * @param ordonnee
@@ -19,8 +22,8 @@ public class Obstacle extends Position {
 	public Obstacle(int abscisse, int ordonnee) {
 		super(abscisse, ordonnee);
 	}
-/**
- * Constructeur Obstacle
+/*!
+ * Obstacle()
  * 
  * @param abscisse
  * @param ordonnee
@@ -32,58 +35,44 @@ public class Obstacle extends Position {
 		this.name = name;
 		this.altitude = altitude;
 	}
-/**
- * getter getName
+/*
+ * getName()
+ * @brief retourne le nom de l'obstacle
  * @return name
  */
-	/*
-	 * getter getName
-	 * 
-	 * return name, String
-	 */
 	public String getName() {
 		return name;
 	}
-/**
- * setter setName
+/*!
+ * setName()
  * @param name
  */
-	/*
-	 * getter getName
-	 */
+
 	public void setName(String name) {
 		this.name = name;
 	}
-/**
- * getter getAltitude
+/*!
+ * getAltitude()
+ * @brief retourne l'altitude de l'obstacle
  * @return altitude
  */ 
-	/*
-	 * getter getAltitude
-	 * 
-	 * return altitude, int
-	 */
+
 	public int getAltitude() {
 		return altitude;
 	}
-/**
- * setter setAltitude
+/*!
+ * setAltitude()
  * @param altitude
  */
-	/*
-	 * setter setAltitude
-	 * param:
-	 * 		altitude: int
-	 */
+
 	public void setAltitude(int altitude) {
 		this.altitude = altitude;
 	}
-/**
- * toString method
+/*!
+ * toString()
+ * @return une chaine de caract√®re affiche le nom de l'obstacle et son altitude
  */
-	/*
-	 * toString method
-	 */
+
 	@Override
 	public String toString() {
 		return "Obstacle [name=" + name + ", altitude=" + altitude + "]";
