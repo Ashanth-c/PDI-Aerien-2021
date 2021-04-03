@@ -4,20 +4,16 @@ import data.Aeronef;
 import data.Airport;
 import data.Position;
 import gui.SimulPara;
-
-/**
- * 
- * 
+/*!
+ * @file AeronefManager.java
+ * @brief Classe gérant les aeronefs,  Cette classe est une classe fille de la classe Thread
+ * @author Ashanth
+ * @author Maeva
  * @author Khadija
- * 
- * Classe g�rant les aeronefs.
- * Classe constitu�e des attributs suivants :
- * aeronef (Aeronef), abscisseVariationValue (float), ordoneeVariationValue (float),
- * destinationAirport (Airport), running (boolean), isInUrgence(String), direction (String),
- * departureManager (AirportManager)
- * 
- * Cette classe est une classe fille de la classe Thread.
+ * @version 1.0
+ * @date 06/04/2021
  */
+
 public class AeronefManager extends Thread {
 	private Aeronef aeronef;
 	private float abscisseVariationValue;
@@ -27,15 +23,12 @@ public class AeronefManager extends Thread {
 	private String isInUrgence="SearchEmergencyAirport";
 	private String direction;
 	private AirportManager departureManager;
-/**
- * AeronefManager Constructor
- * @param aeronef
+/*!
+ * AeronefManager()
+ * @param aeronef 
+ * @brief gérer les aeronef
  */
-	/*
-	 * AeronefManager Constructor
-	 * param:
-	 * 		aeronef : Aeronef
-	 */
+	
 	public AeronefManager(Aeronef aeronef) {
 		super();
 		this.aeronef = aeronef;
@@ -45,14 +38,11 @@ public class AeronefManager extends Thread {
 
 	}
 	
-	/**
-	 * run() method
-	 * 
-	 * Method of the Thread class that's been overridden
-	 * Moves an Aeronef
-	 * Deals with an Aeronef's emergency landing
-	 * 
-	 */
+/*!
+ * run()
+ * @brief Method of the Thread class that's been overridden, Moves an Aeronef,Deals with an Aeronef's emergency landing
+ * 
+ */
 
 	@Override
 	public void run() {
@@ -99,17 +89,13 @@ public class AeronefManager extends Thread {
 
 	}
 
-/**
- * landingAltitute method 
+/*!
+ * landingAltitute() 
  * @param aeronef
  * 
- * Increases an Aeronef's altitude if it's 0
+ * @brief Increases an Aeronef's altitude if it's 0
  */
-	/*
-	 * landingAltitute method
-	 * param:
-	 * 		aeronef : Aeronef
-	 */
+	
 	public void landingAltitute(Aeronef aeronef) {
 		int AeronefAltitude = aeronef.getAltitude();
 
@@ -120,17 +106,13 @@ public class AeronefManager extends Thread {
 		}
 
 	}
-/**
- * takeOffAtltitute method
+/*!
+ * takeOffAtltitute()
  * @param aeronef
  * 
- * Decreases an Aeronef's altitude if it isn't 0
+ * @brief Decreases an Aeronef's altitude if it isn't 0
  */
-	/*
-	 * takeOffAtlitute method
-	 * param:
-	 * 		aeronef : Aeronef
-	 */
+
 	public void takeOffAtltitute(Aeronef aeronef) {
 		int AeronefAltitude = aeronef.getAltitude();
 
@@ -141,49 +123,37 @@ public class AeronefManager extends Thread {
 		}
 
 	}
-/**
- * slowDownSpeed method
+/*!
+ * slowDownSpeed()
  * @param aeronef
  * 
- * Decreases an Aeronef's speed
+ * @brief Decreases an Aeronef's speed
  */
-	/*
-	 * slowDownSpeed method
-	 * param:
-	 * 		aeronef : Aeronef
-	 */
+
 	public void slowDownSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
 		aeronef.setSpeed(AeronefSpeed - 100);
 
 	}
-/**
- * accelerateSpeed method
+/*!
+ * accelerateSpeed()
  * @param aeronef
  * 
- * Increases an Aeronef's speed
+ * @brief Increases an Aeronef's speed
  */
-	/*
-	 * accelerateSpeed method
-	 * param:
-	 * 		aeronef : Aeronef
-	 */
+
 	public void accelerateSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
 		aeronef.setSpeed(AeronefSpeed + 100);
 
 	}
-/**
- * landingSpeed method
+/*!
+ * landingSpeed()
  * @param aeronef
  * 
- * Decreases an Aeronef's speed if it isn't 0
+ * @brief Decreases an Aeronef's speed if it isn't 0
  */
-	/*
-	 * landingSpeed method
-	 * param:
-	 * 		aeronef : Aeronef
-	 */
+
 	public void landingSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
 		while (AeronefSpeed != 0) {
@@ -191,38 +161,27 @@ public class AeronefManager extends Thread {
 		}
 	}
 	
-/**
- * takeOffSpeed method
+/*!
+ * takeOffSpeed()
  * @param aeronef
  * 
  * 
- * Increases an Aeronef's speed if it's 0
+ * @brief Increases an Aeronef's speed if it's 0
  */
-	/*
-	 * takeOffSpeed method
-	 * param:
-	 * 		aeronef : Aeronef
-	 */
+
 	public void takeOffSpeed(Aeronef aeronef) {
 		int AeronefSpeed = aeronef.getSpeed();
 		while (AeronefSpeed == 0) {
 			accelerateSpeed(aeronef);
 		}
 	}
-/**
- * approachAirport method
- * @param aeronef
- * @param airport
+/*!
+ * approachAirport()
+ * @param aeronef une avion
+ * @param airport un aeroport
  * 
- * Writes in the console if an Aeronef gets close to an airport
+ * @brief Writes in the console if an Aeronef gets close to an airport
  */
-	/*
-	 * approchAirport method
-	 * param:
-	 * 		aeronef : Aeronef
-	 * 		airport : Airport		
-	 * 	
-	 */
 	public void approchAirport(Aeronef aeronef, Airport airport) {
 		float aeronefAbscisse = aeronef.getAbscisse();
 		float aeronefOrdonnee = aeronef.getOrdonnee();
@@ -231,7 +190,7 @@ public class AeronefManager extends Thread {
 
 		if (java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse - aeronefAbscisse), 2)
 				+ java.lang.Math.pow((airportOrdonnee - aeronefOrdonnee), 2)) < 100) {
-			System.out.println("l'aeronef se rapproche de l'aéroport:" + airport + "Et La distance entre eux est:"
+			System.out.println("l'aeronef se rapproche de l'aÃ©roport:" + airport + "Et La distance entre eux est:"
 					+ (java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse - aeronefAbscisse), 2)
 							+ java.lang.Math.pow((airportOrdonnee - aeronefOrdonnee), 2))));
 
@@ -239,11 +198,11 @@ public class AeronefManager extends Thread {
 
 	}
 
-	/**
-	 * 	travelAeronef method
+	/*!
+	 * 	travelAeronef()
 	 * 
-	 * Makes an Aeronef move till it's reached its destination
-	 * Sets the running boolean depending on whether the Aeronef is allowed to land
+	 * @brief Makes an Aeronef move till it's reached its destination
+	 * @brief Sets the running boolean depending on whether the Aeronef is allowed to land
 	 */
 	public void travelAeronef() {
 		//Aeronef dodges obstacle
@@ -266,11 +225,11 @@ public class AeronefManager extends Thread {
 		}
 	}
 	
-/**
- * moveAeronefAbscisse method
+/*!
+ * moveAeronefAbscisse()
  * @param abscisseVariation
  * 
- * Moves an Aeronef with the given abscisseVaration parameter variation
+ * @brief Moves an Aeronef with the given abscisseVaration parameter variation
  */
 	public void moveAeronefAbcsisse(float abscisseVariation) {
 		float aeronefAbscisse = aeronef.getAbscisse();
@@ -279,11 +238,11 @@ public class AeronefManager extends Thread {
 		aeronef.setAbscisse(aeronefAbscisse);
 
 	}
-/**
- * moveAeronefOrdonnee
+/*!
+ * moveAeronefOrdonnee()
  * @param ordonneeVariation
  * 
- * Moves an Aeronef with the given ordonneeVariation parameter variation
+ * @brief Moves an Aeronef with the given ordonneeVariation parameter variation
  */
 	public void moveAeronefOrdonnee(float ordonneeVariation) {
 		float aeronefOrdonnee = aeronef.getOrdonnee();
@@ -293,12 +252,12 @@ public class AeronefManager extends Thread {
 
 	}
 	
-/**
- * emergencyLanding() method
+/*!
+ * emergencyLanding()
  * @param airport
  * 
- * Till an Aeronef has not reached a given airport's position,
- * that Aeronef moves
+ * @brief Till an Aeronef has not reached a given airport's position,
+ * @brief that Aeronef moves
  */
 	public void emergencyLanding(Airport airport) {
 
@@ -316,8 +275,9 @@ public class AeronefManager extends Thread {
 	
 	
 	
-/**
- * 
+/*!
+ * exit()
+ * @brief quitter
  */
 	public synchronized void exit() {
 		synchronized (departureManager) {
@@ -326,96 +286,71 @@ public class AeronefManager extends Thread {
 			}
 	
 	}
-/**
- * getter getAeronef
+/*!
+ * getAeronef()
  * @return aeronef
  */
-	/*
-	 * getter getAeronef
-	 * 
-	 * returns aeronef, Aeronef
-	 */
 	public Aeronef getAeronef() {
 		return aeronef;
 	}
 
 
-/**
- * setter setAeronef
+/*!
+ * setter setAeronef()
  * @param aeronef
  */
-	/*
-	 * setter setAeronef
-	 * param:
-	 * 		aeronef: Aeronef
-	 */
+
 	public void setAeronef(Aeronef aeronef) {
 		this.aeronef = aeronef;
 	}
 
 
-/**
- * getter getAbscisseVariationValue
+/*!
+ * getter getAbscisseVariationValue()
  * @return abscisseVariationValue
  */
-	/*
-	 * getter getAbscisseVariationValue
-	 * 
-	 * return abscisseVariationValue, float
-	 */
+
 	public float getAbscisseVariationValue() {
 		return abscisseVariationValue;
 	}
 
 
-/**
- * setter setAbscisseVariationValue
+/*!
+ * setter setAbscisseVariationValue()
  * @param abscisseVariationValue
  */
-	/*
-	 * setter setAbscisseVariationValue
-	 * param:
-	 * 		abscisseVariationValue : int
-	 */
+
 	public void setAbscisseVariationValue(int abscisseVariationValue) {
 		this.abscisseVariationValue = abscisseVariationValue;
 	}
 
 
-/**
- * getter getOrdonneeVariationValue
+/*!
+ * getter getOrdonneeVariationValue()
  * @return ordonneeVariationValue
  */
-	/*
-	 * getter getOrdonneeVariationValue
-	 * 
-	 * return ordonneeVariationValue
-	 */
+
 	public float getOrdoneeVariationValue() {
 		return ordoneeVariationValue;
 	}
 
 
-/**
- * setter setOrdoneeVariationValue
+/*!
+ * setter setOrdoneeVariationValue()
  * @param ordoneeVariationValue
  */
-	/*
-	 * setter setOrdoneeVariationValue
-	 * param:
-	 * 		ordoneeVariationValue : int
-	 */
+
 	public void setOrdoneeVariationValue(int ordoneeVariationValue) {
 		this.ordoneeVariationValue = ordoneeVariationValue;
 	}
 
-/**
+/*!
  * getter getDirection
  * @return direction
  * 
- * Sets direction depending if the variation used to move an Aeronef is negative or positive
- * if it's negative it means the Aeronef moves from east to west, if not it means it moves
- * west to east.
+ * @brief Sets direction depending if the variation used to move an Aeronef is negative or positive
+ * @brief if it's negative it means the Aeronef moves from east to west, if not it means it moves
+ * @brief west to east.
  */
 	public String getDirection() {
 		if(abscisseVariationValue<0) {
@@ -459,41 +394,30 @@ public class AeronefManager extends Thread {
 		}
 	}
 	
-	/**
-	 * setter setDirection	
-	 * @param direction
+	/*!
+	 * setter setDirection()	
+	 * @param direction la direction de l'aeronef
+	 * @brief changer la direction de l'aeronef
 	 */
-	/*
-	 * setter setDirection
-	 * param:
-	 * 		direction : String
-	 */
+
 	public void setDirection(String direction) {
 		this.direction = direction;
 	}
 
-	/**
-	 * getter getDepartureManager
-	 * @return departureManager
+	/*!
+	 * getDepartureManager()
+	 * @return departureManager le depart de l'aeronef
 	 */
-	/*
-	 * getter getDepartureManager
-	 * returns departureManager, AirportManager
-	 */
+	
 	public AirportManager getDepartureManager() {
 		return departureManager;
 	}
 
-/**
- * setter setDepartureManager
- * @param departureManager
- * 
+/*!
+ * setDepartureManager()
+ * @param departureManager le depart de l'aeronef
+ * @brief changer la deparature de l'aeronef
  */
-	/*
-	 * setter setDepartureManager
-	 * param:
-	 * 		departureManager : AirportManager
-	 */
 	public void setDepartureManager(AirportManager departureManager) {
 		this.departureManager = departureManager;
 	}
