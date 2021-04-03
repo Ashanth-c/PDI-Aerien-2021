@@ -7,7 +7,15 @@ import java.util.Map.Entry;
 
 import data.*;
 import process.*;
-
+/*!
+ * @file ProcessTest.java
+ * @brief Classe tester le processus
+ * @author Ashanth
+ * @author Maeva
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
+ */
 public class ProcessTest {
 
 	public static void main(String[] args) {
