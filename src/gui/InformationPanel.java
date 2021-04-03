@@ -23,12 +23,18 @@ import data.Position;
 import process.AeronefManager;
 import process.Simulation;
 import process.Utility;
-
+/*!
+ * @file InformationPanel.java
+ * @brief Ce panneau contient des informations permettant de mieux comprendre les aéronefs et les aéroports imprimés
+ * @author Ashanth
+ * @author Maeva
+ * @author Khadija
+ * @version 1.0
+ * @date 06/04/2021
+ */
 public class InformationPanel extends JPanel {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	private JButton panelChangeButton;
 	private JButton launchSimulationButton;
@@ -36,7 +42,12 @@ public class InformationPanel extends JPanel {
 	private DisplayElement instance;
 	private Simulation simulation;
 	private Position position;
-
+	/*!
+	 * InformationPanel()
+	 * @param instance le changement entre les panneaux
+	 * @param simulation lancer l'action 
+	 * @brief affiche les différentes informations des différentes objet du panneau
+	 */
 	public InformationPanel(DisplayElement instance,Simulation simulation) {
 		this.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		this.instance = instance;
@@ -44,7 +55,11 @@ public class InformationPanel extends JPanel {
 		init();
 	}
 
-	
+	/*!
+	 * paintComponent()
+	 * @param g le graghics
+	 * @brief painting components
+	 */
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
 		g2.setColor(new Color(225, 223, 225));
@@ -56,7 +71,10 @@ public class InformationPanel extends JPanel {
 			drawString(g2, position.toString(), 12, 110);
 		}
 	}
-	
+	/*!
+	 * init()
+	 * @brief ajouter les différentes bouttons de la vue
+	 */
 	public void init() {
 
 		panelChangeButton = new JButton("View Airport");
@@ -115,7 +133,12 @@ public class InformationPanel extends JPanel {
 			}
 		});
 	}
-	
+	/*!
+	 * printAeronefDetail()
+	 * @param x le cordonnée d'abscisse d'aeronef
+	 * @param y le cordonnée d'ordonnee d'aeronef
+	 * @brief afficher les detail des aeronefs
+	 */
 	public void printAeronefDetail(int x, int y) {
 		List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
 		for (AeronefManager aeronefManager : aeronefManagers) {
@@ -125,7 +148,12 @@ public class InformationPanel extends JPanel {
 			}
 		}
 	}
-	
+	/*!
+	 * printElementDetail()
+	 * @param x le cordonnée d'abscisse de l'element
+	 * @param y le cordonnée d'ordonnee de l'element 
+	 * @brief afficher les detail de l'element
+	 */
 	public void printElementDetail(int x, int y) {
 		List<Airport> airportsList = simulation.getAirportsList();
 		List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
@@ -146,16 +174,32 @@ public class InformationPanel extends JPanel {
 		
 		
 	}
-
+	/*!
+	 * printAirportInfo()
+	 * @param airport un aeroport
+	 * @param g2 le graphics
+	 * @brief dessiner l'aeroport
+	 */
 	public void printAirportInfo(Airport airport,Graphics2D g2) {
 		g2.drawString(airport.getName(), 50, 70);
 	}
-	
+	/*!
+	 * drawString()
+	 * @param text une chaine de caractere
+	 * @param g2 le graphics
+	 * @param x le cordonnée d'abscisse de l'element
+	 * @param y le cordonnée d'ordonnee de l'element 
+	 * @brief dessiner l'aeroport
+	 */
 	void drawString(Graphics2D g2, String text, int x, int y) {
 	    for (String line : text.split("\n"))
 	        g2.drawString(line, x, y += g2.getFontMetrics().getHeight());
 	}
-
+	/*!
+	 * urgentAeronef()
+	 * @param key un cle d'aeronef 
+	 * @brief retourne l'aeronef en urgent 
+	 */
 	public Aeronef urgentAeronef(int key) {
 		List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
 		List<Airport> airportsList = simulation.getAirportsList();
@@ -168,12 +212,20 @@ public class InformationPanel extends JPanel {
 		}
 		return aeronef;
 	}
-
+	/*!
+	 * getSimulation()
+	 * @brief retourne l'aeronef en urgent 
+	 * @return simulation l'action sur la fenetre
+	 */
 	public Simulation getSimulation() {
 		return simulation;
 	}
 
-
+	/*!
+	 * setSimulation()
+	 * @brief changer la simulation 
+	 * @return simulation l'action sur la fenetre
+	 */
 	public void setSimulation(Simulation simulation) {
 		this.simulation = simulation;
 	}
