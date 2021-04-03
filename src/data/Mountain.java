@@ -1,81 +1,58 @@
 package data;
 
-/**
- * 
+/*!
+ * @file Mountain.java
+ * @brief Classe dÃ©crivant une montagne, dÃ©finie par le nom du pays oÃ¹ se trouve la montagne
+ * @author Khadija
+ * @author Ashanth
  * @author Maeva
- * 
- * Classe décrivant une montagne
- * Classe définie par le nom du pays où se trouve la montagne
- * 
- * Cette classe est une classe fille d'Obstacle
- *
+ * @version 1.0
+ * @date 06/04/2021
  */
 public class Mountain extends Obstacle {
 	private String country;
-/**
- * Constructeur Mountain
+/*!
+ * Mountain()
  * @param abscisse
  * @param ordonnee
  */
-	/*
-	 * Constructeur Mountain
-	 * param:
-	 * 		abscisse, ordonnee : int
-	 */
+
 	public Mountain(int abscisse, int ordonnee) {
 		super(abscisse, ordonnee);
 	}
-/**
+/*!
  * 
- * Constructeur Mountain
+ * Mountain()
  * @param abscisse
  * @param ordonnee
  * @param name
  * @param altitude
  * @param country
  */
-	/*
-	 * Constructeur Mountain
-	 * param:
-	 * 		absicsse, ordonne : int
-	 * 		name, country : String
-	 * 		altitude : int
-	 */
 	public Mountain(int abscisse, int ordonnee, String name, int altitude, String country) {
 		super(abscisse, ordonnee, name, altitude);
 		this.country = country;
 	}
-/**
- * getter getCountry
+/*!
+ * getCountry()
+ * @brief retourne le pays ou se trouve le montagne
  * @return country
  */
-	/*
-	 * getter getCountry
-	 * 
-	 * return country, String
-	 */
 	public String getCountry() {
 		return country;
 	}
-/**
- * setter setCountry
+/*!
+ * setCountry()
  * @param country
  */
-	/*
-	 * setter setCountry
-	 * param:
-	 * 		country: String
-	 */
 	public void setCountry(String country) {
 		this.country = country;
 	}
-/**
- * toString method
+/*!
+ * toString()
+ * @return une chaine de caractere represente le montagne et ses informations
  */
-	/*
-	 * toString method
-	 * return String
-	 */
+
 	@Override
 	public String toString() {
 		return "Mountain "+getName();
