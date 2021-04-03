@@ -16,8 +16,8 @@ public class Obstacle extends Position {
 /*!
  * Obstacle()
  * 
- * @param abscisse
- * @param ordonnee
+ * @param abscisse Le coordonnee X de l'aeronef 
+ * @param ordinate Le coodonee Y de l'aeronef
  */
 	public Obstacle(int abscisse, int ordonnee) {
 		super(abscisse, ordonnee);
@@ -25,10 +25,10 @@ public class Obstacle extends Position {
 /*!
  * Obstacle()
  * 
- * @param abscisse
- * @param ordonnee
- * @param name
- * @param altitude
+ * @param abscissa Le coordonnee X de l'aeronef 
+ * @param ordinate Le coodonee Y de l'aeronef
+ * @param name le nom de l'obstacle
+ * @param altitude l'altitude de l'obstacle
  */
 	public Obstacle(int abscisse, int ordonnee, String name, int altitude) {
 		super(abscisse, ordonnee);
@@ -38,14 +38,15 @@ public class Obstacle extends Position {
 /*
  * getName()
  * @brief retourne le nom de l'obstacle
- * @return name
+ * @return name le nom de l'obstacle
  */
 	public String getName() {
 		return name;
 	}
 /*!
  * setName()
- * @param name
+ * @brief changer le nom de l'obstacle
+ * @param name le nom de l'obstacle
  */
 
 	public void setName(String name) {
@@ -54,7 +55,7 @@ public class Obstacle extends Position {
 /*!
  * getAltitude()
  * @brief retourne l'altitude de l'obstacle
- * @return altitude
+ * @return altitude l'altitude de l'obstacle
  */ 
 
 	public int getAltitude() {
@@ -62,7 +63,8 @@ public class Obstacle extends Position {
 	}
 /*!
  * setAltitude()
- * @param altitude
+ * @brief changer l'altitude de l'obstacle
+ * @param altitude l'altitude de l'obstacle
  */
 
 	public void setAltitude(int altitude) {

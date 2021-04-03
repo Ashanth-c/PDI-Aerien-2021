@@ -14,8 +14,8 @@ public class City {
 	private String country;
 /*!
  * City()
- * @param name
- * @param country
+ * @param name le nom de la ville
+ * @param country le pays ou se situe cette ville
  */
 public City(String name, String country) {
 	super();
@@ -35,7 +35,7 @@ public City() {
 /*!
  * getName()
  * @brief retourne le nom de la ville
- * @return name
+ * @return name le nom de la ville
  */
 	
 public String getName() {
@@ -43,15 +43,16 @@ public String getName() {
 }
 /*!
  * setName()
- * @param name
+ * @brief changer le nom de la ville
+ * @param name le nom de la ville
  */
 public void setName(String name) {
 	this.name = name;
 }
 /*!
  * getCountry()
- * @brief retourne le pays
- * @return country
+ * @brief retourne le pays de la ville
+ * @return country le pays ou se situe cette ville
  */
 	
 public String getCountry() {
@@ -59,7 +60,8 @@ public String getCountry() {
 }
 /*!
  * setCountry()
- * @param country
+ * @brief changer le nom du pays
+ * @param country le pays ou se situe cette ville
  */
 
 public void setCountry(String country) {
