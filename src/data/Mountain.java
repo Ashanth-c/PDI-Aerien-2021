@@ -13,8 +13,8 @@ public class Mountain extends Obstacle {
 	private String country;
 /*!
  * Mountain()
- * @param abscisse
- * @param ordonnee
+ * @param abscisse Le coordonnee X de l'aeronef 
+ * @param ordinate Le coodonee Y de l'aeronef
  */
 
 	public Mountain(int abscisse, int ordonnee) {
@@ -23,11 +23,11 @@ public class Mountain extends Obstacle {
 /*!
  * 
  * Mountain()
- * @param abscisse
- * @param ordonnee
- * @param name
- * @param altitude
- * @param country
+ * @param abscisse Le coordonnee X de l'aeronef 
+ * @param ordinate Le coodonee Y de l'aeronef
+ * @param name le nom de la montagne
+ * @param altitude l'altitude de la montagne
+ * @param country le pays de la montagne
  */
 	public Mountain(int abscisse, int ordonnee, String name, int altitude, String country) {
 		super(abscisse, ordonnee, name, altitude);
@@ -36,14 +36,15 @@ public class Mountain extends Obstacle {
 /*!
  * getCountry()
  * @brief retourne le pays ou se trouve le montagne
- * @return country
+ * @return country le pays ou se situe le montagne
  */
 	public String getCountry() {
 		return country;
 	}
 /*!
  * setCountry()
- * @param country
+ * @brief changer le pays ou se trouve le montagne
+ * @param country le pays ou se situe le montagne
  */
 	public void setCountry(String country) {
 		this.country = country;
