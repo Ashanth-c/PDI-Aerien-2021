@@ -26,6 +26,7 @@ public class Aeronef extends Position {
 	private boolean isFlying;
 
 	/*!
+	 * Aeronef()
 	 * @brief Creer un Aeronef au position (abscisse,ordonnee) donnne en parametre 
 	 * @param abscissa Le coordonnee X de l'aeronef 
 	 * @param ordinate Le coodonee Y de l'aeronef
