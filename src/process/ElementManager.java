@@ -93,15 +93,15 @@ public class ElementManager {
 	public static String checkAirportsAround(Aeronef aeronef) {
 		//setting important variables
 		String airportName = "SearchEmergencyAirport";
-		float aeronefOrdonnee = aeronef.getOrdonnee();
-		float aeronefAbscisse = aeronef.getAbscisse();
+		float aeronefOrdonnee = aeronef.getOrdinate();
+		float aeronefAbscisse = aeronef.getAbscissa();
 		
 		//for each airportM in airportMap's entrySet, an airport is set as an airportM's value
 		for(Entry<String, Airport> airportM : airportMap.entrySet()) {
 			Airport airport = airportM.getValue();
 			
 			//we check if there is an aeronef near the airport, if yes its name will be returned
-			if (aeronefAbscisse+100>=airport.getAbscisse() && aeronefOrdonnee+100>=airport.getOrdonnee() && aeronefAbscisse-100<=airport.getAbscisse() && aeronefOrdonnee-100<=airport.getOrdonnee()) {
+			if (aeronefAbscisse+100>=airport.getAbscissa() && aeronefOrdonnee+100>=airport.getOrdinate() && aeronefAbscisse-100<=airport.getAbscissa() && aeronefOrdonnee-100<=airport.getOrdinate()) {
 				System.out.println("Atterissage en urgence réussi");
 				airportName = airport.getName();
 			}
@@ -119,8 +119,8 @@ public class ElementManager {
  * @brief returns ( airport's abscisse - aeronef's abscisse) / 100
  */
 	public static float abscisseVariationValue(Aeronef aeronef, Airport destinationAirport, int time) {
-		float aeronefAbscisse = aeronef.getAbscisse();
-		float airportAbscisse = destinationAirport.getAbscisse();
+		float aeronefAbscisse = aeronef.getAbscissa();
+		float airportAbscisse = destinationAirport.getAbscissa();
 		time/=100;
 
 		float abscisseVariation = (airportAbscisse - aeronefAbscisse) / time;
@@ -139,8 +139,8 @@ public class ElementManager {
  * @brief returns (airport's ordinate - aeronef's abscisse) /100
  */
 	public static float ordoneeVariationValue(Aeronef aeronef, Airport destinationAirport, int time) {
-		float aeronefOrdonnee = aeronef.getOrdonnee();
-		float airportOrdonnee = destinationAirport.getOrdonnee();
+		float aeronefOrdonnee = aeronef.getOrdinate();
+		float airportOrdonnee = destinationAirport.getOrdinate();
 		time/=100;
 
 		float ordonneeVariation = (airportOrdonnee - aeronefOrdonnee) / time;
@@ -204,7 +204,7 @@ public class ElementManager {
 		for (Aeronef obstacleAeronef : aeronefsList) {
 				if(obstacleAeronef.getDestination().equals(aeronef.getDeparture())) {
 					if(obstacleAeronef.isFlying()) {
-//						aeronefM.avoidOtherAeronef(obstacleAeronef);
+						aeronefM.avoidOtherAeronef(obstacleAeronef);
 				}
 			}
 		}

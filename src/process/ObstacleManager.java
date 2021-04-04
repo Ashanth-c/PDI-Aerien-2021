@@ -48,16 +48,16 @@ public class ObstacleManager {
  * @brief Makes birds move in a circular trajectory
  */
 	public void moveFlockBirds(double rayon) {
-		double flockbirdsOrdonnee = obstacle.getOrdonnee();
-		double flockbirdsAbscisse = obstacle.getAbscisse();
+		double flockbirdsOrdonnee = obstacle.getOrdinate();
+		double flockbirdsAbscisse = obstacle.getAbscissa();
 		if (teta>2 * (Math.PI)) {
 			teta=0;
 		}			
 			flockbirdsAbscisse = rayon * (Math.cos(teta));
 			flockbirdsOrdonnee = rayon * (Math.sin(teta));
 			teta+=1/Math.PI;
-		obstacle.setAbscisse((float) flockbirdsAbscisse);
-		obstacle.setOrdonnee((float) flockbirdsOrdonnee);
+		obstacle.setAbscissa((float) flockbirdsAbscisse);
+		obstacle.setOrdinate((float) flockbirdsOrdonnee);
 
 
 	}
@@ -68,7 +68,7 @@ public class ObstacleManager {
  * @brief Checks if an aeronef's coordinates match with an obstacle's
  */
 	public void impactMountain(Aeronef aeronef) {
-		if ((obstacle.getAbscisse() == aeronef.getAbscisse()) && obstacle.getOrdonnee() == aeronef.getOrdonnee()) {
+		if ((obstacle.getAbscissa() == aeronef.getAbscissa()) && obstacle.getOrdinate() == aeronef.getOrdinate()) {
 			if (obstacle.getAltitude() >= aeronef.getAltitude()) {
 			}
 		}
@@ -80,10 +80,10 @@ public class ObstacleManager {
  * @brief Makes an aeronef dodge flockBirds if it's close enough by changing the aeronef's altitude
  */
 	public void avoidFlockBirds(Aeronef aeronef) {
-		float flockbirdsAbscisse = obstacle.getAbscisse();
-		float flockbirdsOrdonnee = obstacle.getOrdonnee();
-		float aeronefsAbscisse = aeronef.getAbscisse();
-		float aeronefsOrdonnee = aeronef.getOrdonnee();
+		float flockbirdsAbscisse = obstacle.getAbscissa();
+		float flockbirdsOrdonnee = obstacle.getOrdinate();
+		float aeronefsAbscisse = aeronef.getAbscissa();
+		float aeronefsOrdonnee = aeronef.getOrdinate();
 		int flockbirdsaltitude = obstacle.getAltitude();
 		int aeronefaltitude = aeronef.getAltitude();
 
@@ -103,22 +103,21 @@ public class ObstacleManager {
  * @brief Makes an aeronef dodge a mountain if it's close enough by changing its altitude 
  */
 	public void avoidMountain(Aeronef aeronef) {
-		 float mountainAbscisse = obstacle.getAbscisse();
-		float mountainOrdonnee = obstacle.getOrdonnee();
-		float aeronefsAbscisse = aeronef.getAbscisse();
-		float aeronefsOrdonnee = aeronef.getOrdonnee();
+		 float mountainAbscisse = obstacle.getAbscissa();
+		float mountainOrdonnee = obstacle.getOrdinate();
+		float aeronefsAbscisse = aeronef.getAbscissa();
+		float aeronefsOrdonnee = aeronef.getOrdinate();
 		int mountainaltitude = obstacle.getAltitude();
 		
-//		if (aeronefsAbscisse+10 >= mountainAbscisse && aeronefsOrdonnee + 10 >= mountainOrdonnee && aeronefsAbscisse - 30 <= mountainAbscisse && aeronefsOrdonnee - 30 <= mountainOrdonnee) {
-		float dx = (aeronefsAbscisse+20) - mountainAbscisse;
-		float dy = (aeronefsOrdonnee+20) - mountainOrdonnee;
+		float dx = (aeronefsAbscisse+10) - mountainAbscisse;
+		float dy = (aeronefsOrdonnee+10) - mountainOrdonnee;
 		double distance = Math.sqrt(dx * dx + dy * dy);
 		if (distance < 40) {
-				if (aeronef.getAltitude() <= mountainaltitude) {
+			if (aeronef.getAltitude() <= obstacle.getAltitude()) {
+				System.out.println(obstacle.getName());
 					aeronef.setDetectObstacle("Obstacle");
 					mountainaltitude += 150;
 					aeronef.setAltitude(mountainaltitude);
-					System.out.println("Detection de Montagne proche" + aeronef.getDetectObstacle());
 				}
 		}
 		else {
@@ -126,6 +125,5 @@ public class ObstacleManager {
 			mountainaltitude -= 150;
 			aeronef.setAltitude(mountainaltitude);
 		}
-
 	}
 }

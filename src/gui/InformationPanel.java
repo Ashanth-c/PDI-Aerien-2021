@@ -143,7 +143,7 @@ public class InformationPanel extends JPanel {
 		List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
 		for (AeronefManager aeronefManager : aeronefManagers) {
 			Aeronef aeronef = aeronefManager.getAeronef();
-			if (aeronef.getAbscisse()+30>=x && aeronef.getOrdonnee()+30>=y && aeronef.getAbscisse()-30<=x && aeronef.getOrdonnee()-30<=y) {
+			if (aeronef.getAbscissa()+30>=x && aeronef.getOrdinate()+30>=y && aeronef.getAbscissa()-30<=x && aeronef.getOrdinate()-30<=y) {
 				position=aeronef;
 			}
 		}
@@ -160,11 +160,11 @@ public class InformationPanel extends JPanel {
 		for (AeronefManager aeronefManager : aeronefManagers) {
 			Aeronef aeronef = aeronefManager.getAeronef();
 			for (Airport airport : airportsList) {
-				if (airport.getAbscisse()+30>=x && airport.getOrdonnee()+30>=y && airport.getAbscisse()-30<=x && airport.getOrdonnee()-30<=y) {
+				if (airport.getAbscissa()+30>=x && airport.getOrdinate()+30>=y && airport.getAbscissa()-30<=x && airport.getOrdinate()-30<=y) {
 					position=airport;
 				}
 				else {
-					if (aeronef.getAbscisse()+30>=x && aeronef.getOrdonnee()+30>=y && aeronef.getAbscisse()-30<=x && aeronef.getOrdonnee()-30<=y) {
+					if (aeronef.getAbscissa()+30>=x && aeronef.getOrdinate()+30>=y && aeronef.getAbscissa()-30<=x && aeronef.getOrdinate()-30<=y) {
 						position=aeronef;
 					}
 				}
@@ -205,7 +205,7 @@ public class InformationPanel extends JPanel {
 		List<Airport> airportsList = simulation.getAirportsList();
 		Aeronef aeronef = aeronefManagers.get(key).getAeronef();
 		for (Airport airport : airportsList) {
-			if (airport.getAbscisse()==aeronef.getAbscisse() && airport.getOrdonnee()==aeronef.getOrdonnee() && !(aeronef.isFlying())) {
+			if (airport.getAbscissa()==aeronef.getAbscissa() && airport.getOrdinate()==aeronef.getOrdinate() && !(aeronef.isFlying())) {
 				int random = Utility.getRandom(0, aeronefManagers.size()-1);
 				return aeronef = urgentAeronef(random);
 			}

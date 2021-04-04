@@ -18,9 +18,9 @@ public class Position {
  * @param abscissa Le coordonnee X de l'objet
  * @param ordinate Le coodonee Y de l'objet
  */
-	public Position(float abscisse, float ordinate) {
+	public Position(float abscissa, float ordinate) {
 		super();
-		this.abscissa = abscisse;
+		this.abscissa = abscissa;
 		this.ordinate = ordinate;
 
 	}
@@ -30,7 +30,7 @@ public class Position {
  * @return abscisse Le coordonnee X de ll'objet
  */
 
-	public float getAbscisse() {
+	public float getAbscissa() {
 		return abscissa;
 	}
 /*!
@@ -39,8 +39,8 @@ public class Position {
  * @param abscisse Le coordonnee X de ll'objet
  */
 
-	public void setAbscisse(float abscisse) {
-		this.abscissa = abscisse;
+	public void setAbscissa(float abscissa) {
+		this.abscissa = abscissa;
 	}
 /*!
  * getOrdonnee()
@@ -48,7 +48,7 @@ public class Position {
  * @return ordinate Le coodonee Y de l'objet
  */
 
-	public float getOrdonnee() {
+	public float getOrdinate() {
 		return ordinate;
 	}
 /*!
@@ -57,7 +57,7 @@ public class Position {
  * @param ordinate Le coodonee Y de l'objet
  */
 
-	public void setOrdonnee(float ordinate) {
+	public void setOrdinate(float ordinate) {
 		this.ordinate = ordinate;
 	}
 /*!
@@ -66,6 +66,6 @@ public class Position {
  */
 	@Override
 	public String toString() {
-		return "Position [abscisse=" + abscissa + ", ordinate=" + ordinate + "]";
+		return "Position [abscissa=" + abscissa + ", ordinate=" + ordinate + "]";
 	}
 }

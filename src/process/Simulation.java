@@ -63,7 +63,8 @@ public class Simulation {
 		airportsList = initAiport();
 		
 		//Lines are created between the airports of the list
-		CreateLine(airportsList);
+		createLine(airportsList);
+		initObstacle();
 		
 		//
 		initAeronefs(airportsList);
@@ -112,7 +113,7 @@ public class Simulation {
  * 
  * @brief Creates a line between every airports of a given list of airports
  */
-	public void CreateLine(List<Airport> airports) {
+	public void createLine(List<Airport> airports) {
 		LineBuilder lineBuilder = new LineBuilder();
 
 		for (Airport airport1 : airports) {
@@ -161,8 +162,8 @@ public class Simulation {
 				String aeronefType = getAeronefType(airport.getType(), destinationAirport.getType());
 				
 				//for each aeronef, set their base position as their airport's coordinates
-				int aeronefAbscisse = (int) airport.getAbscisse();
-				int aeronefOrdonnee = (int) airport.getOrdonnee();
+				int aeronefAbscisse = (int) airport.getAbscissa();
+				int aeronefOrdonnee = (int) airport.getOrdinate();
 				
 				//additionnal aeronef sets the total parked aeronef to increase
 				int totaParkAeronefs = airport.getTerminal().getTotaParkAeronefs()+1;
@@ -182,7 +183,28 @@ public class Simulation {
 			}
 		}
 	}
-/*!
+	
+	/*!
+	 * @brief Cette methode creer les differents obstacle de la simulation 
+	 */
+	public void initObstacle() {
+		Mountain stanlet = Utility.createMountain(710, 410, "Mount Stanlet", 5109, "Uganda");
+		Mountain teton = Utility.createMountain(312, 265, "Grand Teton", 6699, "USA");
+		Mountain rinjani = Utility.createMountain(965, 495, "Mount Rinjani", 4726, "Indonesia");
+		Mountain khuiten = Utility.createMountain(1000, 210, "Khuiten Peak", 4856, "Mongolia");
+		
+		mountains.add(khuiten);
+		mountains.add(teton);
+		mountains.add(stanlet);
+		mountains.add(rinjani);
+	}
+	
+public Simulation(List<FlockBirds> birds, List<Mountain> mountains) {
+		super();
+		this.birds = birds;
+		this.mountains = mountains;
+	}
+	/*!
  * getter getAeronefManagers()
  * @return aeronefManagers le manager des aeronefs
  */
@@ -213,10 +235,10 @@ public class Simulation {
 
 /*!
  * getter getModelAeronefs()
+ * @brief Given an index and type of an aeronef returns its model
  * @param type le type de l'aeronef
  * @return a String
  * 
- * @brief Given an index and type of an aeronef returns its model
  */
 	public String getModelAeronefs(String type) {
 		int aeronefName = Utility.getRandom(0, 3);
@@ -307,6 +329,13 @@ public class Simulation {
  */
 	public void setAirportsList(List<Airport> airportsList) {
 		this.airportsList = airportsList;
+	}
+	
+	public List<Mountain> getMountainsList() {
+		return mountains;
+	}
+	public void setMountainsList(List<Mountain> mountains) {
+		this.mountains = mountains;
 	}
 
 }

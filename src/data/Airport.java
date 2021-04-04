@@ -4,7 +4,7 @@ import java.util.List;
 
 	/*!
  	 * @file Airport.java
- 	 * @brief Classe qui décrit un aéroport
+ 	 * @brief Classe qui represente un a�roport
  	 * @author Ashanth
  	 * @author Khadija
  	 * @author Maeva
@@ -28,14 +28,14 @@ public class Airport extends Position {
 	 * @param ordinate Le coodonee Y de l'aeronef
 	 */
 	
-	public Airport(int abscisse, int ordonnee) {
-		super(abscisse, ordonnee);
+	public Airport(int abscissa, int ordinate) {
+		super(abscissa, ordinate);
 	}
 	
 	/*!
 	 * Airport()
 	 * 
-	 * @param abscisse Le coordonnee X de l'aeronef 
+	 * @param abscissa Le coordonnee X de l'aeronef 
 	 * @param ordinate Le coodonee Y de l'aeronef
 	 * @param name le nom de l'aeroport
 	 * @param type le typ d'aeroport
@@ -46,9 +46,9 @@ public class Airport extends Position {
 	 * @param linesList la listes des lignes de l'aerport
 	 */
 	
-	public Airport(int abscisse, int ordonnee, String name, String type, Aerodrome aerodrome, Terminal terminal,
+	public Airport(int abscissa, int ordinate, String name, String type, Aerodrome aerodrome, Terminal terminal,
 			City city, String openingDate, List<Line> linesList) {
-		super(abscisse, ordonnee);
+		super(abscissa, ordinate);
 		this.name = name;
 		this.type = type;
 		this.aerodrome = aerodrome;
@@ -60,7 +60,7 @@ public class Airport extends Position {
 
 	/*!
 	 * getName()
-	 * @brief il retourne le nom de l'aeroport
+	 * @brief Retourne le nom de l'aeroport
 	 * @return name Nom de l'aeroport 
 	 */
 	public String getName() {
@@ -69,8 +69,8 @@ public class Airport extends Position {
 
 	/*!
 	 * setName()
-	 * @brief changement de nom de l'aeroport
-	 * @param name Nom de l'aeroport 
+	 * @brief Changement du nom de l'aeroport
+	 * @param name Nouveau nom de l'aeroport 
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -78,8 +78,8 @@ public class Airport extends Position {
 
 	/*!
  	 * getAerodrome()
-	 * @brief il retourne l'aerodrome
- 	 * @return aerodome l'aerodrome de l'aeroprt
+	 * @brief Retourne l'aerodrome de l'aeroport
+ 	 * @return aerodome Aerodrome de l'aeroport
  	 */
 	public Aerodrome getAerodrome() {
 		return aerodrome;

@@ -2,7 +2,7 @@ package data;
 
 /*!
  * @file Aeronef.java
- * @brief Un a√©ronef represente un element volant d'un aeroport √† un autre
+ * @brief Un aÈronef represente un element volant d'un aeroport √† un autre
  * Aeronef est heritiere de la classe Position
  * @author Ashanth
  * @author Khadija
@@ -17,12 +17,12 @@ public class Aeronef extends Position {
 	private String destination;
 	private String departure;
 	private String name;
+	private String detectObstacle;
 	private int totalSeats;
 	private int fuel;
 	private int altitude;
 	private int speed;
 	private boolean urgent;
-	private String detectObstacle;
 	private boolean isFlying;
 
 	/*!
@@ -125,8 +125,8 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * getDeparture()
-	 * @brief il retourne le deparature de l'aeronef
-	 * @return departure nom de l'aeroport de d√©part
+	 * @brief Retourne le nom de l'aeroport de depart de l'aeronef
+	 * @return departure, nom de l'aeroport de d√©part
 	 */
 	public String getDeparture() {
 		return departure;
@@ -135,7 +135,7 @@ public class Aeronef extends Position {
 	/*!
 	 * setDeparture()
 	 * @brief Change la valeur du nom de l'aeroport de depart
-	 * @param departure nom de l'aeroport de depart
+	 * @param departure Nom de l'aeroport de depart
 	 */
 	public void setDeparture(String departure) {
 		this.departure = departure;
@@ -144,7 +144,7 @@ public class Aeronef extends Position {
 	/*!
 	 * getTotalSeats()
 	 * @brief retourne le nombre de place dans un aeronef
-	 * @return totalSeats Nombre de place total dans l'aeronef
+	 * @return totalSeats, nombre de place total dans l'aeronef
 	 */
 	public int getTotalSeats() {
 		return totalSeats;
@@ -152,7 +152,7 @@ public class Aeronef extends Position {
 
 	/*!
 	 * setTotalSeats()
-	 * @brief Change la valeur des nombres de palce dans un aeronef 
+	 * @brief Change la valeur des nombres de place dans un aeronef 
 	 * @param totalSeats Nombre de place total dans l'aeronef
 	 */
 	public void setTotalSeats(int totalSeats) {
@@ -162,7 +162,7 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getFuel()
-	 * @brief retourne le niveau d'essence de l'aeronef
+	 * @brief Retourne le niveau d'essence de l'aeronef
 	 * @return fuel Valeur indiquant le niveau d'essence de l'aeronef
 	 */
 	public int getFuel() {
@@ -172,7 +172,7 @@ public class Aeronef extends Position {
 	/*!
 	 * setFuel()
 	 * @brief Change la valeur du niveau d'essence de l'aeronef 
-	 * @param fuel Valeur indiquant le niveau d'essence de l'aeronef
+	 * @param fuel, valeur indiquant le niveau d'essence de l'aeronef
 	 */
 	public void setFuel(int fuel) {
 		this.fuel = fuel;
@@ -180,8 +180,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getAltitude()
-	 * @brief il retourne l'altitude de l'aeronef
-	 * @return altitude c'est la valeur d'altitude de l'aeronef
+	 * @brief Retourne l'altitude de l'aeronef
+	 * @return altitude, la valeur de l'altitude ‡ laquelle l'aeronef vol
 	 */
 	public int getAltitude() {
 		return altitude;
@@ -190,7 +190,7 @@ public class Aeronef extends Position {
 	/*!
 	 * setAltitude()
 	 * @brief Change l'altitude de l'aeronef 
-	 * @param altitude c'est la valeur d'altitude de l'aeronef
+	 * @param altitude Valeur d'altitude de l'aeronef
 	 */
 	public void setAltitude(int altitude) {
 		this.altitude = altitude;
@@ -198,8 +198,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getSpeed()
-	 * @brief il retourne la vitesse de l'aeronef
-	 * @return speed la vitesse de l'aeronef
+	 * @brief Retourne la vitesse de l'aeronef
+	 * @return speed Vitesse de l'aeronef
 	 */
 	public int getSpeed() {
 		return speed;
@@ -208,7 +208,7 @@ public class Aeronef extends Position {
 	/*!
 	 * setSpeed()
 	 * @brief Changement de la vitesse d'aeronef 
-	 * @param speed la vitesse de l'aeronef
+	 * @param speed, la vitesse de l'aeronef
 	 */
 	public void setSpeed(int speed) {
 		this.speed = speed;
@@ -216,8 +216,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getUrgent()
-	 * @brief retourne si l'aeronef va s'atterir en urgence ou non 
-	 * @return urgent Booleen qui indique si l'aeronef doit atterir en urgence
+	 * @brief Retourne si l'aeronef va s'atterir en urgence ou non 
+	 * @return urgent, Booleen qui indique si l'aeronef doit atterir en urgence
 	 */
 	public boolean getUrgent() {
 		return urgent;
@@ -234,8 +234,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getName()
-	 * @brief il retourne le nom de l'aeronef
-	 * @return name Nom de l'aeronef compos√© des initiale des aeroports de depart et d'arrive ainsi que d'un numero qui incremente
+	 * @brief Retourne le nom de l'aeronef
+	 * @return name Nom de l'aeronef composÈ des initiale des aeroports de depart et d'arrive ainsi que d'un numero qui incremente
 	 */
 	public String getName() {
 		return name;
@@ -244,7 +244,7 @@ public class Aeronef extends Position {
 	/*!
 	 * setName()
 	 * @brief changement de nom de l'aeronef
-	 * @param name Nom de l'aeronef compos√© des initiale des aeroports de depart et d'arrive ainsi que d'un numero qui incremente
+	 * @param name Nouveau nom de l'aeronef qui doit etre composÈ des initiale des aeroports de depart et d'arrive ainsi que d'un numero qui incremente
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -252,8 +252,8 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * isDetectObstacle()
-	 * @brief il rdetecte s'il y en a des obstacles
-	 * @return detectObstacle Boobleen qui indique si l'aeronef a detect√© un obstacle proche
+	 * @brief Retourne le type d'obstacle detectÈ par l'aeronef
+	 * @return detectObstacle, Chaine de caractere  qui indique si l'aeronef a detectÈ un obstacle proche
 	 */
 	public String getDetectObstacle() {
 		return  detectObstacle;
@@ -261,7 +261,7 @@ public class Aeronef extends Position {
 
 	/*!
 	 * setDetectObstacle()
-	 * @param detectObstacle Boobleen qui indique si l'aeronef a detect√© un obstacle proche
+	 * @param detectObstacle Chaine de caractere qui indique si l'aeronef a detectÈ un obstacle proche
 	 */
 	public void setDetectObstacle(String detectObstacle) {
 		this.detectObstacle = detectObstacle;
@@ -269,8 +269,8 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * isFlying()
-	 * @brief il v√©rifie s'il l'aeronef est en vol
-	 * @return isFlying Booleen qui indique si un aeronef est en vol
+	 * @brief VÈrifie si l'aeronef est en vol
+	 * @return isFlying, Booleen qui indique si un aeronef est en vol
 	 */
 	public boolean isFlying() {
 		return isFlying;
@@ -278,7 +278,7 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * setFlying()
-	 * @brief change l'etat de l'aeronef en vol ou l'inverse
+	 * @brief Change l'etat de l'aeronef en vol ou l'inverse
 	 * @param isFlying Booleen qui indique si un aeronef est en vol
 	 */
 	public void setFlying(boolean isFlying) {

@@ -216,8 +216,8 @@ public class Utility {
  * @brief Returns the radius of a flockbirds group
  */
 	private static double getRadiusFlockBirds(FlockBirds flockBirds, int abCenter, int odrCenter) {
-		float flockBirdsAbscisse = flockBirds.getAbscisse();
-		float flockBirdsOrdonnee = flockBirds.getOrdonnee();
+		float flockBirdsAbscisse = flockBirds.getAbscissa();
+		float flockBirdsOrdonnee = flockBirds.getOrdinate();
 		double radius = Math.sqrt(Math.pow((abCenter-flockBirdsAbscisse), 2)+(Math.pow((odrCenter-flockBirdsOrdonnee), 2)));
 		
 		return radius;

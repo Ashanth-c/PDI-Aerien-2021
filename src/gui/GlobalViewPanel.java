@@ -25,6 +25,7 @@ import javax.swing.JPanel;
 import data.Aeronef;
 import data.Airport;
 import data.Line;
+import data.Mountain;
 import process.Simulation;
 import process.Utility;
 import process.ObstacleManager;
@@ -82,8 +83,8 @@ public class GlobalViewPanel extends JPanel {
 		Map<String, AirportManager> airportManagersMap = simulation.getAirportManagersMap();
 		for (Entry<String, AirportManager> airportManager : airportManagersMap.entrySet()) {
 			Airport airport = airportManager.getValue().getAirport();
-			int abscisse = (int) airport.getAbscisse();
-			int ordonnee = (int) airport.getOrdonnee();
+			int abscisse = (int) airport.getAbscissa();
+			int ordonnee = (int) airport.getOrdinate();
 			String airportType = printAirportType(airport.getType());
 			printAirport(g2, abscisse, ordonnee,airportType);
 
@@ -117,10 +118,10 @@ public class GlobalViewPanel extends JPanel {
 		for (Airport airport : airportsList) {
 			List<Line> linesList = airport.getLinesList();
 			for (Line line : linesList) {
-				int departureAbscisse = (int) line.getdeparture().getAbscisse() + 10;
-				int departureOrdonate = (int) line.getdeparture().getOrdonnee() + 32;
-				int destinationAbscisse = (int) line.getdestination().getAbscisse() + 10;
-				int destinationOrdonate = (int) line.getdestination().getOrdonnee() + 32;
+				int departureAbscisse = (int) line.getdeparture().getAbscissa() + 10;
+				int departureOrdonate = (int) line.getdeparture().getOrdinate() + 32;
+				int destinationAbscisse = (int) line.getdestination().getAbscissa() + 10;
+				int destinationOrdonate = (int) line.getdestination().getOrdinate() + 32;
 
 				if (!line.toString().contains("Departure = " + airport.getName())) {
 					g2.setColor(new Color(147,209,138));
@@ -158,26 +159,19 @@ public class GlobalViewPanel extends JPanel {
 
 		g2.drawImage(Utility.readImage("src/images/world_map1.png"), 100, 50, 1175, 699, this);
 	}
-	/*!
-	 * printMountain()
-	 * @param g2 le graghigs
-	 * @brief tracer les montagnes sur la vue globale
-	 */
-	public void printMountain(Graphics2D g2, int abscisse, int ordonate, String name, int altitude, String country) {
-		g2.setColor(Color.BLACK);
-		g2.setStroke(new BasicStroke(3));
-		Utility.createMountain(abscisse, ordonate, name, altitude, country);
-		g2.drawImage(Utility.readImage("src/images/mountain.png"), abscisse, ordonate, 30, 40, this);
-	}
-
+	
 	/*!
 	 * initMountain()
 	 * @param g2 le graghigs
-	 * @brief initialise les montagnes
+	 * @brief initialise les montagnes et les affiches sur la vue global
 	 */
 	public void initMountain(Graphics2D g2) {
-		for (int i=0;i<4;i++) {
-			printMountain(g2,SimulPara.MOUNTAINS_X[i],SimulPara.MOUNTAINS_Y[i],SimulPara.MOUNTAINS[i],SimulPara.ALTITUDE[3],"random");
+		List<Mountain> mountainList = simulation.getMountainsList();
+		for (Mountain mountain : mountainList) {
+			int abscissa = (int) mountain.getAbscissa();
+			int ordonate = (int) mountain.getOrdinate();
+			g2.drawImage(Utility.readImage("src/images/mountain.png"), abscissa, ordonate, 30, 40, this);
+
 		}
 	}
 
@@ -189,8 +183,8 @@ public class GlobalViewPanel extends JPanel {
 	 */
 	public void drawAeronef(AeronefManager aeronefManager, Graphics2D g2) {
 		Aeronef aeronef = aeronefManager.getAeronef();
-		int abscisse = (int) aeronef.getAbscisse() + 7;
-		int ordonate = (int) aeronef.getOrdonnee() + 20;
+		int abscisse = (int) aeronef.getAbscissa() + 7;
+		int ordonate = (int) aeronef.getOrdinate() + 20;
 		String direction = aeronefManager.getDirection();
 		int aeronefHeight = getAeronefHeight(aeronef.getDetectObstacle());
 		int aeronefWidth = getAeronefWidth(aeronef.getDetectObstacle());

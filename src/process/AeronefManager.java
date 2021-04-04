@@ -183,10 +183,10 @@ public class AeronefManager extends Thread {
  * @brief Writes in the console if an Aeronef gets close to an airport
  */
 	public void approchAirport(Aeronef aeronef, Airport airport) {
-		float aeronefAbscisse = aeronef.getAbscisse();
-		float aeronefOrdonnee = aeronef.getOrdonnee();
-		float airportAbscisse = airport.getAbscisse();
-		float airportOrdonnee = airport.getOrdonnee();
+		float aeronefAbscisse = aeronef.getAbscissa();
+		float aeronefOrdonnee = aeronef.getOrdinate();
+		float airportAbscisse = airport.getAbscissa();
+		float airportOrdonnee = airport.getOrdinate();
 
 		if (java.lang.Math.sqrt(java.lang.Math.pow((airportAbscisse - aeronefAbscisse), 2)
 				+ java.lang.Math.pow((airportOrdonnee - aeronefOrdonnee), 2)) < 100) {
@@ -209,7 +209,7 @@ public class AeronefManager extends Thread {
 		ElementManager.avoidObstacle(this);
 		
 		//if Aeronef's position is yet to be its destination's, Aeronef moves
-		if (( aeronef.getAbscisse() != destinationAirport.getAbscisse()) && ( aeronef.getOrdonnee() != destinationAirport.getOrdonnee())) {
+		if (( aeronef.getAbscissa() != destinationAirport.getAbscissa()) && ( aeronef.getOrdinate() != destinationAirport.getOrdinate())) {
 			moveAeronefAbcsisse(abscisseVariationValue);
 			moveAeronefOrdonnee(ordoneeVariationValue);
 		}		
@@ -232,10 +232,10 @@ public class AeronefManager extends Thread {
  * @brief Moves an Aeronef with the given abscisseVaration parameter variation
  */
 	public void moveAeronefAbcsisse(float abscisseVariation) {
-		float aeronefAbscisse = aeronef.getAbscisse();
+		float aeronefAbscisse = aeronef.getAbscissa();
 
 		aeronefAbscisse += abscisseVariation;
-		aeronef.setAbscisse(aeronefAbscisse);
+		aeronef.setAbscissa(aeronefAbscisse);
 
 	}
 /*!
@@ -245,10 +245,10 @@ public class AeronefManager extends Thread {
  * @brief Moves an Aeronef with the given ordonneeVariation parameter variation
  */
 	public void moveAeronefOrdonnee(float ordonneeVariation) {
-		float aeronefOrdonnee = aeronef.getOrdonnee();
+		float aeronefOrdonnee = aeronef.getOrdinate();
 
 		aeronefOrdonnee += ordonneeVariation;
-		aeronef.setOrdonnee(aeronefOrdonnee);
+		aeronef.setOrdinate(aeronefOrdonnee);
 
 	}
 	
@@ -264,8 +264,8 @@ public class AeronefManager extends Thread {
 		float abscisseVariationValue = ElementManager.abscisseVariationValue(aeronef, airport, 20);
 		float ordoneeVariationValue = ElementManager.ordoneeVariationValue(aeronef, airport, 20);
 
-		while (((int) aeronef.getAbscisse() != airport.getAbscisse())
-				&& ((int) aeronef.getOrdonnee() != airport.getOrdonnee())) {
+		while (((int) aeronef.getAbscissa() != airport.getAbscissa())
+				&& ((int) aeronef.getOrdinate() != airport.getOrdinate())) {
 
 			moveAeronefAbcsisse(abscisseVariationValue);
 			moveAeronefOrdonnee(ordoneeVariationValue);
@@ -363,10 +363,10 @@ public class AeronefManager extends Thread {
 	  }
 
 	public void avoidOtherAeronef(Aeronef obstacleAeronef) {
-		float aeronefAbscisse = aeronef.getAbscisse();
-		float aeronefOrdonnee = aeronef.getOrdonnee();
-		float obstacleAeronefsAbscisse = obstacleAeronef.getAbscisse();
-		float obstacleAeronefsOrdonnee = obstacleAeronef.getOrdonnee();
+		float aeronefAbscisse = aeronef.getAbscissa();
+		float aeronefOrdonnee = aeronef.getOrdinate();
+		float obstacleAeronefsAbscisse = obstacleAeronef.getAbscissa();
+		float obstacleAeronefsOrdonnee = obstacleAeronef.getOrdinate();
 		int aeronefaltitude = aeronef.getAltitude();
 		if(!aeronef.getDetectObstacle().equals("Obstacle")) {
 			if (obstacleAeronef.getAltitude() <= aeronefaltitude) {
@@ -380,17 +380,17 @@ public class AeronefManager extends Thread {
 			}
 			else {
 				obstacleAeronef.setDetectObstacle("No");
-				aeronef.setAltitude(6100);
+				aeronef.setAltitude(4100);
 			}
 		}
 	}
 	
 	public void initAeronefAltitute(String type) {
-		if (type.equals("Military")) {
+		if (type.contains("Military")) {
 			aeronef.setAltitude(11200);
 		}
 		else {
-			aeronef.setAltitude(6100);
+			aeronef.setAltitude(4100);
 		}
 	}
 	
