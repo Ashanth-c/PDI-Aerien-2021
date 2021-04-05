@@ -188,14 +188,14 @@ public class Simulation {
 	 * @brief Cette methode creer les differents obstacle de la simulation 
 	 */
 	public void initObstacle() {
-		Mountain stanlet = Utility.createMountain(710, 410, "Mount Stanlet", 5109, "Uganda");
+		Mountain cameroon = Utility.createMountain(680, 440, "Mount Cameroon", 5109, "Cameroon");
 		Mountain teton = Utility.createMountain(312, 265, "Grand Teton", 6699, "USA");
 		Mountain rinjani = Utility.createMountain(965, 495, "Mount Rinjani", 4726, "Indonesia");
 		Mountain khuiten = Utility.createMountain(1000, 210, "Khuiten Peak", 4856, "Mongolia");
 		
 		mountains.add(khuiten);
 		mountains.add(teton);
-		mountains.add(stanlet);
+		mountains.add(cameroon);
 		mountains.add(rinjani);
 	}
 	

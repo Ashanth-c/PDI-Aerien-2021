@@ -5,7 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import data.Aeronef;
 import data.Airport;
 import data.FlockBirds;
@@ -183,6 +182,32 @@ public class ElementManager {
 		}
 		
 	}
+	
+	public static boolean isNearMountain(String mountainName, String aeronefName) {
+		boolean ismountain = false;
+		if(aeronefName.contains("YelloToM") || aeronefName.contains("MendoToY")) {
+			if(mountainName.contains("Teton")) {
+				ismountain = true;
+			}
+		}
+		else if(aeronefName.contains("ParisToMelbo") || aeronefName.contains("MelboToP")) {
+			if(mountainName.contains("Rinjani")) {
+				ismountain = true;
+			}			
+		}
+		else if(aeronefName.contains("YakutToO") || aeronefName.contains("OuagaToYa")) {
+			if(mountainName.contains("Khuiten")) {
+				ismountain = true;
+			}
+		}
+		else if(aeronefName.contains("OuagaToMel") || aeronefName.contains("MelboToO")) {
+			if(mountainName.contains("Cameroon")) {
+				ismountain = true;
+			}
+		}
+		return ismountain;
+	}
+	
 /*!
  * avoidObstacle()
  * @param aeronef
@@ -194,7 +219,9 @@ public class ElementManager {
 		for (Obstacle obstacle:obstaclesList) {
 			if (obstacle.toString().contains("Mount")) {
 				ObstacleManager mountainManager = new ObstacleManager(obstacle);
+				if(isNearMountain(obstacle.getName(), aeronef.getName())) {
 				mountainManager.avoidMountain(aeronef);
+				}
 			}
 			else if (obstacle.toString().contains("Birds")) {
 				ObstacleManager birdsManager = new ObstacleManager(obstacle);
@@ -202,11 +229,11 @@ public class ElementManager {
 			}
 		}
 		for (Aeronef obstacleAeronef : aeronefsList) {
+			if(obstacleAeronef.isFlying()) {	
 				if(obstacleAeronef.getDestination().equals(aeronef.getDeparture())) {
-					if(obstacleAeronef.isFlying()) {
-						aeronefM.avoidOtherAeronef(obstacleAeronef);
+					aeronefM.avoidOtherAeronef(obstacleAeronef);
 				}
 			}
 		}
-	}	
+	}
 }

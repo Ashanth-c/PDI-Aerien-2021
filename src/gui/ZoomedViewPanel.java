@@ -17,22 +17,37 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.geom.AffineTransform;
+import java.util.List;
 
 import javax.swing.JPanel;
 
+import data.Airport;
 import process.Simulation;
 
 public class ZoomedViewPanel extends JPanel {
 	private Simulation simulation;
+	private Airport zoomAirport;
 		/*!
      		 * ZoomedViewPanel() 
 	     	 * @brief zoomer sur l'aeroport
 	 	 */
-	public ZoomedViewPanel() {
+	public ZoomedViewPanel(Simulation simulation) {
+		this.simulation = simulation;
+		setAirport();
 		setBackground(Color.LIGHT_GRAY);
 		setLayout(new FlowLayout(FlowLayout.CENTER));
 		
 	}
+		private void setAirport() {
+			// TODO Auto-generated method stub
+			List<Airport> airportsList = simulation.getAirportsList();
+			for (Airport airport : airportsList) {
+				if(airport.getCity().getCountry().contains("France")) {
+					this.zoomAirport = airport; 
+				}
+			}
+			
+		}
 		/*!
      		 * paintComponent()
 	 	 * @param g le grapghcs

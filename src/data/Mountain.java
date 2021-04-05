@@ -56,7 +56,7 @@ public class Mountain extends Obstacle {
 
 	@Override
 	public String toString() {
-		return "Mountain "+getName();
+		return "Mountain\nName: "+ getName() + "\nAltitude: " + getAltitude() + "\nCountry: " + country;
 	}
 
 }

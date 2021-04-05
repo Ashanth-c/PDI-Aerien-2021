@@ -186,8 +186,8 @@ public class GlobalViewPanel extends JPanel {
 		int abscisse = (int) aeronef.getAbscissa() + 7;
 		int ordonate = (int) aeronef.getOrdinate() + 20;
 		String direction = aeronefManager.getDirection();
-		int aeronefHeight = getAeronefHeight(aeronef.getDetectObstacle());
-		int aeronefWidth = getAeronefWidth(aeronef.getDetectObstacle());
+		int aeronefHeight = getAeronefHeight(aeronef.isDetectObstacle(),aeronef.getDetectAeronef());
+		int aeronefWidth = getAeronefWidth(aeronef.isDetectObstacle(),aeronef.getDetectAeronef());
 		BufferedImage image=null;
 		if(aeronef.getUrgent()) {
 			image = (BufferedImage) Utility.readImage("src/images/urgent_turbojet.png");
@@ -209,7 +209,7 @@ public class GlobalViewPanel extends JPanel {
 			AffineTransformOp op = new AffineTransformOp(tx, AffineTransformOp.TYPE_BILINEAR);
 			g2.drawImage(op.filter(image, null), abscisse,ordonate,aeronefHeight,aeronefWidth, null);
 		} else if (direction.equals("West-Est")) {
-			g2.drawImage(image, abscisse, ordonate, 20, 26, this);
+			g2.drawImage(image, abscisse, ordonate, aeronefHeight, aeronefWidth, this);
 
 			}
 	}
@@ -237,24 +237,18 @@ public class GlobalViewPanel extends JPanel {
 	 * @brief  changer l'altitude de l'avion ça depend de l'obstacle
 	 * @return height l'altitude de lavion 
 	 */
-	public int getAeronefHeight(String obstacle) {
+	public int getAeronefHeight(boolean obstacle, String aeronef) {
+
 		int height=0;
-		switch (obstacle) {
-			case "No": {
-				height = 20;
-				break;
+		if(obstacle) {
+			height = 34;
+		}
+		else {
+			if(aeronef.equals("Aeronef")) {
+			height = 12;
 			}
-			case "Aeronef":{
-				height = 15;
-				break;
-			}
-			case "Obstacle":{
-				height = 30;
-				break;
-			}
-			default:{
-				height = 20;
-				break;
+			else {
+				height = 24;
 			}
 		}
 		return height;
@@ -265,27 +259,23 @@ public class GlobalViewPanel extends JPanel {
 	 * @brief  retourne le largeur de l'avion
 	 * @return width largeur de lavion 
 	 */
-	public int getAeronefWidth(String obstacle) {
-		
+	public int getAeronefWidth(boolean obstacle, String aeronef) {
 		int width=0;
-		switch (obstacle) {
-			case "No": {
-				width = 26;
-				break;
+
+		
+		if(obstacle) {
+			width = 40;
+		}
+		else {
+			if(aeronef.equals("Aeronef")) {
+				width = 18;
 			}
-			case "Aeronef":{
-				width = 21;
-				break;
-			}
-			case "Obstacle":{
-				width = 36;
-				break;
-			}
-			default:{
-				width = 26;
-				break;
+			else {
+			width = 30;
 			}
 		}
+		
+
 		return width;
 	}
 	/*!

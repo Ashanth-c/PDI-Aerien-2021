@@ -17,7 +17,8 @@ public class Aeronef extends Position {
 	private String destination;
 	private String departure;
 	private String name;
-	private String detectObstacle;
+	private String detectAeronef;
+	private boolean detectObstacle;
 	private int totalSeats;
 	private int fuel;
 	private int altitude;
@@ -65,8 +66,9 @@ public class Aeronef extends Position {
 		this.altitude = altitude;
 		this.speed = speed;
 		this.urgent=urgent;
-		this.detectObstacle = detectObstacle;
+		this.detectAeronef = detectObstacle;
 		this.isFlying = isfly;
+		this.detectObstacle= false;
 	}
 
 	/*! 
@@ -255,7 +257,7 @@ public class Aeronef extends Position {
 	 * @brief Retourne le type d'obstacle detecté par l'aeronef
 	 * @return detectObstacle, Chaine de caractere  qui indique si l'aeronef a detecté un obstacle proche
 	 */
-	public String getDetectObstacle() {
+	public boolean isDetectObstacle() {
 		return  detectObstacle;
 	}
 
@@ -263,7 +265,7 @@ public class Aeronef extends Position {
 	 * setDetectObstacle()
 	 * @param detectObstacle Chaine de caractere qui indique si l'aeronef a detecté un obstacle proche
 	 */
-	public void setDetectObstacle(String detectObstacle) {
+	public void setDetectObstacle(boolean detectObstacle) {
 		this.detectObstacle = detectObstacle;
 	}
 	
@@ -286,6 +288,24 @@ public class Aeronef extends Position {
 	}
 	
 	/*!
+	 * isDetectAeronef()
+	 * @brief Retourne une chaine de caractere pour indiquer s'il a detecté un autre aeronef
+	 * @return detectAeronef, Chaine de caractere  qui indique si l'aeronef a detecté autre aeronef proche
+	 */
+	public String getDetectAeronef() {
+		return detectAeronef;
+	}
+
+	/*!
+	 * setDetectAeronef()
+	 * @brief Change la valeur de detection d'un autre aeronef à proximité
+	 * @param detectAeronef Chaine de caractere qui indique si l'aeronef a detecté un au autre aeronef proche
+	 */
+	public void setDetectAeronef(String detectAeronef) {
+		this.detectAeronef = detectAeronef;
+	}
+	
+	/*!
 	 * toString()
 	 * @brief Retourne une chaine de caractere representant l'aeronef  avec ses informations 
 	 * @return Une chaine de caractere qui represente l'aeronef 
@@ -293,8 +313,8 @@ public class Aeronef extends Position {
 	@Override
 	public String toString() {
 		return "AERONEF\nNname: "+ name + "\nType: " + type + "\nModel: " + model + "\nDestination:\n" + destination + "\nDeparture:\n"
-				+ departure + "\nTotal Seats: " + totalSeats + "\nFuel: " + fuel + "\nAltitude: " + altitude + "\nSpeed: "
-				+ speed;
+				+ departure + "\nTotal Seats: " + totalSeats + "\nFuel: " + fuel + "%\nAltitude: " + altitude + "m\nSpeed: "
+				+ speed+"km/h";
 	}
 
 }

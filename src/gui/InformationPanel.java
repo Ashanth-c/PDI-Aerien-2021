@@ -19,6 +19,7 @@ import javax.swing.JTextArea;
 
 import data.Aeronef;
 import data.Airport;
+import data.Mountain;
 import data.Position;
 import process.AeronefManager;
 import process.Simulation;
@@ -83,13 +84,14 @@ public class InformationPanel extends JPanel {
 		urgenceLandingButton.setAlignmentX(CENTER_ALIGNMENT);
 		panelChangeButton.setAlignmentX(CENTER_ALIGNMENT);
 		launchSimulationButton.setAlignmentX(CENTER_ALIGNMENT);
-
 		add(Box.createVerticalStrut(5));
 		add(launchSimulationButton);
 		add(Box.createVerticalStrut(5));
 		add(panelChangeButton);
 		add(Box.createVerticalStrut(5));
 		add(urgenceLandingButton);
+
+
 
 		
 		urgenceLandingButton.addActionListener( new ActionListener() {
@@ -157,6 +159,12 @@ public class InformationPanel extends JPanel {
 	public void printElementDetail(int x, int y) {
 		List<Airport> airportsList = simulation.getAirportsList();
 		List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
+		List<Mountain> mountainsList = simulation.getMountainsList();
+		for (Mountain mountain : mountainsList) {
+			if (mountain.getAbscissa()+30>=x && mountain.getOrdinate()+30>=y && mountain.getAbscissa()-30<=x && mountain.getOrdinate()-30<=y) {
+				position=mountain;
+			}
+		}
 		for (AeronefManager aeronefManager : aeronefManagers) {
 			Aeronef aeronef = aeronefManager.getAeronef();
 			for (Airport airport : airportsList) {
@@ -168,10 +176,8 @@ public class InformationPanel extends JPanel {
 						position=aeronef;
 					}
 				}
+			}
 		}
-		
-		}
-		
 		
 	}
 	/*!

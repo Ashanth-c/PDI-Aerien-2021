@@ -36,7 +36,7 @@ public class DisplayElement extends JPanel implements Runnable {
 	private static final long serialVersionUID = 1L;
 	private GlobalViewPanel globalView;
 	private InformationPanel informationPanel;
-	private ZoomedViewPanel zoomedView = new ZoomedViewPanel();
+	private ZoomedViewPanel zoomedView;
 	private Simulation simulation;
 	private Timer timer = new Timer(1000,new ActionTimer());
 	private boolean displayerGlobal = true;
@@ -52,6 +52,7 @@ public class DisplayElement extends JPanel implements Runnable {
 //		timer = new Timer(delay, taskPerformer);
 		this.simulation = simulation;
 		this.globalView = new GlobalViewPanel(simulation);
+		this.zoomedView = new ZoomedViewPanel(simulation);
 		globalView.addMouseListener(new ViewMouseListener());
 		this.informationPanel = new InformationPanel(this,simulation);
 		setPreferredSize(getPreferredSize());
@@ -153,7 +154,6 @@ private class ViewMouseListener implements MouseListener {
 		 int x=e.getX();
 		 int y=e.getY();
 		 informationPanel.printElementDetail(x, y);
-//		 informationPanel.printAeronefDetail(x, y);
 	}
 
 	@Override

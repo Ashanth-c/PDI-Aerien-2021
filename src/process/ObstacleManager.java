@@ -103,27 +103,24 @@ public class ObstacleManager {
  * @brief Makes an aeronef dodge a mountain if it's close enough by changing its altitude 
  */
 	public void avoidMountain(Aeronef aeronef) {
-		 float mountainAbscisse = obstacle.getAbscissa();
+		float mountainAbscisse = obstacle.getAbscissa();
 		float mountainOrdonnee = obstacle.getOrdinate();
 		float aeronefsAbscisse = aeronef.getAbscissa();
 		float aeronefsOrdonnee = aeronef.getOrdinate();
 		int mountainaltitude = obstacle.getAltitude();
 		
-		float dx = (aeronefsAbscisse+10) - mountainAbscisse;
-		float dy = (aeronefsOrdonnee+10) - mountainOrdonnee;
+		float dx = (aeronefsAbscisse) - mountainAbscisse;
+		float dy = (aeronefsOrdonnee) - mountainOrdonnee;
 		double distance = Math.sqrt(dx * dx + dy * dy);
-		if (distance < 40) {
+		if ((distance < 40)) {
 			if (aeronef.getAltitude() <= obstacle.getAltitude()) {
-				System.out.println(obstacle.getName());
-					aeronef.setDetectObstacle("Obstacle");
+					aeronef.setDetectObstacle(true);
 					mountainaltitude += 150;
 					aeronef.setAltitude(mountainaltitude);
 				}
 		}
 		else {
-			aeronef.setDetectObstacle("No");
-			mountainaltitude -= 150;
-			aeronef.setAltitude(mountainaltitude);
+			aeronef.setDetectObstacle(false);
 		}
 	}
 }

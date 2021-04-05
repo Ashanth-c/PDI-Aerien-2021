@@ -78,7 +78,7 @@ public class Terminal {
 
 	@Override
 	public String toString() {
-		return "\nTota park aeronefs: " + totaParkAeronefs+"/"+totalParkingPlace;
+		return "\nTotal park aeronefs: " + totaParkAeronefs+"/"+totalParkingPlace;
 	}
 /*!
  * getTakeOffAeronef()
