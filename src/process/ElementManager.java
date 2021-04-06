@@ -13,7 +13,7 @@ import data.Obstacle;
 
 /*!
  * @file ElementManager.java
- * @brief Classe qui aide � la gestion des �l�ments pr�sent dans la simulation.
+ * @brief Classe qui aide à la gestion des éléments présent dans la simulation.
  * @author Ashanth
  * @author Maeva
  * @author Khadija
@@ -29,7 +29,7 @@ public class ElementManager {
 
 	/*!
 	 * ElementManager()
-	 * @brief Cr�er un ElementManager qui va aider pour la gestion des �l�ments
+	 * @brief Créer un ElementManager qui va aider pour la gestion des éléments
 	 */
 	public ElementManager() {
 		// TODO Auto-generated constructor stub
@@ -38,7 +38,7 @@ public class ElementManager {
 	
 	/*!
 	 * addAeronef()	
-	 * @brief Ajoute un aeronef dans la liste des aeronefs pr�sent dans la simulation
+	 * @brief Ajoute un aeronef dans la liste des aeronefs présent dans la simulation
  	* @param aeronef Nouveau aeronef que l'on souhaite ajouter
  	*/
 	public static void addAeronef(Aeronef aeronef) {
@@ -48,7 +48,7 @@ public class ElementManager {
 	 * addAirport()
 	 * @param key
 	 * @param value 
-	 * @brief Adds an Airport and a key in airportMap
+	 * @brief Ajoute un aéroport et une clé dans airportMap
 	 */
 	public static void addAirport(String key, Airport value) {
 		airportMap.put(key, value);
@@ -57,7 +57,7 @@ public class ElementManager {
  * addObstacle()
  * @param obstacle
  * 
- * @brief Adds an obstacle in obstaclesList
+ * @brief Ajoute un obstacle dans la liste des obstacles
  */
 	public static void addObstacle(Obstacle obstacle) {
 		obstaclesList.add(obstacle);
@@ -66,7 +66,7 @@ public class ElementManager {
  * addFlockBirds()	
  * @param flockbirds
  * 
- * @brief Adds flockbirds in flockBirdsList
+ * @brief ajouter flockbirds dans flockBirdsList
  */
 	public static void addFlockBirds(FlockBirds flockbirds) {
 		flockBirdsList.add(flockbirds);
@@ -75,7 +75,7 @@ public class ElementManager {
  * addMountain()
  * @param mountain
  * 
- * @brief Add a mountain in mountainsList
+ * @brief ajouter mountain dans mountainsList
  */
 	public static void addMountain(Mountain mountain) {
 		mountainsList.add(mountain);
@@ -86,7 +86,7 @@ public class ElementManager {
  * @param aeronef
  * @return airportName
  * 
- * @brief Checks airports around an aeronef, returns the airportName that's closest to an aeronef
+ * @brief Vérifie les aéroports autour d'un aeronef, renvoie le nom d'aéroport le plus proche d'un aeronef
  */
 	public static String checkAirportsAround(Aeronef aeronef) {
 		//setting important variables
@@ -94,11 +94,11 @@ public class ElementManager {
 		float aeronefOrdonnee = aeronef.getOrdinate();
 		float aeronefAbscisse = aeronef.getAbscissa();
 		
-		//for each airportM in airportMap's entrySet, an airport is set as an airportM's value
+		//pour chaque aéroport dans le paramètre entrySet de airportMap, un aéroport est défini comme valeur d'aéroport
 		for(Entry<String, Airport> airportM : airportMap.entrySet()) {
 			Airport airport = airportM.getValue();
 			
-			//we check if there is an aeronef near the airport, if yes its name will be returned
+			//on vérifie s'il y a un aeronef près de l'aéroport, si oui son nom sera retourné
 			if (aeronefAbscisse+100>=airport.getAbscissa() && aeronefOrdonnee+100>=airport.getOrdinate() && aeronefAbscisse-100<=airport.getAbscissa() && aeronefOrdonnee-100<=airport.getOrdinate()) {
 				airportName = airport.getName();
 			}
@@ -109,7 +109,7 @@ public class ElementManager {
  * abscisseVariationValue()
  * 
  * @param aeronef
- * @param destinationAirport l'aeroport de destination
+ * @param destinationAirport l'aéroport de destination
  * @param time
  * @return abscisseVariation
  * 
@@ -150,7 +150,7 @@ public class ElementManager {
  * @param airportName
  * @return airportName
  * 
- * @brief Uses an Airport's name to return said Airport from airportMap
+ * @brief Utilise le nom d'un aéroport pour renvoyer ledit aéroport depuis l'aéroport
  */
 	public static Airport getAiportFromName(String airportName) {
 			return airportMap.get(airportName);
@@ -158,15 +158,15 @@ public class ElementManager {
 /*!
  * ObstacleMouvement()
  * 
- * @brief Makes flockBirds move 
+ * @brief Fait bouger les oiseaux
  */
 	public static void ObstacleMouvement() {
 		
 		/*
-		 * For each flockbird in flockBirdsList
-		 * if flockBirds' toString contains the "Birds" string
-		 * A new ObstacleManager is created for these flockBirds
-		 * then the flockBirds' radius is taken to use to make them move
+		 * Pour chaque volée en flockBirdsList
+		 * si la chaîne toString de flockBirds contient la chaîne "Birds"
+		 * Un nouvel ObstacleManager est créé pour ces flockBirds
+		 * puis le rayon du flockBirds est utilisé pour les faire bouger
 		 */
 		for (FlockBirds flockBirds : flockBirdsList) {
 			
@@ -181,7 +181,7 @@ public class ElementManager {
 	}
 	
 	/*!
-	 * @brief Indique si un aeronef donn�e est proche d'une montagne donn�e
+	 * @brief Indique si un aeronef donnée est proche d'une montagne donnée
 	 * @param mountainName Nom de la montagne
 	 * @param aeronefName Nom de l'aeronef
 	 * @return ismountain, boolean qui indique si l'aeronef est proche d'une montagne
@@ -215,7 +215,7 @@ public class ElementManager {
  * avoidObstacle()
  * @param aeronef
  * 
- * @brief Makes an aeronef avoid any given obstacle, be it mountain or flockbirds
+ * @brief Permet à un aeronef d'éviter tout obstacle donné, que ce soit des oiseaux de montagne ou de troupeaux
  */
 	public static void avoidObstacle(AeronefManager aeronefM) {
 		Aeronef aeronef = aeronefM.getAeronef();
