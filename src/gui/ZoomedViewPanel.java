@@ -2,7 +2,7 @@ package gui;
 
 /*!
  * @file ZoomedViewPanel.java
- * @brief Classe qui affiche l'aeroport Charles de Gaulle en gros plan
+ * @brief Classe qui affiche l'a√©roport Charles de Gaulle en gros plan
  * @author Ashanth
  * @author Khadija
  * @author Maeva
@@ -31,8 +31,8 @@ public class ZoomedViewPanel extends JPanel {
 		
 	/*!
      * ZoomedViewPanel() 
-     * @brief Constructeur qui va creer le panel de zoom sur l'aeroport
-     * @param simulation La simulation o˘ s'effectue les dÈcollage et attÈrisage
+     * @brief Constructeur qui va cr√©er le panel de zoom sur l'a√©roport
+     * @param simulation La simulation o√π s'effectue les d√©collage et att√©risage
      */
 	public ZoomedViewPanel(Simulation simulation) {
 		this.simulation = simulation;
@@ -44,7 +44,7 @@ public class ZoomedViewPanel extends JPanel {
 	}
 		
 	/*!
-	 * @brief RÈcupÈre l'aÈroport sur lequel on efectue un agrandissement
+	 * @brief R√©cup√©re l'a√©roport sur lequel on efectue un agrandissement
 	 */
 	private void setAirport() {
 		// TODO Auto-generated method stub
@@ -59,7 +59,7 @@ public class ZoomedViewPanel extends JPanel {
 	/*!
      * paintComponent()
 	 * @brief paint different Component of zoom view
-	 * @param g Objet graphique qui va dessiner les differents ÈlÈments souhaitÈ
+	 * @param g Objet graphique qui va dessiner les differents √©l√©ments souhait√©
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -73,8 +73,8 @@ public class ZoomedViewPanel extends JPanel {
 	}
 	
 	/*!
-	 * @brief Cette fonction affiche toutes les informations concernant l'aeroport Charles de Gaulle ainsi que les diffÈrent atterissage et dÈcollage d'aeronef sur l'aÈroport
-	 * @param g2 Objet graphique qui va dessiner les differents ÈlÈments souhaitÈ
+	 * @brief Cette fonction affiche toutes les informations concernant l'a√©roport Charles de Gaulle ainsi que les diff√©rent atterissage et d√©collage d'aeronef sur l'a√©roport
+	 * @param g2 Objet graphique qui va dessiner les differents √©l√©ments souhait√©
 	 */
 	public void printInformation(Graphics2D g2) {
 		g2.setColor(Color.BLACK);
@@ -101,8 +101,8 @@ public class ZoomedViewPanel extends JPanel {
 	}
 	
 	/*!
-	 * @brief Fonction qui affiche les informations historique de l'aeroport Charles de Gaulle
-	 * @param g2 Objet graphique qui va dessiner les differents ÈlÈments souhaitÈ
+	 * @brief Fonction qui affiche les informations historique de l'a√©roport Charles de Gaulle
+	 * @param g2 Objet graphique qui va dessiner les differents √©l√©ments souhait√©
 	 */
 	private void printAirportInfo(Graphics2D g2) {
 		String name = zoomAirport.getName();
@@ -122,11 +122,11 @@ public class ZoomedViewPanel extends JPanel {
 	}
 
 	/*!
-	 * @brief Cette methode va dessiner une chaine de caractËres en prenant en comptes les retours ‡ la ligne
-	 * @param g2 Objet graphique qui va dessiner les differents ÈlÈments souhaitÈ
-	 * @param text Chaine de caractËres que l'on souhaite dessiner
-	 * @param x Abscisse ‡ laquelle on souhaite dessiner la chaine de caractËres
-	 * @param y OrdonnÈe ‡ laquelle on souhaite dessiner la chaine de caractËres
+	 * @brief Cette methode va dessiner une chaine de caract√®res en prenant en comptes les retours √† la ligne
+	 * @param g2 Objet graphique qui va dessiner les differents √©l√©ments souhait√©
+	 * @param text Chaine de caract√®res que l'on souhaite dessiner
+	 * @param x Abscisse √† laquelle on souhaite dessiner la chaine de caract√®res
+	 * @param y Ordonn√©e √† laquelle on souhaite dessiner la chaine de caract√®res
 	 */
 	public void drawString(Graphics2D g2, String text, int x, int y) {
 	    for (String line : text.split("\n"))
@@ -134,8 +134,8 @@ public class ZoomedViewPanel extends JPanel {
 	}
 	
 	/*!
-	 * @brief Cette methode dessine les pistes d'atterissage et dÈcollage de l'aeroport
-	 * @param g2 Objet graphique qui va dessiner les differents ÈlÈments souhaitÈ
+	 * @brief Cette methode dessine les pistes d'atterissage et d√©collage de l'a√©roport
+	 * @param g2 Objet graphique qui va dessiner les differents √©l√©ments souhait√©
 	 */
 	public void drawRunway(Graphics2D g2) {
 		int totalRunway = zoomAirport.getAerodrome().getTotalRunway();
@@ -146,8 +146,8 @@ public class ZoomedViewPanel extends JPanel {
 	
 	/*!
      * initTerminal()
-     * @brief Dessine l'aÈrogare de l'aÈroport et affiche le nombres d'aÈrnefs garÈ 
-	 * @param g2 Objet graphique qui va dessiner les differents ÈlÈments souhaitÈ
+     * @brief Dessine l'a√©rogare de l'a√©roport et affiche le nombres d'a√©rnefs gar√© 
+	 * @param g2 Objet graphique qui va dessiner les differents √©l√©ments souhait√©
 	 */
 	public void printTerminal(Graphics2D g2) {
 		g2.setFont(new Font("Arial", Font.PLAIN, 20));
@@ -163,8 +163,8 @@ public class ZoomedViewPanel extends JPanel {
 	}
 	
 	/*!
-	 * Cette methode dessine les aeronefs qui atterisent ou dÈcollent
-	 * @param g2 Objet graphique qui va dessiner les differents ÈlÈments souhaitÈ
+	 * Cette methode dessine les a√©ronefs qui atterisent ou d√©collent
+	 * @param g2 Objet graphique qui va dessiner les differents √©l√©ments souhait√©
 	 */
 	public void printAeronefs(Graphics2D g2) {
 		
@@ -184,9 +184,9 @@ public class ZoomedViewPanel extends JPanel {
 	}
 	
 	/*!
-	 * @brief Methode qui permet l'animation des aeronefs qui dÈcollent
-	 * @param g2 Objet graphique qui va dessiner les differents ÈlÈments souhaitÈ
-	 * @param numberAeronef Nombres d'aeronefs qui viennent de dÈcoller
+	 * @brief Methode qui permet l'animation des a√©ronefs qui d√©collent
+	 * @param g2 Objet graphique qui va dessiner les differents √©l√©ments souhait√©
+	 * @param numberAeronef Nombres d'a√©ronefs qui viennent de d√©coller
 	 */
 	public void moveTakeOffAeronef(Graphics2D g2,int numberAeronef) {
 		int start = 395;
@@ -199,9 +199,9 @@ public class ZoomedViewPanel extends JPanel {
 	}
 	
 	/*!
-	 *@brief Methode qui permet l'animation des aÈronefs qui atterisent
-	 * @param g2 Objet graphique qui va dessiner les differents ÈlÈments souhaitÈ
-	 * @param numberAeronef Nombres d'aÈronefs qui viennent d'atterir
+	 *@brief Methode qui permet l'animation des a√©ronefs qui atterisent
+	 * @param g2 Objet graphique qui va dessiner les differents √©l√©ments souhait√©
+	 * @param numberAeronef Nombres d'a√©ronefs qui viennent d'atterir
 	 */
 	public void moveLandingAeronef(Graphics2D g2,int numberAeronef) {
 		int start = 395;
