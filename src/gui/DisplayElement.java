@@ -20,7 +20,7 @@ import process.Simulation;
 import process.Utility;
 /*!
  * @file DisplayElement.java
- * @brief change the global view and switch to the information panel either for airplanes or airports and switch to zoomed view for airports
+ * @brief changer la vue globale et passer au panneau des informations pour les avions ou les aéroports, passer en zoomview pour les aéroports
  * @author Ashanth
  * @author Maeva
  * @author Khadija
@@ -193,7 +193,7 @@ private class ViewMouseListener implements MouseListener {
 	 * setDisplayerGlobal()
 	 * @param displayerGlobal
 	 * @brief changer la page globale
-	 * return displayerGlobal la page globale
+	 * 
 	 */
 	public void setDisplayerGlobal(boolean displayerGlobal) {
 		this.displayerGlobal = displayerGlobal;
