@@ -17,8 +17,8 @@ public class FlockBirds extends Obstacle {
 	private double teta=0;
 /*!
  * FlockBirds()	
- * @param abscissa Le coordonnee X des oiseaux
- * @param ordinate Le coodonee Y des oiseaux
+ * @param abscissa Le coordonnée X des oiseaux
+ * @param ordinate Le coordonnée Y des oiseaux
  */
 	
 	public FlockBirds(int abscisse, int ordonnee) {
