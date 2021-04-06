@@ -2,8 +2,8 @@ package data;
 
 /*!
  * @file Aeronef.java
- * @brief Un a�ronef represente un element volant d'un aeroport à un autre
- * Aeronef est heritiere de la classe Position
+ * @brief Un aéronef represente un élement volant d'un aéroport à  un autre
+ * Aeronef est héritière de la classe Position
  * @author Ashanth
  * @author Khadija
  * @author Maeva
@@ -40,7 +40,7 @@ public class Aeronef extends Position {
 	 * @brief Creer un Aeronef au position (abscisse,ordonnee) donnne en parametre avec toute les informations qui definise l'aeronef
 	 * @param abscissa Le coordonnee X de l'aeronef 
 	 * @param ordinate Le coodonee Y de l'aeronef
-	 * @param name Nom de l'aeronef composé des initiale des aeroports de depart et d'arrive ainsi que d'un numero qui incremente
+	 * @param name Nom de l'aeronef composÃ© des initiale des aeroports de depart et d'arrive ainsi que d'un numero qui incremente
 	 * @param type Type de l'aeronef parmis 3 type (Military,Civil/Cargo, Cargo)
 	 * @param model Modele de l'aeronef 
 	 * @param destination Nom de l'aeroport de destination de l'aeronef
@@ -50,7 +50,7 @@ public class Aeronef extends Position {
 	 * @param altitude Valeur indiquant l'altitude de l'aeronef
 	 * @param speed Vitesse de l'aeronef en kilimetre/heure
 	 * @param urgent Booleen qui indique si l'aeronef doit atterir en urgence
-	 * @param detectObstacle Boobleen qui indique si l'aeronef a detecté un obstacle proche
+	 * @param detectObstacle Boobleen qui indique si l'aeronef a detectÃ© un obstacle proche
 	 * @param isfly Booleen qui indique si un aeronef est en vol
 	 */
 	public Aeronef(int abscisse, int ordonnee, String name, String type, String model, String destination, String departure,
@@ -127,8 +127,8 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * getDeparture()
-	 * @brief Retourne le nom de l'aeroport de depart de l'aeronef
-	 * @return departure, nom de l'aeroport de départ
+	 * @brief Retourne le nom de l'aéroport de départ de l'aéronef
+	 * @return départure, nom de l'aéroport de départ
 	 */
 	public String getDeparture() {
 		return departure;
@@ -136,8 +136,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * setDeparture()
-	 * @brief Change la valeur du nom de l'aeroport de depart
-	 * @param departure Nom de l'aeroport de depart
+	 * @brief Change la valeur du nom de l'aéroport de depart
+	 * @param départure Nom de l'aéroport de départ
 	 */
 	public void setDeparture(String departure) {
 		this.departure = departure;
@@ -145,8 +145,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getTotalSeats()
-	 * @brief retourne le nombre de place dans un aeronef
-	 * @return totalSeats, nombre de place total dans l'aeronef
+	 * @brief retourne le nombre de place dans un aéronef
+	 * @return totalSeats, nombre de place total dans l'aéronef
 	 */
 	public int getTotalSeats() {
 		return totalSeats;
@@ -154,8 +154,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * setTotalSeats()
-	 * @brief Change la valeur des nombres de place dans un aeronef 
-	 * @param totalSeats Nombre de place total dans l'aeronef
+	 * @brief Change la valeur des nombres de place dans un aéronef 
+	 * @param totalSeats Nombre de place total dans l'aéronef
 	 */
 	public void setTotalSeats(int totalSeats) {
 		this.totalSeats = totalSeats;
@@ -164,8 +164,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getFuel()
-	 * @brief Retourne le niveau d'essence de l'aeronef
-	 * @return fuel Valeur indiquant le niveau d'essence de l'aeronef
+	 * @brief Retourne le niveau d'essence de l'aéronef
+	 * @return fuel Valeur indiquant le niveau d'essence de l'aéronef
 	 */
 	public int getFuel() {
 		return fuel;
@@ -173,8 +173,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * setFuel()
-	 * @brief Change la valeur du niveau d'essence de l'aeronef 
-	 * @param fuel, valeur indiquant le niveau d'essence de l'aeronef
+	 * @brief Change la valeur du niveau d'essence de l'aéronef 
+	 * @param fuel, valeur indiquant le niveau d'essence de l'aéronef
 	 */
 	public void setFuel(int fuel) {
 		this.fuel = fuel;
@@ -182,8 +182,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getAltitude()
-	 * @brief Retourne l'altitude de l'aeronef
-	 * @return altitude, la valeur de l'altitude � laquelle l'aeronef vol
+	 * @brief Retourne l'altitude de l'aéronef
+	 * @return altitude, la valeur de l'altitude à laquelle l'aéronef vol
 	 */
 	public int getAltitude() {
 		return altitude;
@@ -191,8 +191,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * setAltitude()
-	 * @brief Change l'altitude de l'aeronef 
-	 * @param altitude Valeur d'altitude de l'aeronef
+	 * @brief Change l'altitude de l'aéronef 
+	 * @param altitude Valeur d'altitude de l'aéronef
 	 */
 	public void setAltitude(int altitude) {
 		this.altitude = altitude;
@@ -200,8 +200,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getSpeed()
-	 * @brief Retourne la vitesse de l'aeronef
-	 * @return speed Vitesse de l'aeronef
+	 * @brief Retourne la vitesse de l'aéronef
+	 * @return speed Vitesse de l'aéronef
 	 */
 	public int getSpeed() {
 		return speed;
@@ -209,8 +209,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * setSpeed()
-	 * @brief Changement de la vitesse d'aeronef 
-	 * @param speed, la vitesse de l'aeronef
+	 * @brief Changement de la vitesse d'aéronef 
+	 * @param speed, la vitesse de l'aéronef
 	 */
 	public void setSpeed(int speed) {
 		this.speed = speed;
@@ -236,8 +236,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * getName()
-	 * @brief Retourne le nom de l'aeronef
-	 * @return name Nom de l'aeronef compos� des initiale des aeroports de depart et d'arrive ainsi que d'un numero qui incremente
+	 * @brief Retourne le nom de l'aéronef
+	 * @return name Nom de l'aéronef composé des initiale des aéroports de départ et d'arrive ainsi que d'un numero qui incremente
 	 */
 	public String getName() {
 		return name;
@@ -246,7 +246,7 @@ public class Aeronef extends Position {
 	/*!
 	 * setName()
 	 * @brief changement de nom de l'aeronef
-	 * @param name Nouveau nom de l'aeronef qui doit etre compos� des initiale des aeroports de depart et d'arrive ainsi que d'un numero qui incremente
+	 * @param name Nouveau nom de l'aéronef qui doit etre composé des initiale des aéroports de départ et d'arrive ainsi que d'un numéro qui incremente
 	 */
 	public void setName(String name) {
 		this.name = name;
@@ -254,8 +254,8 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * isDetectObstacle()
-	 * @brief Retourne le type d'obstacle detect� par l'aeronef
-	 * @return detectObstacle, Chaine de caractere  qui indique si l'aeronef a detect� un obstacle proche
+	 * @brief Retourne le type d'obstacle detecté par l'aéronef
+	 * @return detectObstacle, Chaine de caractère  qui indique si l'aéronef a detecté un obstacle proche
 	 */
 	public boolean isDetectObstacle() {
 		return  detectObstacle;
@@ -263,7 +263,7 @@ public class Aeronef extends Position {
 
 	/*!
 	 * setDetectObstacle()
-	 * @param detectObstacle Chaine de caractere qui indique si l'aeronef a detect� un obstacle proche
+	 * @param detectObstacle Chaine de caractere qui indique si l'aeronef a detecté un obstacle proche
 	 */
 	public void setDetectObstacle(boolean detectObstacle) {
 		this.detectObstacle = detectObstacle;
@@ -271,8 +271,8 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * isFlying()
-	 * @brief V�rifie si l'aeronef est en vol
-	 * @return isFlying, Booleen qui indique si un aeronef est en vol
+	 * @brief Vérifie si l'aéronef est en vol
+	 * @return isFlying, Booleen qui indique si un aéronef est en vol
 	 */
 	public boolean isFlying() {
 		return isFlying;
@@ -280,8 +280,8 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * setFlying()
-	 * @brief Change l'etat de l'aeronef en vol ou l'inverse
-	 * @param isFlying Booleen qui indique si un aeronef est en vol
+	 * @brief Change l'etat de l'aéronef en vol ou l'inverse
+	 * @param isFlying Booleen qui indique si un aéronef est en vol
 	 */
 	public void setFlying(boolean isFlying) {
 		this.isFlying = isFlying;
@@ -289,8 +289,8 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * isDetectAeronef()
-	 * @brief Retourne une chaine de caractere pour indiquer s'il a detect� un autre aeronef
-	 * @return detectAeronef, Chaine de caractere  qui indique si l'aeronef a detect� autre aeronef proche
+	 * @brief Retourne une chaine de caractère pour indiquer s'il a detecté un autre aeronef
+	 * @return detectAeronef, Chaine de caractère  qui indique si l'aeronef a detecté autre aéronef proche
 	 */
 	public String getDetectAeronef() {
 		return detectAeronef;
@@ -298,8 +298,8 @@ public class Aeronef extends Position {
 
 	/*!
 	 * setDetectAeronef()
-	 * @brief Change la valeur de detection d'un autre aeronef � proximit�
-	 * @param detectAeronef Chaine de caractere qui indique si l'aeronef a detect� un au autre aeronef proche
+	 * @brief Change la valeur de detection d'un autre aéronef à proximité
+	 * @param detectAeronef Chaine de caractere qui indique si l'aéronef a detecté un au autre aéronef proche
 	 */
 	public void setDetectAeronef(String detectAeronef) {
 		this.detectAeronef = detectAeronef;
@@ -307,8 +307,8 @@ public class Aeronef extends Position {
 	
 	/*!
 	 * toString()
-	 * @brief Retourne une chaine de caractere representant l'aeronef  avec ses informations 
-	 * @return Une chaine de caractere qui represente l'aeronef 
+	 * @brief Retourne une chaine de caractère representant l'aéronef  avec ses informations 
+	 * @return Une chaine de caractère qui represente l'aéronef 
 	 */
 	@Override
 	public String toString() {
