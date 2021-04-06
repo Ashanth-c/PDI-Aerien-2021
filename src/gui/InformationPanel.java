@@ -59,7 +59,7 @@ public class InformationPanel extends JPanel {
 	/*!
 	 * paintComponent()
 	 * @param g le graghics
-	 * @brief painting components
+	 * @brief composants de peinture
 	 */
 	public void paintComponent(Graphics g) {
 		Graphics2D g2 = (Graphics2D) g;
@@ -153,8 +153,8 @@ public class InformationPanel extends JPanel {
 	}
 	/*!
 	 * printElementDetail()
-	 * @param x le cordonnée d'abscisse de l'element
-	 * @param y le cordonnée d'ordonnee de l'element 
+	 * @param x le cordonnée d'abscisse de l'élement
+	 * @param y le cordonnée d'ordonnee de l'élement 
 	 * @brief afficher les detail de l'element
 	 */
 	public void printElementDetail(int x, int y) {
@@ -183,9 +183,9 @@ public class InformationPanel extends JPanel {
 	}
 	/*!
 	 * printAirportInfo()
-	 * @param airport un aeroport
+	 * @param airport un aéroport
 	 * @param g2 le graphics
-	 * @brief dessiner l'aeroport
+	 * @brief dessiner l'aéroport
 	 */
 	public void printAirportInfo(Airport airport,Graphics2D g2) {
 		g2.drawString(airport.getName(), 50, 70);
@@ -194,8 +194,8 @@ public class InformationPanel extends JPanel {
 	 * drawString()
 	 * @param text une chaine de caractere
 	 * @param g2 le graphics
-	 * @param x le cordonnée d'abscisse de l'element
-	 * @param y le cordonnée d'ordonnee de l'element 
+	 * @param x le coordonnée d'abscisse de l'élement
+	 * @param y le coordonnée d'ordonnee de l'élement 
 	 * @brief dessiner l'aeroport
 	 */
 	public void drawString(Graphics2D g2, String text, int x, int y) {
@@ -204,8 +204,8 @@ public class InformationPanel extends JPanel {
 	}
 	/*!
 	 * urgentAeronef()
-	 * @param key un cle d'aeronef 
-	 * @brief retourne l'aeronef en urgent 
+	 * @param key un cle d'aéronef 
+	 * @brief retourne l'aéronef en urgent 
 	 */
 	public Aeronef urgentAeronef(int key) {
 		List<AeronefManager> aeronefManagers = simulation.getAeronefManagers();
@@ -256,7 +256,7 @@ public class InformationPanel extends JPanel {
 	
 	/*!
 	 * getSimulation()
-	 * @brief retourne l'aeronef en urgent 
+	 * @brief retourne l'aéronef en urgent 
 	 * @return simulation l'action sur la fenetre
 	 */
 	public Simulation getSimulation() {
