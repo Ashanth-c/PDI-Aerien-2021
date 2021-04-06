@@ -55,14 +55,14 @@ public class Simulation {
 /*!
  * initSimulation()
  * 
- * @brief Launches the simulation
+ * @brief Lance la simulation
  */
 	public void initSimulation() {
 
-		//We create a list of Airports
+		//Nous créons une liste d'aéroports
 		airportsList = initAiport();
 		
-		//Lines are created between the airports of the list
+		//Des lignes sont créées entre les aéroports de la liste
 		createLine(airportsList);
 		initObstacle();
 		
@@ -78,7 +78,7 @@ public class Simulation {
  * initAirport()
  * @return airportList
  * 
- * @brief Creates six airports and adds them in an Airport list
+ * @brief Crée six aéroports et les ajoute dans une liste d'aéroports
  */
 	public List<Airport> initAiport() {
 
@@ -111,14 +111,14 @@ public class Simulation {
  * CreateLine()
  * @param airports
  * 
- * @brief Creates a line between every airports of a given list of airports
+ * @brief Crée une ligne entre tous les aéroports d'une liste d'aéroports donnée
  */
 	public void createLine(List<Airport> airports) {
 		LineBuilder lineBuilder = new LineBuilder();
 
 		for (Airport airport1 : airports) {
 			for (Airport airport2 : airports) {
-			//each airport's name is unique so a line isn't created between the same airport
+			//le nom de chaque aéroport est unique, il n'y a donc pas de ligne entre le même aéroport
 			if (!(airport1.getName().equals(airport2.getName()))) {
 					lineBuilder.addLines(airport1, airport2);
 				}
@@ -129,25 +129,25 @@ public class Simulation {
  * initAeronefs()
  * @param airportsList
  * 
- * @brief Sets aeronefs at their start up position depending on the aeronefs in the airportsList
+ * @brief Définit les aeronefs à leur position de démarrage en fonction des aeronefs dans les aéroports
  */
 	public void initAeronefs(List<Airport> airportsList) {
 		for (Airport airport : airportsList) {
-			//this describes the maximum of aeronefs allowed per line
+			//cela décrit le maximum d'aéronefs autorisés par ligne
 			int numAeronefs = Utility.getRandom(5, 10);
 			
-			//for each aeronef in each airport
+			//pour chaque aeronef dans chaque aéroport
 			for (int indexAeronefs = 0; indexAeronefs < numAeronefs; indexAeronefs++) {
 				
-				//we set a list of lines of each airport
+				//nous établissons une liste de lignes de chaque aéroport
 				List<Line> linesList = airport.getLinesList();
 				
-				//sets a random index assigned to each aeronef for each airport
+				//définit un indice aléatoire attribué à chaque aeronef pour chaque aéroport
 				int indexDestination = Utility.getRandom(0, linesList.size() - 1);
 				
 				/*
-				 * if airport's name is one of the aeronefs' destination
-				 * we change the index
+				 * si le nom de l'aéroport est l'une des destinations de l'aéronef
+				 * nous changeons l'index
 				 */
 				while ((airport.getName().equals(linesList.get(indexDestination).getdestination().getName()))) {
 					indexDestination = Utility.getRandom(0, linesList.size() - 1);
@@ -161,23 +161,23 @@ public class Simulation {
 				String aeronefName = getAeronefName(airport.getCity().getName(), destinationCity) + indexAeronefs;
 				String aeronefType = getAeronefType(airport.getType(), destinationAirport.getType());
 				
-				//for each aeronef, set their base position as their airport's coordinates
+				//pour chaque aeronef, définissez leur position de base comme coordonnées de leur aéroport
 				int aeronefAbscisse = (int) airport.getAbscissa();
 				int aeronefOrdonnee = (int) airport.getOrdinate();
 				
-				//additionnal aeronef sets the total parked aeronef to increase
+				//aeronef supplémentaire fixe le nombre total d'aéronefs stationnés à augmenter
 				int totaParkAeronefs = airport.getTerminal().getTotaParkAeronefs()+1;
 
-				//each aeronef is created
+				//chaque aeronef est créé
 				Aeronef aeronef = Utility.createAeronef(aeronefAbscisse, aeronefOrdonnee, aeronefName, aeronefType , modelAeronefs, destinationName, airport.getName(), 300, 100, 0, 1000);
 				
-				//each aeronef is added to the list of "taking off aeronefs" for each airport's terminal 
+				//chaque aeronef est ajouté à la liste des "aeronefs au décollage" pour le terminal de chaque aéroport
 				airport.getTerminal().getTakeOffAeronefsList().add(aeronef);
 				
-				//setting the new value of totally parked Aeronefs
+				//définir la nouvelle valeur des Aeronefs totalement stationnés
 				airport.getTerminal().setTotaParkAeronefs(totaParkAeronefs);
 				
-				//adding aeronef to a new aeronefManager
+				//ajouter aeronef à un nouvel aeronefManager
 				AeronefManager aeronefManager = new AeronefManager(aeronef);
 				aeronefManagers.add(aeronefManager);
 			}
@@ -235,7 +235,7 @@ public Simulation(List<FlockBirds> birds, List<Mountain> mountains) {
 
 /*!
  * getter getModelAeronefs()
- * @brief Given an index and type of an aeronef returns its model
+ * @brief Étant donné un indice et un type d'aéronef, renvoie son modèle
  * @param type le type de l'aeronef
  * @return a String
  * 
@@ -276,8 +276,8 @@ public Simulation(List<FlockBirds> birds, List<Mountain> mountains) {
 	
 /*!
  * getter getAeronefType()
- * @param  departureAirportType le type de l'aroport de depart
- * @param destinationAirportType le type de l'aroport de destination
+ * @param  departureAirportType le type de l'aéroport de départ
+ * @param destinationAirportType le type de l'aéroport de destination
  * @return a String 
  * 
  * @brief retourne le type de l'aeronef
@@ -307,7 +307,7 @@ public Simulation(List<FlockBirds> birds, List<Mountain> mountains) {
  * @param destination
  * @return a string
  * 
- * @brief This sets an aeronef's name depending on what's its startpoint and what's its destination
+ * @brief Cela définit le nom d'un aeronef en fonction de son point de départ et de sa destination
  */
 	public String getAeronefName(String departure, String destination) {
 		
