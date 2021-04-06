@@ -15,8 +15,8 @@ public class Line {
 	
 	/*!
  	 * Line()
- 	 * @param departure l'aeroport de depart: debut de ligne
- 	 * @param destination l'aeroport de destination: fin de ligne
+ 	 * @param departure l'aéroport de départ: debut de ligne
+ 	 * @param destination l'aéroport de destination: fin de ligne
  	 */
 	public Line(Airport departure, Airport destination) {
 		super();
@@ -33,16 +33,16 @@ public class Line {
 
 	/*!
  	 * getdeparture()
-	 * @brief retourne la deparature de la ligne l'aeroport de depart
- 	 * @param departure l'aeroport de depart: debut de ligne
+	 * @brief retourne la deparature de la ligne l'aéroport de départ
+ 	 * @param departure l'aéroport de départ: début de ligne
  	 */
 	public Airport getdeparture() {
 		return departure;
 	}
 	/*!
  	 * setdeparture()
-	 * @brief changer la deparature de la ligne l'aeroport de depart
- 	 * @param departure l'aeroport de depart: debut de ligne
+	 * @brief changer la deparature de la ligne l'aéroport de départ
+ 	 * @param departure l'aéroport de départ: début de ligne
  	 */
 
 	public void setdeparture(Airport departure) {
@@ -52,22 +52,22 @@ public class Line {
 	/*!
  	 * getdestination()
 	 * @brief retourne la distination de la ligne
-   	 * @return destination l'aeroport de destination: fin de ligne
+   	 * @return destination l'aéroport de destination: fin de ligne
  	 */
 	public Airport getdestination() {
 		return destination;
 	}
 	/*!
  	 * setdestination()
-	 * @brief changer la fin de la ligne l'aeroport de destination
- 	 * @param destination l'aeroport de destination: fin de ligne
+	 * @brief changer la fin de la ligne l'aéroport de destination
+ 	 * @param destination l'aéroport de destination: fin de ligne
  	 */
 	public void setdestination(Airport destination) {
 		this.destination = destination;
 	}
 	/*!
  	 * toString()
-	 * @return une chaine de caractere affiche les informations de la ligne
+	 * @return une chaine de caractère affiche les informations de la ligne
 	 */
 
 	@Override
