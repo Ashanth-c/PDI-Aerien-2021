@@ -13,7 +13,7 @@ package gui;
 public class SimulPara {
 	
 	/*!
-	 * @brief This class contains necessary simulation parameters
+	 * @brief Cette classe contient les paramètres de simulation nécessaires
 	 * @author Ashanth
 	 * @author Khadija
 	 * @author Maeva
