@@ -41,7 +41,7 @@ public class AeronefManager extends Thread {
 	
 /*!
  * run()
- * @brief Method of the Thread class that's been overridden, Moves an Aeronef,Deals with an Aeronef's emergency landing
+ * @brief Méthode de la classe Thread qui a été remplacée, déplace un Aeronef, traite l'atterrissage d'urgence d'un Aeronef
  * 
  */
 
@@ -94,7 +94,7 @@ public class AeronefManager extends Thread {
  * landingAltitute() 
  * @param aeronef
  * 
- * @brief Increases an Aeronef's altitude if it's 0
+ * @brief Augmente l'altitude d'un Aeronef si elle est de 0
  */
 	
 	public void landingAltitute(Aeronef aeronef) {
@@ -111,7 +111,7 @@ public class AeronefManager extends Thread {
  * takeOffAtltitute()
  * @param aeronef
  * 
- * @brief Decreases an Aeronef's altitude if it isn't 0
+ * @brief Diminue l'altitude d'un Aeronef si ce n'est pas 0
  */
 
 	public void takeOffAtltitute(Aeronef aeronef) {
@@ -128,7 +128,7 @@ public class AeronefManager extends Thread {
  * slowDownSpeed()
  * @param aeronef
  * 
- * @brief Decreases an Aeronef's speed
+ * @brief Diminue la vitesse d'un Aeronef
  */
 
 	public void slowDownSpeed(Aeronef aeronef) {
@@ -140,7 +140,7 @@ public class AeronefManager extends Thread {
  * accelerateSpeed()
  * @param aeronef
  * 
- * @brief Increases an Aeronef's speed
+ * @brief Augmente la vitesse d'un Aeronef
  */
 
 	public void accelerateSpeed(Aeronef aeronef) {
@@ -152,7 +152,7 @@ public class AeronefManager extends Thread {
  * landingSpeed()
  * @param aeronef
  * 
- * @brief Decreases an Aeronef's speed if it isn't 0
+ * @brief Diminue la vitesse d'un Aeronef si ce n'est pas 0
  */
 
 	public void landingSpeed(Aeronef aeronef) {
@@ -167,7 +167,7 @@ public class AeronefManager extends Thread {
  * @param aeronef
  * 
  * 
- * @brief Increases an Aeronef's speed if it's 0
+ * @brief Augmente la vitesse d'un Aeronef si elle est de 0
  */
 
 	public void takeOffSpeed(Aeronef aeronef) {
@@ -181,7 +181,7 @@ public class AeronefManager extends Thread {
  * @param aeronef une avion
  * @param airport un aeroport
  * 
- * @brief Writes in the console if an Aeronef gets close to an airport
+ * @brief Écrit dans la console si un Aeronef se rapproche d'un aéroport
  */
 	public void approchAirport(Aeronef aeronef, Airport airport) {
 		float aeronefAbscisse = aeronef.getAbscissa();
@@ -202,22 +202,22 @@ public class AeronefManager extends Thread {
 	/*!
 	 * 	travelAeronef()
 	 * 
-	 * @brief Makes an Aeronef move till it's reached its destination
-	 * @brief Sets the running boolean depending on whether the Aeronef is allowed to land
+	 * @brief Fait bouger Aeronef jusqu'à ce qu'il atteigne sa destination
+	 * @brief Définit le booléen en cours d'exécution selon que l'Aeronef est autorisé à atterrir
 	 */
 	public void travelAeronef() {
-		//Aeronef dodges obstacle
+		//Aeronef évite l'obstacle
 		ElementManager.avoidObstacle(this);
 		
-		//if Aeronef's position is yet to be its destination's, Aeronef moves
+		//si la position d'Aeronef n'est pas encore celle de sa destination, Aeronef bouge
 		if (( aeronef.getAbscissa() != destinationAirport.getAbscissa()) && ( aeronef.getOrdinate() != destinationAirport.getOrdinate())) {
 			moveAeronefAbcsisse(abscisseVariationValue);
 			moveAeronefOrdonnee(ordoneeVariationValue);
 		}		
-		/*if Aeronef's position is its destination
-		 * we add the destination airport in an airportmanager 
-		 * if the Aeronef has authorization to land, running is set false. if not, running is true.
-		 * then we exit
+		/* si la position d'Aeronef est sa destination
+		 * on ajoute l'aéroport de destination dans un airportmanager
+		 * si l'Aeronef a l'autorisation d'atterrir, la course est définie sur false. sinon, courir est vrai.
+		 * puis on sort
 		 */
 		else {
 			AirportManager airportManager = new AirportManager(destinationAirport);
@@ -230,7 +230,7 @@ public class AeronefManager extends Thread {
  * moveAeronefAbscisse()
  * @param abscisseVariation
  * 
- * @brief Moves an Aeronef with the given abscisseVaration parameter variation
+ * @brief Déplace un Aeronef avec l'abscisse donnée Variation du paramètre de variation
  */
 	public void moveAeronefAbcsisse(float abscisseVariation) {
 		float aeronefAbscisse = aeronef.getAbscissa();
@@ -243,7 +243,7 @@ public class AeronefManager extends Thread {
  * moveAeronefOrdonnee()
  * @param ordonneeVariation
  * 
- * @brief Moves an Aeronef with the given ordonneeVariation parameter variation
+ * @brief Déplace un Aeronef avec la variation du paramètre ordonneeVariation donnée
  */
 	public void moveAeronefOrdonnee(float ordonneeVariation) {
 		float aeronefOrdonnee = aeronef.getOrdinate();
@@ -257,8 +257,8 @@ public class AeronefManager extends Thread {
  * emergencyLanding()
  * @param airport
  * 
- * @brief Till an Aeronef has not reached a given airport's position,
- * @brief that Aeronef moves
+ * @brief Jusqu'à ce qu'un Aeronef n'ait pas atteint la position d'un aéroport donné,
+ * @brief que Aeronef bouge
  */
 	public void emergencyLanding(Airport airport) {
 
@@ -349,9 +349,9 @@ public class AeronefManager extends Thread {
  * getter getDirection
  * @return direction
  * 
- * @brief Sets direction depending if the variation used to move an Aeronef is negative or positive
- * @brief if it's negative it means the Aeronef moves from east to west, if not it means it moves
- * @brief west to east.
+ * @brief Définit la direction selon si la variation utilisée pour déplacer un Aeronef est négative ou positive
+ * @brief si c'est négatif, cela signifie que l'Aeronef se déplace d'est en ouest, sinon cela signifie qu'il se déplace
+ * @brief d'ouest en est.
  */
 	public String getDirection() {
 		if(abscisseVariationValue<0) {
