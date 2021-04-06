@@ -20,8 +20,8 @@ public class Terminal {
 /*!
  * Terminal()
  * 
- * @param totalParkingPlace
- * @param totaParkAeronefs
+ * @param totalParkingPlace le nombre des places dans le parking
+ * @param totaParkAeronefs le nombre des aeronefs dans le parking
  */
 	public Terminal(int totalParkingPlace, int totaParkAeronefs) {
 		super();
@@ -31,10 +31,10 @@ public class Terminal {
 /*!
  * Terminal()
  * 
- * @param totalParkingPlace
- * @param totaParkAeronefs
+ * @param totalParkingPlace le nombre des places dans le parking
+ * @param totaParkAeronefs  le nombre des aeronefs dans le parking
  * @param takeOffAeronefs
- * @param landingAeronefs
+ * @param landingAeronefs les aeronefs en atterissage
  */
 	public Terminal(int totalParkingPlace, int totaParkAeronefs, List<Aeronef> takeOffAeronefs, List<Aeronef> landingAeronefs) {
 		super();
@@ -45,28 +45,28 @@ public class Terminal {
 	}
 /*!
  * getTotalParkingPlace()
- * @return totalParkingPlace
+ * @return totalParkingPlace le nombre des places dans le parking
  */
 	public int getTotalParkingPlace() {
 		return totalParkingPlace;
 	}
 /*!
  * setTotalParkingPlace()
- * @param totalParkingPlace
+ * @param totalParkingPlace le nombre des places dans le parking
  */
 	public void setTotalParkingPlace(int totalParkingPlace) {
 		this.totalParkingPlace = totalParkingPlace;
 	}
 /*!
  * getTotaParkAeronefs()
- * @return totaParkAeronefs
+ * @return totaParkAeronefs  le nombre des aeronefs dans le parking
  */
 	public int getTotaParkAeronefs() {
 		return totaParkAeronefs;
 	}
 /*!
  * setTotaParkAeronefs()
- * @param totaParkAeronefs
+ * @param totaParkAeronefs  le nombre des aeronefs dans le parking
  */
 	public void setTotaParkAeronefs(int totaParkAeronefs) {
 		this.totaParkAeronefs = totaParkAeronefs;
@@ -96,14 +96,14 @@ public class Terminal {
 	}
 /*!
  * getLandingAeronefsList()
- * @return landingAeronefsList
+ * @return landingAeronefsList la liste des aéronefs en atterissage
  */
 	public List<Aeronef> getLandingAeronefsList() {
 		return landingAeronefsList;
 	}
 /*!
  * setLandingAeronefsList()
- * @param landingAeronefsList
+ * @param landingAeronefsList la liste des aéronefs en atterissage
  */
 	public void setLandingAeronefsList(List<Aeronef> landingAeronefsList) {
 		this.landingAeronefsList = landingAeronefsList;
