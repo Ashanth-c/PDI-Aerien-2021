@@ -13,44 +13,43 @@ import data.Obstacle;
 
 /*!
  * @file ElementManager.java
- * @brief gÃ©rant des Ã©lÃ©ments.
+ * @brief Classe qui aide à la gestion des éléments présent dans la simulation.
  * @author Ashanth
  * @author Maeva
  * @author Khadija
  * @version 1.0
  * @date 06/04/2021
  */
-
 public class ElementManager {
 	private static Map<String, Airport> airportMap = new HashMap<String, Airport>();
 	private static List<Aeronef> aeronefsList = new ArrayList<Aeronef>();
 	private static List<Obstacle> obstaclesList = new ArrayList<Obstacle>();
 	private static List<FlockBirds> flockBirdsList = new ArrayList<FlockBirds>();
 	private static List<Mountain> mountainsList = new ArrayList<Mountain>();
-/*!
- * ElementManager()
- * @brief gerer l'elelement
- */
+
+	/*!
+	 * ElementManager()
+	 * @brief Créer un ElementManager qui va aider pour la gestion des éléments
+	 */
 	public ElementManager() {
 		// TODO Auto-generated constructor stub
 		super();
 	}
-/*!
- * addAeronef()	
- * @param aeronef
- * 
- * @brief Adds an aeronef in aeronefsList
- */
+	
+	/*!
+	 * addAeronef()	
+	 * @brief Ajoute un aeronef dans la liste des aeronefs présent dans la simulation
+ 	* @param aeronef Nouveau aeronef que l'on souhaite ajouter
+ 	*/
 	public static void addAeronef(Aeronef aeronef) {
 		aeronefsList.add(aeronef);
 	}
-/*!
- * addAirport()
- * @param key
- * @param value
- * 
- * @brief Adds an Airport and a key in airportMap
- */
+	/*!
+	 * addAirport()
+	 * @param key
+	 * @param value 
+	 * @brief Adds an Airport and a key in airportMap
+	 */
 	public static void addAirport(String key, Airport value) {
 		airportMap.put(key, value);
 	}
@@ -101,7 +100,6 @@ public class ElementManager {
 			
 			//we check if there is an aeronef near the airport, if yes its name will be returned
 			if (aeronefAbscisse+100>=airport.getAbscissa() && aeronefOrdonnee+100>=airport.getOrdinate() && aeronefAbscisse-100<=airport.getAbscissa() && aeronefOrdonnee-100<=airport.getOrdinate()) {
-				System.out.println("Atterissage en urgence rÃ©ussi");
 				airportName = airport.getName();
 			}
 		}
@@ -168,7 +166,6 @@ public class ElementManager {
 		 * For each flockbird in flockBirdsList
 		 * if flockBirds' toString contains the "Birds" string
 		 * A new ObstacleManager is created for these flockBirds
-		 * 
 		 * then the flockBirds' radius is taken to use to make them move
 		 */
 		for (FlockBirds flockBirds : flockBirdsList) {
@@ -183,6 +180,12 @@ public class ElementManager {
 		
 	}
 	
+	/*!
+	 * @brief Indique si un aeronef donnée est proche d'une montagne donnée
+	 * @param mountainName Nom de la montagne
+	 * @param aeronefName Nom de l'aeronef
+	 * @return ismountain, boolean qui indique si l'aeronef est proche d'une montagne
+	 */
 	public static boolean isNearMountain(String mountainName, String aeronefName) {
 		boolean ismountain = false;
 		if(aeronefName.contains("YelloToM") || aeronefName.contains("MendoToY")) {
