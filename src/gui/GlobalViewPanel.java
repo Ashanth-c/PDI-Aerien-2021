@@ -76,7 +76,7 @@ public class GlobalViewPanel extends JPanel {
 	/*!
 	 * printGuiAirport()
 	 * @param g2 le graghigs
-	 * @brief tracer le gui de l'aeroport
+	 * @brief tracer le gui de l'aéroport
 	 */
 	public void printGuiAirport(Graphics2D g2) {
 
@@ -93,7 +93,7 @@ public class GlobalViewPanel extends JPanel {
 	/*!
 	 * printAeronef()
 	 * @param g2 le graghigs
-	 * @brief tracer l'aeronef sur la vue globale
+	 * @brief tracer l'aéronef sur la vue globale
 	 */
 	public void printAeronef(Graphics2D g2) {
 		g2.setColor(Color.RED);
@@ -108,7 +108,7 @@ public class GlobalViewPanel extends JPanel {
 	/*!
 	 * initLine()
 	 * @param g2 le graghigs
-	 * @brief tracer les lignes entre les aeroports sur la vue globale
+	 * @brief tracer les lignes entre les aéroports sur la vue globale
 	 */
 	public void initLine(Graphics2D g2) {
 		float[] dashPattern = { 9, 9 };
@@ -133,10 +133,10 @@ public class GlobalViewPanel extends JPanel {
 	/*!
 	 * printAirport()
 	 * @param g2 le graghigs
-	 * @param abscisse Le coordonnee x de l'aeroport
-	 * @param ordonate Le coordonnee y de l'aeroport
-	 * @param type le type de l'aeroport
-	 * @brief tracer les aeroports sur la vue globale
+	 * @param abscisse Le coordonnee x de l'aéroport
+	 * @param ordonate Le coordonnee y de l'aéroport
+	 * @param type le type de l'aéroport
+	 * @brief tracer les aéroports sur la vue globale
 	 */
 	public void printAirport(Graphics2D g2, int abscisse, int ordonate,String type) {
 		g2.setStroke(new BasicStroke(6));
@@ -178,8 +178,8 @@ public class GlobalViewPanel extends JPanel {
 	/*!
 	 * drawAeronef()
 	 * @param g2 le graghigs
-	 * @param aeronefManager gère les fonctions de l'aeronef
-	 * @brief tracer les aeronefs sur la vue globale
+	 * @param aeronefManager gère les fonctions de l'aéronef
+	 * @brief tracer les aéronefs sur la vue globale
 	 */
 	public void drawAeronef(AeronefManager aeronefManager, Graphics2D g2) {
 		Aeronef aeronef = aeronefManager.getAeronef();
@@ -216,8 +216,8 @@ public class GlobalViewPanel extends JPanel {
 	/*!
 	 * printAirportType()
 	 * @param type le type de l'aeroport
-	 * @brief tracer les aeronefs sur la vue globale
-	 * @return un string qui indique le type de l'aeroport
+	 * @brief tracer les aéronefs sur la vue globale
+	 * @return un string qui indique le type de l'aéroport
 	 */
 	public String printAirportType(String type) {
 		if(type.contains("Military")) {
