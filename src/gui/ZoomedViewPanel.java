@@ -2,7 +2,7 @@ package gui;
 
 /*!
  * @file ZoomedViewPanel.java
- * @brief Classe qui Zoom sur l'aeroport
+ * @brief Classe qui affiche l'aeroport Charles de Gaulle en gros plan
  * @author Ashanth
  * @author Khadija
  * @author Maeva
@@ -10,14 +10,12 @@ package gui;
  * @date 06/04/2021
  */
 
-import java.awt.BasicStroke;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.util.List;
-
 import javax.swing.JPanel;
 import data.Aeronef;
 import data.Airport;
@@ -33,7 +31,8 @@ public class ZoomedViewPanel extends JPanel {
 		
 	/*!
      * ZoomedViewPanel() 
-     * @brief zoomer sur l'aeroport
+     * @brief Constructeur qui va creer le panel de zoom sur l'aeroport
+     * @param simulation La simulation où s'effectue les décollage et attérisage
      */
 	public ZoomedViewPanel(Simulation simulation) {
 		this.simulation = simulation;
@@ -45,7 +44,7 @@ public class ZoomedViewPanel extends JPanel {
 	}
 		
 	/*!
-	 * 
+	 * @brief Récupére l'aéroport sur lequel on efectue un agrandissement
 	 */
 	private void setAirport() {
 		// TODO Auto-generated method stub
@@ -59,8 +58,8 @@ public class ZoomedViewPanel extends JPanel {
 	
 	/*!
      * paintComponent()
-	 * @param g le grapghcs
 	 * @brief paint different Component of zoom view
+	 * @param g Objet graphique qui va dessiner les differents éléments souhaité
 	 */
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
@@ -68,12 +67,16 @@ public class ZoomedViewPanel extends JPanel {
 		g2.setFont(new Font("Arial", Font.PLAIN, 15));
 		setAirport();
 		drawRunway(g2);
-		initTerminal(g2);
-		initInformation(g2);
+		printTerminal(g2);
+		printInformation(g2);
 		printAeronefs(g2);
 	}
 	
-	public void initInformation(Graphics2D g2) {
+	/*!
+	 * @brief Cette fonction affiche toutes les informations concernant l'aeroport Charles de Gaulle ainsi que les différent atterissage et décollage d'aeronef sur l'aéroport
+	 * @param g2 Objet graphique qui va dessiner les differents éléments souhaité
+	 */
+	public void printInformation(Graphics2D g2) {
 		g2.setColor(Color.BLACK);
 		int textPosition = 40;
 		g2.setFont(new Font("Arial", Font.BOLD, 50));
@@ -97,6 +100,10 @@ public class ZoomedViewPanel extends JPanel {
 		}
 	}
 	
+	/*!
+	 * @brief Fonction qui affiche les informations historique de l'aeroport Charles de Gaulle
+	 * @param g2 Objet graphique qui va dessiner les differents éléments souhaité
+	 */
 	private void printAirportInfo(Graphics2D g2) {
 		String name = zoomAirport.getName();
 		City city = zoomAirport.getCity();
@@ -114,11 +121,22 @@ public class ZoomedViewPanel extends JPanel {
 		g2.drawString("Coordinate : ("+abscissa+" , "+ordinate+")", 70, 270);
 	}
 
+	/*!
+	 * @brief Cette methode va dessiner une chaine de caractères en prenant en comptes les retours à la ligne
+	 * @param g2 Objet graphique qui va dessiner les differents éléments souhaité
+	 * @param text Chaine de caractères que l'on souhaite dessiner
+	 * @param x Abscisse à laquelle on souhaite dessiner la chaine de caractères
+	 * @param y Ordonnée à laquelle on souhaite dessiner la chaine de caractères
+	 */
 	public void drawString(Graphics2D g2, String text, int x, int y) {
 	    for (String line : text.split("\n"))
 	        g2.drawString(line, x, y += g2.getFontMetrics().getHeight());
 	}
 	
+	/*!
+	 * @brief Cette methode dessine les pistes d'atterissage et décollage de l'aeroport
+	 * @param g2 Objet graphique qui va dessiner les differents éléments souhaité
+	 */
 	public void drawRunway(Graphics2D g2) {
 		int totalRunway = zoomAirport.getAerodrome().getTotalRunway();
 		for (int i = 0; i < totalRunway; i++) {
@@ -126,27 +144,12 @@ public class ZoomedViewPanel extends JPanel {
 		}
 	}
 	
-		/*!
-     		 * initAirstrip()
-	 	 * @param g2 le grapghcs
-	     	 * @brief le chemin de l'aeronef dans la vue zoomÃ©e est sous forme rectangle
-	 	 */
-	public void initAirstrip(Graphics2D g2) {
-
-		makeRectangle(g2,400, 25+200, 450, 60);
-		makeRectangle(g2,15+400, 85+200, 435, 60);
-	
-		makeRectangle(g2,400, 195+200, 450, 60);		
-		makeRectangle(g2,15+400, 255+200, 435, 60);
-
-	}
 	/*!
-     	 * initTerminal()
-	 * @param g2 e graphics
-	 * 
-	 * @brief initialize le terminal sur la vue zoomee
+     * initTerminal()
+     * @brief Dessine l'aérogare de l'aéroport et affiche le nombres d'aérnefs garé 
+	 * @param g2 Objet graphique qui va dessiner les differents éléments souhaité
 	 */
-	public void initTerminal(Graphics2D g2) {
+	public void printTerminal(Graphics2D g2) {
 		g2.setFont(new Font("Arial", Font.PLAIN, 20));
 		int totalParkingPlace = zoomAirport.getTerminal().getTotalParkingPlace();
 		int totaParkAeronefs = zoomAirport.getTerminal().getTotaParkAeronefs();
@@ -159,7 +162,10 @@ public class ZoomedViewPanel extends JPanel {
 	
 	}
 	
-	
+	/*!
+	 * Cette methode dessine les aeronefs qui atterisent ou décollent
+	 * @param g2 Objet graphique qui va dessiner les differents éléments souhaité
+	 */
 	public void printAeronefs(Graphics2D g2) {
 		
 		int takeOffSize = zoomAirport.getTerminal().getTakeOffAeronefsList().size();
@@ -177,7 +183,11 @@ public class ZoomedViewPanel extends JPanel {
 		}
 	}
 	
-	
+	/*!
+	 * @brief Methode qui permet l'animation des aeronefs qui décollent
+	 * @param g2 Objet graphique qui va dessiner les differents éléments souhaité
+	 * @param numberAeronef Nombres d'aeronefs qui viennent de décoller
+	 */
 	public void moveTakeOffAeronef(Graphics2D g2,int numberAeronef) {
 		int start = 395;
 		for (int index = 0; index < numberAeronef; index++) {
@@ -188,47 +198,34 @@ public class ZoomedViewPanel extends JPanel {
 		
 	}
 	
+	/*!
+	 *@brief Methode qui permet l'animation des aéronefs qui atterisent
+	 * @param g2 Objet graphique qui va dessiner les differents éléments souhaité
+	 * @param numberAeronef Nombres d'aéronefs qui viennent d'atterir
+	 */
 	public void moveLandingAeronef(Graphics2D g2,int numberAeronef) {
 		int start = 395;
 		for (int index = 0; index < numberAeronef; index++) {
 				g2.drawImage(Utility.readImage("src/images/turboprop_airplane.png"),start,420,50,50,this);
 				start+=100;
-		
 		}
 		
 	}
+
 	
 	/*!
-     	 * makeRectangle()
-	 * @param g2 le graphics
-	 * @param x le premier cordonnee pour tracer le rectangle
-	 * @param y le deuxieme cordonnee pour tracer le rectangle
-	 * @param z le troisieme cordonnee pour tracer le rectangle
-	 * @param t le quatrieme cordonnee pour tracer le rectangle
-	 * 
-	 * @brief initialise le terminal sur la vue zoomee
+	 * @brief Retourne la simulation actuelle
 	 */
-	public void makeRectangle(Graphics2D g2, int x, int y, int z, int t) {
-		
-		BasicStroke oldStroke=(BasicStroke) g2.getStroke();
-		float thickness=2;
-		BasicStroke newStroke=new BasicStroke(thickness);
-		
-		g2.setColor(Color.BLACK);
-		g2.setStroke(newStroke);
-		g2.drawRect(x, y, z, t);
-		g2.setColor(Color.WHITE);
-		g2.fillRect(x, y, z, t);
-		g2.setStroke(oldStroke);
-	}
-
 	public Simulation getSimulation() {
 		return simulation;
 	}
 
+	/*!
+	 * @brief simulation Change la simulation actuelle
+	 * @param simulation Nouvelle simulation
+	 */
 	public void setSimulation(Simulation simulation) {
 		this.simulation = simulation;
 	}
 
 }
-
