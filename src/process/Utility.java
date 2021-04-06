@@ -34,8 +34,8 @@ public class Utility {
 	/*
 	 * readImage()
 	 * 
-	 * @param filePath the path (from "src") of the image file
-	 * @return the read file
+	 * @param filePath le chemin (à partir de "src") du fichier image
+	 * @return le fichier lu
 	 * 
 	 * @brief Reads a image from an image file.
 	 */
@@ -49,7 +49,7 @@ public class Utility {
 	}
 /*!
  *  unitTime()
- *  @brief causes the currently executing thread to sleep for 1000 milliseconds, 
+ *  @brief provoque la mise en veille du thread en cours d'exécution pendant 1000 millisecondes,
  */
 	public static void unitTime() {
 		try {
@@ -64,7 +64,7 @@ public class Utility {
  * @param countryName le nom de la pays
  * @return city la ville
  * 
- * @brief Creates a new city with a given city name and an country name
+ * @brief Crée une nouvelle ville avec un nom de ville donné et un nom de pays
  * 
  */
 	public static City createCity(String cityName, String countryName) {
@@ -81,7 +81,7 @@ public class Utility {
  * @param openingDate la date d'ouverture de l'aeroport
  * @return airport
  * 
- * @brief Creates an airport
+ * @brief Crée un aéroport
  */
 	public static Airport createAirport(int abscisse, int ordonnee, String name, String type, City city, String openingDate) {
 		Aerodrome aerodrome = createAerodrome();
@@ -144,7 +144,7 @@ public class Utility {
  * @param ordCenter l'ordonne du centre
  * @return flockBirds le groupe des oiseaux
  * 
- * @brief Creates flockBirds
+ * @brief Creer flockBirds
  */
 	public static FlockBirds createFlockBirds(int abscisse, int ordonnee, String name, int altitude, int numberOfBirds, int speed, int absCenter, int ordCenter) {
 		FlockBirds flockBirds = new FlockBirds(abscisse, ordonnee, name, altitude, numberOfBirds, speed);
@@ -160,7 +160,7 @@ public class Utility {
  * @param airport1
  * @param airport2
  * 
- * @brief Creates lines between two airports
+ * @brief Creer les lignes entre les aeroports
  */
 	public static void createLine(Airport airport1, Airport airport2) {
 		LineBuilder builder = new LineBuilder();
@@ -170,7 +170,7 @@ public class Utility {
  * createTerminal()
  * @return terminal
  * 
- * @brief Creates a terminal that has between 15 and 70 total parking places
+ * @brief Crée un terminal qui compte entre 15 et 70 places de parking au total
  */
 	private static Terminal createTerminal() {
 		List<Aeronef> terminalList = new ArrayList<Aeronef>();
@@ -185,7 +185,7 @@ public class Utility {
  * createAerodrom()	
  * @return aerodrome
  * 
- * @brief Creates an Aerodrome with runway length between 300 and 700 feet totalrunway between 1 and 4
+ * @brief Crée un aérodrome avec une longueur de piste comprise entre 300 et 700 pieds au total, piste entre 1 et 4
  * 
  */
 	private static Aerodrome createAerodrome() {
@@ -201,7 +201,7 @@ public class Utility {
  * @param max
  * @return random number
  * 
- * @brief Returns a random number between the chosen values set as entries
+ * @brief Renvoie un nombre aléatoire entre les valeurs choisies définies comme entrées
  */
 	public static int getRandom(int min, int max) {
 		return (int) (Math.random() * (max + 1 - min)) + min;
@@ -213,7 +213,7 @@ public class Utility {
  * @param odrCenter
  * @return radius
  * 
- * @brief Returns the radius of a flockbirds group
+ * @brief Renvoie le rayon d'un groupe Flockbirds
  */
 	private static double getRadiusFlockBirds(FlockBirds flockBirds, int abCenter, int odrCenter) {
 		float flockBirdsAbscisse = flockBirds.getAbscissa();
