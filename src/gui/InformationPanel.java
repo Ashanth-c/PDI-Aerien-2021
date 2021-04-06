@@ -71,6 +71,7 @@ public class InformationPanel extends JPanel {
 			   g2.setFont(new Font("default", Font.BOLD, 12));
 			drawString(g2, position.toString(), 12, 110);
 		}
+		   printCaption(g2);
 	}
 	/*!
 	 * init()
@@ -197,7 +198,7 @@ public class InformationPanel extends JPanel {
 	 * @param y le cordonnée d'ordonnee de l'element 
 	 * @brief dessiner l'aeroport
 	 */
-	void drawString(Graphics2D g2, String text, int x, int y) {
+	public void drawString(Graphics2D g2, String text, int x, int y) {
 	    for (String line : text.split("\n"))
 	        g2.drawString(line, x, y += g2.getFontMetrics().getHeight());
 	}
@@ -218,6 +219,41 @@ public class InformationPanel extends JPanel {
 		}
 		return aeronef;
 	}
+	
+	public void printCaption(Graphics2D g2) {
+		if(instance.isDisplayerGlobal()) {
+		g2.setColor(Color.black);
+		   g2.setFont(new Font("default", Font.BOLD, 13));
+		g2.drawString("Caption :", 10, 390);
+		   g2.setFont(new Font("default", Font.PLAIN, 13));
+		g2.fillRect(120, 407, 35, 40);
+		g2.drawString("Civil/Cargo Airport", 4, 430);
+		g2.drawImage(Utility.readImage("src/images/airport1.png"),120,407,35,40,this);
+		
+		g2.fillRect(120, 457, 35, 40);
+		g2.drawString("Military Airport", 4, 480);
+		g2.drawImage(Utility.readImage("src/images/airportMilitary.png"),120,457,35,40,this);
+		
+		
+		g2.fillRect(120, 512, 35, 40);
+		drawString(g2, "Civil/Cargo/Military\nAirport", 4, 510);
+		g2.drawImage(Utility.readImage("src/images/airportMilitaryCivil.png"),120,512,35,40,this);
+		
+		g2.fillRect(120, 567, 35, 40);
+		g2.drawString("Civil/Cargo Aeronef", 4, 590);
+		g2.drawImage(Utility.readImage("src/images/turboprop_airplane1.png"),120,567,35,40,this);
+		
+		g2.fillRect(120, 622, 35, 40);
+		g2.drawString("Military Aeronef", 4, 645);
+		g2.drawImage(Utility.readImage("src/images/military_airplane.png"),120,622,35,40,this);
+		
+		g2.fillRect(120, 677, 35, 40);
+		g2.drawString("Mountain", 4, 700);
+		g2.drawImage(Utility.readImage("src/images/mountain.png"),120,677,35,40,this);
+		
+		}
+	}
+	
 	/*!
 	 * getSimulation()
 	 * @brief retourne l'aeronef en urgent 

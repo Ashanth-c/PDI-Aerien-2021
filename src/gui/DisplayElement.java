@@ -49,7 +49,6 @@ public class DisplayElement extends JPanel implements Runnable {
 	 */
 	public DisplayElement(Simulation simulation) {
 		super();
-//		timer = new Timer(delay, taskPerformer);
 		this.simulation = simulation;
 		this.globalView = new GlobalViewPanel(simulation);
 		this.zoomedView = new ZoomedViewPanel(simulation);
@@ -60,7 +59,6 @@ public class DisplayElement extends JPanel implements Runnable {
 		this.add(informationPanel, BorderLayout.WEST);
 
 		this.add(globalView, BorderLayout.CENTER);
-//		this.add(zoomedView,BorderLayout.CENTER);
 
 	}
 	/*! 
@@ -133,6 +131,7 @@ public class DisplayElement extends JPanel implements Runnable {
 		simulation=new Simulation();
 		globalView.setSimulation(simulation);
 		informationPanel.setSimulation(simulation);
+		zoomedView.setSimulation(simulation);
 	}
 	
 	private class ActionTimer implements ActionListener {
@@ -146,6 +145,7 @@ public class DisplayElement extends JPanel implements Runnable {
 		}
 		
 	}
+	
 private class ViewMouseListener implements MouseListener {
 
 	@Override

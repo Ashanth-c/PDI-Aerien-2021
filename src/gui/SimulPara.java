@@ -15,8 +15,8 @@ public class SimulPara {
 	/*!
 	 * @brief This class contains necessary simulation parameters
 	 * @author Ashanth
-	 * @author Khadija aeronef manager
-	 * @author Maeva mountain manager
+	 * @author Khadija
+	 * @author Maeva
 	 */
 	
 	public static final int LINE_TOTAL_LENGTH = 70000;
@@ -26,7 +26,7 @@ public class SimulPara {
 	public static final int TERMINAL_MIN_PLACE = 15;
 	public static final int TERMINAL_MAX_PLACE = 70;
 
-	public static final int AERODROME_MIN_RUNWAY = 1;
+	public static final int AERODROME_MIN_RUNWAY = 2;
 	public static final int AERODROME_MAX_RUNWAY = 4;
 
 	public static final int AERODROME_MIN_RUNWAY_LENGHT = 300;
@@ -44,14 +44,5 @@ public class SimulPara {
 	public static final int SIMULATION_URGENCE_SPEED = 800;
 	
 	public static final int SIMULATION_SLEEP = 1000;
-
-	public static final String[] MOUNTAINS= new String[] {"montagne 1","montagne 2", "montagne 3", "montagne4"};
-
-	public static final int[] MOUNTAINS_X=new int[] {600,750,960,960};
-
-	public static final int[] MOUNTAINS_Y=new int[] {200+10,450,500,280};
-
-	public static final int[] ALTITUDE =new int[] {0,4000, 6100, 11200};
-	
 	
 }
