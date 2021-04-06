@@ -49,7 +49,7 @@ public class AirportManager extends Thread {
 
 	/*!
 	 * isTerminalFull()
-	 * @brief Method who tell if the Terminal is full or not
+	 * @brief Méthode qui dit si le terminal est plein ou non
 	 * 
 	 * @return isFull  booleen qui ditermine si le terminal est plein
 	 */
@@ -67,7 +67,7 @@ public class AirportManager extends Thread {
 
 	/*!
 	 * addAeronefTerminal()
-	 * @brief Method which adds an Aeronef in the Terminal
+	 * @brief Méthode qui ajoute un Aeronef dans le terminal
 	 * 
 	 * @param newAeronef avion
 	 */
@@ -83,7 +83,7 @@ public class AirportManager extends Thread {
 
 	/*!
 	 * destinationVerification()
-	 * @brief Verification if the destination of the Aeronef is the same as the Airport
+	 * @brief Vérification si la destination de l'Aeronef est la même que celle de l'aéroport
 	 * 
 	 * @param aeronef avion
 	 */
@@ -109,10 +109,10 @@ public class AirportManager extends Thread {
 	}
 
 	/*!
-	 * @brief Verification if the departure of the Aeronef is the same as the Airport
+	 * @brief Vérification si le départ de l'Aeronef est le même que celui de l'aéroport
 	 * departureVerification()
 	 * @param aeronef avion
-	 * @return true if the departure is the Airport, or false if it's not
+	 * @return true si le départ est l'aéroport, ou faux si ce n'est pas le cas
 	 */
 	private boolean departureVerification(Aeronef aeronef) {
 		boolean verification = false;
@@ -136,7 +136,7 @@ public class AirportManager extends Thread {
 
 	/*!
 	 * removeAeronefTerminal()
-	 * @brief Removes an Aeronef from the Terminal
+	 * @brief Supprime un Aeronef du terminal
 	 * 
 	 * @param outAeronef
 	 */
@@ -151,10 +151,10 @@ public class AirportManager extends Thread {
 
 	/*!
 	 * airportTakeOffAuthorization()
-	 * @brief Give to an Aeronef the autorization to Takeoff
+	 * @brief Donner à un Aeronef l'autorisation de décoller
 	 * 
 	 * @param goingAeronef
-	 * @return true if he has the authorisation, else false
+	 * @return true s'il a l'autorisation, sinon false
 	 */
 	public boolean airportTakeOffAuthorization(Aeronef goingAeronef) {
 		Terminal airportTerminal = airport.getTerminal();
@@ -170,9 +170,9 @@ public class AirportManager extends Thread {
 
 	/*!
 	 * airportLandingAuthorization()
-	 * @brief Give to an Aeronef the autorization to Land
+	 * @brief Donner à un Aeronef l'autorisation d'atterrir
 	 * @param goingAeronef
-	 * @return true if he has the authorisation, else false
+	 * @return true s'il a l'autorisation, sinon false
 	 */
 	public boolean airportLandingAuthorization(Aeronef commingAeronef) {
 		boolean authorization = false; // autorisation initialisé a faux
@@ -194,13 +194,13 @@ public class AirportManager extends Thread {
 
 	/*!
 	 *  isNextAeronef()
-	 * @brief Sets the isNext value true for an Aeronef
-	 * @brief if an Aeronef is next in the TakeOffAeronefList
+	 * @brief Définit la valeur isNext true pour un Aeronef
+	 * @brief si un Aeronef est le suivant dans la TakeOffAeronefList
 	 * @return isNext
 	 */
 	private boolean isNextAeronef() {
 		boolean isNext = false;
-		Terminal airportTerminal = airport.getTerminal(); // aerogare de l'aerogare
+		Terminal airportTerminal = airport.getTerminal(); // aérogare de l'aérogare
 		List<Aeronef> airportAeronefsList = airportTerminal.getTakeOffAeronefsList(); // Liste des avions de la gare
 		if (!airportAeronefsList.isEmpty()) {
 			for (Aeronef aeronef : airportAeronefsList) {
@@ -214,7 +214,7 @@ public class AirportManager extends Thread {
 
 	/*!
 	 * nextTakeOffAeronef()
-	 * @brief Get the next Aeronef to takeOff
+	 * @brief Obtenez le prochain Aeronef à décoller
 	 * @return Aeronef to takeoff
 	 */
 	public Aeronef nextTakeOffAeronef() {
@@ -251,7 +251,7 @@ public class AirportManager extends Thread {
 	/*!
 	 * setter setAirport()
 	 * @param airport
-	 * @brief change l'aeroport
+	 * @brief change l'aéroport
 	 */
 
 	public void setAirport(Airport airport) {
