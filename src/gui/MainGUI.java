@@ -18,7 +18,7 @@ import process.Simulation;
 import process.Utility;
 /*!
  * @file MainGUI.java
- * @brief The aeronef simulation main GUI
+ * @brief L'interface graphique principale de la simulation aeronef
  * @author Ashanth
  * @author Maeva
  * @author Khadija
@@ -33,7 +33,7 @@ public class MainGUI extends JFrame{
 	/*!
 	 *  MainGUI()
 	 * @param title le titre du gui 
-	 * @brief initialise the  gui
+	 * @brief initialise le  gui
 	 */
 	public MainGUI(String title) {
 		super(title);
@@ -42,7 +42,7 @@ public class MainGUI extends JFrame{
 	}
 	/*!
 	 * init()
-	 * @brief initialise the  gui
+	 * @brief initialise le gui
 	 */
 	private void init() {
 		setExtendedState(MAXIMIZED_BOTH);
