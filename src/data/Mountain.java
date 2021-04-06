@@ -35,23 +35,23 @@ public class Mountain extends Obstacle {
 	}
 /*!
  * getCountry()
- * @brief retourne le pays ou se trouve le montagne
- * @return country le pays ou se situe le montagne
+ * @brief retourne le pays où se trouve le montagne
+ * @return country le pays où se situe le montagne
  */
 	public String getCountry() {
 		return country;
 	}
 /*!
  * setCountry()
- * @brief changer le pays ou se trouve le montagne
- * @param country le pays ou se situe le montagne
+ * @brief changer le pays où se trouve le montagne
+ * @param country le pays où se situe le montagne
  */
 	public void setCountry(String country) {
 		this.country = country;
 	}
 /*!
  * toString()
- * @return une chaine de caractere represente le montagne et ses informations
+ * @return une chaine de caractère represente le montagne et ses informations
  */
 
 	@Override
