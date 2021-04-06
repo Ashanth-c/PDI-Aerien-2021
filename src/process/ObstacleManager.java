@@ -45,7 +45,7 @@ public class ObstacleManager {
  * moveFlockBirds()
  * @param rayon
  * 
- * @brief Makes birds move in a circular trajectory
+ * @brief Fait bouger les oiseaux selon une trajectoire circulaire
  */
 	public void moveFlockBirds(double rayon) {
 		double flockbirdsOrdonnee = obstacle.getOrdinate();
@@ -65,7 +65,7 @@ public class ObstacleManager {
  * impactMountain()
  * @param aeronef
  * 
- * @brief Checks if an aeronef's coordinates match with an obstacle's
+ * @brief Vérifie si les coordonnées d'un aeronef correspondent à celles d'un obstacle
  */
 	public void impactMountain(Aeronef aeronef) {
 		if ((obstacle.getAbscissa() == aeronef.getAbscissa()) && obstacle.getOrdinate() == aeronef.getOrdinate()) {
@@ -77,7 +77,7 @@ public class ObstacleManager {
  * avoidFlockBirds()
  * @param aeronef
  * 
- * @brief Makes an aeronef dodge flockBirds if it's close enough by changing the aeronef's altitude
+ * @brief Fait un troupeau d'esquive d'aéronef - Oiseaux s'il est assez proche en changeant l'altitude de l'aéronef
  */
 	public void avoidFlockBirds(Aeronef aeronef) {
 		float flockbirdsAbscisse = obstacle.getAbscissa();
@@ -100,7 +100,7 @@ public class ObstacleManager {
  * avoidMountain()
  * @param aeronef
  * 
- * @brief Makes an aeronef dodge a mountain if it's close enough by changing its altitude 
+ * @brief Permet à un aeronef d'esquiver une montagne si elle est suffisamment proche en changeant son altitude
  */
 	public void avoidMountain(Aeronef aeronef) {
 		float mountainAbscisse = obstacle.getAbscissa();
